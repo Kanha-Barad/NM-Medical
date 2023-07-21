@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="29.188" height="36.5" viewBox="0 0 29.188 36.5">
+  <g id="price-list2" transform="translate(0.25 0.25)">
+    <path id="Path_276" data-name="Path 276" d="M27.978,15.254a.709.709,0,0,0,.709-.709V5.465a.709.709,0,0,0-.208-.5L23.723.208a.709.709,0,0,0-.5-.208H2.113A2.116,2.116,0,0,0,0,2.114V33.885A2.117,2.117,0,0,0,2.113,36H26.572a2.118,2.118,0,0,0,2.115-2.116V20.606a.709.709,0,1,0-1.418,0V33.884a.7.7,0,0,1-.7.7H2.113a.7.7,0,0,1-.7-.7V2.114a.7.7,0,0,1,.7-.7h20.4V4.061a2.117,2.117,0,0,0,2.115,2.114h2.641v8.37a.709.709,0,0,0,.709.709Z" transform="translate(0 0)" fill="#bb2a22" stroke="#bb2a22" stroke-width="0.5"/>
+    <path id="Path_282" data-name="Path 282" d="M191.707,196.4h-8.061a.709.709,0,1,1,0-1.418h8.061a.709.709,0,0,1,0,1.418Zm0,0" transform="translate(-170.075 -176.052)" fill="#bb2a22" stroke="#bb2a22" stroke-width="0.5"/>
+    <path id="Path_284" data-name="Path 284" d="M80.263,190.505H76.088a.709.709,0,0,1-.709-.709V186a.709.709,0,0,1,.709-.709h4.175a.709.709,0,0,1,.709.709v3.8A.709.709,0,0,1,80.263,190.505ZM76.8,189.087h2.757v-2.379H76.8Zm0,0" transform="translate(-70.079 -168.261)" fill="#bb2a22" stroke="#bb2a22" stroke-width="0.5"/>
+    <path id="Path_285" data-name="Path 285" d="M80.263,282.54H76.088a.709.709,0,0,1-.709-.709v-3.8a.709.709,0,0,1,.709-.709h4.175a.709.709,0,0,1,.709.709v3.8A.709.709,0,0,1,80.263,282.54ZM76.8,281.122h2.757v-2.379H76.8Zm0,0" transform="translate(-70.079 -251.825)" fill="#bb2a22" stroke="#bb2a22" stroke-width="0.5"/>
+    <path id="Path_288" data-name="Path 288" d="M191.027,323.934h-8.061a.709.709,0,1,1,0-1.418h8.061a.709.709,0,0,1,0,1.418Zm0,0" transform="translate(-169.442 -294.768)" fill="#bb2a22" stroke="#bb2a22" stroke-width="0.5"/>
+    <path id="Path_291" data-name="Path 291" d="M388.541,237.924a.709.709,0,0,1-.709-.709V237.2a.709.709,0,1,1,1.418,0v.014A.709.709,0,0,1,388.541,237.924Zm0,0" transform="translate(-360.563 -219.863)" fill="#bb2a22" stroke="#bb2a22" stroke-width="0.3"/>
+    <text id="GOLD" transform="translate(14.687 14)" fill="#bb2a22" stroke="#bb2a22" stroke-width="0.3" font-size="8" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="-11" y="0">GOLD</tspan></text>
+  </g>
+</svg>

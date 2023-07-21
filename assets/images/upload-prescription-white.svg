@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25.63" height="25.63" viewBox="0 0 25.63 25.63">
+  <g id="Upload" transform="translate(0.25 0.248)">
+    <g id="Group_107" data-name="Group 107" transform="translate(0 0.002)">
+      <path id="Path_166" data-name="Path 166" d="M24.153,0H.977A.977.977,0,0,0,0,.979V24.155a.977.977,0,0,0,.977.977H24.153a.977.977,0,0,0,.977-.977V.979A.977.977,0,0,0,24.153,0Zm-.977,23.176H1.954V1.956H23.176Z" transform="translate(0 -0.002)" fill="#fff" stroke="#bb2a22" stroke-width="0.5"/>
+      <path id="Path_167" data-name="Path 167" d="M112.322,104.039a1,1,0,0,0-1.381,0l-3.737,3.737a.977.977,0,0,0,1.382,1.382l2.069-2.069v8.171a.977.977,0,1,0,1.954,0v-8.171l2.07,2.069a.977.977,0,0,0,1.381-1.382Z" transform="translate(-99.066 -96.145)" fill="#fff" stroke="#bb2a22" stroke-width="0.5"/>
+      <path id="Path_168" data-name="Path 168" d="M53.3,56.539H68.793a.977.977,0,0,0,0-1.954H53.3a.977.977,0,0,0,0,1.954Z" transform="translate(-48.482 -50.577)" fill="#fff" stroke="#bb2a22" stroke-width="0.5"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14.891" height="16.453" viewBox="0 0 14.891 16.453">
+  <g id="Group_2216" data-name="Group 2216" transform="translate(-387.77 1652.391)">
+    <path id="Path_21741" data-name="Path 21741" d="M0,0H14.891V16.453H0Z" transform="translate(387.77 -1652.391)" fill="#fff"/>
+    <g id="Group_2215" data-name="Group 2215" transform="translate(248.762 -1977.169)">
+      <g id="Group_1907" data-name="Group 1907" transform="translate(141 325)">
+        <g id="Group_1906" data-name="Group 1906" transform="translate(0)">
+          <path id="Path_21588" data-name="Path 21588" d="M116.321,0h-8.736A1.086,1.086,0,0,0,106.5,1.085v13.83A1.086,1.086,0,0,0,107.585,16h8.736a1.086,1.086,0,0,0,1.085-1.085V1.085A1.086,1.086,0,0,0,116.321,0Zm.651,11.777h-9.7a.217.217,0,1,0,0,.434h9.7v2.7a.652.652,0,0,1-.651.651h-8.736a.652.652,0,0,1-.651-.651v-2.7h.651a.217.217,0,1,0,0-.434h-.651V2.17h10.038Zm0-10.041H106.934V1.085a.652.652,0,0,1,.651-.651h8.736a.652.652,0,0,1,.651.651Z" transform="translate(-106.5)" fill="#bb2a22" stroke="#bb2a22" stroke-width="0.4"/>
+        </g>
+      </g>
+      <g id="Group_1911" data-name="Group 1911" transform="translate(145.802 338.237)">
+        <g id="Group_1910" data-name="Group 1910">
+          <path id="Path_21590" data-name="Path 21590" d="M234.151,437a.651.651,0,1,0,.651.651A.652.652,0,0,0,234.151,437Zm0,.868a.217.217,0,1,1,.217-.217A.217.217,0,0,1,234.151,437.868Z" transform="translate(-233.5 -437)" fill="#bb2a22" stroke="#bb2a22" stroke-width="0.4"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

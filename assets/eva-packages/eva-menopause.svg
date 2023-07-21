@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="path2085" d="M0-682.665H36v36H0Z" transform="translate(0 682.665)"/>
+    </clipPath>
+  </defs>
+  <g id="g2079" transform="translate(0 682.665)">
+    <g id="g2081" transform="translate(0 -682.665)">
+      <g id="g2083" clip-path="url(#clip-path)">
+        <g id="g2089" transform="translate(9.563 7.383)">
+          <path id="path2091" d="M-303.124-228.606a8.5,8.5,0,0,1-8.437,8.508A8.5,8.5,0,0,1-320-228.606c0-4.66,8.438-12.727,8.438-12.727S-303.124-233.266-303.124-228.606Z" transform="translate(319.999 241.333)" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+        </g>
+        <g id="g2093" transform="translate(12.894 1.055)">
+          <path id="path2095" d="M0-14.121a16.867,16.867,0,0,1,5.106-.786A17,17,0,0,1,22.051,2.039a17.048,17.048,0,0,1-6.429,13.269" transform="translate(0 14.907)" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+        </g>
+        <g id="g2097" transform="translate(1.055 4.731)">
+          <path id="path2099" d="M-396.1-528.613a16.867,16.867,0,0,1-5.106.786,17,17,0,0,1-16.945-16.945,17.048,17.048,0,0,1,6.429-13.269" transform="translate(418.148 558.041)" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+        </g>
+        <g id="g2101" transform="translate(28.441 27.02)">
+          <path id="path2103" d="M-26.792,0l-1.492,4.475,4.475-1.492" transform="translate(28.284)" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+        </g>
+        <g id="g2105" transform="translate(3.084 4.506)">
+          <path id="path2107" d="M-53.585-80.378l1.492-4.475-4.475,1.492" transform="translate(56.568 84.853)" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
