@@ -7,6 +7,7 @@ import 'package:nmmedical/widgets/userdrawer.dart';
 import 'IconTextWidget.dart';
 import 'app_drawer.dart';
 import 'basic_appbar.dart';
+import 'customContainer.dart';
 import 'locations/locationmumbai.dart';
 import 'locations/locationpune.dart';
 
@@ -21,30 +22,16 @@ class _loCaTiOnState extends State<loCaTiOn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child:
-                      SvgPicture.asset("assets/locations/location-title.svg")),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text("LOCATIONS",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500)),
-              ),
-            ])),
+        CustomContainerBar(
+          title: "LOCATIONS",
+          svgAssetPath: "assets/locations/location-title.svg",
+        ),
         Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
             child: GridView.count(

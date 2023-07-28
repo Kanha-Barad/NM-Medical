@@ -5,6 +5,7 @@ import 'package:nmmedical/widgets/userdrawer/profilesavechangepin.dart';
 
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
+import '../customContainer.dart';
 import '../userdrawer.dart';
 
 class pRofilE extends StatefulWidget {
@@ -18,30 +19,16 @@ class _pRofilEState extends State<pRofilE> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: SvgPicture.asset(
-                      "assets/profile-icons/user-profile-title.svg")),
-              Padding(
-                padding: EdgeInsets.only(left: 15, top: 4),
-                child: Text("PROFILE",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500)),
-              ),
-            ])),
+        CustomContainerBar(
+          title: "PROFILE",
+          svgAssetPath: "assets/profile-icons/user-profile-title.svg",
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(15, 12, 15, 0),
           child: TextFormField(

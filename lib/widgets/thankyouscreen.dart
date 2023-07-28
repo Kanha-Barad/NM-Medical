@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nmmedical/widgets/customContainer.dart';
 import 'package:nmmedical/widgets/userdrawer.dart';
 
 import 'app_drawer.dart';
@@ -17,36 +18,15 @@ class _ThankYouState extends State<ThankYou> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("", ""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child: Column(children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 43, 34),
-            child: Row(children: [
-              Padding(
-                  padding: EdgeInsets.only(left: 15),
-                  child: SvgPicture.asset("assets/thankyou/thankyou-title.svg")
-                  // SizedBox(
-                  //     height: 25,
-                  //     width: 25,
-                  //     child: Icon(
-                  //       Icons.thumb_up_outlined,
-                  //       color: Colors.white,
-                  //     )),
-                  ),
-              Padding(
-                padding: EdgeInsets.only(left: 10, top: 8),
-                child: Text("THANK YOU",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500)),
-              ),
-            ])),
+        CustomContainerBar(
+            title: "THANK YOU",
+            svgAssetPath: "assets/thankyou/thankyou-title.svg"),
+
         Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
             child: SvgPicture.asset("assets/thankyou/thankyou-icon.svg")),

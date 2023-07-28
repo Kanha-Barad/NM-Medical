@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:nmmedical/widgets/customContainer.dart';
 import 'package:nmmedical/widgets/userdrawer.dart';
 
 import '../widgets/app_drawer.dart';
@@ -17,159 +19,150 @@ class _HealthCheckUpState extends State<HealthCheckUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("", ""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child: Column(children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Image.asset(
-                    "assets/healthcheckup/health-check-up-title.png"),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("HEALTH CHECK-UP",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
-        Padding(
-          padding: const EdgeInsets.only(left: 75.0, top: 25),
-          child: ListTile(
-            leading: Image.asset("assets/images/nm-logo.png"),
-            title: Padding(
-              padding: const EdgeInsets.only(top: 10.0, left: 26),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("NM Medical",
-                      style: TextStyle(fontWeight: FontWeight.w500)),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white, // Background color
-                        // onPrimary: Colors.red, // Text color
-                        side: BorderSide(
-                            color: Color.fromARGB(
-                                255, 187, 42, 34)), // Border color
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(20), // Rounded corners
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => NMHealthCheckUP()));
-                      },
-                      child: Text("Click for Package",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              color: Color.fromARGB(255, 187, 42, 34)))),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Divider(
-          indent: 25,
-          endIndent: 25,
-          thickness: 1,
+        CustomContainerBar(
+          title: "HEALTH CHECK-UP",
+          svgAssetPath: "assets/health-checkup/health-check-up-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context, true);
+          },
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 62.0, top: 6),
+          padding: const EdgeInsets.only(left: 30.0, top: 30),
           child: ListTile(
-            leading: Image.asset("assets/images/health-360-logo.png"),
-            title: Padding(
-              padding: const EdgeInsets.only(top: 10.0, left: 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Health 360",
-                      style: TextStyle(fontWeight: FontWeight.w500)),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white, // Background color
-                        // onPrimary: Colors.red, // Text color
-                        side: BorderSide(
-                            color: Color.fromARGB(
-                                255, 187, 42, 34)), // Border color
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(20), // Rounded corners
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Health360("HM")));
-                      },
-                      child: Text("Click for Package",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              color: Color.fromARGB(255, 187, 42, 34)))),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Divider(
-          indent: 25,
-          endIndent: 25,
-          thickness: 1,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 65.0, top: 10),
-          child: ListTile(
-            leading: SizedBox(
+              leading: SvgPicture.asset(
+                "assets/health-checkup/nm-logo.svg",
                 width: 80,
-                child: Image.asset("assets/images/eva-health-logo.png")),
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("EVA Health",
-                    style: TextStyle(fontWeight: FontWeight.w500)),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white, // Background color
-                      // onPrimary: Colors.red, // Text color
-                      side: BorderSide(
-                          color:
-                              Color.fromARGB(255, 187, 42, 34)), // Border color
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(20), // Rounded corners
+              ),
+              title: Padding(
+                padding: const EdgeInsets.only(top: 14.0, left: 6),
+                child: Text("NM Medical",
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(right: 40.0, top: 2),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NMHealthCheckUP()));
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        side: BorderSide(
+                            color: Color.fromARGB(255, 187, 45, 36))),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 7, 20, 7),
+                      child: Text(
+                        "CLICK FOR PACKAGE",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Color.fromARGB(255, 187, 45, 36)),
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => EVAHealTHCheckUP()));
-                    },
-                    child: Text("Click for Package",
+                  ),
+                ),
+              )),
+        ),
+        Divider(
+          indent: 25,
+          endIndent: 25,
+          thickness: 1,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 30.0, top: 4),
+          child: ListTile(
+              leading: SvgPicture.asset(
+                "assets/health-checkup/health-360-logo.svg",
+                width: 80,
+              ),
+              title: Padding(
+                padding: const EdgeInsets.only(top: 8.0, left: 6),
+                child: Text("Health 360",
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(right: 40.0, top: 2),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Health360("HM")));
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        side: BorderSide(
+                            color: Color.fromARGB(255, 187, 45, 36))),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 7, 20, 7),
+                      child: Text(
+                        "CLICK FOR PACKAGE",
                         style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Color.fromARGB(255, 187, 42, 34)))),
-              ],
-            ),
-          ),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Color.fromARGB(255, 187, 45, 36)),
+                      ),
+                    ),
+                  ),
+                ),
+              )),
+        ),
+        Divider(
+          indent: 25,
+          endIndent: 25,
+          thickness: 1,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 30.0, top: 4),
+          child: ListTile(
+              leading: SvgPicture.asset(
+                "assets/health-checkup/eva-health-logo.svg",
+                width: 80,
+              ),
+              title: Padding(
+                padding: const EdgeInsets.only(top: 2.0, left: 6),
+                child: Text("EVA Health",
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(right: 40.0, top: 2),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EVAHealTHCheckUP()));
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        side: BorderSide(
+                            color: Color.fromARGB(255, 187, 45, 36))),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 7, 20, 7),
+                      child: Text(
+                        "CLICK FOR PACKAGE",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Color.fromARGB(255, 187, 45, 36)),
+                      ),
+                    ),
+                  ),
+                ),
+              )),
         ),
       ])),
       bottomNavigationBar: AllBottomNavigationBar(),

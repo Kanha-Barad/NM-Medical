@@ -22,7 +22,7 @@ class _searchwidgetState extends State<searchwidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: BasicAppbar(""),
+        appBar: BasicAppbar("",""),
         drawer: userDrawer(),
         endDrawer: AppDrawer(),
         body: SingleChildScrollView(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
+import 'package:nmmedical/widgets/customContainer.dart';
 
 import 'app_drawer.dart';
 import 'basic_appbar.dart';
@@ -18,31 +19,14 @@ class _EnQUiryState extends State<EnQUiry> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("", ""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Icon(Icons.shopping_cart_outlined,color: Colors.white,)
-                //SvgPicture.asset("assets/cart/shopping-cart.svg"),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text("CART",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500)),
-              ),
-            ])),
+                CustomContainerBar(title: "ENQUIRY", svgAssetPath: "assets/cart/shopping-cart.svg"),
+        
         Padding(
           padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
           child: TextFormField(
@@ -201,9 +185,10 @@ class _EnQUiryState extends State<EnQUiry> {
                   MaterialPageRoute(builder: (context) => const ThankYou()));
             },
             child: Card(
-              color: const Color.fromARGB(255, 237,28,36),
+              color: const Color.fromARGB(255, 237, 28, 36),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),side: BorderSide(color: Color.fromARGB(255, 237,28,36))),
+                  borderRadius: BorderRadius.circular(50),
+                  side: BorderSide(color: Color.fromARGB(255, 237, 28, 36))),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
                 child: Text(
@@ -217,31 +202,35 @@ class _EnQUiryState extends State<EnQUiry> {
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(left: 15, top: 10),
+        const Padding(
+          padding: EdgeInsets.only(left: 15, top: 14,bottom: 10),
           child: Text('NOTE *',
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold)),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
           padding: const EdgeInsets.all(4.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Padding(
-                padding: EdgeInsets.only(left: 8.0),
-                child: Text('*',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 187, 42, 34), fontSize: 22)),
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Icon(
+                  Icons.circle,
+                  color: Color.fromARGB(255, 187, 42, 34),
+                  size: 8,
+                ),
               ),
-              SizedBox(
-                width: 340,
+              Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(top: 10, left: 8.0),
+                  padding: EdgeInsets.only(left: 8.0),
                   child: Text(
-                      "Per visit charge on sunday will be free (in case of a test that requires two visit will be charged free)."),
+                    "Per visit charge on sunday will be free (in case of a test that requires two visit will be charged free).",
+                    style: TextStyle(fontSize: 12),
+                    softWrap: true,
+                  ),
                 ),
               ),
             ],
@@ -251,19 +240,23 @@ class _EnQUiryState extends State<EnQUiry> {
           padding: const EdgeInsets.fromLTRB(4, 8, 4, 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Padding(
-                padding: EdgeInsets.only(left: 8.0),
-                child: Text('*',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 187, 42, 34), fontSize: 22)),
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Icon(
+                  Icons.circle,
+                  color: Color.fromARGB(255, 187, 42, 34),
+                  size: 8,
+                ),
               ),
-              SizedBox(
-                width: 340,
+              Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(left: 8.0, top: 10),
+                  padding: EdgeInsets.only(left: 8.0),
                   child: Text(
-                      "Sunday Visit Will Be Taken Subject To Avaibility Of Time Slots."),
+                    "Sunday Visit Will Be Taken Subject To Avaibility Of Time Slots.",
+                    style: TextStyle(fontSize: 12),
+                    softWrap: true,
+                  ),
                 ),
               ),
             ],

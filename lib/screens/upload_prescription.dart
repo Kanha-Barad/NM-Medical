@@ -15,7 +15,7 @@ class _UploadPrescriptionState extends State<UploadPrescription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
      drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(

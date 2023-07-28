@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
+import '../../widgets/customContainer.dart';
 import '../../widgets/userdrawer.dart';
 import '../../widgets/whatsappmessage.dart';
 
+String pathOLOGYTestCart = "";
+
 class Pathology extends StatefulWidget {
-  const Pathology({Key? key}) : super(key: key);
+  Pathology(TestCArt) {
+    pathOLOGYTestCart = "";
+    pathOLOGYTestCart = TestCArt;
+  }
 
   @override
   State<Pathology> createState() => _PathologyState();
@@ -37,41 +44,22 @@ class _PathologyState extends State<Pathology> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("", pathOLOGYTestCart),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child:
-                    Image.asset("assets/diagnostictests/pathology-title.png"),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("PATHOLOGY",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
+        CustomContainerBar(
+          title: "PATHOLOGY",
+          svgAssetPath: "assets/diagnostic-test/pathology-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Image.asset("assets/diagnostictests/pathology-img1.jpg"),
+          child: Image.asset("assets/diagnostic-test/pathology-img1.jpg"),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(15.0, 8, 15, 6),

@@ -14,6 +14,7 @@ import '../../widgets/IconTextWidget.dart';
 import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
+import '../../widgets/customContainer.dart';
 import '../../widgets/userdrawer.dart';
 import 'nm_packages/primary.dart';
 
@@ -26,36 +27,18 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("", ""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child: Column(children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child:
-                      Image.asset("assets/healthcheckup/health-check-up.png")),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("NM PACKAGES",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
+        CustomContainerBar(
+          title: "NM PACKAGES",
+          svgAssetPath: "assets/health-checkup/health-check-up.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
             child: GridView.count(
@@ -72,7 +55,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
                               builder: (context) => PrimaryPackageDetails()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/healthcheckup/primary.png',
+                      imageAsset: 'assets/health-checkup/primary.svg',
                       labelText: 'Primary',
                     ),
                   ),
@@ -84,7 +67,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
                               builder: (context) => GoldPackageDetails()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/healthcheckup/gold.png',
+                      imageAsset: 'assets/health-checkup/gold.svg',
                       labelText: 'Gold',
                     ),
                   ),
@@ -96,7 +79,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
                               builder: (context) => GoldPlusPackageDetails()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/healthcheckup/gold-plus.png',
+                      imageAsset: 'assets/health-checkup/gold-plus.svg',
                       labelText: 'Gold Plus',
                     ),
                   ),
@@ -108,7 +91,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
                               builder: (context) => PlatiNUmPackageDetails()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/healthcheckup/platinum.png',
+                      imageAsset: 'assets/health-checkup/platinum.svg',
                       labelText: 'Platinum',
                     ),
                   ),
@@ -120,7 +103,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
                               builder: (context) => DiaMoNDPackageDetails()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/healthcheckup/diamond.png',
+                      imageAsset: 'assets/health-checkup/diamond.svg',
                       labelText: 'Diamond',
                     ),
                   ),
@@ -133,7 +116,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
                     },
                     child: buildIconItem(
                       imageAsset:
-                          'assets/healthcheckup/nm-packages-health-360-deluxe.png',
+                          'assets/health-checkup/nm-packages-health-360-deluxe.svg',
                       labelText: 'Health 360 \nDeluxe',
                     ),
                   ),
@@ -145,7 +128,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
                               builder: (context) => SeniorCITIzeN()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/healthcheckup/senior-citizens.png',
+                      imageAsset: 'assets/health-checkup/senior-citizens.svg',
                       labelText: 'Senior \nCitizens',
                     ),
                   ),
@@ -159,7 +142,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
                     },
                     child: buildIconItem(
                       imageAsset:
-                          'assets/healthcheckup/predictive-genomic-mapping.png',
+                          'assets/health-checkup/predictive-genomic-mapping.svg',
                       labelText: 'Predictive \nGenomic Mapping',
                     ),
                   ),
@@ -171,7 +154,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
                               builder: (context) => WholeBoDyMRI()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/healthcheckup/whole-body-MRI.png',
+                      imageAsset: 'assets/health-checkup/whole-body-MRI.svg',
                       labelText: 'Whole Body\nMRI',
                     ),
                   ),
@@ -183,7 +166,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
                                 builder: (context) => CArdiaCCTPackage()));
                       },
                       child: buildIconItem(
-                        imageAsset: 'assets/healthcheckup/cardiac-CT.png',
+                        imageAsset: 'assets/health-checkup/cardiac-CT.svg',
                         labelText: 'Cardiac\nCT',
                       )),
                   InkWell(
@@ -195,7 +178,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
                       },
                       child: buildIconItem(
                         imageAsset:
-                            'assets/healthcheckup/comparison-of-package.png',
+                            'assets/health-checkup/comparison-of-package.svg',
                         labelText: 'Comparison \nOf Package',
                       )),
                 ]))

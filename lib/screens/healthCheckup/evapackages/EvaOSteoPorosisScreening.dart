@@ -17,7 +17,7 @@ class _EVaOsetoPOROsiSSCReeniNGState extends State<EVaOsetoPOROsiSSCReeniNG> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(

@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../bottom_navigation.dart';
+import '../customContainer.dart';
 import '../userdrawer.dart';
 
 class Dashboard extends StatefulWidget {
@@ -20,45 +21,19 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: SvgPicture.asset("assets/images/dashboard-title.svg"),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text("DASHBOARD",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500)),
-              ),
-              Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context, true);
-                  },
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.white,
-                    size: 18,
-                  ),
-                  label: Text("BACK",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500)))
-            ])),
+        CustomContainerBar(
+          title: "DASHBOARD",
+          svgAssetPath: "assets/images/dashboard-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.only(left: 15.0, top: 20),
           child: Text(

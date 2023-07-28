@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
+import 'package:nmmedical/widgets/customContainer.dart';
 import '../bottom_navigation.dart';
 
 import '../app_drawer.dart';
@@ -20,29 +21,16 @@ class _MyOrderState extends State<MyOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                  padding: EdgeInsets.only(left: 15),
-                  child: SvgPicture.asset("assets/images/my-orders-title.svg")),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text("MY ENQUIRY",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500)),
-              ),
-            ])),
+        CustomContainerBar(
+          title: "MY ENQUIRY",
+          svgAssetPath: "assets/images/my-orders-title.svg",
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(8, 8, 8, 2),
           child: Card(

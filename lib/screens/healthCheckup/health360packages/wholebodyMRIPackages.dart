@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
+import '../../../widgets/Enquary.dart';
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/bottom_navigation.dart';
+import '../../../widgets/customContainer.dart';
+import '../../../widgets/packageinvestmentwidget.dart';
 import '../../../widgets/userdrawer.dart';
 import '../../../widgets/whatsappmessage.dart';
 import '../nm_packages/enquire.dart';
@@ -21,112 +25,26 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("", ""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                        image: AssetImage(
-                            "assets/healththreesixty/whole-body-mri-title.png"),
-                        fit: BoxFit.fitHeight,
-                      )),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("WHOLE BODY MRI",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
-        Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: SizedBox(
-            height: 75,
-            child: Card(
-              elevation: 3.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              child: Row(children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(8, 10, 0, 10),
-                      child: Text("Whole Body MRI Investment",
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w700)),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(8, 2, 0, 6),
-                      child: Text('\u{20B9} ${value.format(0000)}',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w600)),
-                    )
-                  ],
-                ),
-                const Spacer(),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => EnquirePackages())));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 15, right: 5),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                            height: 40,
-                            width: 120,
-                            child: Card(
-                                color: Color.fromARGB(255, 166, 206, 57),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  side: const BorderSide(
-                                    color: Color.fromARGB(255, 166, 206, 57),
-                                    width: 1,
-                                  ),
-                                ),
-                                child: const Center(
-                                  child: Text("ENQUIRE NOW",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white)),
-                                )))
-                      ],
-                    ),
-                  ),
-                )
-              ]),
-            ),
-          ),
+        CustomContainerBar(
+          title: "WHOLE BODY MRI",
+          svgAssetPath: "assets/health-360/whole-body-mri-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context, true);
+          },
         ),
+        CustomWidgetInvestmentContainer(
+            InvesmentTitle: "Whole Body MRI Investment",
+            onEnquirenowButtonPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => EnQUiry())));
+            },
+            InvestmentValue: 0000),
         Padding(
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
@@ -153,22 +71,18 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-               Text(
-                  "It is completely harmless with no exposure to\nradiation",
+              Expanded(
+                child: Text(
+                  "It is completely harmless with no exposure to radiation",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,
-                      fontWeight: FontWeight.w500))
+                      fontWeight: FontWeight.w500),
+                  softWrap: true,
+                ),
+              )
             ],
           ),
         ),
@@ -178,21 +92,18 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Fully non-invasive with no injection of contrast",
+              Expanded(
+                child: Text(
+                  "Fully non-invasive with no injection of contrast",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,
-                      fontWeight: FontWeight.w500))
+                      fontWeight: FontWeight.w500),
+                  softWrap: true,
+                ),
+              )
             ],
           ),
         ),
@@ -202,15 +113,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("CHas no side effects",
                   style: TextStyle(
@@ -226,15 +129,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Requires no prior preparations",
                   style: TextStyle(
@@ -250,22 +145,18 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text(
-                  "Complements other diagnostic investigation\nsuch as Sonography and Colour Doppler for a more\nthorough evaluation of any disease",
+              Expanded(
+                child: Text(
+                  "Complements other diagnostic investigation such as Sonography and Colour Doppler for a more thorough evaluation of any disease",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,
-                      fontWeight: FontWeight.w500))
+                      fontWeight: FontWeight.w500),
+                  softWrap: true,
+                ),
+              )
             ],
           ),
         ),
@@ -295,15 +186,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Open from both ends",
                   style: TextStyle(
@@ -319,15 +202,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Fastest in the industry",
                   style: TextStyle(
@@ -343,15 +218,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Least noise",
                   style: TextStyle(
@@ -367,15 +234,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Outstanding clinical image quality",
                   style: TextStyle(
@@ -391,22 +250,18 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text(
-                  "All of this on India's most patient-friendly high\nstrength",
+              Expanded(
+                child: Text(
+                  "All of this on India's most patient-friendly high strength",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,
-                      fontWeight: FontWeight.w500))
+                      fontWeight: FontWeight.w500),
+                  softWrap: true,
+                ),
+              )
             ],
           ),
         ),
@@ -429,15 +284,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("MRI Brain",
                   style: TextStyle(
@@ -453,15 +300,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Cardiac MRI",
                   style: TextStyle(
@@ -477,15 +316,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("MRI Whole Spine",
                   style: TextStyle(
@@ -501,15 +332,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Prostate Spectroscopy",
                   style: TextStyle(
@@ -525,15 +348,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("MRAngio",
                   style: TextStyle(
@@ -549,15 +364,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Spine Stress MRI",
                   style: TextStyle(
@@ -573,15 +380,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("MRI of the joints",
                   style: TextStyle(
@@ -592,24 +391,17 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "(Knee, Shoulder, Ankle, Elbow)",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -620,15 +412,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Whole Body MRI",
                   style: TextStyle(
@@ -644,15 +428,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Breast MRI",
                   style: TextStyle(
@@ -668,15 +444,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("MRCP",
                   style: TextStyle(

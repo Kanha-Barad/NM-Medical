@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:nmmedical/screens/healthCheckup/nm_packages/comparepackages.dart';
 import 'package:nmmedical/screens/healthCheckup/nm_packages/enquire.dart';
 import 'package:nmmedical/widgets/whatsappmessage.dart';
 
+import '../../../widgets/Enquary.dart';
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/bottom_navigation.dart';
+import '../../../widgets/customContainer.dart';
+import '../../../widgets/packageinvestmentwidget.dart';
 import '../../../widgets/userdrawer.dart';
 
 class PrimaryPackageDetails extends StatefulWidget {
@@ -20,104 +24,26 @@ class _PrimaryPackageDetailsState extends State<PrimaryPackageDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("", ""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Image.asset("assets/nmpackages/primary-title.png"),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text(" PRIMARY",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
-        Card(
-          elevation: 3.0,
-          child: Stack(
-            children: [
-              Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(8, 10, 0, 10),
-                        child: Text(
-                          "Primary Investment",
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(8, 2, 0, 6),
-                        child: Text(
-                          '\u{20B9} ${value.format(3500)}',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                ],
-              ),
-              Positioned(
-                top: 0,
-                bottom: 0,
-                right: 0,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: ((context) => EnquirePackages())),
-                    );
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 63.8,
-                        width: 120,
-                        color: Color.fromARGB(255, 166, 206, 57),
-                        child: const Center(
-                          child: Text(
-                            "ENQUIRE NOW",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+        CustomContainerBar(
+          title: "PRIMARY",
+          svgAssetPath: "assets/nm-packages/primary-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        CustomWidgetInvestmentContainer(
+          InvesmentTitle: "Primary Investment",
+          InvestmentValue: 3500,
+          onEnquirenowButtonPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: ((context) => EnQUiry())));
+          },
         ),
         Padding(
           padding: EdgeInsets.fromLTRB(15, 8, 0, 10),
@@ -125,25 +51,18 @@ class _PrimaryPackageDetailsState extends State<PrimaryPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("CBC + ESR")
+              const Text("CBC + ESR",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -154,45 +73,31 @@ class _PrimaryPackageDetailsState extends State<PrimaryPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Blood Sugar (Fasting)")
+              const Text("Blood Sugar (Fasting)",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Blood Sugar (PP / PG)")
+              const Text("Blood Sugar (PP / PG)",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -203,125 +108,83 @@ class _PrimaryPackageDetailsState extends State<PrimaryPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("SGOT")
+              const Text("SGOT",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("SGPT")
+              const Text("SGPT",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("GGPT")
+              const Text("GGPT",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Bilirubin")
+              const Text("Bilirubin",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Alkaline Phosphatase")
+              const Text("Alkaline Phosphatase",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Proteins (Albumin, Gloubbin, A/G Ratio)")
+              const Text("Proteins (Albumin, Gloubbin, A/G Ratio)",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -332,145 +195,96 @@ class _PrimaryPackageDetailsState extends State<PrimaryPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Triglycerides")
+              const Text("Triglycerides",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Cholesterol")
+              const Text("Cholesterol",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("HDL-Cholesterol")
+              const Text("HDL-Cholesterol",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("LDL-Cholesterol")
+              const Text("LDL-Cholesterol",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("VLDL-Cholesterol")
+              const Text("VLDL-Cholesterol",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("LDL/HDL Ratio")
+              const Text("LDL/HDL Ratio",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Total Cholesterol/HDL Ratio")
+              const Text("Total Cholesterol/HDL Ratio",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -481,85 +295,57 @@ class _PrimaryPackageDetailsState extends State<PrimaryPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Urea")
+              const Text("Urea",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Creatinine")
+              const Text("Creatinine",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Uric Acid")
+              const Text("Uric Acid",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Urine Routine")
+              const Text("Urine Routine",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -570,65 +356,44 @@ class _PrimaryPackageDetailsState extends State<PrimaryPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Physical Examination")
+              const Text("Physical Examination",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Dental Checkup")
+              const Text("Dental Checkup",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Eye Checkup")
+              const Text("Eye Checkup",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -639,45 +404,31 @@ class _PrimaryPackageDetailsState extends State<PrimaryPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Chest X-Ray (Digital)")
+              const Text("Chest X-Ray (Digital)",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(14, 2, 0, 5),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("E.C.G. (12 Lead)")
+              const Text("E.C.G. (12 Lead)",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -695,19 +446,19 @@ class _PrimaryPackageDetailsState extends State<PrimaryPackageDetails> {
                 MaterialPageRoute(builder: (context) => ComparePackage()));
           },
           child: Center(
-              child: SizedBox(
-                  height: 40,
-                  width: 180,
-                  child: Card(
-                      color: const Color.fromARGB(255, 237, 28, 36),
-                      elevation: 2.0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      child: const Center(
-                          child: Text("COMPARE PACKAGE",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600)))))),
+              child: Card(
+                  color: const Color.fromARGB(255, 237, 28, 36),
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 13, 20, 13),
+                    child: Text("COMPARE PACKAGE",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500)),
+                  ))),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
         WhatsApp(context)

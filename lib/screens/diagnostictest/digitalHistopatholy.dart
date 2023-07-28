@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
+import '../../widgets/customContainer.dart';
 import '../../widgets/userdrawer.dart';
 import '../../widgets/whatsappmessage.dart';
 
@@ -17,48 +18,32 @@ class _DigitalHistopathologyState extends State<DigitalHistopathology> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("", ""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Image.asset(
-                    "assets/diagnostictests/digital-histopathology-title.png"),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("DIGITAL HISTIPATHOLOGY",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
+        CustomContainerBar(
+          title: "DIGITAL HISTIPATHOLOGY",
+          svgAssetPath:
+              "assets/diagnostic-test/digital-histopathology-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Image.asset("assets/diagnostictests/histopathology-1.png"),
+          child: Image.asset("assets/diagnostic-test/histopathology-1.png"),
         ),
         Padding(
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
               "Digital pathology will benefit the patients the most as it facilitates getting a second opinion with ease from the world's experts thus providing the best outcome of cancer therapy.",
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.w400)),
+              style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400)),
         ),
         Divider(
           indent: 15,

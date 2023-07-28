@@ -55,7 +55,7 @@ class _AppDrawerState extends State<AppDrawer> {
         ListTile(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DiagnosticTests()));
+                  MaterialPageRoute(builder: (context) => DiagnosticTests("TC")));
             },
             leading: SvgPicture.asset("assets/menu-icons/diagnostic-test.svg"),
             title: const Text(

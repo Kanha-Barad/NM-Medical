@@ -6,6 +6,7 @@ import '../bottom_navigation.dart';
 
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
+import '../customContainer.dart';
 import '../userdrawer.dart';
 
 class Address extends StatefulWidget {
@@ -19,30 +20,16 @@ class _AddressState extends State<Address> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child:
-                      SvgPicture.asset("assets/locations/location-title.svg")),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text("ADDRESS",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500)),
-              ),
-            ])),
+        CustomContainerBar(
+          title: "ADDRESS",
+          svgAssetPath: "assets/locations/location-title.svg",
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(8, 4, 8, 2),
           child: Card(
