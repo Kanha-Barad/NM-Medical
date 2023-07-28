@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:nmmedical/screens/healthCheckup/nm_packages/comparepackages.dart';
 import 'package:nmmedical/screens/healthCheckup/nm_packages/enquire.dart';
 import 'package:nmmedical/widgets/whatsappmessage.dart';
 
+import '../../../widgets/Enquary.dart';
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/bottom_navigation.dart';
+import '../../../widgets/customContainer.dart';
+import '../../../widgets/packageinvestmentwidget.dart';
 import '../../../widgets/userdrawer.dart';
 
 class GoldPlusPackageDetails extends StatefulWidget {
@@ -20,112 +24,26 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("", ""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/nmpackages/gold-plus-title.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text(" GOLD PLUS",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
-        Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: SizedBox(
-            height: 75,
-            child: Card(
-              elevation: 3.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              child: Row(children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(8, 10, 0, 10),
-                      child: Text("Gold Plus Investment",
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w700)),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(8, 2, 0, 6),
-                      child: Text('\u{20B9} ${value.format(10950)}',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w600)),
-                    )
-                  ],
-                ),
-                const Spacer(),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => EnquirePackages())));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 15, right: 5),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                            height: 40,
-                            width: 120,
-                            child: Card(
-                                color: Color.fromARGB(255, 166, 206, 57),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  side: const BorderSide(
-                                    color: Color.fromARGB(255, 166, 206, 57),
-                                    width: 1,
-                                  ),
-                                ),
-                                child: const Center(
-                                  child: Text("ENQUIRE NOW",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white)),
-                                )))
-                      ],
-                    ),
-                  ),
-                )
-              ]),
-            ),
-          ),
+        CustomContainerBar(
+          title: "GOLD PLUS",
+          svgAssetPath: "assets/nm-packages/gold-plus-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        CustomWidgetInvestmentContainer(
+          InvesmentTitle: "Gold Plus Investment",
+          InvestmentValue: 10950,
+          onEnquirenowButtonPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: ((context) => EnQUiry())));
+          },
         ),
         const Padding(
           padding: EdgeInsets.fromLTRB(15, 8, 0, 10),
@@ -133,7 +51,7 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
@@ -141,17 +59,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("CBC + ESR")
+              const Text("CBC + ESR",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -162,7 +73,7 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
@@ -170,17 +81,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Blood Sugar (Fasting)")
+              const Text("Blood Sugar (Fasting)",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -190,17 +94,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Blood Sugar (PP / PG)")
+              const Text("Blood Sugar (PP / PG)",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -211,7 +108,7 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
@@ -219,17 +116,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("SGOT")
+              const Text("SGOT",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -239,17 +129,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("SGPT")
+              const Text("SGPT",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -259,17 +142,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("GGPT")
+              const Text("GGPT",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -279,17 +155,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Bilirubin")
+              const Text("Bilirubin",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -299,17 +168,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Alkaline Phosphatase")
+              const Text("Alkaline Phosphatase",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -319,17 +181,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Proteins (Albumin, Gloubbin, A/G Ratio)")
+              const Text("Proteins (Albumin, Gloubbin, A/G Ratio)",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -340,7 +195,7 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
@@ -348,17 +203,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Triglycerides")
+              const Text("Triglycerides",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -368,17 +216,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Cholesterol")
+              const Text("Cholesterol",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -388,17 +229,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("HDL-Cholesterol")
+              const Text("HDL-Cholesterol",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -408,17 +242,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("LDL-Cholesterol")
+              const Text("LDL-Cholesterol",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -428,17 +255,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("VLDL-Cholesterol")
+              const Text("VLDL-Cholesterol",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -448,17 +268,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("LDL/HDL Ratio")
+              const Text("LDL/HDL Ratio",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -468,17 +281,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Total Cholesterol/HDL Ratio")
+              const Text("Total Cholesterol/HDL Ratio",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -489,7 +295,7 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
@@ -497,17 +303,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Urea")
+              const Text("Urea",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -517,17 +316,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Creatinine")
+              const Text("Creatinine",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -537,17 +329,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Uric Acid")
+              const Text("Uric Acid",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -557,17 +342,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Calcium")
+              const Text("Calcium",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -577,17 +355,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Thyroid Panel(T3, T4, TSH)")
+              const Text("Thyroid Panel(T3, T4, TSH)",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -597,17 +368,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Urine Routine")
+              const Text("Urine Routine",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -618,7 +382,7 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
@@ -626,17 +390,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Physical Examination")
+              const Text("Physical Examination",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -646,17 +403,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Dental Checkup")
+              const Text("Dental Checkup",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -666,17 +416,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Eye Checkup")
+              const Text("Eye Checkup",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -686,17 +429,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Gynaecological Exammination**")
+              const Text("Gynaecological Exammination**",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -706,17 +442,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Diet & Nutrition Counselling")
+              const Text("Diet & Nutrition Counselling",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -727,7 +456,7 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
@@ -735,17 +464,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Chest X-Ray (Digital)")
+              const Text("Chest X-Ray (Digital)",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -755,17 +477,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("E.C.G. (12 Lead)")
+              const Text("E.C.G. (12 Lead)",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -775,17 +490,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Sonography Abdomen & Pelvis")
+              const Text("Sonography Abdomen & Pelvis",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -795,17 +503,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Stress Test")
+              const Text("Stress Test",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -815,17 +516,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Pap Smear**")
+              const Text("Pap Smear**",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -835,17 +529,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("2D Echo*")
+              const Text("2D Echo*",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -855,17 +542,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Mammography**")
+              const Text("Mammography**",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -875,17 +555,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Dexa Bone Densitometry")
+              const Text("Dexa Bone Densitometry",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -896,7 +569,7 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
@@ -904,17 +577,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Glycosylated Haemoglobin")
+              const Text("Glycosylated Haemoglobin",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -924,17 +590,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Hepatitis B")
+              const Text("Hepatitis B",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -944,17 +603,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Troponin I Cardiac Screen")
+              const Text("Troponin I Cardiac Screen",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -965,7 +617,7 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
                   fontSize: 16,
-                  fontWeight: FontWeight.w500)),
+                  fontWeight: FontWeight.w600)),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
@@ -973,17 +625,10 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("PSA for Prostate Cancer*")
+              const Text("PSA for Prostate Cancer*",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -1001,19 +646,19 @@ class _GoldPlusPackageDetailsState extends State<GoldPlusPackageDetails> {
                 MaterialPageRoute(builder: (context) => ComparePackage()));
           },
           child: Center(
-              child: SizedBox(
-                  height: 40,
-                  width: 180,
-                  child: Card(
-                      color: const Color.fromARGB(255, 237, 28, 36),
-                      elevation: 2.0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      child: const Center(
-                          child: Text("COMPARE PACKAGE",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600)))))),
+              child: Card(
+                  color: const Color.fromARGB(255, 237, 28, 36),
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 13, 20, 13),
+                    child: Text("COMPARE PACKAGE",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500)),
+                  ))),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
         WhatsApp(context)

@@ -17,7 +17,7 @@ class _SEconDarYState extends State<SEconDarY> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(

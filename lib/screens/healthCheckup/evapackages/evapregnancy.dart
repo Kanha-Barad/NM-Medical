@@ -17,7 +17,7 @@ class _EVaPregnaNCYState extends State<EVaPregnaNCY> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(

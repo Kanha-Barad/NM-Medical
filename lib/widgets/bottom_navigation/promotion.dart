@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
 import 'package:nmmedical/widgets/whatsappmessage.dart';
 
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/userdrawer.dart';
+import '../customContainer.dart';
 import 'PromotionCoupon.dart';
 
 class PRomoTioN extends StatefulWidget {
@@ -18,376 +20,328 @@ class _PRomoTioNState extends State<PRomoTioN> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image:
-                              AssetImage("assets/promotion/promotion-icon.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("PROMOTION",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
-        InkWell(
+        CustomContainerBar(
+          title: "PROMOTION",
+          svgAssetPath: "assets/promotion/promotion-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        GestureDetector(
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => PRomoTioNCouPON()));
           },
-          child: Column(
-            children: [
-              Stack(children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 14, 12, 0),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    // width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/promotion/01.png"),
-                          fit: BoxFit.fitHeight,
-                        )),
-                  ),
-                ),
-                Positioned(
-                  top: 30,
-                  right: 20,
-                  child: Container(
-                    color: Color.fromARGB(255, 235, 28, 17),
-                    padding: EdgeInsets.all(4),
-                    child: Text(
-                      'PROMO CODE\nNM100',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 8,
-                        fontWeight: FontWeight.w600,
-                      ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+                side: BorderSide(
+                    color: Color.fromARGB(255, 209, 207, 207), width: 0.4),
+              ),
+              child: Column(
+                children: [
+                  Stack(children: [
+                    Image.asset(
+                      "assets/promotion/01.png",
                     ),
-                  ),
-                ),
-              ]),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 4, left: 8.0, right: 8, bottom: 6),
-                    child: Column(
-                      children: [
-                        Row(
+                    Positioned(
+                      top: 20,
+                      right: 2,
+                      child: Container(
+                        color: Color.fromARGB(255, 235, 28, 17),
+                        padding: EdgeInsets.all(2),
+                        child: Column(
                           children: [
                             Text(
-                              "Blood Test",
+                              'PROMO CODE',
                               style: TextStyle(
-                                  color: Color.fromARGB(255, 187, 42, 34),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600),
+                                color: Colors.white,
+                                fontSize: 10,
+                              ),
                             ),
-                            Spacer(),
                             Text(
-                              "\u{20B9} 2000",
+                              'NM100',
                               style: TextStyle(
-                                  color: Colors.black87,
-                                  decoration: TextDecoration.lineThrough,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600),
-                            )
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 12,
-                                width: 12,
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/promotion/promotion-location-icon.png"),
-                                        fit: BoxFit.fitHeight)),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Text(
-                                  "Marine Lines",
-                                  style: TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Spacer(),
-                              Text(
-                                "\u{20B9} 1000",
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 187, 42, 34),
-                                    decoration: TextDecoration.lineThrough,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600),
-                              )
-                            ],
-                          ),
+                      ),
+                    ),
+                  ]),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(14, 8, 14, 0),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Blood Test",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 187, 42, 34),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
                         ),
+                        Spacer(),
+                        Text(
+                          "\u{20B9} 2000",
+                          style: TextStyle(
+                              color: Colors.black87,
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                        )
                       ],
                     ),
                   ),
-                ),
-              )
-            ],
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(14, 6, 14, 10),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                            "assets/promotion/promotion-location-icon.svg"),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            "Marine Lines",
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        Spacer(),
+                        Text(
+                          "\u{20B9} 1000",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 187, 42, 34),
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-        InkWell(
+        GestureDetector(
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => PRomoTioNCouPON()));
           },
-          child: Column(
-            children: [
-              Stack(children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 14, 12, 0),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    // width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/promotion/02.png"),
-                          fit: BoxFit.fitHeight,
-                        )),
-                  ),
-                ),
-                Positioned(
-                  top: 30,
-                  right: 20,
-                  child: Container(
-                    color: Color.fromARGB(255, 235, 28, 17),
-                    padding: EdgeInsets.all(4),
-                    child: Text(
-                      'PROMO CODE\nNM100',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 8,
-                        fontWeight: FontWeight.w600,
-                      ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+                side: BorderSide(
+                    color: Color.fromARGB(255, 209, 207, 207), width: 0.4),
+              ),
+              child: Column(
+                children: [
+                  Stack(children: [
+                    Image.asset(
+                      "assets/promotion/02.png",
                     ),
-                  ),
-                ),
-              ]),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 4, left: 8.0, right: 8, bottom: 6),
-                    child: Column(
-                      children: [
-                        Row(
+                    Positioned(
+                      top: 20,
+                      right: 2,
+                      child: Container(
+                        color: Color.fromARGB(255, 235, 28, 17),
+                        padding: EdgeInsets.all(2),
+                        child: Column(
                           children: [
                             Text(
-                              "Triglycerides Test",
+                              'PROMO CODE',
                               style: TextStyle(
-                                  color: Color.fromARGB(255, 187, 42, 34),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600),
+                                color: Colors.white,
+                                fontSize: 10,
+                              ),
                             ),
-                            Spacer(),
                             Text(
-                              "\u{20B9} 2000",
+                              'NM100',
                               style: TextStyle(
-                                  color: Colors.black87,
-                                  decoration: TextDecoration.lineThrough,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600),
-                            )
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 12,
-                                width: 12,
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/promotion/promotion-location-icon.png"),
-                                        fit: BoxFit.fitHeight)),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Text(
-                                  "Bandra",
-                                  style: TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Spacer(),
-                              Text(
-                                "\u{20B9} 1000",
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 187, 42, 34),
-                                    decoration: TextDecoration.lineThrough,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600),
-                              )
-                            ],
-                          ),
+                      ),
+                    ),
+                  ]),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(14, 8, 14, 0),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Triglycerides Test",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 187, 42, 34),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
                         ),
+                        Spacer(),
+                        Text(
+                          "\u{20B9} 2000",
+                          style: TextStyle(
+                              color: Colors.black87,
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                        )
                       ],
                     ),
                   ),
-                ),
-              )
-            ],
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(14, 6, 14, 10),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                            "assets/promotion/promotion-location-icon.svg"),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            "Bandra",
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        Spacer(),
+                        Text(
+                          "\u{20B9} 1000",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 187, 42, 34),
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-        InkWell(
+        GestureDetector(
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => PRomoTioNCouPON()));
           },
-          child: Column(
-            children: [
-              Stack(children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 14, 12, 0),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    // width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/promotion/03.png"),
-                          fit: BoxFit.fitHeight,
-                        )),
-                  ),
-                ),
-                Positioned(
-                  top: 30,
-                  right: 20,
-                  child: Container(
-                    color: Color.fromARGB(255, 235, 28, 17),
-                    padding: EdgeInsets.all(4),
-                    child: Text(
-                      'PROMO CODE\nNM100',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 8,
-                        fontWeight: FontWeight.w600,
-                      ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+                side: BorderSide(
+                    color: Color.fromARGB(255, 209, 207, 207), width: 0.4),
+              ),
+              child: Column(
+                children: [
+                  Stack(children: [
+                    Image.asset(
+                      "assets/promotion/03.png",
                     ),
-                  ),
-                ),
-              ]),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 4, left: 8.0, right: 8, bottom: 6),
-                    child: Column(
-                      children: [
-                        Row(
+                    Positioned(
+                      top: 20,
+                      right: 2,
+                      child: Container(
+                        color: Color.fromARGB(255, 235, 28, 17),
+                        padding: EdgeInsets.all(2),
+                        child: Column(
                           children: [
                             Text(
-                              "Liver Test",
+                              'PROMO CODE',
                               style: TextStyle(
-                                  color: Color.fromARGB(255, 187, 42, 34),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600),
+                                color: Colors.white,
+                                fontSize: 10,
+                              ),
                             ),
-                            Spacer(),
                             Text(
-                              "\u{20B9} 2000",
+                              'NM100',
                               style: TextStyle(
-                                  color: Colors.black87,
-                                  decoration: TextDecoration.lineThrough,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600),
-                            )
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 12,
-                                width: 12,
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/promotion/promotion-location-icon.png"),
-                                        fit: BoxFit.fitHeight)),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Text(
-                                  "Mohim",
-                                  style: TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Spacer(),
-                              Text(
-                                "\u{20B9} 1000",
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 187, 42, 34),
-                                    decoration: TextDecoration.lineThrough,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600),
-                              )
-                            ],
-                          ),
+                      ),
+                    ),
+                  ]),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(14, 8, 14, 0),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Liver Test",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 187, 42, 34),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
                         ),
+                        Spacer(),
+                        Text(
+                          "\u{20B9} 2000",
+                          style: TextStyle(
+                              color: Colors.black87,
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                        )
                       ],
                     ),
                   ),
-                ),
-              )
-            ],
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(14, 6, 14, 10),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                            "assets/promotion/promotion-location-icon.svg"),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            "Mahim",
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        Spacer(),
+                        Text(
+                          "\u{20B9} 1000",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 187, 42, 34),
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        )
+        ),
       ])),
       bottomNavigationBar: AllBottomNavigationBar(),
     );

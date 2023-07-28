@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/screens/diagnostictest/cardiacCT.dart';
 import 'package:nmmedical/screens/diagnostictest/cardiology.dart';
 import 'package:nmmedical/screens/diagnostictest/digitalHistopatholy.dart';
@@ -12,11 +13,18 @@ import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
 import '../../widgets/userdrawer.dart';
 import '../widgets/IconTextWidget.dart';
+import '../widgets/customContainer.dart';
 import 'diagnostictest/allergy.dart';
 import 'diagnostictest/pathology.dart';
 import 'diagnostictest/radiology.dart';
 
+String DiagnosticTestCArt = "";
+
 class DiagnosticTests extends StatefulWidget {
+  DiagnosticTests(TestCArt) {
+    DiagnosticTestCArt = "";
+    DiagnosticTestCArt = TestCArt;
+  }
   @override
   State<DiagnosticTests> createState() => _DiagnosticTestsState();
 }
@@ -25,40 +33,21 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: BasicAppbar(""),
+        appBar: BasicAppbar("", DiagnosticTestCArt),
         drawer: userDrawer(),
         endDrawer: AppDrawer(),
         body: SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-              Container(
-                  height: 55,
-                  width: MediaQuery.of(context).size.width,
-                  color: const Color.fromARGB(255, 187, 42, 34),
-                  child: Row(children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: Image.asset(
-                          "assets/diagnostictests/diagnostic-test-white.png"),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: Text("DIAGNOSTIC TESTS",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600)),
-                    ),
-                    const Spacer(),
-                    TextButton.icon(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.arrow_back_ios,
-                            color: Colors.white, size: 18),
-                        label: const Text("BACK",
-                            style: TextStyle(color: Colors.white)))
-                  ])),
+              CustomContainerBar(
+                title: "DIAGNOSTIC TESTS",
+                svgAssetPath:
+                    "assets/diagnostic-test/diagnostic-test-white.svg",
+                onBackButtonPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
               Padding(
                   padding: const EdgeInsets.only(bottom: 4.0),
                   child: GridView.count(
@@ -75,10 +64,10 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Pathology()));
+                                    builder: (context) => Pathology("TC")));
                           },
                           child: buildIconItem(
-                            imageAsset: 'assets/diagnostictests/pathology.png',
+                            imageAsset: 'assets/diagnostic-test/pathology.svg',
                             labelText: 'Pathology',
                           ),
                         ),
@@ -87,10 +76,10 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Radiology()));
+                                    builder: (context) => Radiology("TC")));
                           },
                           child: buildIconItem(
-                            imageAsset: 'assets/diagnostictests/radiology.png',
+                            imageAsset: 'assets/diagnostic-test/radiology.svg',
                             labelText: 'Radiology',
                           ),
                         ),
@@ -102,7 +91,7 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                                     builder: (context) => Cardiology()));
                           },
                           child: buildIconItem(
-                            imageAsset: 'assets/diagnostictests/cardiology.png',
+                            imageAsset: 'assets/diagnostic-test/cardiology.svg',
                             labelText: 'Cardiology',
                           ),
                         ),
@@ -115,7 +104,7 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                           },
                           child: buildIconItem(
                             imageAsset:
-                                'assets/diagnostictests/whole-body-mri.png',
+                                'assets/diagnostic-test/whole-body-mri.svg',
                             labelText: 'Whole Body\nMRI',
                           ),
                         ),
@@ -127,7 +116,7 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                                     builder: (context) => CardiacCT()));
                           },
                           child: buildIconItem(
-                            imageAsset: 'assets/diagnostictests/cardiac-ct.png',
+                            imageAsset: 'assets/diagnostic-test/cardiac-ct.svg',
                             labelText: 'Cardiac\nCT',
                           ),
                         ),
@@ -141,7 +130,7 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                           },
                           child: buildIconItem(
                             imageAsset:
-                                'assets/diagnostictests/digital-histopathology.png',
+                                'assets/diagnostic-test/digital-histopathology.svg',
                             labelText: 'Digital\nHistopathology',
                           ),
                         ),
@@ -155,7 +144,7 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                           },
                           child: buildIconItem(
                             imageAsset:
-                                'assets/diagnostictests/molecular-pathology.png',
+                                'assets/diagnostic-test/molecular-pathology.svg',
                             labelText: 'Molecular\nPathology',
                           ),
                         ),
@@ -168,7 +157,7 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                           },
                           child: buildIconItem(
                             imageAsset:
-                                'assets/diagnostictests/generic-testing.png',
+                                'assets/diagnostic-test/generic-testing.svg',
                             labelText: 'Genetic\nTesting',
                           ),
                         ),
@@ -181,7 +170,7 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                           },
                           child: buildIconItem(
                             imageAsset:
-                                'assets/diagnostictests/sleep-apena.png',
+                                'assets/diagnostic-test/sleep-apena.svg',
                             labelText: 'Sleep\napnea',
                           ),
                         ),
@@ -190,10 +179,10 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Allergy()));
+                                    builder: (context) => Allergy("TC")));
                           },
                           child: buildIconItem(
-                            imageAsset: 'assets/diagnostictests/allergy.png',
+                            imageAsset: 'assets/diagnostic-test/allergy.svg',
                             labelText: 'Allergy',
                           ),
                         ),

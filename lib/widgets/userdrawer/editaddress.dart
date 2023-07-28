@@ -5,6 +5,7 @@ import 'package:nmmedical/widgets/userdrawer/address.dart';
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../bottom_navigation.dart';
+import '../customContainer.dart';
 import '../userdrawer.dart';
 
 class EditAddress extends StatefulWidget {
@@ -18,41 +19,19 @@ class _EditAddressState extends State<EditAddress> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child:
-                      SvgPicture.asset("assets/locations/location-title.svg")),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text("EDIT ADDRESS",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500)),
-              ),
-              Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context, true);
-                  },
-                  icon: SvgPicture.asset("assets/images/back-arrow.svg"),
-                  label: Text("BACK",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500)))
-            ])),
+        CustomContainerBar(
+          title: "EDIT ADDRESS",
+          svgAssetPath: "assets/locations/location-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
           child: TextFormField(

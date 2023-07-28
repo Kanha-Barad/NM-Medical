@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
-import 'package:nmmedical/widgets/whatsappmessage.dart';
 
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/userdrawer.dart';
+import '../customContainer.dart';
 import '../thankyouscreen.dart';
 
 class PRomoTioNCouPON extends StatefulWidget {
@@ -18,46 +19,19 @@ class _PRomoTioNCouPONState extends State<PRomoTioNCouPON> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image:
-                              AssetImage("assets/promotion/promotion-icon.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("PROMOTION",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
+        CustomContainerBar(
+          title: "PROMOTION",
+          svgAssetPath: "assets/promotion/promotion-icon.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
           child: TextFormField(
@@ -219,7 +193,7 @@ class _PRomoTioNCouPONState extends State<PRomoTioNCouPON> {
                     MaterialPageRoute(builder: (context) => const ThankYou()));
               },
               child: Card(
-                color: const Color.fromARGB(255, 227, 21, 31),
+                color: const Color.fromARGB(255, 237, 28, 36),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18)),
                 child: Center(

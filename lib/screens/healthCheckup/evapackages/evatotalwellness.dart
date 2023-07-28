@@ -17,7 +17,7 @@ class _EVaTotalWELlnEssState extends State<EVaTotalWELlnEss> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(

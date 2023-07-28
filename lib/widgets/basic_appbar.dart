@@ -4,10 +4,13 @@ import 'package:nmmedical/widgets/gallery.dart';
 import 'package:nmmedical/widgets/location.dart';
 import 'package:nmmedical/widgets/search_widget.dart';
 
+import 'cart_widget.dart';
+
 class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String appBarImg;
+  final String teSTCarT;
 
-  BasicAppbar(this.appBarImg);
+  BasicAppbar(this.appBarImg, this.teSTCarT);
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
@@ -17,27 +20,39 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
+      // leading: Row(
+      //   mainAxisAlignment: MainAxisAlignment.start,
+      //   children: [
+      //     Padding(
+      //       padding: const EdgeInsets.only(left: 1, bottom: 1),
+      //       child: SizedBox(
+      //           width: 54,
+      //           child: SvgPicture.asset("assets/images/nm-logo.svg")),
+      //     ),
+      //     if (appBarImg == "HM")
+      //       Padding(
+      //         padding: const EdgeInsets.only(left: 1, bottom: 2),
+      //         child: SizedBox(
+      //             width: 75,
+      //             child: SvgPicture.asset("assets/images/health-360-logo.svg")),
+      //       ),
+      //   ],
+      // ),
       title: Row(
+       // mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 54,
-            width: 54,
-            child: Image.asset("assets/images/nm-logo.png"),
+          Padding(
+            padding: const EdgeInsets.only(left: 0, bottom: 1),
+            child: SizedBox(
+                width: 54,height: 54,
+                child: SvgPicture.asset("assets/images/nm-logo.svg")),
           ),
-          if (appBarImg == "HM") // Use if condition instead of ternary operator
+          if (appBarImg == "HM")
             Padding(
-              padding: const EdgeInsets.only(bottom: 3),
-              child: Container(
-                height: 50.0,
-                width: 60.0,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/health-360-logo.png"),
-                    fit: BoxFit.fitHeight,
-                  ),
-                ),
-              ),
+              padding: const EdgeInsets.only(left: 1, bottom: 2),
+              child: SizedBox(
+                  width: 54,height: 40,
+                  child: SvgPicture.asset("assets/images/health-360-logo.svg")),
             ),
           Spacer(),
           InkWell(
@@ -52,6 +67,21 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
               child: SvgPicture.asset("assets/header-icons/search.svg"),
             ),
           ),
+          (teSTCarT == "TC")
+              ? InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CartWidget()),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 14.0),
+                    child: SvgPicture.asset(
+                        "assets/header-icons/shopping-cart.svg"),
+                  ),
+                )
+              : Container(),
           Builder(
             builder: (context) => InkWell(
               onTap: () {

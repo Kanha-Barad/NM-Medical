@@ -7,6 +7,7 @@ import '../widgets/IconTextWidget.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/basic_appbar.dart';
 import '../widgets/bottom_navigation.dart';
+import '../widgets/customContainer.dart';
 import '../widgets/userdrawer.dart';
 import 'histopathology/primary.dart';
 import 'histopathology/secondary.dart';
@@ -20,38 +21,18 @@ class _HistopathologyState extends State<Histopathology> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child: Column(children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Image.asset(
-                      "assets/histopathology/histopathology-white.png")),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("HISTOPATHOLOGY",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
+        CustomContainerBar(
+          title: "HISTOPATHOLOGY",
+          svgAssetPath: "assets/histopathology/histopathology-white.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
             child: GridView.count(

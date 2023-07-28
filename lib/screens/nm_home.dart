@@ -30,7 +30,7 @@ class _NMHomeState extends State<NMHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
     drawer: userDrawer(),
      endDrawer: AppDrawer(),
       body: SingleChildScrollView(
@@ -65,7 +65,7 @@ class _NMHomeState extends State<NMHome> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => DiagnosticTests()));
+                            builder: (context) => DiagnosticTests("TC")));
                   },
                   child: buildIconItem(
                     imageAsset: 'assets/services/diagnostic-tests.svg',

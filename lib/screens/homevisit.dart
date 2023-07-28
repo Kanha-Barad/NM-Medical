@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:nmmedical/widgets/thankyouscreen.dart';
 import '../widgets/bottom_navigation.dart';
@@ -6,6 +7,7 @@ import '../widgets/cart_widget.dart';
 
 import '../widgets/app_drawer.dart';
 import '../widgets/basic_appbar.dart';
+import '../widgets/customContainer.dart';
 import '../widgets/userdrawer.dart';
 
 class homeVisit extends StatefulWidget {
@@ -31,70 +33,32 @@ class _homeVisitState extends State<homeVisit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("",""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Image.asset("assets/images/home-visit-title.png")),
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 15),
-              //   child: Container(
-              //     height: 30,
-              //     width: 30,
-              //     decoration: const BoxDecoration(
-              //         shape: BoxShape.rectangle,
-              //         image: DecorationImage(
-              //             image: AssetImage(
-              //                 "assets/images/home-visit-title.png"),
-              //             fit: BoxFit.fitHeight)),
-              //   ),
-              // ),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text("HOME VISIT",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500)),
-              ),
-              Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context, true);
-                  },
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.white,
-                    size: 18,
-                  ),
-                  label: Text("BACK",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500)))
-            ])),
+        CustomContainerBar(
+          title: "HOME VISIT",
+          svgAssetPath: "assets/home-visit/home-visit-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.only(left: 15, top: 15),
           child: Text(
             'Select Date',
             style: TextStyle(
-                color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 2, 15, 4),
+          padding: const EdgeInsets.fromLTRB(15, 0, 15, 4),
           child: TextField(
             controller: dateController,
-            style: TextStyle(fontSize: 15),
+            style: TextStyle(fontSize: 14),
             decoration: InputDecoration(
               suffixIcon: Icon(
                 Icons.date_range_outlined,
@@ -146,14 +110,6 @@ class _homeVisitState extends State<homeVisit> {
             },
           ),
         ),
-        // Padding(
-        //   padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
-        //   child: Text('Home Visit Address',
-        //       style: TextStyle(
-        //           color: Color.fromARGB(255, 187, 42, 34),
-        //           fontSize: 16,
-        //           fontWeight: FontWeight.w600)),
-        // ),
         Padding(
           padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
           child: TextFormField(
@@ -309,7 +265,7 @@ class _homeVisitState extends State<homeVisit> {
           child: Text('Select Test',
               style: TextStyle(
                   color: Color.fromARGB(255, 187, 42, 34),
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600)),
         ),
         Padding(
@@ -345,122 +301,31 @@ class _homeVisitState extends State<homeVisit> {
                 value: value,
                 child: Text(
                   value,
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                 ),
               );
             }).toList(),
           ),
         ),
-        // Padding(
-        //   padding: const EdgeInsets.fromLTRB(15, 25, 15, 0),
-        //   child: Row(
-        //     children: [
-        //       Text('Apply Coupon Code',
-        //           style: TextStyle(
-        //               color: Color.fromARGB(255, 187, 42, 34),
-        //               fontSize: 16,
-        //               fontWeight: FontWeight.w600)),
-        //       Spacer(),
-        //       Text('Amount',
-        //           style: TextStyle(
-        //               color: Color.fromARGB(255, 187, 42, 34),
-        //               fontSize: 16,
-        //               fontWeight: FontWeight.w600)),
-        //     ],
-        //   ),
-        // ),
-        // Padding(
-        //   padding: const EdgeInsets.fromLTRB(18, 10, 15, 0),
-        //   child: Row(
-        //     children: [
-        //       SizedBox(
-        //           width: 100,
-        //           child: TextFormField(
-        //             keyboardType: TextInputType.name,
-        //             decoration: InputDecoration(
-        //               border: UnderlineInputBorder(
-        //                 borderRadius: BorderRadius.circular(10.0),
-        //               ),
-        //               focusedBorder: UnderlineInputBorder(
-        //                 borderSide:
-        //                     const BorderSide(color: Colors.black, width: 1.5),
-        //                 borderRadius: BorderRadius.circular(10.0),
-        //               ),
-        //               fillColor: Colors.grey,
-        //               hintText: "NM200",
-        //               hintStyle: TextStyle(
-        //                 color: Color.fromARGB(255, 187, 42, 34),
-        //                 fontSize: 14,
-        //                 fontFamily: "verdana_regular",
-        //                 fontWeight: FontWeight.w600,
-        //               ),
-        //               // labelText: 'First Name',
-        //               // labelStyle: TextStyle(
-        //               //   color: Colors.black,
-        //               //   fontSize: 14,
-        //               //   fontWeight: FontWeight.w500,
-        //               // ),
-        //             ),
-        //           )),
-        //       Padding(
-        //         padding: EdgeInsets.only(top: 11),
-        //         child: SizedBox(
-        //           height: 38,
-        //           width: 90,
-        //           child: InkWell(
-        //             onTap: () {},
-        //             child: Card(
-        //               shape: RoundedRectangleBorder(
-        //                   borderRadius: BorderRadius.circular(14),
-        //                   side: BorderSide(
-        //                       color: Color.fromARGB(255, 187, 42, 34))),
-        //               child: Center(
-        //                 child: Text('APPLY',
-        //                     style: TextStyle(
-        //                         fontSize: 14,
-        //                         color: Color.fromARGB(255, 187, 42, 34),
-        //                         fontWeight: FontWeight.w500)),
-        //               ),
-        //             ),
-        //           ),
-        //         ),
-        //       ),
-        //       Spacer(),
-        //       Padding(
-        //         padding: const EdgeInsets.only(top: 10.0),
-        //         child: Text(
-        //           '\u{20B9} ${value.format(2500)}',
-        //           style: TextStyle(
-        //               fontSize: 14,
-        //               fontWeight: FontWeight.w600,
-        //               color: Colors.black),
-        //         ),
-        //       )
-        //     ],
-        //   ),
-        // ),
         Padding(
           padding: const EdgeInsets.only(left: 15, top: 16),
-          child: SizedBox(
-            height: 42,
-            width: 120,
-            child: InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ThankYou()));
-              },
-              child: Card(
-                color: const Color.fromARGB(255, 227, 21, 31),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18)),
-                child: Center(
-                  child: Text(
-                    'SUBMIT',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14),
-                  ),
+          child: InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ThankYou()));
+            },
+            child: Card(
+              color: const Color.fromARGB(255, 237, 28, 36),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18)),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 4, 20, 4),
+                child: Text(
+                  'SUBMIT',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14),
                 ),
               ),
             ),

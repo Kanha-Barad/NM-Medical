@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
 import 'package:nmmedical/widgets/whatsappmessage.dart';
 
+import '../../../widgets/Enquary.dart';
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
+import '../../../widgets/customContainer.dart';
+import '../../../widgets/packageinvestmentwidget.dart';
 import '../../../widgets/userdrawer.dart';
 import '../nm_packages/enquire.dart';
 
@@ -21,113 +25,26 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: BasicAppbar("HM"),
+      appBar: BasicAppbar("HM", ""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/healththreesixty/health-360-title.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("HEALTH 360",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
-        Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: SizedBox(
-            height: 75,
-            child: Card(
-              elevation: 3.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              child: Row(children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(8, 10, 0, 10),
-                      child: Text("Health 360 Investment",
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w700)),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(8, 2, 0, 6),
-                      child: Text('\u{20B9} ${value.format(19500)}',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w600)),
-                    )
-                  ],
-                ),
-                const Spacer(),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => EnquirePackages())));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 15, right: 5),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                            height: 40,
-                            width: 120,
-                            child: Card(
-                                color: Color.fromARGB(255, 166, 206, 57),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  side: const BorderSide(
-                                    color: Color.fromARGB(255, 166, 206, 57),
-                                    width: 1,
-                                  ),
-                                ),
-                                child: const Center(
-                                  child: Text("ENQUIRE NOW",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white)),
-                                )))
-                      ],
-                    ),
-                  ),
-                )
-              ]),
-            ),
-          ),
+        CustomContainerBar(
+          title: "HEALTH 360",
+          svgAssetPath: "assets/health-360/health-360-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context, true);
+          },
         ),
+        CustomWidgetInvestmentContainer(
+            InvesmentTitle: "Health 360 Investment",
+            onEnquirenowButtonPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => EnQUiry())));
+            },
+            InvestmentValue: 19500),
         Padding(
           padding: EdgeInsets.fromLTRB(15, 8, 0, 10),
           child: Text("Laboratory Investigations",
@@ -142,15 +59,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Complete Haemogram + ESR",
                   style: TextStyle(
@@ -166,15 +75,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Diabetic Profile",
                   style: TextStyle(
@@ -185,70 +86,49 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "Fasting Sugar",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "PP / PG Sugar",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "Glycosylated Haemoglobin (For Diabetics)",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -259,15 +139,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Liver Profile",
                   style: TextStyle(
@@ -278,70 +150,49 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "SGOT, SGPT, GGTP",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "Alkaline Phosphatase, Bilirubin",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "Albumin, Globulin, A/G Ratio",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -352,15 +203,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Cardiac Profile",
                   style: TextStyle(
@@ -371,70 +214,49 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "Triglycerides, Cholesterol, HDL-Cholesterol",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "LDL-Cholesterol, VLDL-Cholesterol",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "LDL-Cholesterol, VLDL-Choleste",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -445,15 +267,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Renal Profile",
                   style: TextStyle(
@@ -464,47 +278,33 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "Urea, Creatinine",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "Uric Acid, Electrolytes",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -515,15 +315,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Thyroid Panel",
                   style: TextStyle(
@@ -534,47 +326,33 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "T3, T4, TSH",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "(for hypo or hyper thyrodism)",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -585,15 +363,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Urine Routine",
                   style: TextStyle(
@@ -609,15 +379,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Vitamin Markers",
                   style: TextStyle(
@@ -628,70 +390,49 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "Vitamin D",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "Vitamin B12",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "(Tests for Vitamin Deficiency)",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -702,15 +443,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Cancer Risk Markers",
                   style: TextStyle(
@@ -721,47 +454,33 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "PSA (Predictor for Prostate Cancer)*",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "CA 125 (Predictor for Ovarian Cancer)**",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -772,15 +491,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Allergy Screening Test",
                   style: TextStyle(
@@ -791,24 +502,17 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               const Text(
                 "(Test to screen for risk of Allergies)",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -828,15 +532,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Digital Chest X Ray",
                   style: TextStyle(
@@ -852,15 +548,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("ECG",
                   style: TextStyle(
@@ -876,15 +564,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Stress Test",
                   style: TextStyle(
@@ -900,15 +580,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Sonography (Abdomen & Pelvis)",
                   style: TextStyle(
@@ -919,26 +591,22 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  "(liver, gall bladder, pancreas, spleen, kidneys, prostate,\nbladder in males, and uterus, ovaries in females)",
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    "(liver, gall bladder, pancreas, spleen, kidneys, prostate, bladder in males, and uterus, ovaries in females)",
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                    softWrap: true,
+                  ),
                 ),
               )
             ],
@@ -950,15 +618,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("ARFI Liver Elastography",
                   style: TextStyle(
@@ -969,26 +629,22 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  "(unique non-invasive test to assess early Liver damage\nthrough liver stiffness measurement on ultrasound)",
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    "(unique non-invasive test to assess early Liver damage through liver stiffness measurement on ultrasound)",
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                    softWrap: true,
+                  ),
                 ),
               )
             ],
@@ -1000,15 +656,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("2D Echo Color Doppler",
                   style: TextStyle(
@@ -1019,26 +667,22 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  "(for pumping capacity of the heart, valvular\nconditions and any congenital defects)",
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    "(for pumping capacity of the heart, valvular conditions and any congenital defects)",
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                    softWrap: true,
+                  ),
                 ),
               )
             ],
@@ -1050,15 +694,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Mammography**",
                   style: TextStyle(
@@ -1069,28 +705,20 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  "(to detect Breast Cancer)",
-                ),
-              )
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    "(to detect Breast Cancer)",
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  ))
             ],
           ),
         ),
@@ -1100,15 +728,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("DEXA (Hip, Spine, Forearm)",
                   style: TextStyle(
@@ -1119,28 +739,20 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  "(to detect Breast Cancer)",
-                ),
-              )
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    "(to detect Breast Cancer)",
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  ))
             ],
           ),
         ),
@@ -1150,15 +762,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Pap smear**",
                   style: TextStyle(
@@ -1169,28 +773,20 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  "(to detect Cervical Cancer)",
-                ),
-              )
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    "(to detect Cervical Cancer)",
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  ))
             ],
           ),
         ),
@@ -1200,15 +796,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Carotid Color Doppler",
                   style: TextStyle(
@@ -1219,27 +807,23 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  "(to detect Clot in the Arteries of the Neck,\nwhich can lead to Stroke and Paralytic Attacks)",
-                ),
+              Expanded(
+                child: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(
+                      "(to detect Clot in the Arteries of the Neck, which can lead to Stroke and Paralytic Attacks)",
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                      softWrap: true,
+                    )),
               )
             ],
           ),
@@ -1259,15 +843,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Physical Examination",
                   style: TextStyle(
@@ -1283,15 +859,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Eye Check up",
                   style: TextStyle(
@@ -1302,27 +870,23 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  "(acuity of vision, colour vision,\noccular pressure, & fundoscopic examination)",
-                ),
+              Expanded(
+                child: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(
+                      "(acuity of vision, colour vision, occular pressure, & fundoscopic examination)",
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                      softWrap: true,
+                    )),
               )
             ],
           ),
@@ -1333,15 +897,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Dental Check up",
                   style: TextStyle(
@@ -1352,27 +908,23 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 8, 0, 5),
+          padding: const EdgeInsets.fromLTRB(22, 8, 0, 5),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/images/sub-level-bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                padding: const EdgeInsets.only(right: 18),
+                child: SvgPicture.asset(
+                    "assets/images/sub-level-bullet-icons.svg"),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  "(to detect tooth decay, cavities,\ngum diseases, & precancerous mouth ulcers)",
-                ),
+              Expanded(
+                child: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(
+                      "(to detect tooth decay, cavities, gum diseases, & precancerous mouth ulcers)",
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                      softWrap: true,
+                    )),
               )
             ],
           ),
@@ -1383,15 +935,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Gynaecology Examination**",
                   style: TextStyle(
@@ -1407,15 +951,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
               const Text("Diet & Nutritional Counselling",
                   style: TextStyle(

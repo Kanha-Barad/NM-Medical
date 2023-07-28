@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
+import '../../widgets/customContainer.dart';
 import '../../widgets/userdrawer.dart';
 import '../../widgets/whatsappmessage.dart';
 
@@ -17,47 +19,32 @@ class _MolecularPathologyState extends State<MolecularPathology> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(""),
+      appBar: BasicAppbar("", ""),
       drawer: userDrawer(),
       endDrawer: AppDrawer(),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Image.asset(
-                    "assets/diagnostictests/molecular-pathology-title.png"),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("MOLECULAR PATHOLOGY",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
+        CustomContainerBar(
+          title: "MOLECULAR PATHOLOGY",
+          svgAssetPath: "assets/diagnostic-test/molecular-pathology-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+
         Padding(
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
               "Infectious diseases are caused by infectious organisms either viral, Bacterial, fungal or Parasitic.",
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.w400)),
+              style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400)),
         ),
         ListTile(
-          leading: Image.asset("assets/diagnostictests/sars-cov2-icon.png"),
+          leading:
+              SvgPicture.asset("assets/diagnostic-test/sars-cov2-icon.svg"),
           title: Text("Immuno Supression",
               style: TextStyle(
                   fontSize: 14,
@@ -65,7 +52,8 @@ class _MolecularPathologyState extends State<MolecularPathology> {
                   fontWeight: FontWeight.w600)),
         ),
         ListTile(
-          leading: Image.asset("assets/diagnostictests/respirastat-icon.png"),
+          leading:
+              SvgPicture.asset("assets/diagnostic-test/respirastat-icon.svg"),
           title: Text("RespiraSTAT (Biofire)",
               style: TextStyle(
                   fontSize: 14,
@@ -73,7 +61,8 @@ class _MolecularPathologyState extends State<MolecularPathology> {
                   fontWeight: FontWeight.w600)),
         ),
         ListTile(
-          leading: Image.asset("assets/diagnostictests/gastrostat-icon.png"),
+          leading:
+              SvgPicture.asset("assets/diagnostic-test/gastrostat-icon.svg"),
           title: Text("GastroSTAT (Biofire)",
               style: TextStyle(
                   fontSize: 14,
@@ -81,8 +70,8 @@ class _MolecularPathologyState extends State<MolecularPathology> {
                   fontWeight: FontWeight.w600)),
         ),
         ListTile(
-          leading:
-              Image.asset("assets/diagnostictests/influenza-panel-icon.png"),
+          leading: SvgPicture.asset(
+              "assets/diagnostic-test/influenza-panel-icon.svg"),
           title: Text("Influenza Panel",
               style: TextStyle(
                   fontSize: 14,
@@ -90,8 +79,8 @@ class _MolecularPathologyState extends State<MolecularPathology> {
                   fontWeight: FontWeight.w600)),
         ),
         ListTile(
-          leading: Image.asset(
-              "assets/diagnostictests/tropical-fever-panel-icon.png"),
+          leading: SvgPicture.asset(
+              "assets/diagnostic-test/tropical-fever-panel-icon.svg"),
           title: Text("Tropical Fever Panel",
               style: TextStyle(
                   fontSize: 14,
@@ -99,7 +88,8 @@ class _MolecularPathologyState extends State<MolecularPathology> {
                   fontWeight: FontWeight.w600)),
         ),
         ListTile(
-          leading: Image.asset("assets/diagnostictests/torch-pcr-icon.png"),
+          leading:
+              SvgPicture.asset("assets/diagnostic-test/torch-pcr-icon.svg"),
           title: Text("Torch PCR",
               style: TextStyle(
                   fontSize: 14,
@@ -107,7 +97,8 @@ class _MolecularPathologyState extends State<MolecularPathology> {
                   fontWeight: FontWeight.w600)),
         ),
         ListTile(
-          leading: Image.asset("assets/diagnostictests/prostate-cancer.png"),
+          leading:
+              SvgPicture.asset("assets/diagnostic-test/prostate-cancer.svg"),
           title: Text("STD / Urethritis",
               style: TextStyle(
                   fontSize: 14,
@@ -115,7 +106,8 @@ class _MolecularPathologyState extends State<MolecularPathology> {
                   fontWeight: FontWeight.w600)),
         ),
         ListTile(
-          leading: Image.asset("assets/diagnostictests/torch-pcr-icon2.png"),
+          leading:
+              SvgPicture.asset("assets/diagnostic-test/torch-pcr-icon2.svg"),
           title: Text("Swine Flu (H1N1)",
               style: TextStyle(
                   fontSize: 14,
@@ -123,7 +115,8 @@ class _MolecularPathologyState extends State<MolecularPathology> {
                   fontWeight: FontWeight.w600)),
         ),
         ListTile(
-          leading: Image.asset("assets/diagnostictests/neurology-icon-nav.png"),
+          leading:
+              SvgPicture.asset("assets/diagnostic-test/neurology-icon-nav.svg"),
           title: Text("Meningitis",
               style: TextStyle(
                   fontSize: 14,
@@ -142,15 +135,12 @@ class _MolecularPathologyState extends State<MolecularPathology> {
         ListTile(
           leading: Padding(
             padding: const EdgeInsets.only(left: 14.0),
-            child: Image.asset("assets/diagnostictests/medical-icon.png"),
+            child: SvgPicture.asset("assets/diagnostic-test/medical-icon.svg"),
           ),
           title: Padding(
             padding: const EdgeInsets.only(top: 8.0, left: 16),
             child: Text("Medical",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w500)),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 8.0, left: 16),
@@ -158,19 +148,12 @@ class _MolecularPathologyState extends State<MolecularPathology> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                    "Neurology, Cardiology, Diabetes & Obesity,\nOrthopaedics & Sports,",
-                    style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black87,
-                        fontWeight: FontWeight.w400)),
+                    "Neurology, Cardiology, Diabetes & Obesity, Orthopaedics & Sports,",
+                    style: TextStyle(fontSize: 14)),
                 Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Text("Dermatology : Skin & Hair, Gastroenterology",
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black87,
-                          fontWeight: FontWeight.w400)),
-                ),
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Text("Dermatology : Skin & Hair, Gastroenterology",
+                        style: TextStyle(fontSize: 14))),
               ],
             ),
           ),
@@ -183,29 +166,19 @@ class _MolecularPathologyState extends State<MolecularPathology> {
         ListTile(
           leading: Padding(
             padding: const EdgeInsets.only(left: 6.0),
-            child: Image.asset("assets/diagnostictests/reproductive-img.png"),
+            child:
+                SvgPicture.asset("assets/diagnostic-test/reproductive-img.svg"),
           ),
           title: Padding(
             padding: const EdgeInsets.only(top: 8.0, left: 16),
             child: Text("Reproductive",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w500)),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 8.0, left: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                    "NIPT, Carrier Screening, Bad Obstetric History,\nRecurrent Miscarriage, IVF Response,\nPreimplantation Genetic Response",
-                    style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black87,
-                        fontWeight: FontWeight.w400)),
-              ],
-            ),
+            child: Text(
+                "NIPT, Carrier Screening, Bad Obstetric History, Recurrent Miscarriage, IVF Response, Preimplantation Genetic Response",
+                style: TextStyle(fontSize: 14)),
           ),
         ),
         Divider(
@@ -216,29 +189,18 @@ class _MolecularPathologyState extends State<MolecularPathology> {
         ListTile(
           leading: Padding(
             padding: const EdgeInsets.only(left: 16.0),
-            child: Image.asset("assets/diagnostictests/oncology-img.png"),
+            child: SvgPicture.asset("assets/diagnostic-test/oncology-img.svg"),
           ),
           title: Padding(
             padding: const EdgeInsets.only(top: 8.0, left: 29),
             child: Text("Oncology",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w500)),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 8.0, left: 29),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                    "Breast & Ovarian Cancer, Thyroid Cancer, Lung Cancer,\nColorectal Cancer, Cancer Hotspots,\nMyeloid Panels, Liquid Biopsy",
-                    style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black87,
-                        fontWeight: FontWeight.w400)),
-              ],
-            ),
+            child: Text(
+                "Breast & Ovarian Cancer, Thyroid Cancer, Lung Cancer, Colorectal Cancer, Cancer Hotspots, Myeloid Panels, Liquid Biopsy",
+                style: TextStyle(fontSize: 14)),
           ),
         ),
         Divider(
@@ -247,28 +209,19 @@ class _MolecularPathologyState extends State<MolecularPathology> {
           thickness: 1.5,
         ),
         ListTile(
-          leading: Image.asset("assets/diagnostictests/wellness-img.png"),
+          leading: SvgPicture.asset("assets/diagnostic-test/wellness-img.svg"),
           title: Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Text("Wellness",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w500)),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                    "Health Predisposition Cancer Risk, Diet & Nutrition,\nFitness & Sports, Hair & Skin, Healthy Child",
-                    style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black87,
-                        fontWeight: FontWeight.w400)),
-              ],
-            ),
+            child: Text(
+                "Health Predisposition Cancer Risk, Diet & Nutrition, Fitness & Sports, Hair & Skin, Healthy Child",
+                style: TextStyle(
+                  fontSize: 14,
+                )),
           ),
         ),
 
@@ -276,7 +229,7 @@ class _MolecularPathologyState extends State<MolecularPathology> {
         //   children: [
         //     Padding(
         //       padding: const EdgeInsets.only(left: 15),
-        //       child: Image.asset("assets/diagnostictests/wellness-img.png"),
+        //       child: SvgPicture.asset("assets/diagnostic-test/wellness-img.svg"),
         //     ),
         //     Column(
         //       crossAxisAlignment: CrossAxisAlignment.start,

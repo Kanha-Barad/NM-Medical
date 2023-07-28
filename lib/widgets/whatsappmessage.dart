@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:io' show Platform;
 
@@ -9,24 +10,25 @@ void openWhatsapp(
     required String number}) async {
   var whatsapp = number; //+92xx enter like this
   var whatsappURlAndroid = "whatsapp://send?phone=" + whatsapp + "&text=$text";
-  var whatsappURLIos = "https://wa.me/$whatsapp?text=${Uri.tryParse(text)}";
+  var whatsappURLIos =
+      "https://wa.me/$whatsapp?text=${Uri.encodeComponent(text)}"; // Use Uri.encodeComponent(text) for iOS
   if (Platform.isIOS) {
     // for iOS phone only
-    if (await canLaunchUrl(Uri.parse(whatsappURLIos))) {
-      await launchUrl(Uri.parse(
-        whatsappURLIos,
-      ));
+    if (await canLaunch(whatsappURLIos)) {
+      // Updated to launch whatsappURLIos directly
+      await launch(whatsappURLIos); // Updated to launch whatsappURLIos directly
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Whatsapp not installed")));
     }
   } else {
     // android , web
-    if (await canLaunchUrl(Uri.parse(whatsappURlAndroid))) {
-      await launchUrl(Uri.parse(whatsappURlAndroid));
+    if (await canLaunch(Uri.dataFromString(whatsappURlAndroid).toString())) {
+      await launch(Uri.dataFromString(whatsappURlAndroid)
+          .toString()); // Use Uri.dataFromString()
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Whatsapp not installed")));
+          const SnackBar(content: Text("Whatsapp is not installed")));
     }
   }
 }
@@ -43,17 +45,11 @@ Widget WhatsApp(BuildContext context) => Padding(
                 fontWeight: FontWeight.w400)),
         WidgetSpan(
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0),
+            padding: const EdgeInsets.only(left: 3.0, right: 2),
             child: Container(
-              height: 12,
-              width: 12,
-              decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  image: DecorationImage(
-                    image: AssetImage("assets/247support/whatsapp-icon.png"),
-                    fit: BoxFit.fitHeight,
-                  )),
-            ),
+                height: 15,
+                width: 15,
+                child: SvgPicture.asset("assets/images/whatsapp-icon.svg")),
           ),
         ),
         TextSpan(
