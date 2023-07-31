@@ -97,7 +97,7 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
           ),
           Expanded(
             child: buildNavItem(
-              icon: "assets/footer-menu-icons/dashboard-2.svg",
+              icon: "assets/footer-menu-icons/dashboard-2.png",
               text: "Dashboard",
               color: (widget.payMNETNAv == "BNP")
                   ? Color.fromARGB(255, 187, 43, 34)
@@ -121,6 +121,7 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
     required Color color,
     required void Function() onTap,
   }) {
+    bool isSvg = icon.endsWith('.svg');
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -131,11 +132,17 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 3.0),
-              child: SvgPicture.asset(
-                icon,
-                width: 26,
-                height: 26,
-              ),
+              child: isSvg
+                  ? SvgPicture.asset(
+                      icon,
+                      width: 26,
+                      height: 26,
+                    )
+                  : Image.asset(
+                      icon,
+                      width: 26,
+                      height: 26,
+                    ),
             ),
             Padding(
                 padding: const EdgeInsets.only(
