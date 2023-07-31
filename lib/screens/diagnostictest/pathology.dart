@@ -40,13 +40,19 @@ class _PathologyState extends State<Pathology> {
     controller.dispose();
     super.dispose();
   }
+bool isUserProfileIconClicked = false;
 
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("", pathOLOGYTestCart),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+      appBar: BasicAppbar("", pathOLOGYTestCart, onUserProfileIconTap: handleUserProfileIconTap),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

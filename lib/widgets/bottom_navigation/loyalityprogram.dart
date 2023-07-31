@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
-import 'package:nmmedical/widgets/whatsappmessage.dart';
+import '../../../widgets/whatsappmessage.dart';
+
 
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
@@ -16,12 +17,19 @@ class LoYALityPROgraM extends StatefulWidget {
 }
 
 class _LoYALityPROgraMState extends State<LoYALityPROgraM> {
+  bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("",""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+      appBar: BasicAppbar("","",onUserProfileIconTap: handleUserProfileIconTap,),
+     endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

@@ -16,12 +16,20 @@ class HealthCheckUp extends StatefulWidget {
 }
 
 class _HealthCheckUpState extends State<HealthCheckUp> {
+ bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("", ""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child: Column(children: [
         CustomContainerBar(

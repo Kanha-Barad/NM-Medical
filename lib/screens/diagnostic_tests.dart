@@ -30,12 +30,20 @@ class DiagnosticTests extends StatefulWidget {
 }
 
 class _DiagnosticTestsState extends State<DiagnosticTests> {
+   bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: BasicAppbar("", DiagnosticTestCArt),
+        appBar: BasicAppbar("", DiagnosticTestCArt,onUserProfileIconTap: handleUserProfileIconTap,),
         drawer: userDrawer(),
-        endDrawer: AppDrawer(),
+        endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked,),
         body: SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

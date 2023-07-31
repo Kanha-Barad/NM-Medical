@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:nmmedical/widgets/whatsappmessage.dart';
+import '../../../widgets/whatsappmessage.dart';
+
 
 import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
+import '../../widgets/customContainer.dart';
 import '../../widgets/userdrawer.dart';
 
 class SEconDarY extends StatefulWidget {
@@ -14,72 +16,39 @@ class SEconDarY extends StatefulWidget {
 }
 
 class _SEconDarYState extends State<SEconDarY> {
+ bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("",""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/histopathologysecondary/secondary-white.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("SECONDARY",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
+        CustomContainerBar(
+          title: "SECONDARY",
+          svgAssetPath: "assets/histopathology-secondary/secondary-white.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.23,
-            decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                image: DecorationImage(
-                  image: AssetImage(
-                      "assets/histopathologysecondary/local-menu.jpg"),
-                  fit: BoxFit.fitHeight,
-                )),
-          ),
+          child: Image.asset("assets/histopathology-secondary/local-menu.jpg"),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 15.0, top: 10),
           child: Text(
             "LOCAL",
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 14,
-                fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
         ),
         Padding(
@@ -89,25 +58,14 @@ class _SEconDarYState extends State<SEconDarY> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.23,
-            decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                image: DecorationImage(
-                  image: AssetImage(
-                      "assets/histopathologysecondary/national-menu.jpg"),
-                  fit: BoxFit.fitHeight,
-                )),
-          ),
+          child:
+              Image.asset("assets/histopathology-secondary/national-menu.jpg"),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 15.0, top: 10),
           child: Text(
             "National",
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 14,
-                fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
         ),
         Padding(
@@ -116,25 +74,14 @@ class _SEconDarYState extends State<SEconDarY> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.23,
-            decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                image: DecorationImage(
-                  image: AssetImage(
-                      "assets/histopathologysecondary/international-menu.jpg"),
-                  fit: BoxFit.fitHeight,
-                )),
-          ),
+          child: Image.asset(
+              "assets/histopathology-secondary/international-menu.jpg"),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 15.0, top: 10),
           child: Text(
             "International",
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 14,
-                fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
         ),
         Padding(

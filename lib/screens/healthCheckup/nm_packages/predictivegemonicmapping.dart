@@ -7,6 +7,7 @@ import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/bottom_navigation.dart';
 import '../../../widgets/customContainer.dart';
 import '../../../widgets/userdrawer.dart';
+import '../../../widgets/forMOreInFormationWIdget.dart';
 import '../../../widgets/whatsappmessage.dart';
 
 class PredictiveGemonicMapping extends StatefulWidget {
@@ -18,12 +19,20 @@ class PredictiveGemonicMapping extends StatefulWidget {
 final value = NumberFormat("#,##0", "en_US");
 
 class _PredictiveGemonicMappingState extends State<PredictiveGemonicMapping> {
+ bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("", ""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

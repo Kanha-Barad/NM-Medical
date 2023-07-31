@@ -3,7 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:nmmedical/screens/healthCheckup/nm_packages/comparepackages.dart';
 import 'package:nmmedical/screens/healthCheckup/nm_packages/enquire.dart';
-import 'package:nmmedical/widgets/whatsappmessage.dart';
+import '../../../widgets/whatsappmessage.dart';
+
 
 import '../../../widgets/Enquary.dart';
 import '../../../widgets/app_drawer.dart';
@@ -21,12 +22,20 @@ class PrimaryPackageDetails extends StatefulWidget {
 final value = NumberFormat("#,##0", "en_US");
 
 class _PrimaryPackageDetailsState extends State<PrimaryPackageDetails> {
+ bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("", ""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

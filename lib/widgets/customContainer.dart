@@ -17,7 +17,7 @@ class CustomContainerBar extends StatelessWidget {
     return Container(
       height: 55,
       width: MediaQuery.of(context).size.width,
-      color: const Color.fromARGB(255, 187, 42, 34),
+      color: const Color.fromARGB(255, 186, 43, 35),
       child: Row(
         children: [
           Padding(

@@ -18,12 +18,19 @@ class Histopathology extends StatefulWidget {
 }
 
 class _HistopathologyState extends State<Histopathology> {
+   bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("",""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+      appBar: BasicAppbar("","",onUserProfileIconTap: handleUserProfileIconTap,),
+     endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child: Column(children: [
         CustomContainerBar(
@@ -50,7 +57,7 @@ class _HistopathologyState extends State<Histopathology> {
                           MaterialPageRoute(builder: (context) => FroZEoN()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/histopathology/frozeon.png',
+                      imageAsset: 'assets/histopathology/frozeon.svg',
                       labelText: 'Frozen',
                     ),
                   ),
@@ -60,7 +67,7 @@ class _HistopathologyState extends State<Histopathology> {
                           MaterialPageRoute(builder: (context) => PriMARY()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/histopathology/primary.png',
+                      imageAsset: 'assets/histopathology/primary.svg',
                       labelText: 'Primary',
                     ),
                   ),
@@ -70,8 +77,8 @@ class _HistopathologyState extends State<Histopathology> {
                           MaterialPageRoute(builder: (context) => SEconDarY()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/histopathology/secondary.png',
-                      labelText: 'Health\nCheck Up',
+                      imageAsset: 'assets/histopathology/secondary.svg',
+                      labelText: 'Secondary',
                     ),
                   ),
                   InkWell(
@@ -83,7 +90,7 @@ class _HistopathologyState extends State<Histopathology> {
                     },
                     child: buildIconItem(
                       imageAsset:
-                          'assets/histopathology/ordering-digital-slides.png',
+                          'assets/histopathology/ordering-digital-slides.svg',
                       labelText: 'Ordering\nDigital Slides',
                     ),
                   ),
@@ -96,7 +103,7 @@ class _HistopathologyState extends State<Histopathology> {
                     },
                     child: buildIconItem(
                       imageAsset:
-                          'assets/histopathology/arching-the-slides.png',
+                          'assets/histopathology/arching-the-slides.svg',
                       labelText: 'Archiving\nThe Slides',
                     ),
                   ),

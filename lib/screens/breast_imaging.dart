@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:nmmedical/widgets/whatsappmessage.dart';
+import 'package:flutter_svg/svg.dart';
+import '../../../widgets/whatsappmessage.dart';
+
 
 import '../widgets/app_drawer.dart';
 import '../widgets/basic_appbar.dart';
 import '../widgets/bottom_navigation.dart';
+import '../widgets/customContainer.dart';
 import '../widgets/userdrawer.dart';
 
 class BreastIMAGinG extends StatefulWidget {
@@ -12,76 +15,48 @@ class BreastIMAGinG extends StatefulWidget {
 }
 
 class _BreastIMAGinGState extends State<BreastIMAGinG> {
+ bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("",""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/breastimaging/breastimagingwhite.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("BREAST IMAGING",
-                    style: TextStyle(color: Colors.white)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
+        CustomContainerBar(
+          title: "BREAST IMAGING",
+          svgAssetPath: "assets/breast-imaging/breast-imaging-white.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.40,
-            // width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                image: DecorationImage(
-                  image: AssetImage(
-                      "assets/breastimaging/breast-screening-clinic-1.jpg"),
-                  fit: BoxFit.fitHeight,
-                )),
-          ),
+          child: Image.asset(
+              "assets/breast-imaging/breast-screening-clinic-1.jpg"),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(15, 20, 0, 5),
           child: Text(
             "Breast Screening Clinic",
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 15,
-                fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 15.0),
           child: Text(
-              "NM Medical has the most well-equipped breast diagnostic and screening clinic in the country including"),
+            "NM Medical has the most well-equipped breast diagnostic and screening clinic in the country including",
+            style: TextStyle(fontSize: 14),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 20, 0, 5),
@@ -89,17 +64,12 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("3D Digital Mammography with Tomosynthesis")
+              const Text(
+                "3D Digital Mammography with Tomosynthesis",
+                style: TextStyle(fontSize: 14),
+              )
             ],
           ),
         ),
@@ -109,17 +79,12 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Breast Ultrasound with Elastography")
+              const Text(
+                "Breast Ultrasound with Elastography",
+                style: TextStyle(fontSize: 14),
+              )
             ],
           ),
         ),
@@ -129,17 +94,12 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Fine needle aspirations")
+              const Text(
+                "Fine needle aspirations",
+                style: TextStyle(fontSize: 14),
+              )
             ],
           ),
         ),
@@ -149,17 +109,12 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Wire localizations")
+              const Text(
+                "Wire localizations",
+                style: TextStyle(fontSize: 14),
+              )
             ],
           ),
         ),
@@ -169,17 +124,12 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Ultrasound guided core biopsies")
+              const Text(
+                "Ultrasound guided core biopsies",
+                style: TextStyle(fontSize: 14),
+              )
             ],
           ),
         ),
@@ -189,17 +139,12 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Stereotactic biopsies")
+              const Text(
+                "Stereotactic biopsies",
+                style: TextStyle(fontSize: 14),
+              )
             ],
           ),
         ),
@@ -209,17 +154,12 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Vacuum assisted biopsies")
+              const Text(
+                "Vacuum assisted biopsies",
+                style: TextStyle(fontSize: 14),
+              )
             ],
           ),
         ),
@@ -229,17 +169,12 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Digital Histopathology with IHC staining")
+              const Text(
+                "Digital Histopathology with IHC staining",
+                style: TextStyle(fontSize: 14),
+              )
             ],
           ),
         ),
@@ -249,17 +184,12 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Molecular and Genetic lab including BRCA test")
+              const Text(
+                "Molecular and Genetic lab including BRCA test",
+                style: TextStyle(fontSize: 14),
+              )
             ],
           ),
         ),
@@ -269,17 +199,12 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Counceling")
+              const Text(
+                "Counceling",
+                style: TextStyle(fontSize: 14),
+              )
             ],
           ),
         ),
@@ -290,17 +215,8 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.3,
-            // width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                image: DecorationImage(
-                  image: AssetImage(
-                      "assets/breastimaging/breast-screening-clinic-2.jpg"),
-                  fit: BoxFit.fitHeight,
-                )),
-          ),
+          child: Image.asset(
+              "assets/breast-imaging/breast-screening-clinic-2.jpg"),
         ),
         Divider(
           indent: 15,

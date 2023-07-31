@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
-import 'package:nmmedical/widgets/whatsappmessage.dart';
+import '../../../widgets/whatsappmessage.dart';
+
 
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/userdrawer.dart';
+import '../../widgets/customContainer.dart';
+import '../../widgets/phoneCallwidget.dart';
 
 class NIneMonTH extends StatefulWidget {
   const NIneMonTH({super.key});
@@ -14,61 +19,33 @@ class NIneMonTH extends StatefulWidget {
 }
 
 class _NIneMonTHState extends State<NIneMonTH> {
+ bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("",""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/pregnancy/nine-month-title.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("NINE MONTH",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
+        CustomContainerBar(
+          title: "NINE MONTH",
+          svgAssetPath: "assets/pregnancy/nine-month-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context, true);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.3,
-            // width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                image: DecorationImage(
-                  image: AssetImage("assets/pregnancy/nine-month.png"),
-                  fit: BoxFit.fitHeight,
-                )),
-          ),
+          child: Image.asset("assets/pregnancy/nine-month.png"),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 20, 0, 5),
@@ -76,17 +53,12 @@ class _NIneMonTHState extends State<NIneMonTH> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Zoom Classes")
+              const Text(
+                "Zoom Classes",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              )
             ],
           ),
         ),
@@ -96,17 +68,12 @@ class _NIneMonTHState extends State<NIneMonTH> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Prenatal Classes")
+              const Text(
+                "Prenatal Classes",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              )
             ],
           ),
         ),
@@ -116,17 +83,12 @@ class _NIneMonTHState extends State<NIneMonTH> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Postnatal Classes")
+              const Text(
+                "Postnatal Classes",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              )
             ],
           ),
         ),
@@ -136,23 +98,21 @@ class _NIneMonTHState extends State<NIneMonTH> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  height: 16,
-                  width: 16,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/bullet-icons.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
+                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Lactation Consultancy")
+              const Text(
+                "Lactation Consultancy",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              )
             ],
           ),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(18, 10, 0, 8),
-          child: Text("For More infomration Contact"),
+          child: Text("For More infomration Contact",
+              style: TextStyle(
+                fontSize: 14,
+              )),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(18, 0, 0, 10),
@@ -168,33 +128,29 @@ class _NIneMonTHState extends State<NIneMonTH> {
           padding: const EdgeInsets.fromLTRB(14, 0, 0, 10),
           child: Row(
             children: [
-              Icon(
-                Icons.phone_iphone,
-                color: Color.fromARGB(255, 187, 42, 34),
-                size: 16,
-              ),
-              Text(
-                "9821139999",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500),
+              SvgPicture.asset("assets/24-7-support/mobile-icon.svg"),
+              Padding(
+                padding: const EdgeInsets.only(left: 6.0),
+                child: GestureDetector(
+                  onTap: () {
+                    String phoneNumber="9821139999";
+                    _makePhoneCall(phoneNumber);
+                  },
+                  child: Text(
+                    "9821139999",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
               ),
             ],
           ),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.6,
-            // width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                image: DecorationImage(
-                  image: AssetImage("assets/pregnancy/rita-shah.png"),
-                  fit: BoxFit.fitHeight,
-                )),
-          ),
+          child: Image.asset("assets/pregnancy/rita-shah.png"),
         ),
         Divider(
           indent: 15,
@@ -206,4 +162,9 @@ class _NIneMonTHState extends State<NIneMonTH> {
       bottomNavigationBar: AllBottomNavigationBar(),
     );
   }
+}
+
+void _makePhoneCall(String phoneNumber) async {
+  String number = phoneNumber;
+  await FlutterPhoneDirectCaller.callNumber(number);
 }

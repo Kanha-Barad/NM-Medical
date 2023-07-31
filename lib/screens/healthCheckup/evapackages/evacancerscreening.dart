@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
-import 'package:nmmedical/widgets/whatsappmessage.dart';
+import '../../../widgets/whatsappmessage.dart';
+
 
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
+import '../../../widgets/customContainer.dart';
 import '../../../widgets/userdrawer.dart';
 
 class EVaCanceRSCReeniNG extends StatefulWidget {
@@ -14,52 +16,33 @@ class EVaCanceRSCReeniNG extends StatefulWidget {
 }
 
 class _EVaCanceRSCReeniNGState extends State<EVaCanceRSCReeniNG> {
+ bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("",""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/Evapackages/eva-cancer-screening-title.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("EVA CANCER SCREENING",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
+        CustomContainerBar(
+          title: "EVA CANCER SCREENING",
+          svgAssetPath: "assets/eva-packages/eva-cancer-screening-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context, true);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(15, 25, 0, 10),
-          child: Text("Cooming Soon..."),
+          child: Text("Cooming Soon", style: TextStyle(fontSize: 14)),
         ),
         Divider(
           indent: 15,
