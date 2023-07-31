@@ -6,9 +6,7 @@ import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/bottom_navigation.dart';
 import '../../../widgets/customContainer.dart';
-import '../../../widgets/userdrawer.dart';
-import '../../../widgets/forMOreInFormationWIdget.dart';
-import '../../../widgets/whatsappmessage.dart';
+import '../../../widgets/forMoreInformation.dart';
 
 class PredictiveGemonicMapping extends StatefulWidget {
   @override
@@ -115,9 +113,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
           ),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        WhatsApp(context)
+        FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

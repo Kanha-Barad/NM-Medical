@@ -7,7 +7,6 @@ import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../customContainer.dart';
 import '../phoneCallwidget.dart';
-import '../userdrawer.dart';
 
 class SelectPuneGallery extends StatefulWidget {
   const SelectPuneGallery({super.key});
@@ -167,7 +166,7 @@ class _SelectPuneGalleryState extends State<SelectPuneGallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '020 2660 0505',
                       )
                     ],
@@ -246,7 +245,7 @@ class _SelectPuneGalleryState extends State<SelectPuneGallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '020 2552 0505',
                       )
                     ],
@@ -257,7 +256,7 @@ class _SelectPuneGalleryState extends State<SelectPuneGallery> {
           ),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

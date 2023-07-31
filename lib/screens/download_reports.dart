@@ -5,7 +5,6 @@ import '../widgets/app_drawer.dart';
 import '../widgets/basic_appbar.dart';
 import '../widgets/bottom_navigation.dart';
 import '../widgets/customContainer.dart';
-import '../widgets/userdrawer.dart';
 
 class DonwloadReport extends StatefulWidget {
   @override
@@ -161,7 +160,7 @@ class _DonwloadReportState extends State<DonwloadReport> {
           trailing: SvgPicture.asset("assets/images/download-icon.svg"),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

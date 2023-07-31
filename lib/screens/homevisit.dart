@@ -8,7 +8,6 @@ import '../widgets/cart_widget.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/basic_appbar.dart';
 import '../widgets/customContainer.dart';
-import '../widgets/userdrawer.dart';
 
 class homeVisit extends StatefulWidget {
   const homeVisit({Key? key}) : super(key: key);
@@ -338,7 +337,7 @@ class _homeVisitState extends State<homeVisit> {
           ),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

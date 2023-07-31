@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
-import 'package:nmmedical/widgets/whatsappmessage.dart';
+import 'package:nmmedical/widgets/forMoreInformation.dart';
 
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
-import '../../../widgets/userdrawer.dart';
 import '../widgets/customContainer.dart';
+import '../widgets/emailWidget.dart';
+import '../widgets/phoneCallwidget.dart';
+import '../widgets/whatsappWidget.dart';
 
 class SuppoRT extends StatefulWidget {
   const SuppoRT({super.key});
@@ -16,7 +18,7 @@ class SuppoRT extends StatefulWidget {
 }
 
 class _SuppoRTState extends State<SuppoRT> {
- bool isUserProfileIconClicked = false;
+  bool isUserProfileIconClicked = false;
 
   // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
@@ -28,7 +30,8 @@ class _SuppoRTState extends State<SuppoRT> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      appBar:
+          BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
       endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
@@ -43,8 +46,8 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: ListTile(
-              leading: SvgPicture.asset("assets/24-7-support/existing-patient.svg"),
-          
+              leading:
+                  SvgPicture.asset("assets/24-7-support/existing-patient.svg"),
               title: Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text("EXISTING PATIENT",
@@ -59,31 +62,24 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                     padding: const EdgeInsets.only(top: 12.0),
                     child: Row(
                       children: [
-                        SvgPicture.asset(
-                                    "assets/24-7-support/mobile-icon.svg"),
-                              
-                        
+                        SvgPicture.asset("assets/24-7-support/mobile-icon.svg"),
                         Padding(
-                          padding: const EdgeInsets.only(left: 4.0),
-                          child: Text("9372694233",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 13.0)),
-                        ),
+                            padding: const EdgeInsets.only(left: 4.0),
+                            child: PhoneCallWidget(
+                              phoneNumber: '9372694233',
+                            )),
                         Padding(
                           padding: const EdgeInsets.only(left: 15.0),
                           child: SvgPicture.asset(
-                                      "assets/24-7-support/whatsapp-icon.svg"),
-                                 
+                              "assets/24-7-support/whatsapp-icon.svg"),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
-                          child: Text("9372694233",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 13.0)),
+                          child: WhatsAppWidget(
+                            phoneNumber: '9372694233',
+                            text:
+                                '9372694233', // Optional text for WhatsApp message
+                          ),
                         ),
                       ],
                     ),
@@ -91,17 +87,12 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                   Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Row(children: [
-                        SvgPicture.asset(
-                                    "assets/24-7-support/email-icon.svg"),
-                              
-                      
+                        SvgPicture.asset("assets/24-7-support/email-icon.svg"),
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
-                          child: Text("nmmedical45@gmail.com",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 13.0)),
+                          child: EmailWidget(
+                            email: 'nmmedical45@gmail.com',
+                          ),
                         ),
                       ]))
                 ],
@@ -116,7 +107,6 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
           padding: const EdgeInsets.only(top: 4.0),
           child: ListTile(
               leading: SvgPicture.asset("assets/24-7-support/new-patient.svg"),
-                    
               title: Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text("NEW PATIENT",
@@ -131,30 +121,24 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                     padding: const EdgeInsets.only(top: 12.0),
                     child: Row(
                       children: [
-                    SvgPicture.asset(
-                                    "assets/24-7-support/mobile-icon.svg"),
-                              
+                        SvgPicture.asset("assets/24-7-support/mobile-icon.svg"),
                         Padding(
-                          padding: const EdgeInsets.only(left: 4.0),
-                          child: Text("9325462835",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 13.0)),
-                        ),
+                            padding: const EdgeInsets.only(left: 4.0),
+                            child: PhoneCallWidget(
+                              phoneNumber: '9325462835',
+                            )),
                         Padding(
                           padding: const EdgeInsets.only(left: 15.0),
                           child: SvgPicture.asset(
-                                      "assets/24-7-support/whatsapp-icon.svg"),
-                                
+                              "assets/24-7-support/whatsapp-icon.svg"),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
-                          child: Text("9256855758",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 13.0)),
+                          child: WhatsAppWidget(
+                            phoneNumber: '9256855758',
+                            text:
+                                '9256855758', // Optional text for WhatsApp message
+                          ),
                         ),
                       ],
                     ),
@@ -162,24 +146,21 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                   Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Row(children: [
-                        SvgPicture.asset(
-                                    "assets/24-7-support/email-icon.svg"),
-                               
-                        
+                        SvgPicture.asset("assets/24-7-support/email-icon.svg"),
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
-                          child: Text("nmmedical45@gmail.com",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 13.0)),
+                          child: EmailWidget(
+                            email: 'nmmedical45@gmail.com',
+                          ),
                         ),
                       ]))
                 ],
               )),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: '',
+      ),
     );
   }
 }

@@ -6,7 +6,6 @@ import 'package:nmmedical/widgets/userdrawer/profilesavechangepin.dart';
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../customContainer.dart';
-import '../userdrawer.dart';
 
 class pRofilE extends StatefulWidget {
   const pRofilE({Key? key}) : super(key: key);
@@ -243,7 +242,7 @@ class _pRofilEState extends State<pRofilE> {
           ),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

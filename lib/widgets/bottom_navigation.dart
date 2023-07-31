@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/screens/download_reports.dart';
 import 'package:nmmedical/widgets/bottom_navigation/loyalityprogram.dart';
+import 'package:nmmedical/widgets/bottom_navigation/payments.dart';
 import 'package:nmmedical/widgets/bottom_navigation/promotion.dart';
 import 'package:nmmedical/widgets/userdrawer/dashboard.dart';
 
 import '../screens/nm_home.dart';
 
 class AllBottomNavigationBar extends StatefulWidget {
+  String payMNETNAv = "";
+  AllBottomNavigationBar({required this.payMNETNAv});
+
   @override
   State<AllBottomNavigationBar> createState() => _AllBottomNavigationBarState();
 }
@@ -32,11 +36,27 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
               },
             ),
           ),
+          if (widget.payMNETNAv == "BNP")
+            Expanded(
+              child: buildNavItem(
+                icon: "assets/footer-menu-icons/payment-icon.svg",
+                text: "Payments",
+                color: const Color.fromARGB(255, 193, 63, 55),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => paYmEnTs()),
+                  );
+                },
+              ),
+            ),
           Expanded(
             child: buildNavItem(
               icon: "assets/footer-menu-icons/report-icon.svg",
               text: "Report",
-              color: const Color.fromARGB(255, 193, 63, 55),
+              color: (widget.payMNETNAv == "BNP")
+                  ? Color.fromARGB(255, 201, 85, 78)
+                  : Color.fromARGB(255, 193, 63, 55),
               onTap: () {
                 Navigator.push(
                   context,
@@ -49,7 +69,9 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
             child: buildNavItem(
               icon: "assets/footer-menu-icons/loyalty-program-icon.svg",
               text: "Loyalty Program",
-              color: const Color.fromARGB(255, 201, 85, 78),
+              color: (widget.payMNETNAv == "BNP")
+                  ? Color.fromARGB(255, 207, 104, 99)
+                  : Color.fromARGB(255, 201, 85, 78),
               onTap: () {
                 Navigator.push(
                   context,
@@ -62,7 +84,9 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
             child: buildNavItem(
               icon: "assets/footer-menu-icons/promotion-icon.svg",
               text: "Promotion",
-              color: const Color.fromARGB(255, 207, 104, 99),
+              color: (widget.payMNETNAv == "BNP")
+                  ? Color.fromARGB(255, 214, 127, 122)
+                  : Color.fromARGB(255, 207, 104, 99),
               onTap: () {
                 Navigator.push(
                   context,
@@ -75,7 +99,9 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
             child: buildNavItem(
               icon: "assets/footer-menu-icons/dashboard-2.svg",
               text: "Dashboard",
-              color: const Color.fromARGB(255, 214, 127, 122),
+              color: (widget.payMNETNAv == "BNP")
+                  ? Color.fromARGB(255, 187, 43, 34)
+                  : Color.fromARGB(255, 214, 127, 122),
               onTap: () {
                 Navigator.push(
                   context,

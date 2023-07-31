@@ -6,7 +6,6 @@ import 'package:nmmedical/widgets/bottom_navigation.dart';
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../customContainer.dart';
-import '../userdrawer.dart';
 
 class SelectMumbaiLocation extends StatefulWidget {
   const SelectMumbaiLocation({Key? key}) : super(key: key);
@@ -1579,7 +1578,7 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
           ),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

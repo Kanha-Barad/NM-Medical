@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:nmmedical/screens/healthCheckup/nm_packages/comparepackages.dart';
 import 'package:nmmedical/screens/healthCheckup/nm_packages/enquire.dart';
-import '../../../widgets/whatsappmessage.dart';
+import '../../../widgets/forMoreInformation.dart';
 
 
 import '../../../widgets/Enquary.dart';
@@ -12,7 +12,6 @@ import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/bottom_navigation.dart';
 import '../../../widgets/customContainer.dart';
 import '../../../widgets/packageinvestmentwidget.dart';
-import '../../../widgets/userdrawer.dart';
 
 class PlatiNUmPackageDetails extends StatefulWidget {
   @override
@@ -782,9 +781,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                   ))),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        WhatsApp(context)
+        FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

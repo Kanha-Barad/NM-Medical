@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
-import '../../../widgets/whatsappmessage.dart';
-
+import '../../widgets/forMoreInformation.dart';
 
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
-import '../../../widgets/userdrawer.dart';
 import '../../widgets/customContainer.dart';
 import '../../widgets/phoneCallwidget.dart';
 
@@ -19,7 +17,7 @@ class NIneMonTH extends StatefulWidget {
 }
 
 class _NIneMonTHState extends State<NIneMonTH> {
- bool isUserProfileIconClicked = false;
+  bool isUserProfileIconClicked = false;
 
   // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
@@ -31,7 +29,8 @@ class _NIneMonTHState extends State<NIneMonTH> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      appBar:
+          BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
       endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
@@ -131,19 +130,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
               SvgPicture.asset("assets/24-7-support/mobile-icon.svg"),
               Padding(
                 padding: const EdgeInsets.only(left: 6.0),
-                child: GestureDetector(
-                  onTap: () {
-                    String phoneNumber="9821139999";
-                    _makePhoneCall(phoneNumber);
-                  },
-                  child: Text(
-                    "9821139999",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
+                child: PhoneCallWidget(
+                      phoneNumber: '9821139999',
+                    )
               ),
             ],
           ),
@@ -157,14 +146,11 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
           endIndent: 15,
           thickness: 1.5,
         ),
-        WhatsApp(context),
+        FormoreInformation(context),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: '',
+      ),
     );
   }
-}
-
-void _makePhoneCall(String phoneNumber) async {
-  String number = phoneNumber;
-  await FlutterPhoneDirectCaller.callNumber(number);
 }

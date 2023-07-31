@@ -11,7 +11,6 @@ import 'package:nmmedical/screens/diagnostictest/wholebodyMRI.dart';
 import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
-import '../../widgets/userdrawer.dart';
 import '../widgets/IconTextWidget.dart';
 import '../widgets/customContainer.dart';
 import 'diagnostictest/allergy.dart';
@@ -42,7 +41,7 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: BasicAppbar("", DiagnosticTestCArt,onUserProfileIconTap: handleUserProfileIconTap,),
-        drawer: userDrawer(),
+        
         endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked,),
         body: SingleChildScrollView(
             child: Column(
@@ -196,6 +195,6 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                         ),
                       ]))
             ])),
-        bottomNavigationBar: AllBottomNavigationBar());
+        bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',));
   }
 }

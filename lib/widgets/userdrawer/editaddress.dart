@@ -6,7 +6,6 @@ import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../bottom_navigation.dart';
 import '../customContainer.dart';
-import '../userdrawer.dart';
 
 class EditAddress extends StatefulWidget {
   const EditAddress({Key? key}) : super(key: key);
@@ -126,7 +125,7 @@ class _EditAddressState extends State<EditAddress> {
           ),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

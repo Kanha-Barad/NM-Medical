@@ -5,7 +5,6 @@ import '../widgets/app_drawer.dart';
 import '../widgets/basic_appbar.dart';
 import '../widgets/bottom_navigation.dart';
 import '../widgets/customContainer.dart';
-import '../widgets/userdrawer.dart';
 import 'nm_home.dart';
 
 class UploadPrescription extends StatefulWidget {
@@ -147,7 +146,7 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                           fontWeight: FontWeight.w600))))),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

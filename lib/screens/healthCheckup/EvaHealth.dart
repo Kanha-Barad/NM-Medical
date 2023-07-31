@@ -5,7 +5,6 @@ import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
 import '../../widgets/customContainer.dart';
-import '../../widgets/userdrawer.dart';
 import 'evapackages/EvaOSteoPorosisScreening.dart';
 import 'evapackages/evaAdeloscence.dart';
 import 'evapackages/evaMenopause.dart';
@@ -181,7 +180,7 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                   ),
                 ]))
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

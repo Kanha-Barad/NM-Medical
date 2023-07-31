@@ -6,8 +6,7 @@ import 'package:nmmedical/widgets/bottom_navigation.dart';
 import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/customContainer.dart';
-import '../../widgets/userdrawer.dart';
-import '../../widgets/whatsappmessage.dart';
+import '../../widgets/forMoreInformation.dart';
 
 class Cardiology extends StatefulWidget {
   const Cardiology({Key? key}) : super(key: key);
@@ -177,9 +176,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
           endIndent: 15,
           thickness: 1.5,
         ),
-        WhatsApp(context)
+        FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

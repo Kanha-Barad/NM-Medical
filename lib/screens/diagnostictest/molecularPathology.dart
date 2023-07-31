@@ -5,8 +5,7 @@ import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
 import '../../widgets/customContainer.dart';
-import '../../widgets/userdrawer.dart';
-import '../../widgets/whatsappmessage.dart';
+import '../../widgets/forMoreInformation.dart';
 
 class MolecularPathology extends StatefulWidget {
   const MolecularPathology({Key? key}) : super(key: key);
@@ -268,9 +267,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
           endIndent: 15,
           thickness: 1.5,
         ),
-        WhatsApp(context)
+        FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

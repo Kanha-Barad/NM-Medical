@@ -6,7 +6,6 @@ import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../bottom_navigation.dart';
 import '../customContainer.dart';
-import '../userdrawer.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -268,7 +267,7 @@ bool isUserProfileIconClicked = false;
           ),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

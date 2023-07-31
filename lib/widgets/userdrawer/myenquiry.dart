@@ -6,7 +6,6 @@ import '../bottom_navigation.dart';
 
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
-import '../userdrawer.dart';
 
 class MyOrder extends StatefulWidget {
   const MyOrder({Key? key}) : super(key: key);
@@ -327,7 +326,7 @@ bool isUserProfileIconClicked = false;
           ),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

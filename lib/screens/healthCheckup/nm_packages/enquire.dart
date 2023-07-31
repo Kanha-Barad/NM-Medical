@@ -4,7 +4,6 @@ import 'package:nmmedical/widgets/thankyouscreen.dart';
 
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
-import '../../../widgets/userdrawer.dart';
 
 class EnquirePackages extends StatefulWidget {
   const EnquirePackages({super.key});
@@ -302,7 +301,7 @@ class _EnquirePackagesState extends State<EnquirePackages> {
           ),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

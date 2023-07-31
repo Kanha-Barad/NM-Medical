@@ -7,7 +7,6 @@ import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
 import '../../widgets/customContainer.dart';
-import '../../widgets/userdrawer.dart';
 import 'health360packages/cardiacCTPackage.dart';
 import 'health360packages/executive.dart';
 import 'health360packages/health360deluxepackage.dart';
@@ -16,18 +15,21 @@ import 'health360packages/health360pluspackages.dart';
 import 'health360packages/wholebodyMRIPackages.dart';
 
 String AppBarImg = "";
+String boTTOMNavPaymeNT = "";
 
 class Health360 extends StatefulWidget {
-  Health360(AREAIMG) {
+  Health360(AREAIMG, botTOMNAVPAyment) {
     AppBarImg = "";
+    boTTOMNavPaymeNT = "";
     AppBarImg = AREAIMG;
+    boTTOMNavPaymeNT = botTOMNAVPAyment;
   }
   @override
   State<Health360> createState() => _Health360State();
 }
 
 class _Health360State extends State<Health360> {
-   bool isUserProfileIconClicked = false;
+  bool isUserProfileIconClicked = false;
 
   // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
@@ -35,11 +37,16 @@ class _Health360State extends State<Health360> {
       isUserProfileIconClicked = true;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(AppBarImg, "",onUserProfileIconTap: handleUserProfileIconTap,),
-     endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      appBar: BasicAppbar(
+        AppBarImg,
+        "",
+        onUserProfileIconTap: handleUserProfileIconTap,
+      ),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child: Column(children: [
         CustomContainerBar(
@@ -86,7 +93,9 @@ class _Health360State extends State<Health360> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HealTH360Packages()));
+                              builder: (context) => HealTH360Packages(
+                                    'BNP',
+                                  )));
                     },
                     child: buildIconItem(
                       imageAsset: 'assets/health-360/health-360.svg',
@@ -98,7 +107,8 @@ class _Health360State extends State<Health360> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HealTH360PluSPackages()));
+                              builder: (context) =>
+                                  HealTH360PluSPackages("BNP")));
                     },
                     child: buildIconItem(
                       imageAsset: 'assets/health-360/health-360-plus.svg',
@@ -110,7 +120,8 @@ class _Health360State extends State<Health360> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HealTH360DeluXePackages()));
+                              builder: (context) =>
+                                  HealTH360DeluXePackages("BNP")));
                     },
                     child: buildIconItem(
                       imageAsset: 'assets/health-360/health-360-deluxe.svg',
@@ -122,7 +133,7 @@ class _Health360State extends State<Health360> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CardiacCTPackages()));
+                              builder: (context) => CardiacCTPackages("BNP")));
                     },
                     child: buildIconItem(
                       imageAsset: 'assets/health-360/cardiac-CT.svg',
@@ -134,7 +145,8 @@ class _Health360State extends State<Health360> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => WholEBoDYMRIPackAgeS()));
+                              builder: (context) =>
+                                  WholEBoDYMRIPackAgeS("BNP")));
                     },
                     child: buildIconItem(
                       imageAsset: 'assets/health-360/whole-body-MRI.svg',
@@ -143,7 +155,9 @@ class _Health360State extends State<Health360> {
                   ),
                 ]))
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: boTTOMNavPaymeNT,
+      ),
     );
   }
 }
