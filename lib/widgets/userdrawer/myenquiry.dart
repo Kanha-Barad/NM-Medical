@@ -17,13 +17,19 @@ class MyOrder extends StatefulWidget {
 
 class _MyOrderState extends State<MyOrder> {
   final value = NumberFormat("#,##0", "en_US");
+bool isUserProfileIconClicked = false;
 
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("",""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+      appBar: BasicAppbar("","",onUserProfileIconTap: handleUserProfileIconTap,),
+     endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

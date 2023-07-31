@@ -107,8 +107,8 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
               padding: const EdgeInsets.only(bottom: 3.0),
               child: SvgPicture.asset(
                 icon,
-                width: 23,
-                height: 24,
+                width: 26,
+                height: 26,
               ),
             ),
             Padding(

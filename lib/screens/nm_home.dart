@@ -24,15 +24,20 @@ class NMHome extends StatefulWidget {
 }
 
 class _NMHomeState extends State<NMHome> {
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+   bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      appBar: BasicAppbar("",""),
-    drawer: userDrawer(),
-     endDrawer: AppDrawer(),
+appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           Padding(

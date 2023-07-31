@@ -97,6 +97,15 @@ flutter:
     - assets/health-checkup/
     - assets/nm-packages/
     - assets/health-360/
+    - assets/eva-packages/
+    - assets/pregnancy/
+    - assets/24-7-support/
+    - assets/breast-imaging/
+    - assets/histopathology/
+    - assets/histopathology-secondary/
+    - assets/cancer-and-genomics/
+    - assets/institutional/
+    - assets/corporate/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

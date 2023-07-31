@@ -4,7 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
 import 'package:nmmedical/widgets/customContainer.dart';
 import 'package:nmmedical/widgets/packageinvestmentwidget.dart';
-import 'package:nmmedical/widgets/whatsappmessage.dart';
+import '../../../widgets/whatsappmessage.dart';
+
 
 import '../../../widgets/Enquary.dart';
 import '../../../widgets/app_drawer.dart';
@@ -22,12 +23,19 @@ class ExeCUtIVePackages extends StatefulWidget {
 final value = NumberFormat("#,##0", "en_US");
 
 class _ExeCUtIVePackagesState extends State<ExeCUtIVePackages> {
+  bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("HM", ""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+      appBar: BasicAppbar("HM", "", onUserProfileIconTap: handleUserProfileIconTap),
+     endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

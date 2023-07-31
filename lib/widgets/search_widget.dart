@@ -19,12 +19,20 @@ class searchwidget extends StatefulWidget {
 final value = new NumberFormat("#,##0", "en_US");
 
 class _searchwidgetState extends State<searchwidget> {
+   bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: BasicAppbar("",""),
+        appBar: BasicAppbar("","",onUserProfileIconTap: handleUserProfileIconTap,),
         drawer: userDrawer(),
-        endDrawer: AppDrawer(),
+        endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked,),
         body: SingleChildScrollView(
             child: Column(children: [
           Container(

@@ -9,8 +9,9 @@ import 'cart_widget.dart';
 class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String appBarImg;
   final String teSTCarT;
+    final VoidCallback onUserProfileIconTap;
 
-  BasicAppbar(this.appBarImg, this.teSTCarT);
+  BasicAppbar(this.appBarImg, this.teSTCarT,{required this.onUserProfileIconTap});
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
@@ -85,7 +86,9 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
           Builder(
             builder: (context) => InkWell(
               onTap: () {
-                Scaffold.of(context).openDrawer(); // Open the Scaffold's drawer
+                onUserProfileIconTap();
+                Scaffold.of(context)
+                    .openEndDrawer(); // Open the Scaffold's drawer
               },
               child: Padding(
                 padding: const EdgeInsets.only(right: 14.0),
@@ -127,27 +130,3 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 }
-
-
-
- // Padding(
-                  //   padding: EdgeInsets.only(left: 5),
-                  //   child: InkWell(
-                  //     onTap: () {
-                  //       Navigator.push(
-                  //           context,
-                  //           MaterialPageRoute(
-                  //               builder: (context) => const CartWidget()));
-                  //     },
-                  //     child: Padding(
-                  //       padding: const EdgeInsets.only(left: 3.0, right: 5),
-                  //       child: SizedBox(
-                  //           height: 25,
-                  //           width: 25,
-                  //           child: Icon(
-                  //             Icons.shopping_cart_outlined,
-                  //             color: Color.fromARGB(255, 77, 72, 72),
-                  //           )),
-                  //     ),
-                  //   ),
-                  // ),

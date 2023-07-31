@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/IconTextWidget.dart';
 import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
+import '../../widgets/customContainer.dart';
 import '../../widgets/userdrawer.dart';
 import 'evapackages/EvaOSteoPorosisScreening.dart';
 import 'evapackages/evaAdeloscence.dart';
@@ -21,128 +23,74 @@ class EVAHealTHCheckUP extends StatefulWidget {
 }
 
 class _EVAHealTHCheckUPState extends State<EVAHealTHCheckUP> {
+ bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("",""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child: Column(children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/Evapackages/eva-new-born-screening-title.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("EVA PACKAGES",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 35, 13, 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 33,
-                        width: 30,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/Evapackages/eva-new-born-screening.png"),
-                                fit: BoxFit.fill)),
-                      ),
-                      const Text("Eva New\nBorn Screening",
-                          textAlign: TextAlign.center)
-                    ],
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => NewBornScreening()));
-                  }),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: ((context) => EVaAdelosceNCE())));
-                },
-                child: Column(
-                  children: [
-                    Container(
-                      height: 33,
-                      width: 26,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/Evapackages/eva-adolescence.png"),
-                              fit: BoxFit.fill)),
-                    ),
-                    const Text("Eva\nAdolescence", textAlign: TextAlign.center)
-                  ],
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => EVaMenoPAusE()));
-                },
-                child: Column(
-                  children: [
-                    Container(
-                      height: 33,
-                      width: 30,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/Evapackages/eva-menopause.png"),
-                              fit: BoxFit.fill)),
-                    ),
-                    const Text("Eva\nMonopause", textAlign: TextAlign.center)
-                  ],
-                ),
-              )
-            ],
-          ),
+        CustomContainerBar(
+          title: "EVA PACKAGES",
+          svgAssetPath: "assets/eva-packages/eva-packages-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
         ),
         Padding(
-            padding: const EdgeInsets.fromLTRB(26, 20, 10, 10),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            padding: const EdgeInsets.only(bottom: 4.0),
+            child: GridView.count(
+                crossAxisCount: 3,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
                 children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewBornScreening()));
+                    },
+                    child: buildIconItem(
+                      imageAsset:
+                          'assets/eva-packages/eva-new-born-screening.svg',
+                      labelText: 'Eva New\nBorn Screening',
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EVaAdelosceNCE()));
+                    },
+                    child: buildIconItem(
+                      imageAsset: 'assets/eva-packages/eva-adolescence.svg',
+                      labelText: 'Eva\ndolescence',
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EVaMenoPAusE()));
+                    },
+                    child: buildIconItem(
+                      imageAsset: 'assets/eva-packages/eva-menopause.svg',
+                      labelText: 'Eva\nMenopause',
+                    ),
+                  ),
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -150,21 +98,47 @@ class _EVAHealTHCheckUPState extends State<EVAHealTHCheckUP> {
                           MaterialPageRoute(
                               builder: (context) => EVaMarITAlBeGINnIngS()));
                     },
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 33,
-                          width: 30,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      "assets/Evapackages/eva-marital-beginnings.png"),
-                                  fit: BoxFit.fill)),
-                        ),
-                        const Text("Eva Marital\nBeginings",
-                            textAlign: TextAlign.center)
-                      ],
+                    child: buildIconItem(
+                      imageAsset:
+                          'assets/eva-packages/eva-marital-beginnings.svg',
+                      labelText: 'Eva Marital\nBeginnings',
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EVaINFertiLItY()));
+                    },
+                    child: buildIconItem(
+                      imageAsset: 'assets/eva-packages/eva-infertility.svg',
+                      labelText: 'Eva\nInfertility',
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EVaPregnaNCY()));
+                    },
+                    child: buildIconItem(
+                      imageAsset: 'assets/eva-packages/eva-pregnancy.svg',
+                      labelText: 'Eva\nPregnancy',
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EVaBreastScreenING()));
+                    },
+                    child: buildIconItem(
+                      imageAsset:
+                          'assets/eva-packages/eva-breast-screening.svg',
+                      labelText: 'Eva Breast\nScreening',
                     ),
                   ),
                   InkWell(
@@ -172,153 +146,40 @@ class _EVAHealTHCheckUPState extends State<EVAHealTHCheckUP> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => EVaINFertiLItY()));
+                                builder: (context) =>
+                                    EVaOsetoPOROsiSSCReeniNG()));
                       },
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 33,
-                            width: 35,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        "assets/Evapackages/eva-infertility.png"),
-                                    fit: BoxFit.fill)),
-                          ),
-                          const Text("Eva\nInfertility",
-                              textAlign: TextAlign.center)
-                        ],
+                      child: buildIconItem(
+                        imageAsset:
+                            'assets/eva-packages/eva-osteoporosis-screening.svg',
+                        labelText: 'Eva Osteoporosis\nScreening',
                       )),
                   InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => EVaPregnaNCY()));
-                      },
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 33,
-                            width: 28,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        "assets/Evapackages/eva-pregnancy.png"),
-                                    fit: BoxFit.fill)),
-                          ),
-                          Text("Eva\nPregnancy", textAlign: TextAlign.center)
-                        ],
-                      )),
-                ])),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(25, 20, 10, 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EVaBreastScreenING()));
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 33,
-                        width: 30,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/Evapackages/eva-breast-screening.png"),
-                                fit: BoxFit.fill)),
-                      ),
-                      const Text("Eva Breast\nScreening",
-                          textAlign: TextAlign.center)
-                    ],
-                  )),
-              InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EVaTotalWELlnEss()));
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 33,
-                        width: 34,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/Evapackages/eva-total-wellness.png"),
-                                fit: BoxFit.fill)),
-                      ),
-                      const Text("Eva Total\nWellness",
-                          textAlign: TextAlign.center)
-                    ],
-                  )),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => EVaCanceRSCReeniNG()));
-                },
-                child: Column(
-                  children: [
-                    Container(
-                      height: 33,
-                      width: 28,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/Evapackages/eva-cancer-screening.png"),
-                              fit: BoxFit.fill)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EVaCanceRSCReeniNG()));
+                    },
+                    child: buildIconItem(
+                      imageAsset:
+                          'assets/eva-packages/eva-cancer-screening.svg',
+                      labelText: 'Eva Cancer\nScreening',
                     ),
-                    const Text("Eva Cancer\nScreening",
-                        textAlign: TextAlign.center)
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-            padding: const EdgeInsets.fromLTRB(14, 20, 0, 10),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => EVaOsetoPOROsiSSCReeniNG()));
-                },
-                child: Column(
-                  children: [
-                    Container(
-                      height: 33,
-                      width: 33,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/Evapackages/eva-osteoporosis-screening.png"),
-                              fit: BoxFit.fill)),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EVaTotalWELlnEss()));
+                    },
+                    child: buildIconItem(
+                      imageAsset: 'assets/eva-packages/eva-total-wellness.svg',
+                      labelText: 'Eva Total\nWellness',
                     ),
-                    const Text("Eva Osteoporosis\nScreening",
-                        textAlign: TextAlign.center)
-                  ],
-                ),
-              ),
-            ]))
+                  ),
+                ]))
       ])),
       bottomNavigationBar: AllBottomNavigationBar(),
     );

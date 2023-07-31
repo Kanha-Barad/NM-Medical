@@ -27,12 +27,19 @@ class Health360 extends StatefulWidget {
 }
 
 class _Health360State extends State<Health360> {
+   bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(AppBarImg, ""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+      appBar: BasicAppbar(AppBarImg, "",onUserProfileIconTap: handleUserProfileIconTap,),
+     endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child: Column(children: [
         CustomContainerBar(

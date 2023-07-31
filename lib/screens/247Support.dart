@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
 import 'package:nmmedical/widgets/whatsappmessage.dart';
 
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/userdrawer.dart';
+import '../widgets/customContainer.dart';
 
 class SuppoRT extends StatefulWidget {
   const SuppoRT({super.key});
@@ -14,63 +16,35 @@ class SuppoRT extends StatefulWidget {
 }
 
 class _SuppoRTState extends State<SuppoRT> {
+ bool isUserProfileIconClicked = false;
+
+  // Function to handle user-profile icon tap
+  void handleUserProfileIconTap() {
+    setState(() {
+      isUserProfileIconClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("",""),
-      drawer: userDrawer(),
-      endDrawer: AppDrawer(),
+appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 187, 42, 34),
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              "assets/247support/247-support-title.png"),
-                          fit: BoxFit.fitHeight)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("24/7 SUPPORT",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600)),
-              ),
-              const Spacer(),
-              TextButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.white, size: 18),
-                  label:
-                      const Text("BACK", style: TextStyle(color: Colors.white)))
-            ])),
+        CustomContainerBar(
+          title: "24/7 SUPPORT",
+          svgAssetPath: "assets/24-7-support/support-title.svg",
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: ListTile(
-              leading: Container(
-                height: 65,
-                width: 50,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    image: DecorationImage(
-                      image:
-                          AssetImage("assets/247support/existing-patient.png"),
-                      fit: BoxFit.fitHeight,
-                    )),
-              ),
+              leading: SvgPicture.asset("assets/24-7-support/existing-patient.svg"),
+          
               title: Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text("EXISTING PATIENT",
@@ -85,17 +59,10 @@ class _SuppoRTState extends State<SuppoRT> {
                     padding: const EdgeInsets.only(top: 12.0),
                     child: Row(
                       children: [
-                        Container(
-                          height: 12,
-                          width: 12,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/247support/mobile-icon.png"),
-                                fit: BoxFit.fitHeight,
-                              )),
-                        ),
+                        SvgPicture.asset(
+                                    "assets/24-7-support/mobile-icon.svg"),
+                              
+                        
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
                           child: Text("9372694233",
@@ -106,17 +73,9 @@ class _SuppoRTState extends State<SuppoRT> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 15.0),
-                          child: Container(
-                            height: 12,
-                            width: 12,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      "assets/247support/whatsapp-icon.png"),
-                                  fit: BoxFit.fitHeight,
-                                )),
-                          ),
+                          child: SvgPicture.asset(
+                                      "assets/24-7-support/whatsapp-icon.svg"),
+                                 
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
@@ -132,17 +91,10 @@ class _SuppoRTState extends State<SuppoRT> {
                   Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Row(children: [
-                        Container(
-                          height: 12,
-                          width: 12,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/247support/email-icon.png"),
-                                fit: BoxFit.fitHeight,
-                              )),
-                        ),
+                        SvgPicture.asset(
+                                    "assets/24-7-support/email-icon.svg"),
+                              
+                      
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
                           child: Text("nmmedical45@gmail.com",
@@ -163,16 +115,8 @@ class _SuppoRTState extends State<SuppoRT> {
         Padding(
           padding: const EdgeInsets.only(top: 4.0),
           child: ListTile(
-              leading: Container(
-                height: 65,
-                width: 50,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    image: DecorationImage(
-                      image: AssetImage("assets/247support/new-patient.png"),
-                      fit: BoxFit.fitHeight,
-                    )),
-              ),
+              leading: SvgPicture.asset("assets/24-7-support/new-patient.svg"),
+                    
               title: Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text("NEW PATIENT",
@@ -187,17 +131,9 @@ class _SuppoRTState extends State<SuppoRT> {
                     padding: const EdgeInsets.only(top: 12.0),
                     child: Row(
                       children: [
-                        Container(
-                          height: 12,
-                          width: 12,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/247support/mobile-icon.png"),
-                                fit: BoxFit.fitHeight,
-                              )),
-                        ),
+                    SvgPicture.asset(
+                                    "assets/24-7-support/mobile-icon.svg"),
+                              
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
                           child: Text("9325462835",
@@ -208,17 +144,9 @@ class _SuppoRTState extends State<SuppoRT> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 15.0),
-                          child: Container(
-                            height: 12,
-                            width: 12,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      "assets/247support/whatsapp-icon.png"),
-                                  fit: BoxFit.fitHeight,
-                                )),
-                          ),
+                          child: SvgPicture.asset(
+                                      "assets/24-7-support/whatsapp-icon.svg"),
+                                
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
@@ -234,17 +162,10 @@ class _SuppoRTState extends State<SuppoRT> {
                   Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Row(children: [
-                        Container(
-                          height: 12,
-                          width: 12,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/247support/email-icon.png"),
-                                fit: BoxFit.fitHeight,
-                              )),
-                        ),
+                        SvgPicture.asset(
+                                    "assets/24-7-support/email-icon.svg"),
+                               
+                        
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
                           child: Text("nmmedical45@gmail.com",
