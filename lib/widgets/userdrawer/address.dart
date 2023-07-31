@@ -7,7 +7,6 @@ import '../bottom_navigation.dart';
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../customContainer.dart';
-import '../userdrawer.dart';
 
 class Address extends StatefulWidget {
   const Address({Key? key}) : super(key: key);
@@ -239,7 +238,7 @@ class _AddressState extends State<Address> {
               )),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

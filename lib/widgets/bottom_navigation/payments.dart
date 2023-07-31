@@ -8,14 +8,14 @@ import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../customContainer.dart';
 
-class LoYALityPROgraM extends StatefulWidget {
-  const LoYALityPROgraM({super.key});
+class paYmEnTs extends StatefulWidget {
+  const paYmEnTs({super.key});
 
   @override
-  State<LoYALityPROgraM> createState() => _LoYALityPROgraMState();
+  State<paYmEnTs> createState() => _paYmEnTsState();
 }
 
-class _LoYALityPROgraMState extends State<LoYALityPROgraM> {
+class _paYmEnTsState extends State<paYmEnTs> {
   bool isUserProfileIconClicked = false;
 
   // Function to handle user-profile icon tap
@@ -33,8 +33,8 @@ class _LoYALityPROgraMState extends State<LoYALityPROgraM> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         CustomContainerBar(
-          title: "LOYALITY PROGRAM",
-          svgAssetPath: "assets/loyalty-program/loyalty-program-icon.svg",
+          title: "PAYMENTS",
+          svgAssetPath: "assets/payments/payment-icon.svg",
           onBackButtonPressed: () {
             Navigator.pop(context);
           },

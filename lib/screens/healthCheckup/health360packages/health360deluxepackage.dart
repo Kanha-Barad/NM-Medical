@@ -2,19 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
-import '../../../widgets/whatsappmessage.dart';
-
+import '../../../widgets/forMoreInformation.dart';
 
 import '../../../widgets/Enquary.dart';
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/customContainer.dart';
 import '../../../widgets/packageinvestmentwidget.dart';
-import '../../../widgets/userdrawer.dart';
 import '../nm_packages/enquire.dart';
 
+String NavPayments = "";
+
 class HealTH360DeluXePackages extends StatefulWidget {
-  const HealTH360DeluXePackages({super.key});
+  HealTH360DeluXePackages(PAymntCD) {
+    NavPayments = "";
+    NavPayments = PAymntCD;
+  }
 
   @override
   State<HealTH360DeluXePackages> createState() =>
@@ -24,7 +27,7 @@ class HealTH360DeluXePackages extends StatefulWidget {
 final value = NumberFormat("#,##0", "en_US");
 
 class _HealTH360DeluXePackagesState extends State<HealTH360DeluXePackages> {
-   bool isUserProfileIconClicked = false;
+  bool isUserProfileIconClicked = false;
 
   // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
@@ -32,11 +35,16 @@ class _HealTH360DeluXePackagesState extends State<HealTH360DeluXePackages> {
       isUserProfileIconClicked = true;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("HM", "",onUserProfileIconTap: handleUserProfileIconTap,),
-     endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      appBar: BasicAppbar(
+        "HM",
+        "",
+        onUserProfileIconTap: handleUserProfileIconTap,
+      ),
+      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -307,9 +315,11 @@ class _HealTH360DeluXePackagesState extends State<HealTH360DeluXePackages> {
           child: Image.asset("assets/health-360/health360-deluxe-image.jpg"),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        WhatsApp(context)
+        FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: NavPayments,
+      ),
     );
   }
 }

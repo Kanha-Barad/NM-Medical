@@ -4,12 +4,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:io' show Platform;
 
-void openWhatsapp(
-    {required BuildContext context,
-    required String text,
-    required String number}) async {
-  var whatsapp = number; //+92xx enter like this
-  var whatsappURlAndroid = "whatsapp://send?phone=" + whatsapp + "&text=$text";
+void openWhatsapp({
+  required BuildContext context,
+  required String text,
+  required String number,
+}) async {
+  var whatsapp = number;
+//  var encodedText = Uri.encodeComponent(text);
   var whatsappURLIos =
       "https://wa.me/$whatsapp?text=${Uri.encodeComponent(text)}"; // Use Uri.encodeComponent(text) for iOS
   if (Platform.isIOS) {
@@ -22,18 +23,22 @@ void openWhatsapp(
           const SnackBar(content: Text("Whatsapp not installed")));
     }
   } else {
-    // android , web
-    if (await canLaunch(Uri.dataFromString(whatsappURlAndroid).toString())) {
-      await launch(Uri.dataFromString(whatsappURlAndroid)
-          .toString()); // Use Uri.dataFromString()
+    // For Android and other platforms, use the web URL
+    var whatsappURL =
+        "https://wa.me/$whatsapp?text=${Uri.encodeComponent(text)}";
+    print("FormoreInformation URL: $whatsappURL"); // Add this line to print the URL
+
+    if (await canLaunch(whatsappURL)) {
+      await launch(whatsappURL);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Whatsapp is not installed")));
+        const SnackBar(content: Text("Whatsapp is not installed")),
+      );
     }
   }
 }
 
-Widget WhatsApp(BuildContext context) => Padding(
+Widget FormoreInformation(BuildContext context) => Padding(
       padding: const EdgeInsets.fromLTRB(15, 8, 15, 12),
       child: RichText(
           text: TextSpan(children: [
@@ -61,7 +66,7 @@ Widget WhatsApp(BuildContext context) => Padding(
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 openWhatsapp(
-                    context: context, text: '', number: '+919256855758');
+                    context: context, text: '', number: '9256855758');
               }),
         TextSpan(
             text: ' or visit ',

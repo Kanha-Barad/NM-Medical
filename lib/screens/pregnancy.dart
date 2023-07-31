@@ -5,7 +5,6 @@ import '../widgets/app_drawer.dart';
 import '../widgets/basic_appbar.dart';
 import '../widgets/bottom_navigation.dart';
 import '../widgets/customContainer.dart';
-import '../widgets/userdrawer.dart';
 import 'Pregnancy/bloodtest.dart';
 import 'Pregnancy/nine_month.dart';
 import 'Pregnancy/sonography.dart';
@@ -81,7 +80,7 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                   ),
                 ]))
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
 import 'package:nmmedical/widgets/customContainer.dart';
-import 'package:nmmedical/widgets/whatsappmessage.dart';
+import 'package:nmmedical/widgets/forMoreInformation.dart';
 
 import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
-import '../../widgets/userdrawer.dart';
 
 String radIOLogYTEstCArt = "";
 
@@ -198,9 +197,9 @@ class _RadiologyState extends State<Radiology> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        WhatsApp(context)
+        FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

@@ -8,12 +8,16 @@ import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/bottom_navigation.dart';
 import '../../../widgets/customContainer.dart';
 import '../../../widgets/packageinvestmentwidget.dart';
-import '../../../widgets/userdrawer.dart';
-import '../../../widgets/whatsappmessage.dart';
+import '../../../widgets/forMoreInformation.dart';
 import '../nm_packages/enquire.dart';
 
+String navPAYMentCd = "";
+
 class WholEBoDYMRIPackAgeS extends StatefulWidget {
-  const WholEBoDYMRIPackAgeS({Key? key}) : super(key: key);
+  WholEBoDYMRIPackAgeS(payMNTCD) {
+    navPAYMentCd = "";
+    navPAYMentCd = payMNTCD;
+  }
 
   @override
   State<WholEBoDYMRIPackAgeS> createState() => _WholEBoDYMRIPackAgeSState();
@@ -22,7 +26,7 @@ class WholEBoDYMRIPackAgeS extends StatefulWidget {
 final value = NumberFormat("#,##0", "en_US");
 
 class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
- bool isUserProfileIconClicked = false;
+  bool isUserProfileIconClicked = false;
 
   // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
@@ -34,7 +38,8 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      appBar:
+          BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
       endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
@@ -463,9 +468,11 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
           ),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        WhatsApp(context)
+        FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: navPAYMentCd,
+      ),
     );
   }
 }

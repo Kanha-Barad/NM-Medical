@@ -15,7 +15,6 @@ import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
 import '../../widgets/customContainer.dart';
-import '../../widgets/userdrawer.dart';
 import 'nm_packages/primary.dart';
 
 class NMHealthCheckUP extends StatefulWidget {
@@ -191,7 +190,7 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                       )),
                 ]))
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

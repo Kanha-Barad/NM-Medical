@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nmmedical/widgets/customContainer.dart';
 import 'package:nmmedical/widgets/thankyouscreen.dart';
-import 'package:nmmedical/widgets/userdrawer.dart';
 
 import 'Enquary.dart';
 import 'app_drawer.dart';
@@ -435,7 +434,7 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
           ),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

@@ -4,7 +4,6 @@ import '../bottom_navigation.dart';
 
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
-import '../userdrawer.dart';
 
 class savechangepin extends StatefulWidget {
   const savechangepin({Key? key}) : super(key: key);
@@ -112,7 +111,7 @@ class _savechangepinState extends State<savechangepin> {
           ),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

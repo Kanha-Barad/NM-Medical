@@ -8,9 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/customContainer.dart';
-import '../../../widgets/userdrawer.dart';
-import '../../../widgets/forMOreInFormationWIdget.dart';
-import '../../../widgets/whatsappmessage.dart';
+import '../../../widgets/forMoreInformation.dart';
 
 class ComparePackage extends StatefulWidget {
   const ComparePackage({Key? key}) : super(key: key);
@@ -1836,7 +1834,7 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                     ),
                   ),
                   Divider(indent: 10, endIndent: 10, thickness: 1),
-                  WhatsApp(context)
+                  FormoreInformation(context)
                   // ... Your other widgets ...
                 ],
               ),
@@ -1844,7 +1842,7 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
           ),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

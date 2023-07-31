@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
 import 'package:nmmedical/widgets/locations/locationbangalore.dart';
-import 'package:nmmedical/widgets/userdrawer.dart';
 
 import 'IconTextWidget.dart';
 import 'app_drawer.dart';
@@ -88,7 +87,7 @@ class _loCaTiOnState extends State<loCaTiOn> {
                   ),
                 ])),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

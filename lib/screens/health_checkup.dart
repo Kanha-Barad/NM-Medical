@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/customContainer.dart';
-import 'package:nmmedical/widgets/userdrawer.dart';
 
 import '../widgets/app_drawer.dart';
 import '../widgets/basic_appbar.dart';
@@ -105,7 +104,7 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Health360("HM")));
+                            builder: (context) => Health360("HM","BNP")));
                   },
                   child: Card(
                     shape: RoundedRectangleBorder(
@@ -173,7 +172,7 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
               )),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

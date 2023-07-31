@@ -6,8 +6,7 @@ import 'package:video_player/video_player.dart';
 import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/customContainer.dart';
-import '../../widgets/userdrawer.dart';
-import '../../widgets/whatsappmessage.dart';
+import '../../widgets/forMoreInformation.dart';
 
 String pathOLOGYTestCart = "";
 
@@ -99,9 +98,9 @@ bool isUserProfileIconClicked = false;
           endIndent: 15,
           thickness: 1.5,
         ),
-        WhatsApp(context)
+        FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

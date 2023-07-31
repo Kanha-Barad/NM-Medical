@@ -4,13 +4,12 @@ import 'package:intl/intl.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
 import 'package:nmmedical/widgets/customContainer.dart';
 import 'package:nmmedical/widgets/packageinvestmentwidget.dart';
-import '../../../widgets/whatsappmessage.dart';
+import '../../../widgets/forMoreInformation.dart';
 
 
 import '../../../widgets/Enquary.dart';
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
-import '../../../widgets/userdrawer.dart';
 import '../nm_packages/enquire.dart';
 
 class ExeCUtIVePackages extends StatefulWidget {
@@ -502,9 +501,9 @@ class _ExeCUtIVePackagesState extends State<ExeCUtIVePackages> {
           ),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        WhatsApp(context)
+        FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

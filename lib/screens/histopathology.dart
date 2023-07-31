@@ -8,7 +8,6 @@ import '../widgets/app_drawer.dart';
 import '../widgets/basic_appbar.dart';
 import '../widgets/bottom_navigation.dart';
 import '../widgets/customContainer.dart';
-import '../widgets/userdrawer.dart';
 import 'histopathology/primary.dart';
 import 'histopathology/secondary.dart';
 
@@ -109,7 +108,7 @@ class _HistopathologyState extends State<Histopathology> {
                   ),
                 ]))
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

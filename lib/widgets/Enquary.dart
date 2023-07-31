@@ -6,7 +6,6 @@ import 'package:nmmedical/widgets/customContainer.dart';
 import 'app_drawer.dart';
 import 'basic_appbar.dart';
 import 'thankyouscreen.dart';
-import 'userdrawer.dart';
 
 class EnQUiry extends StatefulWidget {
   const EnQUiry({super.key});
@@ -271,7 +270,7 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
           ),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

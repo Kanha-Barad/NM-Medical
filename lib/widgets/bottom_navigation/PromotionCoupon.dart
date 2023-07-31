@@ -4,7 +4,6 @@ import 'package:nmmedical/widgets/bottom_navigation.dart';
 
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
-import '../../../widgets/userdrawer.dart';
 import '../customContainer.dart';
 import '../thankyouscreen.dart';
 
@@ -222,7 +221,7 @@ class _PRomoTioNCouPONState extends State<PRomoTioNCouPON> {
           ),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

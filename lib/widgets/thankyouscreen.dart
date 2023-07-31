@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/customContainer.dart';
-import 'package:nmmedical/widgets/userdrawer.dart';
 
 import 'app_drawer.dart';
 import 'basic_appbar.dart';
@@ -134,7 +133,7 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
         //   endIndent: 10,
         // ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

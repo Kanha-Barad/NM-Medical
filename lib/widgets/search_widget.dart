@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:nmmedical/widgets/cart_widget.dart';
-import 'package:nmmedical/widgets/userdrawer.dart';
 
 import 'Enquary.dart';
 import 'app_drawer.dart';
@@ -31,7 +30,6 @@ class _searchwidgetState extends State<searchwidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: BasicAppbar("","",onUserProfileIconTap: handleUserProfileIconTap,),
-        drawer: userDrawer(),
         endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked,),
         body: SingleChildScrollView(
             child: Column(children: [
@@ -439,6 +437,6 @@ class _searchwidgetState extends State<searchwidget> {
             ),
           ),
         ])),
-        bottomNavigationBar: AllBottomNavigationBar());
+        bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',));
   }
 }

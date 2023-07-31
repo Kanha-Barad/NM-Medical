@@ -6,7 +6,6 @@ import 'package:nmmedical/widgets/bottom_navigation.dart';
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../customContainer.dart';
-import '../userdrawer.dart';
 
 class SelectBangalore extends StatefulWidget {
   const SelectBangalore({super.key});
@@ -196,7 +195,7 @@ class _SelectBangaloreState extends State<SelectBangalore> {
           ),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

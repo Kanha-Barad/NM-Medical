@@ -7,7 +7,6 @@ import 'package:nmmedical/widgets/phoneCallwidget.dart';
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../customContainer.dart';
-import '../userdrawer.dart';
 
 class SelectBangaloreGallery extends StatefulWidget {
   const SelectBangaloreGallery({super.key});
@@ -161,7 +160,7 @@ class _SelectBangaloreGalleryState extends State<SelectBangaloreGallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(phoneNumber: "+91 22 4342 5555")
+                      PhoneCallWidget(phoneNumber: "+91 22 4342 5555")
                     ],
                   ),
                 )
@@ -170,7 +169,7 @@ class _SelectBangaloreGalleryState extends State<SelectBangaloreGallery> {
           ),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

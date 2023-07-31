@@ -7,7 +7,6 @@ import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../customContainer.dart';
 import '../phoneCallwidget.dart';
-import '../userdrawer.dart';
 
 class SelectMumbaigallery extends StatefulWidget {
   const SelectMumbaigallery({Key? key}) : super(key: key);
@@ -206,7 +205,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 992 029 9205',
                       )
                     ],
@@ -285,7 +284,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 22 4907 9999',
                       )
                     ],
@@ -364,7 +363,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 22 4907 9999',
                       )
                     ],
@@ -443,7 +442,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 22 4342 5555',
                       )
                     ],
@@ -522,7 +521,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 22 4966 2222',
                       )
                     ],
@@ -601,7 +600,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 84337 36456',
                       )
                     ],
@@ -680,7 +679,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 22 4342 6666',
                       )
                     ],
@@ -759,7 +758,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 22 4342 8888',
                       )
                     ],
@@ -838,7 +837,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 22 4613 2222',
                       )
                     ],
@@ -917,7 +916,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 22 4613 3333',
                       )
                     ],
@@ -996,7 +995,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 22 4342 4444',
                       )
                     ],
@@ -1075,7 +1074,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 22 4342 7777',
                       )
                     ],
@@ -1154,7 +1153,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 000 000 0000',
                       )
                     ],
@@ -1233,7 +1232,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
                           ),
                         ),
                       ),
-                      PhoneNumberWidget(
+                      PhoneCallWidget(
                         phoneNumber: '+91 86574 14376',
                       )
                     ],
@@ -1244,7 +1243,7 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
           ),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

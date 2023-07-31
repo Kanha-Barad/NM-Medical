@@ -8,9 +8,7 @@ import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/bottom_navigation.dart';
 import '../../../widgets/customContainer.dart';
 import '../../../widgets/packageinvestmentwidget.dart';
-import '../../../widgets/userdrawer.dart';
-import '../../../widgets/forMOreInFormationWIdget.dart';
-import '../../../widgets/whatsappmessage.dart';
+import '../../../widgets/forMoreInformation.dart';
 import 'enquire.dart';
 
 class WholeBoDyMRI extends StatefulWidget {
@@ -337,9 +335,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                   fontWeight: FontWeight.w500)),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        WhatsApp(context)
+        FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }

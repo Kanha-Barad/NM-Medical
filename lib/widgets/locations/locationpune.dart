@@ -6,7 +6,6 @@ import 'package:nmmedical/widgets/bottom_navigation.dart';
 import '../app_drawer.dart';
 import '../basic_appbar.dart';
 import '../customContainer.dart';
-import '../userdrawer.dart';
 
 class SelectPuneLocation extends StatefulWidget {
   const SelectPuneLocation({super.key});
@@ -299,7 +298,7 @@ class _SelectPuneLocationState extends State<SelectPuneLocation> {
           ),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(),
+      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
     );
   }
 }
