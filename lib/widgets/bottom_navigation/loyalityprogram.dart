@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
 import '../forMoreInformation.dart';
 
-
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../customContainer.dart';
@@ -17,18 +16,35 @@ class LoYALityPROgraM extends StatefulWidget {
 
 class _LoYALityPROgraMState extends State<LoYALityPROgraM> {
   bool isUserProfileIconClicked = false;
+  bool isMenuClicked = false;
 
-  // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
     setState(() {
       isUserProfileIconClicked = true;
+      isMenuClicked = false; // Reset menu icon click state
     });
   }
+
+  // Function to handle menu icon tap
+  void handleMenuIconTap() {
+    setState(() {
+      isMenuClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("","",onUserProfileIconTap: handleUserProfileIconTap,),
-     endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      appBar: BasicAppbar(
+        "",
+        "",
+        onUserProfileIconTap: handleUserProfileIconTap,
+        onMenuIconTap: handleMenuIconTap,
+      ),
+      endDrawer: AppDrawer(
+        isUserIconClicked: isUserProfileIconClicked,
+        isMenuIconClicked: isMenuClicked,
+      ),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -50,7 +66,9 @@ class _LoYALityPROgraMState extends State<LoYALityPROgraM> {
         ),
         FormoreInformation(context),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: '',
+      ),
     );
   }
 }

@@ -9,9 +9,11 @@ import 'cart_widget.dart';
 class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String appBarImg;
   final String teSTCarT;
-    final VoidCallback onUserProfileIconTap;
+  final VoidCallback onUserProfileIconTap;
+  final VoidCallback onMenuIconTap; // New callback for menu icon tap
 
-  BasicAppbar(this.appBarImg, this.teSTCarT,{required this.onUserProfileIconTap});
+  BasicAppbar(this.appBarImg, this.teSTCarT,
+      {required this.onUserProfileIconTap, required this.onMenuIconTap});
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
@@ -40,19 +42,21 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
       //   ],
       // ),
       title: Row(
-       // mainAxisAlignment: MainAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 0, bottom: 1),
             child: SizedBox(
-                width: 54,height: 54,
+                width: 54,
+                height: 54,
                 child: SvgPicture.asset("assets/images/nm-logo.svg")),
           ),
           if (appBarImg == "HM")
             Padding(
               padding: const EdgeInsets.only(left: 1, bottom: 2),
               child: SizedBox(
-                  width: 54,height: 40,
+                  width: 54,
+                  height: 40,
                   child: SvgPicture.asset("assets/images/health-360-logo.svg")),
             ),
           Spacer(),
@@ -122,6 +126,7 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
           builder: (context) => IconButton(
             icon: SvgPicture.asset("assets/header-icons/menu-icon.svg"),
             onPressed: () {
+              onMenuIconTap();
               Scaffold.of(context).openEndDrawer(); // Open the end drawer
             },
           ),

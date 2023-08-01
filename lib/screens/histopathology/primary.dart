@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/forMoreInformation.dart';
 
-
 import '../../widgets/app_drawer.dart';
 import '../../widgets/basic_appbar.dart';
 import '../../widgets/bottom_navigation.dart';
@@ -15,20 +14,36 @@ class PriMARY extends StatefulWidget {
 }
 
 class _PriMARYState extends State<PriMARY> {
- bool isUserProfileIconClicked = false;
+  bool isUserProfileIconClicked = false;
+  bool isMenuClicked = false;
 
-  // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
     setState(() {
       isUserProfileIconClicked = true;
+      isMenuClicked = false; // Reset menu icon click state
+    });
+  }
+
+  // Function to handle menu icon tap
+  void handleMenuIconTap() {
+    setState(() {
+      isMenuClicked = true;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
-      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      appBar: BasicAppbar(
+        "",
+        "",
+        onUserProfileIconTap: handleUserProfileIconTap,
+        onMenuIconTap: handleMenuIconTap,
+      ),
+      endDrawer: AppDrawer(
+        isUserIconClicked: isUserProfileIconClicked,
+        isMenuIconClicked: isMenuClicked,
+      ),
       body: SingleChildScrollView(
           child: Column(children: [
         CustomContainerBar(
@@ -50,7 +65,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
         ),
         FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: '',
+      ),
     );
   }
 }

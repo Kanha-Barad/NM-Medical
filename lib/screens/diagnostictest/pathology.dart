@@ -39,19 +39,37 @@ class _PathologyState extends State<Pathology> {
     controller.dispose();
     super.dispose();
   }
-bool isUserProfileIconClicked = false;
 
-  // Function to handle user-profile icon tap
+  bool isUserProfileIconClicked = false;
+  bool isMenuClicked = false;
+
   void handleUserProfileIconTap() {
     setState(() {
       isUserProfileIconClicked = true;
+      isMenuClicked = false; // Reset menu icon click state
     });
   }
+
+  // Function to handle menu icon tap
+  void handleMenuIconTap() {
+    setState(() {
+      isMenuClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("", pathOLOGYTestCart, onUserProfileIconTap: handleUserProfileIconTap),
-      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      appBar: BasicAppbar(
+        "",
+        pathOLOGYTestCart,
+        onUserProfileIconTap: handleUserProfileIconTap,
+        onMenuIconTap: handleMenuIconTap,
+      ),
+      endDrawer: AppDrawer(
+        isUserIconClicked: isUserProfileIconClicked,
+        isMenuIconClicked: isMenuClicked,
+      ),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -100,7 +118,9 @@ bool isUserProfileIconClicked = false;
         ),
         FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: '',
+      ),
     );
   }
 }

@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
 import '../../../widgets/forMoreInformation.dart';
 
-
 import '../../../widgets/Enquary.dart';
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
@@ -22,19 +21,36 @@ class ExeCUtIVePlUSPackages extends StatefulWidget {
 final value = NumberFormat("#,##0", "en_US");
 
 class _ExeCUtIVePlUSPackagesState extends State<ExeCUtIVePlUSPackages> {
-   bool isUserProfileIconClicked = false;
+  bool isUserProfileIconClicked = false;
+  bool isMenuClicked = false;
 
-  // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
     setState(() {
       isUserProfileIconClicked = true;
+      isMenuClicked = false; // Reset menu icon click state
     });
   }
+
+  // Function to handle menu icon tap
+  void handleMenuIconTap() {
+    setState(() {
+      isMenuClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar("HM", "",onUserProfileIconTap: handleUserProfileIconTap,),
-     endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      appBar: BasicAppbar(
+        "HM",
+        "",
+        onUserProfileIconTap: handleUserProfileIconTap,
+        onMenuIconTap: handleMenuIconTap,
+      ),
+      endDrawer: AppDrawer(
+        isUserIconClicked: isUserProfileIconClicked,
+        isMenuIconClicked: isMenuClicked,
+      ),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -564,7 +580,9 @@ class _ExeCUtIVePlUSPackagesState extends State<ExeCUtIVePlUSPackages> {
         Divider(indent: 10, endIndent: 10, thickness: 1),
         FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: '',
+      ),
     );
   }
 }

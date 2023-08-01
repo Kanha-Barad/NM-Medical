@@ -29,20 +29,36 @@ class DiagnosticTests extends StatefulWidget {
 }
 
 class _DiagnosticTestsState extends State<DiagnosticTests> {
-   bool isUserProfileIconClicked = false;
+  bool isUserProfileIconClicked = false;
+  bool isMenuClicked = false;
 
-  // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
     setState(() {
       isUserProfileIconClicked = true;
+      isMenuClicked = false; // Reset menu icon click state
     });
   }
+
+  // Function to handle menu icon tap
+  void handleMenuIconTap() {
+    setState(() {
+      isMenuClicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: BasicAppbar("", DiagnosticTestCArt,onUserProfileIconTap: handleUserProfileIconTap,),
-        
-        endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked,),
+        appBar: BasicAppbar(
+          "",
+          DiagnosticTestCArt,
+          onUserProfileIconTap: handleUserProfileIconTap,
+          onMenuIconTap: handleMenuIconTap,
+        ),
+        endDrawer: AppDrawer(
+          isUserIconClicked: isUserProfileIconClicked,
+          isMenuIconClicked: isMenuClicked,
+        ),
         body: SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -195,6 +211,8 @@ class _DiagnosticTestsState extends State<DiagnosticTests> {
                         ),
                       ]))
             ])),
-        bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',));
+        bottomNavigationBar: AllBottomNavigationBar(
+          payMNETNAv: '',
+        ));
   }
 }

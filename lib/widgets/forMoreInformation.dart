@@ -26,7 +26,8 @@ void openWhatsapp({
     // For Android and other platforms, use the web URL
     var whatsappURL =
         "https://wa.me/$whatsapp?text=${Uri.encodeComponent(text)}";
-    print("FormoreInformation URL: $whatsappURL"); // Add this line to print the URL
+    print(
+        "FormoreInformation URL: $whatsappURL"); // Add this line to print the URL
 
     if (await canLaunch(whatsappURL)) {
       await launch(whatsappURL);
@@ -65,8 +66,7 @@ Widget FormoreInformation(BuildContext context) => Padding(
                 decoration: TextDecoration.underline),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                openWhatsapp(
-                    context: context, text: '', number: '9256855758');
+                openWhatsapp(context: context, text: '', number: '9256855758');
               }),
         TextSpan(
             text: ' or visit ',

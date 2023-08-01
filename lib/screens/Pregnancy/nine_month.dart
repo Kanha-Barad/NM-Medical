@@ -18,20 +18,35 @@ class NIneMonTH extends StatefulWidget {
 
 class _NIneMonTHState extends State<NIneMonTH> {
   bool isUserProfileIconClicked = false;
+  bool isMenuClicked = false;
 
-  // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
     setState(() {
       isUserProfileIconClicked = true;
+      isMenuClicked = false; // Reset menu icon click state
+    });
+  }
+
+  // Function to handle menu icon tap
+  void handleMenuIconTap() {
+    setState(() {
+      isMenuClicked = true;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
-      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      appBar: BasicAppbar(
+        "",
+        "",
+        onUserProfileIconTap: handleUserProfileIconTap,
+        onMenuIconTap: handleMenuIconTap,
+      ),
+      endDrawer: AppDrawer(
+        isUserIconClicked: isUserProfileIconClicked,
+        isMenuIconClicked: isMenuClicked,
+      ),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -129,11 +144,10 @@ class _NIneMonTHState extends State<NIneMonTH> {
             children: [
               SvgPicture.asset("assets/24-7-support/mobile-icon.svg"),
               Padding(
-                padding: const EdgeInsets.only(left: 6.0),
-                child: PhoneCallWidget(
-                      phoneNumber: '9821139999',
-                    )
-              ),
+                  padding: const EdgeInsets.only(left: 6.0),
+                  child: PhoneCallWidget(
+                    phoneNumber: '9821139999',
+                  )),
             ],
           ),
         ),
