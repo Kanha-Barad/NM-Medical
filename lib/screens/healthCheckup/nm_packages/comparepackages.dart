@@ -23,20 +23,36 @@ final pdfController = PdfController(
 );
 
 class _ComparePackageState extends State<ComparePackage> {
- bool isUserProfileIconClicked = false;
+  bool isUserProfileIconClicked = false;
+  bool isMenuClicked = false;
 
-  // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
     setState(() {
       isUserProfileIconClicked = true;
+      isMenuClicked = false; // Reset menu icon click state
+    });
+  }
+
+  // Function to handle menu icon tap
+  void handleMenuIconTap() {
+    setState(() {
+      isMenuClicked = true;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
-      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      appBar: BasicAppbar(
+        "",
+        "",
+        onUserProfileIconTap: handleUserProfileIconTap,
+        onMenuIconTap: handleMenuIconTap,
+      ),
+      endDrawer: AppDrawer(
+        isUserIconClicked: isUserProfileIconClicked,
+        isMenuIconClicked: isMenuClicked,
+      ),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -1823,10 +1839,11 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50)),
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 13, 20, 13),
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 13, 20, 13),
                               child: Text("COMPARE PACKAGES BOOKLET",
                                   style: TextStyle(
-                                    fontSize: 15,
+                                      fontSize: 15,
                                       color: Colors.white,
                                       fontWeight: FontWeight.w500)),
                             )),
@@ -1842,7 +1859,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
           ),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: '',
+      ),
     );
   }
 }

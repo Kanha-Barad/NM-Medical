@@ -24,11 +24,19 @@ class _SelectPuneGalleryState extends State<SelectPuneGallery> {
   String selectedValue1 = 'Pune';
 
   bool isUserProfileIconClicked = false;
+  bool isMenuClicked = false;
 
-  // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
     setState(() {
       isUserProfileIconClicked = true;
+      isMenuClicked = false; // Reset menu icon click state
+    });
+  }
+
+  // Function to handle menu icon tap
+  void handleMenuIconTap() {
+    setState(() {
+      isMenuClicked = true;
     });
   }
 
@@ -39,8 +47,12 @@ class _SelectPuneGalleryState extends State<SelectPuneGallery> {
         "",
         "",
         onUserProfileIconTap: handleUserProfileIconTap,
+        onMenuIconTap: handleMenuIconTap,
       ),
-      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      endDrawer: AppDrawer(
+        isUserIconClicked: isUserProfileIconClicked,
+        isMenuIconClicked: isMenuClicked,
+      ),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -256,7 +268,9 @@ class _SelectPuneGalleryState extends State<SelectPuneGallery> {
           ),
         ),
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: '',
+      ),
     );
   }
 }

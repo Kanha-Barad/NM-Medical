@@ -17,10 +17,19 @@ class PRomoTioNCouPON extends StatefulWidget {
 class _PRomoTioNCouPONState extends State<PRomoTioNCouPON> {
   bool isUserProfileIconClicked = false;
 
-  // Function to handle user-profile icon tap
+  bool isMenuClicked = false;
+
   void handleUserProfileIconTap() {
     setState(() {
       isUserProfileIconClicked = true;
+      isMenuClicked = false; // Reset menu icon click state
+    });
+  }
+
+  // Function to handle menu icon tap
+  void handleMenuIconTap() {
+    setState(() {
+      isMenuClicked = true;
     });
   }
 
@@ -31,8 +40,12 @@ class _PRomoTioNCouPONState extends State<PRomoTioNCouPON> {
         "",
         "",
         onUserProfileIconTap: handleUserProfileIconTap,
+        onMenuIconTap: handleMenuIconTap,
       ),
-      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      endDrawer: AppDrawer(
+        isUserIconClicked: isUserProfileIconClicked,
+        isMenuIconClicked: isMenuClicked,
+      ),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -221,7 +234,9 @@ class _PRomoTioNCouPONState extends State<PRomoTioNCouPON> {
           ),
         )
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: '',
+      ),
     );
   }
 }

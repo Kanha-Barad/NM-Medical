@@ -19,9 +19,10 @@ import 'userdrawer/myenquiry.dart';
 import 'userdrawer/profile.dart';
 
 class AppDrawer extends StatefulWidget {
-  final bool isUserIconClicked;
+  late bool isUserIconClicked;
+  late bool isMenuIconClicked;
 
-  AppDrawer({required this.isUserIconClicked});
+  AppDrawer({required this.isUserIconClicked, required this.isMenuIconClicked});
 
   @override
   State<AppDrawer> createState() => _AppDrawerState();
@@ -45,7 +46,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 )),
           ],
         ),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(context,
@@ -59,7 +60,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(
@@ -76,7 +77,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(context,
@@ -91,7 +92,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(context,
@@ -105,7 +106,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(context,
@@ -119,7 +120,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(context,
@@ -133,7 +134,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(
@@ -150,7 +151,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(context,
@@ -164,7 +165,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(context,
@@ -178,7 +179,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(
@@ -195,7 +196,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(context,
@@ -209,7 +210,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (!widget.isUserIconClicked)
+        if (widget.isMenuIconClicked)
           ListTile(
               onTap: () {
                 Navigator.push(context,
@@ -224,8 +225,9 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 187, 43, 34)),
               )),
-        if (widget
-            .isUserIconClicked) // Show additional items if user icon is clicked
+        if (widget.isUserIconClicked &&
+            !widget
+                .isMenuIconClicked) // Show additional items if user icon is clicked
           ListTile(
             onTap: () {
               Navigator.push(context,
@@ -236,8 +238,9 @@ class _AppDrawerState extends State<AppDrawer> {
             title: const Text("Dashboard"),
             textColor: Color.fromARGB(255, 187, 29, 17),
           ),
-        if (widget
-            .isUserIconClicked) // Show additional items if user icon is clicked
+        if (widget.isUserIconClicked &&
+            !widget
+                .isMenuIconClicked) // Show additional items if user icon is clicked
           ListTile(
             onTap: () {
               Navigator.push(
@@ -247,8 +250,9 @@ class _AppDrawerState extends State<AppDrawer> {
             title: const Text("Profile"),
             textColor: Color.fromARGB(255, 187, 29, 17),
           ),
-        if (widget
-            .isUserIconClicked) // Show additional items if user icon is clicked
+        if (widget.isUserIconClicked &&
+            !widget
+                .isMenuIconClicked) // Show additional items if user icon is clicked
           ListTile(
             onTap: () {
               Navigator.push(
@@ -258,8 +262,9 @@ class _AppDrawerState extends State<AppDrawer> {
             title: const Text("My Enquiry"),
             textColor: Color.fromARGB(255, 187, 29, 17),
           ),
-        if (widget
-            .isUserIconClicked) // Show additional items if user icon is clicked
+        if (widget.isUserIconClicked &&
+            !widget
+                .isMenuIconClicked) // Show additional items if user icon is clicked
           ListTile(
             onTap: () {
               Navigator.push(
@@ -269,8 +274,9 @@ class _AppDrawerState extends State<AppDrawer> {
             title: const Text("Address"),
             textColor: Color.fromARGB(255, 187, 29, 17),
           ),
-        if (widget
-            .isUserIconClicked) // Show additional items if user icon is clicked
+        if (widget.isUserIconClicked &&
+            !widget
+                .isMenuIconClicked) // Show additional items if user icon is clicked
           ListTile(
             onTap: () {},
             leading: SvgPicture.asset("assets/profile-icons/logout-icon.svg"),

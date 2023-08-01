@@ -27,11 +27,19 @@ final value = NumberFormat("#,##0", "en_US");
 
 class _HealTH360PluSPackagesState extends State<HealTH360PluSPackages> {
   bool isUserProfileIconClicked = false;
+  bool isMenuClicked = false;
 
-  // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
     setState(() {
       isUserProfileIconClicked = true;
+      isMenuClicked = false; // Reset menu icon click state
+    });
+  }
+
+  // Function to handle menu icon tap
+  void handleMenuIconTap() {
+    setState(() {
+      isMenuClicked = true;
     });
   }
 
@@ -42,8 +50,12 @@ class _HealTH360PluSPackagesState extends State<HealTH360PluSPackages> {
         "HM",
         "",
         onUserProfileIconTap: handleUserProfileIconTap,
+        onMenuIconTap: handleMenuIconTap,
       ),
-      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      endDrawer: AppDrawer(
+        isUserIconClicked: isUserProfileIconClicked,
+        isMenuIconClicked: isMenuClicked,
+      ),
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

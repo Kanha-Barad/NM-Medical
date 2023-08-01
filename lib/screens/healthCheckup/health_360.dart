@@ -31,10 +31,19 @@ class Health360 extends StatefulWidget {
 class _Health360State extends State<Health360> {
   bool isUserProfileIconClicked = false;
 
-  // Function to handle user-profile icon tap
+  bool isMenuClicked = false;
+
   void handleUserProfileIconTap() {
     setState(() {
       isUserProfileIconClicked = true;
+      isMenuClicked = false; // Reset menu icon click state
+    });
+  }
+
+  // Function to handle menu icon tap
+  void handleMenuIconTap() {
+    setState(() {
+      isMenuClicked = true;
     });
   }
 
@@ -45,8 +54,12 @@ class _Health360State extends State<Health360> {
         AppBarImg,
         "",
         onUserProfileIconTap: handleUserProfileIconTap,
+        onMenuIconTap: handleMenuIconTap,
       ),
-      endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
+      endDrawer: AppDrawer(
+        isUserIconClicked: isUserProfileIconClicked,
+        isMenuIconClicked: isMenuClicked,
+      ),
       body: SingleChildScrollView(
           child: Column(children: [
         CustomContainerBar(
