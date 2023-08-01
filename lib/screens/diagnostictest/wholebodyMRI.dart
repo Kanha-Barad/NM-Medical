@@ -54,15 +54,13 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
         ),
         Padding(
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
-          child: Expanded(
-            child: Text(
-              "It ensures to evaluate all the organs in the body, including head, neck, chest, abdomen, pelvis, musculoskeletal and whole spine. Moreover, it complements other investigations like Sonography and Colour Doppler for a thorough evaluation of any disease.",
-              style: TextStyle(
-                  fontSize: 14,
-                  //color: Colors.black,
-                  fontWeight: FontWeight.w400),
-              softWrap: true,
-            ),
+          child: Text(
+            "It ensures to evaluate all the organs in the body, including head, neck, chest, abdomen, pelvis, musculoskeletal and whole spine. Moreover, it complements other investigations like Sonography and Colour Doppler for a thorough evaluation of any disease.",
+            style: TextStyle(
+                fontSize: 14,
+                //color: Colors.black,
+                fontWeight: FontWeight.w400),
+            softWrap: true,
           ),
         ),
         Divider(

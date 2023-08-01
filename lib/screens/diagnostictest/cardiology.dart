@@ -16,7 +16,7 @@ class Cardiology extends StatefulWidget {
 }
 
 class _CardiologyState extends State<Cardiology> {
- bool isUserProfileIconClicked = false;
+  bool isUserProfileIconClicked = false;
 
   // Function to handle user-profile icon tap
   void handleUserProfileIconTap() {
@@ -28,7 +28,8 @@ class _CardiologyState extends State<Cardiology> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
+      appBar:
+          BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
       endDrawer: AppDrawer(isUserIconClicked: isUserProfileIconClicked),
       body: SingleChildScrollView(
           child:
@@ -57,15 +58,13 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => CardiacCT()));
                   }),
-                  child: Expanded(
-                    child: Text(
-                      "Coronary CT Angio (Cardiac CT)",
-                      style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400),
-                      softWrap: true,
-                    ),
+                  child: Text(
+                    "Coronary CT Angio (Cardiac CT)",
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
+                    softWrap: true,
                   )),
             ],
           ),
@@ -78,11 +77,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              Expanded(
-                child: Text("Cardiac MRI",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                    softWrap: true),
-              ),
+              Text("Cardiac MRI",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  softWrap: true),
             ],
           ),
         ),
@@ -94,12 +91,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              Expanded(
-                  child: Expanded(
-                child: Text("ECG & Stress Test",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                    softWrap: true),
-              )),
+              Text("ECG & Stress Test",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  softWrap: true),
             ],
           ),
         ),
@@ -111,12 +105,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              Expanded(
-                  child: Expanded(
-                child: Text("Sonography and Colour Doppler",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                    softWrap: true),
-              )),
+              Text("Sonography and Colour Doppler",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  softWrap: true),
             ],
           ),
         ),
@@ -129,11 +120,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              Expanded(
-                child: Text("3D & 2D Echo",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                    softWrap: true),
-              ),
+              Text("3D & 2D Echo",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  softWrap: true),
             ],
           ),
         ),
@@ -146,11 +135,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              Expanded(
-                child: Text("Holter Monitoring",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                    softWrap: true),
-              ),
+              Text("Holter Monitoring",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  softWrap: true),
             ],
           ),
         ),
@@ -162,12 +149,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              Expanded(
-                  child: Expanded(
-                child: Text("Ambulatory BP",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                    softWrap: true),
-              )),
+              Text("Ambulatory BP",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  softWrap: true),
             ],
           ),
         ),
@@ -178,7 +162,9 @@ appBar: BasicAppbar("", "", onUserProfileIconTap: handleUserProfileIconTap),
         ),
         FormoreInformation(context)
       ])),
-      bottomNavigationBar: AllBottomNavigationBar(payMNETNAv: '',),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: '',
+      ),
     );
   }
 }
