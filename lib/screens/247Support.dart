@@ -52,7 +52,7 @@ class _SuppoRTState extends State<SuppoRT> {
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text("EXISTING PATIENT",
                     style: TextStyle(
-                        color: Color.fromARGB(255, 218, 75, 65),
+                        color: Color.fromARGB(255, 187, 43, 34),
                         fontWeight: FontWeight.bold,
                         fontSize: 14.0)),
               ),
@@ -111,7 +111,7 @@ class _SuppoRTState extends State<SuppoRT> {
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text("NEW PATIENT",
                     style: TextStyle(
-                        color: Color.fromARGB(255, 218, 75, 65),
+                        color: Color.fromARGB(255, 187, 43, 34),
                         fontWeight: FontWeight.bold,
                         fontSize: 14.0)),
               ),

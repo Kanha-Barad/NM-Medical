@@ -15,8 +15,17 @@ class CustomWidgetInvestmentContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NumberFormat valueFormatter =
-        NumberFormat.currency(locale: 'en_IN', symbol: '\u{20B9}');
+    NumberFormat valueFormatter = NumberFormat.currency(
+      locale: 'en_IN',
+      symbol: '\u{20B9}',
+    );
+
+// Modify the formatter to display the leading 0,000
+    String formattedInvestmentValue =
+        valueFormatter.format(InvestmentValue).replaceAll('.00', '');
+    if (InvestmentValue == 0) {
+      formattedInvestmentValue = '0,000';
+    }
 
     return Container(
       decoration: BoxDecoration(
@@ -42,7 +51,7 @@ class CustomWidgetInvestmentContainer extends StatelessWidget {
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  valueFormatter.format(InvestmentValue).replaceAll('.00', ''),
+                  formattedInvestmentValue,
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
                 ),
               ],
