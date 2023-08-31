@@ -63,7 +63,7 @@ class _BlooDTESTState extends State<BlooDTEST> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context),
+        FormoreInformation(context,""),
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

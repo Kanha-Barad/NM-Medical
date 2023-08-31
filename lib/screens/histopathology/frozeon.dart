@@ -58,16 +58,20 @@ class _FroZEoNState extends State<FroZEoN> {
           child: Image.asset("assets/histopathology/frozeon.jpg"),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 8, 0, 10),
-          child: Text(
-              "Frozen facilities are required to give provisional histopathology diagnosis during a surgical procedure for the surgeon to decide the extent of surgery to be done."),
-        ),
+            padding: const EdgeInsets.fromLTRB(15, 8, 0, 10),
+            child: Text(
+              "Frozen facilities are required to give provisional histopathology diagnosis during a surgical procedure for the surgeon to decide the extent of surgery to be done.",
+              style: TextStyle(
+                fontSize: 14,
+                height: 1.7,
+              ),
+            )),
         Divider(
           indent: 15,
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context)
+        FormoreInformation(context, "")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

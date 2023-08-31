@@ -484,7 +484,7 @@ class _PrimaryPackageDetailsState extends State<PrimaryPackageDetails> {
                   ))),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

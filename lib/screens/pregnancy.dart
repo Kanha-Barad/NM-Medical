@@ -87,7 +87,7 @@ class _PregnancyState extends State<Pregnancy> {
                   InkWell(
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => NIneMonTH()));
+                          MaterialPageRoute(builder: (context) => NIneMonTH("NMTH")));
                     },
                     child: buildIconItem(
                       imageAsset: 'assets/pregnancy/nine-month.svg',

@@ -6,8 +6,16 @@ import 'app_drawer.dart';
 import 'basic_appbar.dart';
 import 'bottom_navigation.dart';
 
+String bill_NUMBER = "";
+String BIll_DATE = "";
+
 class ThankYou extends StatefulWidget {
-  const ThankYou({Key? key}) : super(key: key);
+  ThankYou(bill_no, bill_DT) {
+    bill_NUMBER = "";
+    BIll_DATE = "";
+    bill_NUMBER = bill_no;
+    BIll_DATE = bill_DT;
+  }
 
   @override
   State<ThankYou> createState() => _ThankYouState();
@@ -64,12 +72,12 @@ class _ThankYouState extends State<ThankYou> {
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 70, 10, 4),
           child: Row(
-            children: const [
+            children: [
               Text('Order Number',
                   style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
               Padding(
                 padding: EdgeInsets.only(left: 100.0),
-                child: Text('#55254',
+                child: Text('$bill_NUMBER',
                     style:
                         TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
               )
@@ -84,12 +92,12 @@ class _ThankYouState extends State<ThankYou> {
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 12, 10, 4),
           child: Row(
-            children: const [
+            children: [
               Text('Enquiry Date',
                   style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
               Padding(
                   padding: EdgeInsets.only(left: 108.0),
-                  child: Text('18 Jan 2023',
+                  child: Text('$BIll_DATE',
                       style:
                           TextStyle(fontSize: 12, fontWeight: FontWeight.w500)))
             ],

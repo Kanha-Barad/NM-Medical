@@ -200,7 +200,7 @@ class _HealTH360PluSPackagesState extends State<HealTH360PluSPackages> {
           child: Image.asset("assets/health-360/health360-plus-img.jpg"),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: navPayments,

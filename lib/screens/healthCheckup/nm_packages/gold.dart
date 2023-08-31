@@ -596,7 +596,7 @@ class _GoldPackageDetailsState extends State<GoldPackageDetails> {
                   ))),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

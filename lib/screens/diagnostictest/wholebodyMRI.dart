@@ -75,7 +75,9 @@ class _WholebodyMRIState extends State<WholebodyMRI> {
             style: TextStyle(
                 fontSize: 14,
                 //color: Colors.black,
-                fontWeight: FontWeight.w400),
+                fontWeight: FontWeight.w400,
+                letterSpacing: 0.5,
+                height: 1.8),
             softWrap: true,
           ),
         ),
@@ -84,7 +86,7 @@ class _WholebodyMRIState extends State<WholebodyMRI> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

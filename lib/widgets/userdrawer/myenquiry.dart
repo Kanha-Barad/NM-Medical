@@ -56,6 +56,7 @@ class _MyOrderState extends State<MyOrder> {
         Padding(
           padding: const EdgeInsets.fromLTRB(8, 8, 8, 2),
           child: Card(
+            elevation: 0,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(14),
                 side: const BorderSide(
@@ -157,6 +158,7 @@ class _MyOrderState extends State<MyOrder> {
         Padding(
           padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
           child: Card(
+            elevation: 0,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(14),
                 side: const BorderSide(
@@ -251,6 +253,7 @@ class _MyOrderState extends State<MyOrder> {
         Padding(
           padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
           child: Card(
+            elevation: 0,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(14),
                 side: const BorderSide(

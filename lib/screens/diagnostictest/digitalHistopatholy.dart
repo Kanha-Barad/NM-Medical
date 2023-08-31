@@ -66,6 +66,7 @@ class _DigitalHistopathologyState extends State<DigitalHistopathology> {
               style: TextStyle(
                   fontSize: 14,
                   color: Colors.black,
+                  height: 1.7,
                   fontWeight: FontWeight.w400)),
         ),
         Divider(
@@ -73,7 +74,7 @@ class _DigitalHistopathologyState extends State<DigitalHistopathology> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

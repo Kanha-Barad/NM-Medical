@@ -62,7 +62,7 @@ class _GeneticTestingState extends State<GeneticTesting> {
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text("The Future is Here",
               style: TextStyle(
-                  fontSize: 14,
+                  //fontSize: 14,
                   // color: Colors.black87,
                   fontWeight: FontWeight.bold)),
         ),
@@ -81,7 +81,7 @@ class _GeneticTestingState extends State<GeneticTesting> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

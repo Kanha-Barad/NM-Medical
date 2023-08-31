@@ -58,14 +58,19 @@ class _ORderingDiGitalSLidesState extends State<ORderingDiGitalSLides> {
         Padding(
           padding: const EdgeInsets.fromLTRB(15, 20, 0, 10),
           child: Text(
-              "Technology allows to store the slide digitaly to protrect braking of glass slide and also to prebvent image quality detoarity with time."),
+            "Technology allows to store the slide digitaly to protrect braking of glass slide and also to prebvent image quality detoarity with time.",
+            style: TextStyle(
+              fontSize: 14,
+              height: 1.7,
+            ),
+          ),
         ),
         Divider(
           indent: 15,
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context)
+        FormoreInformation(context, "")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

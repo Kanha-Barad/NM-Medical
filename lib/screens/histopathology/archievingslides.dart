@@ -57,14 +57,19 @@ class _ARchievingTheSLidesState extends State<ARchievingTheSLides> {
         Padding(
           padding: const EdgeInsets.fromLTRB(15, 20, 0, 10),
           child: Text(
-              "Digitaly stored slide can be archived remotely by using username and password."),
+            "Digitaly stored slide can be archived remotely by using username and password.",
+            style: TextStyle(
+              fontSize: 14,
+              height: 1.7,
+            ),
+          ),
         ),
         Divider(
           indent: 15,
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context)
+        FormoreInformation(context, "")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

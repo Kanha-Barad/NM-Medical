@@ -62,6 +62,7 @@ class _MolecularPathologyState extends State<MolecularPathology> {
               "Infectious diseases are caused by infectious organisms either viral, Bacterial, fungal or Parasitic.",
               style: TextStyle(
                   fontSize: 14,
+                  height: 1.7,
                   color: Colors.black,
                   fontWeight: FontWeight.w400)),
         ),
@@ -172,11 +173,17 @@ class _MolecularPathologyState extends State<MolecularPathology> {
               children: [
                 Text(
                     "Neurology, Cardiology, Diabetes & Obesity, Orthopaedics & Sports,",
-                    style: TextStyle(fontSize: 14)),
+                    style: TextStyle(
+                      fontSize: 14,
+                      height: 1.4,
+                    )),
                 Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: Text("Dermatology : Skin & Hair, Gastroenterology",
-                        style: TextStyle(fontSize: 14))),
+                        style: TextStyle(
+                          fontSize: 14,
+                          height: 1.4,
+                        ))),
               ],
             ),
           ),
@@ -201,7 +208,7 @@ class _MolecularPathologyState extends State<MolecularPathology> {
             padding: const EdgeInsets.only(top: 8.0, left: 16),
             child: Text(
                 "NIPT, Carrier Screening, Bad Obstetric History, Recurrent Miscarriage, IVF Response, Preimplantation Genetic Response",
-                style: TextStyle(fontSize: 14)),
+                style: TextStyle(fontSize: 14, height: 1.4)),
           ),
         ),
         Divider(
@@ -223,7 +230,7 @@ class _MolecularPathologyState extends State<MolecularPathology> {
             padding: const EdgeInsets.only(top: 8.0, left: 29),
             child: Text(
                 "Breast & Ovarian Cancer, Thyroid Cancer, Lung Cancer, Colorectal Cancer, Cancer Hotspots, Myeloid Panels, Liquid Biopsy",
-                style: TextStyle(fontSize: 14)),
+                style: TextStyle(fontSize: 14, height: 1.4)),
           ),
         ),
         Divider(
@@ -242,9 +249,7 @@ class _MolecularPathologyState extends State<MolecularPathology> {
             padding: const EdgeInsets.only(top: 8.0),
             child: Text(
                 "Health Predisposition Cancer Risk, Diet & Nutrition, Fitness & Sports, Hair & Skin, Healthy Child",
-                style: TextStyle(
-                  fontSize: 14,
-                )),
+                style: TextStyle(fontSize: 14, height: 1.4)),
           ),
         ),
 
@@ -283,7 +288,7 @@ class _MolecularPathologyState extends State<MolecularPathology> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

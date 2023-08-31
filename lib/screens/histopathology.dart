@@ -63,6 +63,8 @@ class _HistopathologyState extends State<Histopathology> {
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 padding: EdgeInsets.zero,
+                                      childAspectRatio: 1.3,
+
                 // mainAxisSpacing: 0.0, // Adjust the vertical spacing between icons
                 // crossAxisSpacing:
                 //     0.0, // Adjust the horizontal spacing between icons

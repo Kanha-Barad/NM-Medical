@@ -245,7 +245,7 @@ class _EnquirePackagesState extends State<EnquirePackages> {
             child: InkWell(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ThankYou()));
+                    MaterialPageRoute(builder: (context) => ThankYou("","")));
               },
               child: Card(
                 color: Color.fromARGB(255, 187, 42, 34),

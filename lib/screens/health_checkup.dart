@@ -57,9 +57,11 @@ class _HealthCheckUpState extends State<HealthCheckUp> {
         Padding(
           padding: const EdgeInsets.only(left: 30.0, top: 30),
           child: ListTile(
+              minLeadingWidth: 0,
               leading: SvgPicture.asset(
-                "assets/health-checkup/nm-logo.svg",
-                width: 80,
+                "assets/health-checkup/nm-logo-new.svg",
+                fit: BoxFit.contain,
+                width: 100,
               ),
               title: Padding(
                 padding: const EdgeInsets.only(top: 14.0, left: 6),
@@ -77,13 +79,15 @@ class _HealthCheckUpState extends State<HealthCheckUp> {
                             builder: (context) => NMHealthCheckUP()));
                   },
                   child: Card(
+                    margin: EdgeInsets.symmetric(vertical: 10),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(
                             color: Color.fromARGB(255, 187, 45, 36))),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 7, 20, 7),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
+                        textAlign: TextAlign.center,
                         "CLICK FOR PACKAGE",
                         style: TextStyle(
                             fontSize: 14,
@@ -101,20 +105,22 @@ class _HealthCheckUpState extends State<HealthCheckUp> {
           thickness: 1,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 30.0, top: 4),
+          padding: const EdgeInsets.only(left: 44.0, top: 4),
           child: ListTile(
+            minLeadingWidth: 0,
               leading: SvgPicture.asset(
-                "assets/health-checkup/health-360-logo.svg",
-                width: 80,
+                "assets/health-checkup/health-360-logo-new.svg",
+                fit: BoxFit.cover,
+                width: 100,height: 56,
               ),
               title: Padding(
-                padding: const EdgeInsets.only(top: 8.0, left: 6),
+                padding: const EdgeInsets.only(top: 8.0, left: 20),
                 child: Text("Health 360",
                     style:
                         TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
               ),
               subtitle: Padding(
-                padding: const EdgeInsets.only(right: 40.0, top: 2),
+                padding: const EdgeInsets.only(right: 40.0, top: 2,left: 14),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -123,13 +129,15 @@ class _HealthCheckUpState extends State<HealthCheckUp> {
                             builder: (context) => Health360("HM", "BNP")));
                   },
                   child: Card(
+                    margin: EdgeInsets.symmetric(vertical: 10),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(
                             color: Color.fromARGB(255, 187, 45, 36))),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 7, 20, 7),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
+                        textAlign: TextAlign.center,
                         "CLICK FOR PACKAGE",
                         style: TextStyle(
                             fontSize: 14,
@@ -149,9 +157,11 @@ class _HealthCheckUpState extends State<HealthCheckUp> {
         Padding(
           padding: const EdgeInsets.only(left: 30.0, top: 4),
           child: ListTile(
+              minLeadingWidth: 0,
               leading: SvgPicture.asset(
-                "assets/health-checkup/eva-health-logo.svg",
-                width: 80,
+                "assets/health-checkup/eva-health-logo-new.svg",
+                fit: BoxFit.contain,
+                width: 100,height: 50,
               ),
               title: Padding(
                 padding: const EdgeInsets.only(top: 2.0, left: 6),
@@ -169,13 +179,15 @@ class _HealthCheckUpState extends State<HealthCheckUp> {
                             builder: (context) => EVAHealTHCheckUP()));
                   },
                   child: Card(
+                    margin: EdgeInsets.symmetric(vertical: 10),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(
                             color: Color.fromARGB(255, 187, 45, 36))),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 7, 20, 7),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
+                        textAlign: TextAlign.center,
                         "CLICK FOR PACKAGE",
                         style: TextStyle(
                             fontSize: 14,

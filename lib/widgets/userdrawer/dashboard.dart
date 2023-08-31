@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
 import '../app_drawer.dart';
@@ -68,10 +67,17 @@ class _DashboardState extends State<Dashboard> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 4),
-          child: Card(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 227, 225, 225))),
+          child: Container(
+            decoration: BoxDecoration(
+              boxShadow: [],
+              borderRadius:
+                  BorderRadius.circular(10), // Set the corner radius here
+              border: Border.all(
+                color: Color.fromARGB(
+                    255, 227, 226, 226), // Set the border color here
+                width: 1, // Set the border width here
+              ),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(
@@ -147,10 +153,16 @@ class _DashboardState extends State<Dashboard> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-          child: Card(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 227, 225, 225))),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius:
+                  BorderRadius.circular(10), // Set the corner radius here
+              border: Border.all(
+                color: Color.fromARGB(
+                    255, 227, 226, 226), // Set the border color here
+                width: 1, // Set the border width here
+              ),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(
@@ -216,10 +228,16 @@ class _DashboardState extends State<Dashboard> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-          child: Card(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 227, 225, 225))),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius:
+                  BorderRadius.circular(10), // Set the corner radius here
+              border: Border.all(
+                color: Color.fromARGB(
+                    255, 227, 226, 226), // Set the border color here
+                width: 1, // Set the border width here
+              ),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(

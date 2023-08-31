@@ -54,16 +54,20 @@ class _PriMARYState extends State<PriMARY> {
           },
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 20, 10, 10),
-          child: Text(
-              "Histopatholgy opinion from the grossing speciman by our supper speciality panel of Doctors"),
-        ),
+            padding: const EdgeInsets.fromLTRB(15, 20, 10, 10),
+            child: Text(
+              "Histopatholgy opinion from the grossing speciman by our supper speciality panel of Doctors",
+              style: TextStyle(
+                fontSize: 14,
+                height: 1.7,
+              ),
+            )),
         Divider(
           indent: 15,
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context)
+        FormoreInformation(context, "")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

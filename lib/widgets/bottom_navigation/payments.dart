@@ -64,7 +64,7 @@ class _paYmEnTsState extends State<paYmEnTs> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context),
+        FormoreInformation(context,""),
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

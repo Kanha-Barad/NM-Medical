@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="33.774" height="36" viewBox="0 0 33.774 36">
+  <g id="test-results" transform="translate(-15.817 0.001)">
+    <g id="Group_114" data-name="Group 114" transform="translate(15.817 -0.001)">
+      <path id="Path_196" data-name="Path 196" d="M196.57,41.2a.7.7,0,0,0,0-1.407h0A.7.7,0,0,0,196.57,41.2Z" transform="translate(-183.201 -36.988)" fill="#fff"/>
+      <path id="Path_197" data-name="Path 197" d="M105.223,142.2h0a1.407,1.407,0,1,0-.63,2.355l.176.176a4.2,4.2,0,0,0-.723,1.741h-.6a1.407,1.407,0,0,0-1.219-.7h0a1.407,1.407,0,1,0,1.22,2.111h.6a4.2,4.2,0,0,0,.723,1.741l-.176.176a1.407,1.407,0,0,0-1.406.413h0a1.407,1.407,0,1,0,2.4.582l.176-.176a4.2,4.2,0,0,0,1.741.723v.6a1.407,1.407,0,0,0-.7,1.219h0a1.407,1.407,0,1,0,2.111-1.22v-.6a4.2,4.2,0,0,0,1.741-.723l.176.176a1.406,1.406,0,0,0,.318,1.311h0a1.407,1.407,0,1,0,.676-2.307l-.176-.176a4.2,4.2,0,0,0,.723-1.741h.6a1.407,1.407,0,0,0,1.219.7h0a1.407,1.407,0,1,0-1.22-2.111h-.6a4.2,4.2,0,0,0-.723-1.741l.176-.176a1.4,1.4,0,0,0,1.36-.364h0a1.407,1.407,0,1,0-2.355-.63l-.176.176a4.2,4.2,0,0,0-1.741-.723v-.6a1.407,1.407,0,0,0,.7-1.219h0a1.407,1.407,0,1,0-2.111,1.22v.6a4.2,4.2,0,0,0-1.741.723l-.176-.176A1.407,1.407,0,0,0,105.223,142.2Zm2.985,2.161a2.815,2.815,0,1,1-2.815,2.815A2.818,2.818,0,0,1,108.208,144.357Z" transform="translate(-94.839 -129.948)" fill="#fff"/>
+      <path id="Path_198" data-name="Path 198" d="M329.9,349.171a2.121,2.121,0,0,0-2.985,0l-1.785,1.785-.067-.067a2.111,2.111,0,0,0-2.985,2.985l1.56,1.56a2.113,2.113,0,0,0,2.985,0l3.278-3.278A2.121,2.121,0,0,0,329.9,349.171Zm-1,1.99-3.278,3.278a.7.7,0,0,1-.995,0l-1.56-1.56a.7.7,0,0,1,.995-.995l.565.565a.708.708,0,0,0,1,0l2.283-2.283a.7.7,0,0,1,.995.995Z" transform="translate(-299.952 -324.031)" fill="#fff"/>
+      <path id="Path_199" data-name="Path 199" d="M42.555,20.562V5.613A2.113,2.113,0,0,0,40.444,3.5h-2.3a1.408,1.408,0,0,0-1.218-.7H32.634a3.523,3.523,0,0,0-6.9,0H21.446a1.408,1.408,0,0,0-1.218.7h-2.3a2.113,2.113,0,0,0-2.111,2.111V31.084A2.113,2.113,0,0,0,17.928,33.2H35.885a7.739,7.739,0,1,0,6.67-12.633ZM41.148,5.613V20.562a7.692,7.692,0,0,0-1.407.261V7.02a.7.7,0,0,0-.7-.7h-.7V4.909h2.111A.7.7,0,0,1,41.148,5.613ZM26.02,7.02H21.446V4.206h4.925a.7.7,0,0,0,.7-.7,2.111,2.111,0,0,1,4.222,0,.7.7,0,0,0,.7.7h4.925V7.02H32.353a.7.7,0,0,0,0,1.407h4.573a1.408,1.408,0,0,0,1.218-.7h.189V21.377A7.776,7.776,0,0,0,34.4,26.159h-11.2a.7.7,0,0,0,0,1.407H34.143a7.828,7.828,0,0,0,0,1.407h-14.1V7.724h.189a1.408,1.408,0,0,0,1.218.7H26.02a.7.7,0,0,0,0-1.407ZM17.928,31.788a.7.7,0,0,1-.7-.7V5.613a.7.7,0,0,1,.7-.7h2.111V6.316h-.7a.7.7,0,0,0-.7.7V29.677a.7.7,0,0,0,.7.7H34.4a7.692,7.692,0,0,0,.554,1.407ZM41.851,34.6a6.333,6.333,0,1,1,6.333-6.333A6.34,6.34,0,0,1,41.851,34.6Z" transform="translate(-15.817 0.001)" fill="#fff"/>
+      <path id="Path_200" data-name="Path 200" d="M196.526,99.788h0a.7.7,0,1,0,.7.7A.7.7,0,0,0,196.525,99.788Z" transform="translate(-183.156 -92.767)" fill="#fff"/>
+    </g>
+  </g>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</svg>

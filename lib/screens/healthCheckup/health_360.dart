@@ -74,6 +74,8 @@ class _Health360State extends State<Health360> {
             child: GridView.count(
                 crossAxisCount: 3,
                 shrinkWrap: true,
+                                      childAspectRatio: 1.2,
+
                 physics: NeverScrollableScrollPhysics(),
                 padding: EdgeInsets.zero,
                 children: [

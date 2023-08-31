@@ -64,6 +64,8 @@ class _CardiacCTState extends State<CardiacCT> {
               "Cardiac CT offers information about any blockages present, location of the block, percentage of stenosis, and nature of the plaque.",
               style: TextStyle(
                   fontSize: 14,
+                  height: 1.8,
+                  letterSpacing: 0.5,
                   color: Colors.black,
                   fontWeight: FontWeight.w400)),
         ),
@@ -73,6 +75,7 @@ class _CardiacCTState extends State<CardiacCT> {
               "Coronary CT Angio is also extremely useful in evaluating patency of stents and the condition of the bypass graft post-CABG.",
               style: TextStyle(
                   fontSize: 14,
+                  height: 1.7,
                   color: Colors.black,
                   fontWeight: FontWeight.w400)),
         ),
@@ -82,6 +85,7 @@ class _CardiacCTState extends State<CardiacCT> {
               "A preliminary screening of the arteries can also be offered by simply evaluating the Calcium Score, which only takes a couple of seconds.",
               style: TextStyle(
                   fontSize: 14,
+                  height: 1.7,
                   color: Colors.black,
                   fontWeight: FontWeight.w400)),
         ),
@@ -90,7 +94,7 @@ class _CardiacCTState extends State<CardiacCT> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

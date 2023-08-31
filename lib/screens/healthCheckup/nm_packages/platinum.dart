@@ -796,7 +796,7 @@ class _PlatiNUmPackageDetailsState extends State<PlatiNUmPackageDetails> {
                   ))),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

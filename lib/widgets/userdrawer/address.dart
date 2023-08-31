@@ -54,33 +54,41 @@ class _AddressState extends State<Address> {
           svgAssetPath: "assets/locations/location-title.svg",
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(8, 4, 8, 2),
-          child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  side: BorderSide(color: Color.fromARGB(255, 224, 224, 226))),
+          padding: const EdgeInsets.fromLTRB(8, 10, 8, 10),
+          child: Container(
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(10), // Set the corner radius here
+                border: Border.all(
+                  color: Color.fromARGB(
+                      255, 227, 226, 226), // Set the border color here
+                  width: 1, // Set the border width here
+                ),
+              ),
               child: Column(
                 children: [
                   ListTile(
+                    minLeadingWidth: 0,
                     leading:
                         SvgPicture.asset("assets/locations/location-icon.svg"),
                     title: Padding(
-                      padding: const EdgeInsets.only(top: 12.0),
+                      padding: const EdgeInsets.only(top: 0.0),
                       child: Text(
                         'Home',
                         style: TextStyle(
                             color: Color.fromARGB(255, 187, 42, 34),
-                            fontSize: 14,
+                            fontSize: 18,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
                     subtitle: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 6, 6, 4),
+                      padding: const EdgeInsets.fromLTRB(0, 0, 16, 0),
                       child: Text(
                         "Shushrusha Hospital 201, Rd Number 1,Kannamwar Nagar ,Bandra West, Mumbai,Maharashtra 400083",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,
+                            height: 1.4,
                             fontWeight: FontWeight.w500),
                       ),
                     ),
@@ -88,7 +96,7 @@ class _AddressState extends State<Address> {
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 8, 0, 8),
+                        padding: const EdgeInsets.fromLTRB(16, 5, 0, 8),
                         child: InkWell(
                           onTap: () {
                             Navigator.push(
@@ -121,33 +129,41 @@ class _AddressState extends State<Address> {
               )),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(8, 4, 8, 2),
-          child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  side: BorderSide(color: Color.fromARGB(255, 224, 224, 226))),
+          padding: const EdgeInsets.fromLTRB(8, 4, 8, 10),
+          child: Container(
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(10), // Set the corner radius here
+                border: Border.all(
+                  color: Color.fromARGB(
+                      255, 227, 226, 226), // Set the border color here
+                  width: 1, // Set the border width here
+                ),
+              ),
               child: Column(
                 children: [
                   ListTile(
+                    minLeadingWidth: 0,
                     leading:
                         SvgPicture.asset("assets/locations/location-icon.svg"),
                     title: Padding(
-                      padding: const EdgeInsets.only(top: 12.0),
+                      padding: const EdgeInsets.only(top: 0.0),
                       child: Text(
                         'Office',
                         style: TextStyle(
                             color: Color.fromARGB(255, 187, 42, 34),
-                            fontSize: 14,
+                            fontSize: 18,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
                     subtitle: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 6, 6, 4),
+                      padding: const EdgeInsets.fromLTRB(0, 0, 16, 0),
                       child: Text(
                         "Shushrusha Hospital 201, Rd Number 1,Kannamwar Nagar ,Bandra West, Mumbai,Maharashtra 400083",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,
+                            height: 1.4,
                             fontWeight: FontWeight.w500),
                       ),
                     ),
@@ -155,7 +171,7 @@ class _AddressState extends State<Address> {
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 8, 0, 8),
+                        padding: const EdgeInsets.fromLTRB(16, 5, 0, 8),
                         child: InkWell(
                           onTap: () {
                             Navigator.push(
@@ -188,33 +204,41 @@ class _AddressState extends State<Address> {
               )),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(8, 4, 8, 2),
-          child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  side: BorderSide(color: Color.fromARGB(255, 224, 224, 226))),
+          padding: const EdgeInsets.fromLTRB(8, 4, 8, 10),
+          child: Container(
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(10), // Set the corner radius here
+                border: Border.all(
+                  color: Color.fromARGB(
+                      255, 227, 226, 226), // Set the border color here
+                  width: 1, // Set the border width here
+                ),
+              ),
               child: Column(
                 children: [
                   ListTile(
+                    minLeadingWidth: 0,
                     leading:
                         SvgPicture.asset("assets/locations/location-icon.svg"),
                     title: Padding(
-                      padding: const EdgeInsets.only(top: 12.0),
+                      padding: const EdgeInsets.only(top: 0.0),
                       child: Text(
                         'Bandra',
                         style: TextStyle(
                             color: Color.fromARGB(255, 187, 42, 34),
-                            fontSize: 14,
+                            fontSize: 18,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
                     subtitle: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 6, 6, 4),
+                      padding: const EdgeInsets.fromLTRB(0, 0, 16, 0),
                       child: Text(
                         "Shushrusha Hospital 201, Rd Number 1,Kannamwar Nagar ,Bandra West, Mumbai,Maharashtra 400083",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,
+                            height: 1.4,
                             fontWeight: FontWeight.w500),
                       ),
                     ),
@@ -222,7 +246,7 @@ class _AddressState extends State<Address> {
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 8, 0, 8),
+                        padding: const EdgeInsets.fromLTRB(16, 5, 0, 8),
                         child: InkWell(
                           onTap: () {
                             Navigator.push(
@@ -261,3 +285,88 @@ class _AddressState extends State<Address> {
     );
   }
 }
+
+
+// Padding(
+//           padding: const EdgeInsets.fromLTRB(8, 10, 8, 10),
+//           child: Container(
+//               decoration: BoxDecoration(
+//                 borderRadius:
+//                     BorderRadius.circular(10), // Set the corner radius here
+//                 border: Border.all(
+//                   color: Color.fromARGB(
+//                       255, 227, 226, 226), // Set the border color here
+//                   width: 1, // Set the border width here
+//                 ),
+//               ),
+//               child: Column(
+//                 children: [
+//                   ListTile(
+//                     // leading:
+//                     //     SvgPicture.asset("assets/locations/location-icon.svg"),
+//                     title: Padding(
+//                       padding: const EdgeInsets.only(top: 12.0),
+//                       child: Row(
+//                         children: [
+//                           SvgPicture.asset(
+//                               "assets/locations/location-icon.svg"),
+//                           Padding(
+//                             padding: const EdgeInsets.only(left:16.0),
+//                             child: Text(
+//                               'Home',
+//                               style: TextStyle(
+//                                   color: Color.fromARGB(255, 187, 42, 34),
+//                                   fontSize: 14,
+//                                   fontWeight: FontWeight.w600),
+//                             ),
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                     subtitle: Padding(
+//                       padding: const EdgeInsets.fromLTRB(34, 6, 6, 0),
+//                       child: Text(
+//                         "Shushrusha Hospital 201, Rd Number 1,Kannamwar Nagar ,Bandra West, Mumbai,Maharashtra 400083",
+//                         style: TextStyle(
+//                             color: Colors.black,
+//                             fontSize: 12,
+//                             height: 1.5,
+//                             fontWeight: FontWeight.w500),
+//                       ),
+//                     ),
+//                   ),
+//                   Row(
+//                     children: [
+//                       Padding(
+//                         padding: const EdgeInsets.fromLTRB(16, 8, 0, 8),
+//                         child: InkWell(
+//                           onTap: () {
+//                             Navigator.push(
+//                                 context,
+//                                 MaterialPageRoute(
+//                                     builder: (context) => EditAddress()));
+//                           },
+//                           child: Card(
+//                             shape: RoundedRectangleBorder(
+//                                 borderRadius: BorderRadius.circular(25)),
+//                             color: Color.fromARGB(255, 227, 21, 31),
+//                             child: Padding(
+//                               padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
+//                               child: Center(
+//                                 child: Text(
+//                                   'EDIT ADDRESS',
+//                                   style: TextStyle(
+//                                       color: Colors.white,
+//                                       fontSize: 14,
+//                                       fontWeight: FontWeight.w500),
+//                                 ),
+//                               ),
+//                             ),
+//                           ),
+//                         ),
+//                       ),
+//                     ],
+//                   )
+//                 ],
+//               )),
+//         ),

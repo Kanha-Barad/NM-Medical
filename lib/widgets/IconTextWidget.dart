@@ -17,13 +17,13 @@ class buildIconItem extends StatelessWidget {
       children: <Widget>[
         SvgPicture.asset(imageAsset),
         Padding(
-          padding: const EdgeInsets.only(top: 2.0),
+          padding: const EdgeInsets.only(top: 5.0),
           child: Text(
             labelText,
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
                 color: Color(0xf0000000)),
           ),
         ),

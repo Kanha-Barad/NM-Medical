@@ -67,6 +67,7 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
             child: GridView.count(
                 crossAxisCount: 3,
                 shrinkWrap: true,
+                childAspectRatio: 1.2,
                 physics: NeverScrollableScrollPhysics(),
                 padding: EdgeInsets.zero,
                 children: [

@@ -9,8 +9,13 @@ import '../../../widgets/basic_appbar.dart';
 import '../../widgets/customContainer.dart';
 import '../../widgets/phoneCallwidget.dart';
 
+String nineMONthMail = "";
+
 class NIneMonTH extends StatefulWidget {
-  const NIneMonTH({super.key});
+  NIneMonTH(nineMONTH) {
+    nineMONthMail = "";
+    nineMONthMail = nineMONTH;
+  }
 
   @override
   State<NIneMonTH> createState() => _NIneMonTHState();
@@ -62,7 +67,7 @@ class _NIneMonTHState extends State<NIneMonTH> {
           child: Image.asset("assets/pregnancy/nine-month.png"),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 20, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 20, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -71,13 +76,13 @@ class _NIneMonTHState extends State<NIneMonTH> {
               ),
               const Text(
                 "Zoom Classes",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -86,13 +91,13 @@ class _NIneMonTHState extends State<NIneMonTH> {
               ),
               const Text(
                 "Prenatal Classes",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -101,13 +106,13 @@ class _NIneMonTHState extends State<NIneMonTH> {
               ),
               const Text(
                 "Postnatal Classes",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -116,7 +121,7 @@ class _NIneMonTHState extends State<NIneMonTH> {
               ),
               const Text(
                 "Lactation Consultancy",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -160,7 +165,7 @@ class _NIneMonTHState extends State<NIneMonTH> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context),
+        FormoreInformation(context, nineMONthMail),
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

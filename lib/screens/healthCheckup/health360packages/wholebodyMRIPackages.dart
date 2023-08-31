@@ -7,9 +7,8 @@ import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/bottom_navigation.dart';
 import '../../../widgets/customContainer.dart';
-import '../../../widgets/packageinvestmentwidget.dart';
 import '../../../widgets/forMoreInformation.dart';
-import '../nm_packages/enquire.dart';
+import '../../../widgets/packageinvestmentwidget.dart';
 
 String navPAYMentCd = "";
 
@@ -77,8 +76,11 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
               "Health 360 has installed India's first 32 Channel Whole Body MRI machine at Marine Lines, Mumbai! Now, in just 45 minutes,get completely screened from head-to-toe. Whole Body MRI evaluates all the organs in the body including head, neck, chest, abdomen, pelvis, musculoskeleton and whole spine.",
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.w400)),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                  height: 1.8,
+                  letterSpacing: 0.3)),
         ),
         Divider(
           indent: 15,
@@ -192,8 +194,11 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
               "Health 360 has installed India's first 32 Channel Whole Body MRI machine at Marine Lines, Mumbai! Now, in just 45 minutes, get completely screened from head-to-toe. Whole Body MRI evaluates all the organs in the body including head, neck, chest, abdomen, pelvis, musculoskeleton and whole spine.",
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.w400)),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                  letterSpacing: 0.3,
+                  height: 1.8)),
         ),
         Divider(
           indent: 15,
@@ -483,7 +488,7 @@ class _WholEBoDYMRIPackAgeSState extends State<WholEBoDYMRIPackAgeS> {
           ),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        FormoreInformation(context)
+        FormoreInformation(context, "")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: navPAYMentCd,

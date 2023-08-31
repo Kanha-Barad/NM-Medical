@@ -39,50 +39,72 @@ void openWhatsapp({
   }
 }
 
-Widget FormoreInformation(BuildContext context) => Padding(
-      padding: const EdgeInsets.fromLTRB(15, 8, 15, 12),
-      child: RichText(
-          text: TextSpan(children: [
-        TextSpan(
-            text: 'For more information WhatsApp on ',
-            style: TextStyle(
-                fontSize: 14,
-                color: Colors.black,
-                fontWeight: FontWeight.w400)),
-        WidgetSpan(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 3.0, right: 2),
-            child: Container(
-                height: 15,
-                width: 15,
-                child: SvgPicture.asset("assets/images/whatsapp-icon.svg")),
-          ),
+String NINEEmial = "";
+
+Widget FormoreInformation(BuildContext context, NinemOnEmial) {
+  NINEEmial = "";
+  NINEEmial = NinemOnEmial;
+  return Padding(
+    padding: const EdgeInsets.fromLTRB(15, 8, 15, 12),
+    child: RichText(
+        text: TextSpan(children: [
+      TextSpan(
+          text: 'For more information WhatsApp on ',
+          style: TextStyle(
+              letterSpacing: 0.5,
+              fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w400)),
+      WidgetSpan(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 3.0, right: 2),
+          child: Container(
+              height: 15,
+              width: 15,
+              child: SvgPicture.asset("assets/images/whatsapp-icon.svg")),
         ),
-        TextSpan(
-            text: '9256855758',
-            style: TextStyle(
-                fontSize: 14,
-                color: Color.fromARGB(255, 187, 42, 34),
-                decoration: TextDecoration.underline),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                openWhatsapp(context: context, text: '', number: '9256855758');
-              }),
-        TextSpan(
-            text: ' or visit ',
-            style: TextStyle(
-                fontSize: 14,
-                color: Colors.black,
-                fontWeight: FontWeight.w400)),
-        TextSpan(
-            text: 'www.nmmedical.com',
-            style: TextStyle(
-                fontSize: 14,
-                color: Color.fromARGB(255, 187, 42, 34),
-                decoration: TextDecoration.underline),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                launch('https://www.nmmedical.com/');
-              }),
-      ])),
-    );
+      ),
+      TextSpan(
+          text: '9256855758',
+          style: TextStyle(
+            letterSpacing: 0.03,
+              fontSize: 14,
+              height: 1.5,
+              color: Color.fromARGB(255, 187, 42, 34),
+              decoration: TextDecoration.underline),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () {
+              openWhatsapp(context: context, text: '', number: '9256855758');
+            }),
+      TextSpan(
+          text: ' or visit ',
+          style: TextStyle(
+              letterSpacing: 0.5,
+              fontSize: 14,
+              height: 1.5,
+              color: Colors.grey,
+              fontWeight: FontWeight.w400)),
+      (NINEEmial == "NMTH")
+          ? TextSpan(
+              text: 'www.ninemonthspregnancy.com',
+              style: TextStyle(
+                  fontSize: 14,
+                  height: 1.5,
+                  color: Color.fromARGB(255, 187, 42, 34),
+                  decoration: TextDecoration.underline),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  launch('https://www.ninemonthspregnancy.com/');
+                })
+          : TextSpan(
+              text: 'www.nmmedical.com',
+              style: TextStyle(
+                  fontSize: 14,
+                  height: 1.5,
+                  color: Color.fromARGB(255, 187, 42, 34),
+                  decoration: TextDecoration.underline),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  launch('https://www.nmmedical.com/');
+                }),
+    ])),
+  );
+}

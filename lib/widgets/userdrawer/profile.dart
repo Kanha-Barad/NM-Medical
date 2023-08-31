@@ -53,27 +53,28 @@ class _pRofilEState extends State<pRofilE> {
           svgAssetPath: "assets/profile-icons/user-profile-title.svg",
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 12, 15, 0),
+          padding: const EdgeInsets.fromLTRB(0, 12, 0, 10),
           child: TextFormField(
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(10),
               border: UnderlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1.5),
+                borderSide: const BorderSide(color: Colors.black, width: 1),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               fillColor: Colors.grey,
-              hintText: "Rohan",
+              hintText: "  Rohan",
               floatingLabelBehavior: FloatingLabelBehavior.always,
               hintStyle: TextStyle(
                 color: Colors.grey,
                 fontSize: 12,
-                fontFamily: "Verdana",
+                // fontFamily: "Verdana",
                 fontWeight: FontWeight.w400,
               ),
-              labelText: 'First Name',
+              labelText: '  First Name',
               labelStyle: TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -83,27 +84,28 @@ class _pRofilEState extends State<pRofilE> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
           child: TextFormField(
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(10),
               border: UnderlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1.5),
+                borderSide: const BorderSide(color: Colors.black, width: 1),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               fillColor: Colors.grey,
-              hintText: "Singh",
+              hintText: "  Singh",
               floatingLabelBehavior: FloatingLabelBehavior.always,
               hintStyle: TextStyle(
                 color: Colors.grey,
                 fontSize: 12,
-                fontFamily: "Verdana",
+                // fontFamily: "Verdana",
                 fontWeight: FontWeight.w400,
               ),
-              labelText: 'Last Name',
+              labelText: '  Last Name',
               labelStyle: TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -113,27 +115,28 @@ class _pRofilEState extends State<pRofilE> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
           child: TextFormField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(10),
               border: UnderlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1.5),
+                borderSide: const BorderSide(color: Colors.black, width: 1),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               fillColor: Colors.grey,
-              hintText: "rohansingh@gmail.com",
+              hintText: "  rohansingh@gmail.com",
               floatingLabelBehavior: FloatingLabelBehavior.always,
               hintStyle: TextStyle(
                 color: Colors.grey,
                 fontSize: 12,
-                fontFamily: "Verdana",
+                //  fontFamily: "Verdana",
                 fontWeight: FontWeight.w400,
               ),
-              labelText: 'Email',
+              labelText: '  Email',
               labelStyle: TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -143,27 +146,28 @@ class _pRofilEState extends State<pRofilE> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
           child: TextFormField(
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(10),
               border: UnderlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1.5),
+                borderSide: const BorderSide(color: Colors.black, width: 1),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               fillColor: Colors.grey,
-              hintText: "9372694233",
+              hintText: "  9372694233",
               floatingLabelBehavior: FloatingLabelBehavior.always,
               hintStyle: TextStyle(
                 color: Colors.grey,
                 fontSize: 12,
-                fontFamily: "Verdana",
+                // fontFamily: "Verdana",
                 fontWeight: FontWeight.w400,
               ),
-              labelText: 'Mobile Number',
+              labelText: '  Mobile Number',
               labelStyle: TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -173,27 +177,28 @@ class _pRofilEState extends State<pRofilE> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
           child: TextFormField(
             keyboardType: TextInputType.visiblePassword,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(10),
               border: UnderlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1.5),
+                borderSide: const BorderSide(color: Colors.black, width: 1),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               fillColor: Colors.grey,
-              hintText: "******",
+              hintText: "  ******",
               floatingLabelBehavior: FloatingLabelBehavior.always,
               hintStyle: TextStyle(
                 color: Colors.grey,
                 fontSize: 12,
-                fontFamily: "Verdana",
+                // fontFamily: "Verdana",
                 fontWeight: FontWeight.w400,
               ),
-              labelText: 'Password',
+              labelText: '  Password',
               labelStyle: TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -203,28 +208,29 @@ class _pRofilEState extends State<pRofilE> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
           child: TextFormField(
-            keyboardType: TextInputType.name,
+            keyboardType: TextInputType.streetAddress,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(10),
               border: UnderlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1.5),
+                borderSide: const BorderSide(color: Colors.black, width: 1),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               //alignLabelWithHint: true,
               fillColor: Colors.grey,
-              hintText: "17, Vadsarbala Nivas Mulund West",
+              hintText: "  17, Vadsarbala Nivas Mulund West",
               floatingLabelBehavior: FloatingLabelBehavior.always,
               hintStyle: TextStyle(
                 color: Colors.grey,
                 fontSize: 12,
-                fontFamily: "verdana",
+                //fontFamily: "verdana",
                 fontWeight: FontWeight.w400,
               ),
-              labelText: 'Address',
+              labelText: '  Address',
               labelStyle: TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -234,7 +240,7 @@ class _pRofilEState extends State<pRofilE> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 20, left: 15),
+          padding: const EdgeInsets.only(top: 20, left: 10),
           child: InkWell(
             onTap: () {
               Navigator.push(context,
