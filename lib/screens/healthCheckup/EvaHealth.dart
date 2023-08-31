@@ -10,7 +10,7 @@ import 'evapackages/evaAdeloscence.dart';
 import 'evapackages/evaMenopause.dart';
 import 'evapackages/evabrestscreening.dart';
 import 'evapackages/evacancerscreening.dart';
-import 'evapackages/evainfertility.dart';
+import 'evapackages/evaPCOSpackage.dart';
 import 'evapackages/evamaritalBeginnings.dart';
 import 'evapackages/evanewbormscreening.dart';
 import 'evapackages/evapregnancy.dart';
@@ -66,22 +66,10 @@ class _EVAHealTHCheckUPState extends State<EVAHealTHCheckUP> {
             child: GridView.count(
                 crossAxisCount: 3,
                 shrinkWrap: true,
+                childAspectRatio: 1.2,
                 physics: NeverScrollableScrollPhysics(),
                 padding: EdgeInsets.zero,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewBornScreening()));
-                    },
-                    child: buildIconItem(
-                      imageAsset:
-                          'assets/eva-packages/eva-new-born-screening.svg',
-                      labelText: 'Eva New\nBorn Screening',
-                    ),
-                  ),
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -99,11 +87,11 @@ class _EVAHealTHCheckUPState extends State<EVAHealTHCheckUP> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => EVaMenoPAusE()));
+                              builder: (context) => EVaPCOSpackage()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/eva-packages/eva-menopause.svg',
-                      labelText: 'Eva\nMenopause',
+                      imageAsset: 'assets/eva-packages/eva-infertility.svg',
+                      labelText: 'Eva\nPCOS Package',
                     ),
                   ),
                   InkWell(
@@ -124,11 +112,24 @@ class _EVAHealTHCheckUPState extends State<EVAHealTHCheckUP> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => EVaINFertiLItY()));
+                              builder: (context) => EVaMenoPAusE()));
                     },
                     child: buildIconItem(
-                      imageAsset: 'assets/eva-packages/eva-infertility.svg',
-                      labelText: 'Eva\nInfertility',
+                      imageAsset: 'assets/eva-packages/eva-menopause.svg',
+                      labelText: 'Eva\nMenopause',
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EVaCanceRSCReeniNG()));
+                    },
+                    child: buildIconItem(
+                      imageAsset:
+                          'assets/eva-packages/eva-cancer-screening.svg',
+                      labelText: 'Eva Cancer\nScreening',
                     ),
                   ),
                   InkWell(
@@ -148,52 +149,68 @@ class _EVAHealTHCheckUPState extends State<EVAHealTHCheckUP> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => EVaBreastScreenING()));
-                    },
-                    child: buildIconItem(
-                      imageAsset:
-                          'assets/eva-packages/eva-breast-screening.svg',
-                      labelText: 'Eva Breast\nScreening',
-                    ),
-                  ),
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    EVaOsetoPOROsiSSCReeniNG()));
-                      },
-                      child: buildIconItem(
-                        imageAsset:
-                            'assets/eva-packages/eva-osteoporosis-screening.svg',
-                        labelText: 'Eva Osteoporosis\nScreening',
-                      )),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => EVaCanceRSCReeniNG()));
-                    },
-                    child: buildIconItem(
-                      imageAsset:
-                          'assets/eva-packages/eva-cancer-screening.svg',
-                      labelText: 'Eva Cancer\nScreening',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
                               builder: (context) => EVaTotalWELlnEss()));
                     },
                     child: buildIconItem(
                       imageAsset: 'assets/eva-packages/eva-total-wellness.svg',
-                      labelText: 'Eva Total\nWellness',
+                      labelText: 'Eva\nWellness Packages',
                     ),
                   ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewBornScreening()));
+                    },
+                    child: buildIconItem(
+                      imageAsset:
+                          'assets/services/diagnostic-tests.svg',
+                      labelText: 'Eva\nDiagnostic Package',
+                    ),
+                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => NewBornScreening()));
+                  //   },
+                  //   child: buildIconItem(
+                  //     imageAsset:
+                  //         'assets/eva-packages/eva-new-born-screening.svg',
+                  //     labelText: 'Eva New\nBorn Screening',
+                  //   ),
+                  // ),
+
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => EVaBreastScreenING()));
+                  //   },
+                  //   child: buildIconItem(
+                  //     imageAsset:
+                  //         'assets/eva-packages/eva-breast-screening.svg',
+                  //     labelText: 'Eva Breast\nScreening',
+                  //   ),
+                  // ),
+                  // InkWell(
+                  //     onTap: () {
+                  //       Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //               builder: (context) =>
+                  //                   EVaOsetoPOROsiSSCReeniNG()));
+                  //     },
+                  //     child: buildIconItem(
+                  //       imageAsset:
+                  //           'assets/eva-packages/eva-osteoporosis-screening.svg',
+                  //       labelText: 'Eva Osteoporosis\nScreening',
+                  //     )),
+
+                  
                 ]))
       ])),
       bottomNavigationBar: AllBottomNavigationBar(

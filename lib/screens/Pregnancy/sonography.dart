@@ -56,7 +56,7 @@ class _SONOgraphYState extends State<SONOgraphY> {
           },
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 20, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 20, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -65,13 +65,13 @@ class _SONOgraphYState extends State<SONOgraphY> {
               ),
               const Text(
                 "Early Pregnancy Scan",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -80,13 +80,13 @@ class _SONOgraphYState extends State<SONOgraphY> {
               ),
               const Text(
                 "Anomaly Scan",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -95,13 +95,13 @@ class _SONOgraphYState extends State<SONOgraphY> {
               ),
               const Text(
                 "Color Doppler",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -110,7 +110,7 @@ class _SONOgraphYState extends State<SONOgraphY> {
               ),
               const Text(
                 "4D Sonography",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -120,7 +120,7 @@ class _SONOgraphYState extends State<SONOgraphY> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context),
+        FormoreInformation(context,""),
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

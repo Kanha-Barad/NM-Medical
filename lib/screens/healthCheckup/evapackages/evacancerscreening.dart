@@ -63,7 +63,7 @@ class _EVaCanceRSCReeniNGState extends State<EVaCanceRSCReeniNG> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context),
+        FormoreInformation(context,""),
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

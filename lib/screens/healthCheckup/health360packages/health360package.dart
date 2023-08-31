@@ -998,7 +998,7 @@ class _HealTH360PackagesState extends State<HealTH360Packages> {
                   fontWeight: FontWeight.w500)),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: navPayments,

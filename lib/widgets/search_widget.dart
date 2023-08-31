@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
-import 'package:nmmedical/widgets/cart_widget.dart';
+import 'package:nmmedical/widgets/customContainer.dart';
 
 import 'Enquary.dart';
 import 'app_drawer.dart';
@@ -50,31 +50,11 @@ class _searchwidgetState extends State<searchwidget> {
         ),
         body: SingleChildScrollView(
             child: Column(children: [
-          Container(
-              height: 55,
-              width: MediaQuery.of(context).size.width,
-              color: const Color.fromARGB(255, 186, 43, 36),
-              child: Row(children: [
-                Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Icon(
-                      Icons.search,
-                      color: Colors.white,
-                      size: 30,
-                    )
-                    //SvgPicture.asset("assets/search/search-title.svg")
-                    ),
-                Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Text("SEARCH",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500)),
-                ),
-              ])),
+          CustomContainerBar(
+              title: "SEARCH",
+              svgAssetPath: ("assets/search/search-title.svg")),
           Padding(
-            padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
             child: TextFormField(
               // controller: userInput,
               // style: TextStyle(
@@ -89,18 +69,17 @@ class _searchwidgetState extends State<searchwidget> {
               // },
               decoration: InputDecoration(
                 focusColor: Colors.white,
-                suffixIcon:
-                    // SizedBox(
-                    //   height: 19,
-                    //   width: 19,
-                    //   child: SvgPicture.asset(
-                    //     "assets/search/search-icon-select.svg",
-                    //   ),
-                    // ),
-                    Icon(
-                  Icons.search_outlined,
-                  size: 28,
-                  color: Color.fromARGB(255, 194, 41, 35),
+                suffixIcon: SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: Icon(
+                    Icons.search_outlined,
+                    size: 28,
+                    color: Color.fromARGB(255, 194, 41, 35),
+                  ),
+                  // SvgPicture.asset(
+                  //   "assets/search/search-icon-select.svg",
+                  // ),
                 ),
                 border: UnderlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
@@ -110,10 +89,10 @@ class _searchwidgetState extends State<searchwidget> {
                       color: Color.fromARGB(255, 187, 42, 34), width: 1.5),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                hintText: 'Search here....',
+                hintText: '  Search here....',
                 fillColor: Colors.grey,
                 hintStyle: TextStyle(
-                  color: Colors.grey,
+                  color: Color.fromARGB(255, 222, 222, 222),
                   fontSize: 16,
                   //  fontFamily: "verdana_regular",
                   fontWeight: FontWeight.w500,
@@ -123,11 +102,17 @@ class _searchwidgetState extends State<searchwidget> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 8, 8, 4),
-            child: Card(
-              // elevation: 3.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: Colors.grey, width: 0.2)),
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [],
+                borderRadius:
+                    BorderRadius.circular(10), // Set the corner radius here
+                border: Border.all(
+                  color: Color.fromARGB(
+                      255, 227, 226, 226), // Set the border color here
+                  width: 1, // Set the border width here
+                ),
+              ),
               child: Column(
                 children: [
                   Padding(
@@ -160,7 +145,7 @@ class _searchwidgetState extends State<searchwidget> {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 4.0),
                               child: Card(
-                                elevation: 3.0,
+                                 elevation: 0.0,
                                 color: Color.fromARGB(255, 251, 38, 45),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
@@ -206,6 +191,11 @@ class _searchwidgetState extends State<searchwidget> {
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black),
                           )),
+                      SvgPicture.asset(
+                        "assets/search/search-icon-select.svg",
+                        width: 20,
+                        height: 20,
+                      ),
                     ],
                   ),
                 ],
@@ -214,11 +204,17 @@ class _searchwidgetState extends State<searchwidget> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 4, 8, 4),
-            child: Card(
-              // elevation: 3.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: Colors.grey, width: 0.2)),
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [],
+                borderRadius:
+                    BorderRadius.circular(10), // Set the corner radius here
+                border: Border.all(
+                  color: Color.fromARGB(
+                      255, 227, 226, 226), // Set the border color here
+                  width: 1, // Set the border width here
+                ),
+              ),
               child: Column(
                 children: [
                   Padding(
@@ -244,7 +240,7 @@ class _searchwidgetState extends State<searchwidget> {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 4.0),
                               child: Card(
-                                elevation: 3.0,
+                                 elevation: 0.0,
                                 color: Color.fromARGB(255, 251, 38, 45),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
@@ -287,11 +283,17 @@ class _searchwidgetState extends State<searchwidget> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 4, 8, 4),
-            child: Card(
-              // elevation: 3.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: Colors.grey, width: 0.2)),
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [],
+                borderRadius:
+                    BorderRadius.circular(10), // Set the corner radius here
+                border: Border.all(
+                  color: Color.fromARGB(
+                      255, 227, 226, 226), // Set the border color here
+                  width: 1, // Set the border width here
+                ),
+              ),
               child: Column(
                 children: [
                   Padding(
@@ -317,7 +319,7 @@ class _searchwidgetState extends State<searchwidget> {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 4.0),
                               child: Card(
-                                elevation: 3.0,
+                                 elevation: 0.0,
                                 color: Color.fromARGB(255, 251, 38, 45),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
@@ -371,11 +373,17 @@ class _searchwidgetState extends State<searchwidget> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 4, 8, 4),
-            child: Card(
-              // elevation: 3.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: Colors.grey, width: 0.2)),
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [],
+                borderRadius:
+                    BorderRadius.circular(10), // Set the corner radius here
+                border: Border.all(
+                  color: Color.fromARGB(
+                      255, 227, 226, 226), // Set the border color here
+                  width: 1, // Set the border width here
+                ),
+              ),
               child: Column(
                 children: [
                   Padding(
@@ -401,7 +409,7 @@ class _searchwidgetState extends State<searchwidget> {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 4.0),
                               child: Card(
-                                elevation: 3.0,
+                                 elevation: 0.0,
                                 color: Color.fromARGB(255, 251, 38, 45),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),

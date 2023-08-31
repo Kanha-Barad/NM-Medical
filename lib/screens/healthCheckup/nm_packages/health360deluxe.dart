@@ -72,7 +72,7 @@ class _HealTH360DeLUxEState extends State<HealTH360DeLUxE> {
           padding: EdgeInsets.fromLTRB(15, 15, 10, 10),
           child: Text(
               "This is the most extensive package offered at NM Medical. It includes the Platinum Plane + Cardiac CT + Whole Body MRI + Cancer Markers, providing comprehensive clinical assessment from head-to-toe.",
-              style: TextStyle(fontSize: 14)),
+              style: TextStyle(fontSize: 14,height: 1.5,letterSpacing: 0.5)),
         ),
         const Divider(indent: 10, endIndent: 10, thickness: 1),
         const Padding(
@@ -1051,7 +1051,7 @@ class _HealTH360DeLUxEState extends State<HealTH360DeLUxE> {
                       borderRadius: BorderRadius.circular(20)),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 13, 20, 13),
-                    child: Text("COMPARE PACKAGE",
+                    child: Text("COMPARE PACKAGES",
                         style: TextStyle(
                             fontSize: 15,
                             color: Colors.white,
@@ -1073,7 +1073,7 @@ class _HealTH360DeLUxEState extends State<HealTH360DeLUxE> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                child: SvgPicture.asset("assets/images/bullet_icon_true.svg",height: 24,width: 24,color: Color(0xFFbb2a22),),
               ),
               const Text("CT Virtual Colonoscopy",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
@@ -1086,7 +1086,7 @@ class _HealTH360DeLUxEState extends State<HealTH360DeLUxE> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                child: SvgPicture.asset("assets/images/bullet_icon_true.svg",height: 24,width: 24,color: Color(0xFFbb2a22),),
               ),
               const Text("CT Scan of Lungs (for Smokers)",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
@@ -1099,7 +1099,7 @@ class _HealTH360DeLUxEState extends State<HealTH360DeLUxE> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                child: SvgPicture.asset("assets/images/bullet_icon_true.svg",height: 24,width: 24,color: Color(0xFFbb2a22),),
               ),
               const Text("Respiratory Allergy Panel",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
@@ -1112,7 +1112,7 @@ class _HealTH360DeLUxEState extends State<HealTH360DeLUxE> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                child: SvgPicture.asset("assets/images/bullet_icon_true.svg",height: 24,width: 24,color: Color(0xFFbb2a22),),
               ),
               const Text("Comprehensive Allergy Panel (Mini)",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
@@ -1125,7 +1125,7 @@ class _HealTH360DeLUxEState extends State<HealTH360DeLUxE> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                child: SvgPicture.asset("assets/images/bullet_icon_true.svg",height: 24,width: 24,color: Color(0xFFbb2a22),),
               ),
               const Text("Comprehensive Allergy Panel (Maxi)",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
@@ -1138,7 +1138,7 @@ class _HealTH360DeLUxEState extends State<HealTH360DeLUxE> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                child: SvgPicture.asset("assets/images/bullet_icon_true.svg",height: 24,width: 24,color: Color(0xFFbb2a22),),
               ),
               const Text("Genetic Testing",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
@@ -1146,7 +1146,7 @@ class _HealTH360DeLUxEState extends State<HealTH360DeLUxE> {
           ),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

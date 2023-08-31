@@ -85,13 +85,13 @@ class _WholeBoDyMRIState extends State<WholeBoDyMRI> {
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
               "NM Medical has installed Whole Body MRI machines at Marine Lines, Parel, Bandra, Malad and Borivali in Mumbai and at Kalyani Nagar and Sancheti Hospital in Pune.",
-              style: TextStyle(fontSize: 14)),
+              style: TextStyle(fontSize: 14,height: 1.5, letterSpacing: 0.2)),
         ),
         Padding(
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
               "Now, in just 45 minutes, get completely screened from head-to-toe. Whole Body MRI evaluates all the organs in the body including head, neck, chest, abdomen, pelvis, musculoskeleton and whole spine.",
-              style: TextStyle(fontSize: 14)),
+              style: TextStyle(fontSize: 14,height: 1.5, letterSpacing: 0.2)),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
@@ -159,7 +159,7 @@ class _WholeBoDyMRIState extends State<WholeBoDyMRI> {
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
             "Whole Body MRI costs Rs. 25,000/- However, it can be added to any of the NM Medical checkup packages for Rs. 20,000/-",
-            style: TextStyle(fontSize: 14),
+            style: TextStyle(fontSize: 14,height: 1.5, letterSpacing: 0.2),
           ),
         ),
         const Divider(indent: 10, endIndent: 10, thickness: 1),
@@ -351,7 +351,7 @@ class _WholeBoDyMRIState extends State<WholeBoDyMRI> {
                   fontWeight: FontWeight.w500)),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

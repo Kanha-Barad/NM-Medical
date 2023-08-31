@@ -83,69 +83,85 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
         Padding(
           padding: const EdgeInsets.only(top: 15.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Select City',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 187, 42, 34),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700),
+              Flexible(
+                fit: FlexFit.tight,
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        'Select City',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 187, 42, 34),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      DropdownButton<String>(
+                        isExpanded: true,
+                        value: selectedValue1,
+                        onChanged: (newValue) {
+                          setState(() {
+                            selectedValue1 = newValue!;
+                          });
+                        },
+                        items: dropdownOptions1.map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w500),
+                            ),
+                          );
+                        }).toList(),
+                        iconEnabledColor: Color.fromARGB(255, 187, 42, 34),
+                      ),
+                    ],
                   ),
-                  DropdownButton<String>(
-                    value: selectedValue1,
-                    onChanged: (newValue) {
-                      setState(() {
-                        selectedValue1 = newValue!;
-                      });
-                    },
-                    items: dropdownOptions1.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(
-                          value,
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.w500),
-                        ),
-                      );
-                    }).toList(),
-                    iconEnabledColor: Color.fromARGB(255, 187, 42, 34),
-                  ),
-                ],
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Select Suburb',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 187, 42, 34),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700),
+              Flexible(
+                fit: FlexFit.tight,
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        'Select Suburb',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 187, 42, 34),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      DropdownButton<String>(
+                        value: selectedValue2,
+                        isExpanded: true,
+                        onChanged: (newValue) {
+                          setState(() {
+                            selectedValue2 = newValue!;
+                          });
+                        },
+                        items: dropdownOptions2.map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w500),
+                            ),
+                          );
+                        }).toList(),
+                        iconEnabledColor: Color.fromARGB(255, 187, 42, 34),
+                      ),
+                    ],
                   ),
-                  DropdownButton<String>(
-                    value: selectedValue2,
-                    onChanged: (newValue) {
-                      setState(() {
-                        selectedValue2 = newValue!;
-                      });
-                    },
-                    items: dropdownOptions2.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(
-                          value,
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.w500),
-                        ),
-                      );
-                    }).toList(),
-                    iconEnabledColor: Color.fromARGB(255, 187, 42, 34),
-                  ),
-                ],
+                ),
               ),
             ],
           ),
@@ -161,19 +177,17 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/01.png"),
-                    Image.asset("assets/locations/02.png"),
-                    Image.asset("assets/locations/03.png"),
+                    Image.asset("assets/locations/01.png",fit: BoxFit.fill,),
+                    Image.asset("assets/locations/02.png",fit: BoxFit.fill),
+                    Image.asset("assets/locations/03.png",fit: BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -266,17 +280,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -369,17 +381,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -472,17 +482,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -575,17 +583,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -678,17 +684,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -781,17 +785,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -884,17 +886,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -987,17 +987,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -1090,17 +1088,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -1193,17 +1189,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -1296,17 +1290,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -1399,17 +1391,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(
@@ -1502,17 +1492,15 @@ class _SelectMumbaiLocationState extends State<SelectMumbaiLocation> {
               children: [
                 CarouselSlider(
                   items: [
-                    Image.asset("assets/locations/placeholder-image.png"),
+                    Image.asset("assets/locations/placeholder-image.png",fit:BoxFit.fill),
                   ],
                   options: CarouselOptions(
-                    height: 150.0,
-                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: false,
                     autoPlay: true,
-                    // aspectRatio: 16 / 40,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
                   ),
                 ),
                 Row(

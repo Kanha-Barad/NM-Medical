@@ -51,10 +51,12 @@ class _EnQUiryState extends State<EnQUiry> {
         CustomContainerBar(
             title: "ENQUIRY", svgAssetPath: "assets/cart/shopping-cart.svg"),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
           child: TextFormField(
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               border: UnderlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
@@ -81,10 +83,12 @@ class _EnQUiryState extends State<EnQUiry> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
           child: TextFormField(
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               border: UnderlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
@@ -111,10 +115,12 @@ class _EnQUiryState extends State<EnQUiry> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
           child: TextFormField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               border: UnderlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
@@ -141,10 +147,12 @@ class _EnQUiryState extends State<EnQUiry> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
           child: TextFormField(
             keyboardType: TextInputType.phone,
             decoration: InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               border: UnderlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
@@ -171,10 +179,12 @@ class _EnQUiryState extends State<EnQUiry> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
           child: TextFormField(
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               border: UnderlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
@@ -205,7 +215,7 @@ class _EnQUiryState extends State<EnQUiry> {
           child: InkWell(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ThankYou()));
+                  MaterialPageRoute(builder: (context) => ThankYou("", "")));
             },
             child: Card(
               color: const Color.fromARGB(255, 237, 28, 36),

@@ -68,7 +68,7 @@ class _SuppoRTState extends State<SuppoRT> {
                 child: Text("EXISTING PATIENT",
                     style: TextStyle(
                         color: Color.fromARGB(255, 187, 43, 34),
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         fontSize: 14.0)),
               ),
               subtitle: Column(
@@ -121,13 +121,13 @@ class _SuppoRTState extends State<SuppoRT> {
         Padding(
           padding: const EdgeInsets.only(top: 4.0),
           child: ListTile(
-              leading: SvgPicture.asset("assets/24-7-support/new-patient.svg"),
+              leading: SvgPicture.asset("assets/24-7-support/new-patient.svg",color: Color(0xffbb2a22),),
               title: Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text("NEW PATIENT",
                     style: TextStyle(
                         color: Color.fromARGB(255, 187, 43, 34),
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         fontSize: 14.0)),
               ),
               subtitle: Column(

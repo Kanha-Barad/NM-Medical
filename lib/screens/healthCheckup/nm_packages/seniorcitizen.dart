@@ -72,7 +72,7 @@ class _SeniorCITIzeNState extends State<SeniorCITIzeN> {
           padding: EdgeInsets.fromLTRB(15, 15, 10, 10),
           child: Text(
               "We desire to help our respected elders through their difficult time, where even slight illness or injury could bring about unforeseen complications. This specially designed health plan includes a range of diagnostic tests and consultations, which provide a comprehensive health assessment and allows one to age gracefully!",
-              style: TextStyle(fontSize: 14)),
+              style: TextStyle(fontSize: 14,height: 1.5,letterSpacing: 0.5)),
         ),
         const Divider(indent: 10, endIndent: 10, thickness: 1),
         const Padding(
@@ -681,7 +681,7 @@ class _SeniorCITIzeNState extends State<SeniorCITIzeN> {
           ),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

@@ -59,21 +59,22 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
               "assets/breast-imaging/breast-screening-clinic-1.jpg"),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 20, 0, 5),
+          padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
           child: Text(
             "Breast Screening Clinic",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.w600, height: 1.7),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 15.0),
+          padding: const EdgeInsets.only(left: 15.0, bottom: 10),
           child: Text(
             "NM Medical has the most well-equipped breast diagnostic and screening clinic in the country including",
-            style: TextStyle(fontSize: 14),
+            style: TextStyle(fontSize: 14, height: 1.7),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 20, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 10, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -82,13 +83,13 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
               ),
               const Text(
                 "3D Digital Mammography with Tomosynthesis",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -97,13 +98,13 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
               ),
               const Text(
                 "Breast Ultrasound with Elastography",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -112,13 +113,13 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
               ),
               const Text(
                 "Fine needle aspirations",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -127,13 +128,13 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
               ),
               const Text(
                 "Wire localizations",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -142,13 +143,13 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
               ),
               const Text(
                 "Ultrasound guided core biopsies",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -157,13 +158,13 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
               ),
               const Text(
                 "Stereotactic biopsies",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -172,13 +173,13 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
               ),
               const Text(
                 "Vacuum assisted biopsies",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -187,13 +188,13 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
               ),
               const Text(
                 "Digital Histopathology with IHC staining",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -202,13 +203,13 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
               ),
               const Text(
                 "Molecular and Genetic lab including BRCA test",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
@@ -217,7 +218,7 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
               ),
               const Text(
                 "Counceling",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),
@@ -225,7 +226,9 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
         Padding(
           padding: const EdgeInsets.only(left: 15.0, top: 8),
           child: Text(
-              "Our department head Dr Shilpa Lad brings many years of experience including number of years of experience in Canada."),
+            "Our department head Dr Shilpa Lad brings many years of experience including number of years of experience in Canada.",
+            style: TextStyle(fontSize: 14, height: 1.7),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
@@ -237,7 +240,7 @@ class _BreastIMAGinGState extends State<BreastIMAGinG> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context)
+        FormoreInformation(context, "")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

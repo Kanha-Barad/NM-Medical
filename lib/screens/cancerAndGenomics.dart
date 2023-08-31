@@ -60,98 +60,130 @@ class _CancerAnDGEnomiCSState extends State<CancerAnDGEnomiCS> {
           child: Image.asset("assets/cancer-and-genomics/cancer-genomics.jpg"),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 20, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 20, 0, 8),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Wellness")
+              const Text(
+                "Wellness",
+                style: TextStyle(
+                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+              )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Infectious Diseases")
+              const Text(
+                "Infectious Diseases",
+                style: TextStyle(
+                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+              )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Reproductive Health & Pregnancy")
+              const Text(
+                "Reproductive Health & Pregnancy",
+                style: TextStyle(
+                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+              )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Cyto Genetics & FISH")
+              const Text(
+                "Cyto Genetics & FISH",
+                style: TextStyle(
+                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+              )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Cancer NGS Panels")
+              const Text(
+                "Cancer NGS Panels",
+                style: TextStyle(
+                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+              )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Rare Genetic Disorders")
+              const Text(
+                "Rare Genetic Disorders",
+                style: TextStyle(
+                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+              )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("Whole Genome & Exome")
+              const Text(
+                "Whole Genome & Exome",
+                style: TextStyle(
+                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+              )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 5),
+          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text("PharmaCogenomics")
+              const Text(
+                "PharmaCogenomics",
+                style: TextStyle(
+                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+              )
             ],
           ),
         ),
@@ -160,7 +192,7 @@ class _CancerAnDGEnomiCSState extends State<CancerAnDGEnomiCS> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context),
+        FormoreInformation(context, ""),
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

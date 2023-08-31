@@ -7,9 +7,8 @@ import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
 import '../../../widgets/bottom_navigation.dart';
 import '../../../widgets/customContainer.dart';
-import '../../../widgets/packageinvestmentwidget.dart';
 import '../../../widgets/forMoreInformation.dart';
-import '../nm_packages/enquire.dart';
+import '../../../widgets/packageinvestmentwidget.dart';
 
 String navPAymnetCD = "";
 
@@ -86,7 +85,7 @@ class _CardiacCTPackagesState extends State<CardiacCTPackages> {
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
             "Health 360 has acquired the world's fastest 64 Slice Cardiac CT Scanner for advanced CT applications.Now,get a comprehensive evaluation of the health of your heart in just a few minutes!Simply walk in for a Coronary CT Angiography on our Cardiac CT Scanner to identify any blockage in the arteries that supply blood to your heart.",
-            style: TextStyle(fontSize: 14),
+            style: TextStyle(fontSize: 14,height: 1.5, letterSpacing: 0.2),
             softWrap: true,
           ),
         ),
@@ -94,7 +93,7 @@ class _CardiacCTPackagesState extends State<CardiacCTPackages> {
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
             "The test is safe and is not an invasive procedure unlike conventional catheter angiography.A normal report rules out possibility of a coronary artery blockage in the near future. Coronary CT Angio is also extremely useful in evaluating patency of stents and the condition of the bypass graft post-CABG. A preliminary screening of the arteries can also be done just by evaluating the Calcium Score. A low Calcium Score is synonymous with low clinically significant soft plaques in the coronary arteries.The Calcium Scoring test can be completed in a matter of seconds.",
-            style: TextStyle(fontSize: 14),
+            style: TextStyle(fontSize: 14,height: 1.5, letterSpacing: 0.2),
             softWrap: true,
           ),
         ),
@@ -102,7 +101,7 @@ class _CardiacCTPackagesState extends State<CardiacCTPackages> {
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
             "Extended CT angiography of the renal arteries can also be done in the same seating without injection of additional contrast for a nominal additional amount of Rs.3000.",
-            style: TextStyle(fontSize: 14),
+            style: TextStyle(fontSize: 14,height: 1.5, letterSpacing: 0.2),
             softWrap: true,
           ),
         ),
@@ -110,7 +109,7 @@ class _CardiacCTPackagesState extends State<CardiacCTPackages> {
           padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
           child: Text(
             "To know the condition of your heart call us on given numbers and register for a Coronary CT Angio or Calcium Scoring test for yourself and your loved ones.Remember,often in heart attack cases,the only symptom of the disease is the attack itself.",
-            style: TextStyle(fontSize: 14),
+            style: TextStyle(fontSize: 14,height: 1.5, letterSpacing: 0.2),
             softWrap: true,
           ),
         ),
@@ -312,7 +311,7 @@ class _CardiacCTPackagesState extends State<CardiacCTPackages> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context)
+        FormoreInformation(context, "")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: navPAymnetCD,

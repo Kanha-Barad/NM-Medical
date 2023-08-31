@@ -578,7 +578,7 @@ class _ExeCUtIVePlUSPackagesState extends State<ExeCUtIVePlUSPackages> {
                   fontWeight: FontWeight.w500)),
         ),
         Divider(indent: 10, endIndent: 10, thickness: 1),
-        FormoreInformation(context)
+        FormoreInformation(context,"")
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

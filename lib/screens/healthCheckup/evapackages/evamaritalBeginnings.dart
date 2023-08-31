@@ -63,7 +63,7 @@ class _EVaMarITAlBeGINnIngSState extends State<EVaMarITAlBeGINnIngS> {
           endIndent: 15,
           thickness: 1.5,
         ),
-        FormoreInformation(context),
+        FormoreInformation(context,""),
       ])),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/widgets/bottom_navigation.dart';
-import '../forMoreInformation.dart';
 
 import '../../../widgets/app_drawer.dart';
 import '../../../widgets/basic_appbar.dart';
@@ -64,37 +63,40 @@ class _PRomoTioNState extends State<PRomoTioN> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
             child: Card(
+              elevation: 1,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
-                side: BorderSide(
-                    color: Color.fromARGB(255, 209, 207, 207), width: 0.4),
               ),
               child: Column(
                 children: [
                   Stack(children: [
                     Image.asset(
                       "assets/promotion/01.png",
+                      fit: BoxFit.fill,
+                      width: MediaQuery.of(context).size.width - (16 * 2),
                     ),
                     Positioned(
                       top: 20,
-                      right: 2,
+                      right: 0,
                       child: Container(
                         color: Color.fromARGB(255, 235, 28, 17),
-                        padding: EdgeInsets.all(2),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               'PROMO CODE',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 10,
+                                fontSize: 12,
                               ),
                             ),
                             Text(
                               'NM100',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -167,37 +169,40 @@ class _PRomoTioNState extends State<PRomoTioN> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
             child: Card(
+              elevation: 1,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
-                side: BorderSide(
-                    color: Color.fromARGB(255, 209, 207, 207), width: 0.4),
               ),
               child: Column(
                 children: [
                   Stack(children: [
                     Image.asset(
                       "assets/promotion/02.png",
+                      fit: BoxFit.fill,
+                      width: MediaQuery.of(context).size.width - (16 * 2),
                     ),
                     Positioned(
                       top: 20,
-                      right: 2,
+                      right: 0,
                       child: Container(
                         color: Color.fromARGB(255, 235, 28, 17),
-                        padding: EdgeInsets.all(2),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               'PROMO CODE',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 10,
+                                fontSize: 12,
                               ),
                             ),
                             Text(
                               'NM100',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -270,37 +275,40 @@ class _PRomoTioNState extends State<PRomoTioN> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
             child: Card(
+              elevation: 1,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
-                side: BorderSide(
-                    color: Color.fromARGB(255, 209, 207, 207), width: 0.4),
               ),
               child: Column(
                 children: [
                   Stack(children: [
                     Image.asset(
                       "assets/promotion/03.png",
+                      fit: BoxFit.fill,
+                      width: MediaQuery.of(context).size.width - (16 * 2),
                     ),
                     Positioned(
                       top: 20,
-                      right: 2,
+                      right: 0,
                       child: Container(
                         color: Color.fromARGB(255, 235, 28, 17),
-                        padding: EdgeInsets.all(2),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               'PROMO CODE',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 10,
+                                fontSize: 12,
                               ),
                             ),
                             Text(
                               'NM100',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),

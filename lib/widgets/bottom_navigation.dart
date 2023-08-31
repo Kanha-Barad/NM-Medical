@@ -24,6 +24,7 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
       child: Row(
         children: [
           Expanded(
+            flex: 1,
             child: buildNavItem(
               icon: "assets/footer-menu-icons/home-icon.svg",
               text: "Home",
@@ -38,6 +39,7 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
           ),
           if (widget.payMNETNAv == "BNP")
             Expanded(
+              flex: 1,
               child: buildNavItem(
                 icon: "assets/footer-menu-icons/payment-icon.svg",
                 text: "Payments",
@@ -51,9 +53,10 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
               ),
             ),
           Expanded(
+            flex: 1,
             child: buildNavItem(
               icon: "assets/footer-menu-icons/report-icon.svg",
-              text: "Report",
+              text: "  Report  ",
               color: (widget.payMNETNAv == "BNP")
                   ? Color.fromARGB(255, 201, 85, 78)
                   : Color.fromARGB(255, 193, 63, 55),
@@ -66,6 +69,7 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
             ),
           ),
           Expanded(
+            flex: 2,
             child: buildNavItem(
               icon: "assets/footer-menu-icons/loyalty-program-icon.svg",
               text: "Loyalty Program",
@@ -81,6 +85,7 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
             ),
           ),
           Expanded(
+            flex: 1,
             child: buildNavItem(
               icon: "assets/footer-menu-icons/promotion-icon.svg",
               text: "Promotion",
@@ -96,6 +101,7 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
             ),
           ),
           Expanded(
+            flex: 1,
             child: buildNavItem(
               icon: "assets/footer-menu-icons/dashboard-2.png",
               text: "Dashboard",
@@ -154,7 +160,7 @@ class _AllBottomNavigationBarState extends State<AllBottomNavigationBar> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 11,
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w600,
                       ),
                     ))),
           ],

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:nmmedical/widgets/thankyouscreen.dart';
-import '../widgets/bottom_navigation.dart';
-import '../widgets/cart_widget.dart';
 
+import '../AuthProvider.dart';
+import '../controllers/Home_Visit_Controller.dart';
+import '../controllers/OTP_Validation_Controller.dart';
+import '../models/Home_Visit_Module.dart';
+import '../models/OTP_Validation_Module.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/basic_appbar.dart';
+import '../widgets/bottom_navigation.dart';
 import '../widgets/customContainer.dart';
 
 class homeVisit extends StatefulWidget {
@@ -19,15 +22,56 @@ class homeVisit extends StatefulWidget {
 final value = NumberFormat("#,##0", "en_US");
 
 class _homeVisitState extends State<homeVisit> {
+  AuthProvider _authProvider = AuthProvider();
   TextEditingController dateController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController mobnoController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  List<DropdownOption> dropdownOptions = [];
+  List<OTPValidationResponse> UserdropdownOptions = [];
+  late DropdownOption selectedOption;
+  late OTPValidationResponse selectedUserOption;
+  bool areOptionsFetched = false; // Flag to track options fetching status
+  bool areUserOptionsFetched = false;
 
   @override
   void initState() {
-    dateController.text = ""; //set the initial value of text field
     super.initState();
+    dateController.text = "";
+    fetchDropdownOptions();
+    fetchUserDropdownOptions();
+    selectedOption =
+        DropdownOption(value: -1, label: ''); // Default uninitialized value
+    // selectedUserOption =
+    // OTPValidationResponse(value: -1, label: ''); // Default uninitialized value
   }
 
-  String dropdownValue = 'Blood Test';
+  Future<void> fetchDropdownOptions() async {
+    List<DropdownOption> options =
+        await DropdownController.fetchDropdownOptions();
+    setState(() {
+      dropdownOptions = options;
+      if (options.isNotEmpty) {
+        selectedOption = options.first; // Set initial selected option
+      }
+      areOptionsFetched = true; // Mark options as fetched
+    });
+  }
+
+  Future<void> fetchUserDropdownOptions() async {
+    List<OTPValidationResponse> Useroptions =
+        await _authProvider.getStoredOTPValidationResponses();
+
+    setState(() {
+      UserdropdownOptions = Useroptions;
+      if (Useroptions.isNotEmpty) {
+        selectedUserOption = Useroptions.first;
+      }
+      areUserOptionsFetched = true;
+    });
+  }
+
   bool isUserProfileIconClicked = false;
   bool isMenuClicked = false;
 
@@ -38,7 +82,7 @@ class _homeVisitState extends State<homeVisit> {
     });
   }
 
-  // Function to handle menu icon tap
+// Function to handle menu icon tap
   void handleMenuIconTap() {
     setState(() {
       isMenuClicked = true;
@@ -69,7 +113,7 @@ class _homeVisitState extends State<homeVisit> {
           },
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 15, top: 15),
+          padding: const EdgeInsets.only(left: 10, top: 15),
           child: Text(
             'Select Date',
             style: TextStyle(
@@ -77,14 +121,15 @@ class _homeVisitState extends State<homeVisit> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 4),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 4),
           child: TextField(
             controller: dateController,
             style: TextStyle(fontSize: 14),
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.only(left: 10, right: 10, top: 14),
               suffixIcon: Icon(
                 Icons.date_range_outlined,
-                size: 22,
+                size: 20,
                 color: Color.fromARGB(255, 187, 42, 34),
               ),
               border: UnderlineInputBorder(
@@ -98,25 +143,33 @@ class _homeVisitState extends State<homeVisit> {
             readOnly: true,
             onTap: () async {
               DateTime? pickedDate = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(), //get today's date
-                  firstDate: DateTime(2000),
-                  lastDate: DateTime(2101));
-              builder:
-              (context) {
-                return Theme(
-                  data: Theme.of(context).copyWith(
-                    colorScheme: ColorScheme.dark(
-                      primary: Color.fromARGB(255, 187, 42, 34), // <-- SEE HERE
-                      onPrimary:
-                          Color.fromARGB(255, 187, 42, 34), // <-- SEE HERE
-                      onSurface:
-                          Color.fromARGB(255, 187, 42, 34), // <-- SEE HERE
+                context: context,
+                initialDate: DateTime.now(), // get today's date
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2101),
+                builder: (BuildContext context, Widget? child) {
+                  return Theme(
+                    data: ThemeData.light().copyWith(
+                      // Use ThemeData.light() for white background
+                      primaryColor:
+                          Color.fromARGB(255, 187, 42, 34), // Header color
+                      accentColor:
+                          Color.fromARGB(255, 187, 42, 34), // Selected color
+                      colorScheme: ColorScheme.light().copyWith(
+                        // Use ColorScheme.light()
+                        primary: Color.fromARGB(
+                            255, 187, 42, 34), // Header background
+                        onPrimary: Colors
+                            .white, // Header text color (changed to white)
+                        surface: Colors.white, // Calendar background
+                        onSurface: Colors.black, // Calendar text color
+                      ),
                     ),
-                  ),
-                  child: Text(""),
-                );
-              };
+                    child: child!,
+                  );
+                },
+              );
+
               if (pickedDate != null) {
                 print(pickedDate);
                 String formattedDate =
@@ -133,215 +186,240 @@ class _homeVisitState extends State<homeVisit> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-          child: TextFormField(
-            keyboardType: TextInputType.name,
-            decoration: InputDecoration(
-              border: UnderlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1.5),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              fillColor: Colors.grey,
-              // hintText: "Rohan",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-                //fontFamily: "verdana_regular",
-                fontWeight: FontWeight.w500,
-              ),
-              labelText: 'First Name',
-              labelStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
+          padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
+          child: Text('Select User',
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+          child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child:
+                  areOptionsFetched // Display dropdown only when options are fetched
+                      ? DropdownButton<OTPValidationResponse>(
+                          underline: Container(
+                            height: 2,
+                            color: Colors.grey,
+                          ),
+                          value:
+                              selectedUserOption, // Use the selected option directly
+                          isExpanded: true,
+                          onChanged: (newValue) {
+                            setState(() {
+                              selectedUserOption = newValue!;
+                              nameController.text =
+                                  selectedUserOption.DISPLAY_NAME;
+                              emailController.text =
+                                  selectedUserOption.EMAIL_ID;
+                              mobnoController.text =
+                                  selectedUserOption.MOBILE_NO1;
+                              addressController.text =
+                                  selectedUserOption.ADDRESS1;
+                            });
+                          },
+                          items: UserdropdownOptions.map((option) {
+                            return DropdownMenuItem<OTPValidationResponse>(
+                              value: option,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 16),
+                                child: Text(
+                                  option.DISPLAY_NAME,
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                          // icon: Padding(
+                          //   padding: const EdgeInsets.only(left: 260.0),
+                          //   child: Icon(Icons.keyboard_arrow_down),
+                          // ),
+                        )
+                      : Container()),
+        ),
+        TextFormField(
+          controller: nameController,
+          keyboardType: TextInputType.name,
+          decoration: InputDecoration(
+            contentPadding:
+                EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+            border: UnderlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: const BorderSide(color: Colors.black, width: 1.5),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            fillColor: Colors.grey,
+// hintText: "Rohan",
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+// hintStyle: TextStyle(
+// color: Colors.grey,
+// fontSize: 12,
+// //fontFamily: "verdana_regular",
+// fontWeight: FontWeight.w500,
+// ),
+            labelText: 'First Name',
+            labelStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        TextFormField(
+          keyboardType: TextInputType.name,
+          decoration: InputDecoration(
+            contentPadding:
+                EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+            border: UnderlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: const BorderSide(color: Colors.black, width: 1.5),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            fillColor: Colors.grey,
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            labelText: 'Last Name',
+            labelStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        TextFormField(
+          controller: emailController,
+          keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(
+            contentPadding:
+                EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+            border: UnderlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: const BorderSide(color: Colors.black, width: 1.5),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            fillColor: Colors.grey,
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            labelText: 'Email',
+            labelStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        TextFormField(
+          controller: mobnoController,
+          keyboardType: TextInputType.phone,
+          decoration: InputDecoration(
+            contentPadding:
+                EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+            border: UnderlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: const BorderSide(color: Colors.black, width: 1.5),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            fillColor: Colors.grey,
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            labelText: 'Mobile Number',
+            labelStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        TextFormField(
+          minLines: 2,
+          maxLines: 5,
+          controller: addressController,
+          keyboardType: TextInputType.multiline,
+          decoration: InputDecoration(
+            contentPadding:
+                EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+            border: UnderlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: const BorderSide(color: Colors.black, width: 1.5),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            fillColor: Colors.grey,
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            labelText: 'Address',
+            labelStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-          child: TextFormField(
-            keyboardType: TextInputType.name,
-            decoration: InputDecoration(
-              border: UnderlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1.5),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              fillColor: Colors.grey,
-              //  hintText: "Singh",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-                //  fontFamily: "verdana_regular",
-                fontWeight: FontWeight.w500,
-              ),
-              labelText: 'Last Name',
-              labelStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-          child: TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              border: UnderlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1.5),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              fillColor: Colors.grey,
-              //  hintText: "abc@gmail.com",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-                // fontFamily: "verdana_regular",
-                fontWeight: FontWeight.w500,
-              ),
-              labelText: 'Email',
-              labelStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-          child: TextFormField(
-            keyboardType: TextInputType.phone,
-            decoration: InputDecoration(
-              border: UnderlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1.5),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              fillColor: Colors.grey,
-              //  hintText: "12345617890",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-                //  fontFamily: "verdana_regular",
-                fontWeight: FontWeight.w500,
-              ),
-              labelText: 'Mobile Number',
-              labelStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-          child: TextFormField(
-            keyboardType: TextInputType.name,
-            decoration: InputDecoration(
-              border: UnderlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1.5),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              fillColor: Colors.grey,
-              //  hintText: "17, Vadsarbala Nivas Mulund West",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-                // fontFamily: "verdana_regular",
-                fontWeight: FontWeight.w500,
-              ),
-              labelText: 'Address',
-              labelStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+          padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
           child: Text('Select Test',
-              style: TextStyle(
-                  color: Color.fromARGB(255, 187, 42, 34),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600)),
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
-          child: DropdownButtonFormField(
-            decoration: InputDecoration(
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                    color: Color.fromARGB(255, 237, 239, 239), width: 1.5),
-              ),
-              filled: true,
-              // fillColor: Colors.greenAccent,
-            ),
-            icon: Icon(
-              Icons.arrow_drop_down,
-              color: Color.fromARGB(255, 187, 42, 34),
-            ),
-            dropdownColor: Color.fromARGB(255, 237, 239, 239),
-            value: dropdownValue,
-            onChanged: (String? newValue) {
-              setState(() {
-                dropdownValue = newValue!;
-              });
-            },
-            items: <String>[
-              'Blood Test',
-              'Blood Test 1',
-              'Blood Test 2',
-              'Blood Test 3',
-              'Blood Test 4'
-            ].map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(
-                  value,
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                ),
-              );
-            }).toList(),
-          ),
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+          child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child:
+                  areOptionsFetched // Display dropdown only when options are fetched
+                      ? DropdownButton<DropdownOption>(
+                          underline: Container(
+                            height: 2,
+                            color: Colors.grey,
+                          ),
+                          value:
+                              selectedOption, // Use the selected option directly
+                          isExpanded: true,
+                          onChanged: (newValue) {
+                            setState(() {
+                              selectedOption = newValue!;
+                            });
+                          },
+                          items: dropdownOptions.map((option) {
+                            return DropdownMenuItem<DropdownOption>(
+                              value: option,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 16),
+                                child: Text(
+                                  option.label,
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                          // icon: Padding(
+                          //   padding: const EdgeInsets.only(left: 260.0),
+                          //   child: Icon(Icons.keyboard_arrow_down),
+                          // ),
+                        )
+                      : Container()),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 15, top: 16),
+          padding: const EdgeInsets.only(left: 6, top: 2, bottom: 40),
           child: InkWell(
             onTap: () {
+              // loadData();
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ThankYou()));
+                  MaterialPageRoute(builder: (context) => ThankYou("", "")));
             },
             child: Card(
               color: const Color.fromARGB(255, 237, 28, 36),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18)),
+                  borderRadius: BorderRadius.circular(50)),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 4, 20, 4),
+                padding: const EdgeInsets.fromLTRB(20, 6, 20, 6),
                 child: Text(
                   'SUBMIT',
                   style: TextStyle(
@@ -360,3 +438,47 @@ class _homeVisitState extends State<homeVisit> {
     );
   }
 }
+
+
+// Map data = {
+//         "PATIENT_ID": "1",
+//         "UMR_NO": umr_no,
+//         "TEST_IDS": testIds,
+//         "TEST_AMOUNTS": testAmount,
+//         "CONSESSION_AMOUNT": "0",
+//         "BILL_AMOUNT": "0",
+//         "DUE_AMOUNT": "0",
+//         "MOBILE_NO": mobNO,
+//         "MOBILE_REG_FLAG": "y",
+//         "SESSION_ID": Session_ID,
+//         "PAYMENT_MODE_ID": "1",
+//         "IP_NET_AMOUNT": "0",
+//         "IP_TEST_CONCESSION": "0",
+//         "IP_TEST_NET_AMOUNTS": "0",
+//         "IP_POLICY_ID": "0",
+//         "IP_PAID_AMOUNT": "0",
+//         "IP_OUTSTANDING_DUE": "0",
+//         "connection": globals.Patient_App_Connection_String,
+//         "loc_id": "0",
+//         "IP_SLOT": "NM",
+//         "IP_DATE": "${selectedDate}",
+//         "IP_UPLOAD_IMG": "",
+//         "IP_PRESCRIPTION": "",
+//         "IP_REMARKS": "",
+//         "Mobile_Device_Id": "",
+//         //"Server_Flag":""
+//       };
+
+//       final jobsListAPIUrl = Uri.parse(
+//           globals.Global_Patient_Api_URL + '/PatinetMobileApp/NewRegistration');
+
+//       var response = await http.post(jobsListAPIUrl,
+//           headers: {
+//             "Accept": "application/json",
+//             "Content-Type": "application/x-www-form-urlencoded"
+//           },
+//           body: data,
+//           encoding: Encoding.getByName("utf-8"));
+
+//       if (response.statusCode == 200) {
+//         Map<String, dynamic> resposne = jsonDecode(response.body);

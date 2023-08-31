@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nmmedical/screens/nm_home.dart';
 import 'package:nmmedical/widgets/gallery.dart';
 import 'package:nmmedical/widgets/location.dart';
 import 'package:nmmedical/widgets/search_widget.dart';
@@ -16,11 +17,12 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
       {required this.onUserProfileIconTap, required this.onMenuIconTap});
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => Size.fromHeight(90);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      toolbarHeight: 90,
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
       // leading: Row(
@@ -46,10 +48,16 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 0, bottom: 1),
-            child: SizedBox(
-                width: 54,
-                height: 54,
-                child: SvgPicture.asset("assets/images/nm-logo.svg")),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => NMHome()));
+              },
+              child: SizedBox(
+                  width: 64,
+                  height: 64,
+                  child: SvgPicture.asset("assets/images/nm-logo.svg")),
+            ),
           ),
           if (appBarImg == "HM")
             Padding(
@@ -60,18 +68,18 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
                   child: SvgPicture.asset("assets/images/health-360-logo.svg")),
             ),
           Spacer(),
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => searchwidget()),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 14.0),
-              child: SvgPicture.asset("assets/header-icons/search.svg"),
-            ),
-          ),
+          // InkWell(
+          //   onTap: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => searchwidget()),
+          //     );
+          //   },
+          //   child: Padding(
+          //     padding: const EdgeInsets.only(right: 14.0),
+          //     child: SvgPicture.asset("assets/header-icons/search.svg"),
+          //   ),
+          // ),
           (teSTCarT == "TC")
               ? InkWell(
                   onTap: () {
