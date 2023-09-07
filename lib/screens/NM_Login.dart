@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nmmedical/screens/OTP_Validation.dart';
 import 'package:provider/provider.dart';
 
@@ -13,11 +14,37 @@ class MobileNumberPage extends StatefulWidget {
 
 class _MobileNumberPageState extends State<MobileNumberPage> {
   final TextEditingController _mobileController = TextEditingController();
+  bool _isLoggingIn = false; // Flag to track login process
 
   void _login(BuildContext context) async {
+    if (_isLoggingIn) {
+      // If a login request is already in progress, return and prevent multiple clicks
+      return;
+    }
+
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
 
     try {
+      // Set the flag to true to indicate that a login request is in progress
+      if (_mobileController.text == null || _mobileController.text.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Please enter a Mobile Number.'),
+          ),
+        );
+        return;
+      } else if (_mobileController.text.length != 10) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Mobile number must be 10 digits long'),
+          ),
+        );
+        return;
+      }
+      setState(() {
+        _isLoggingIn = true;
+      });
+
       final loginResponse = await authProvider.login(_mobileController.text);
 
       if (loginResponse != null) {
@@ -34,6 +61,11 @@ class _MobileNumberPageState extends State<MobileNumberPage> {
       }
     } catch (error) {
       // Handle error
+    } finally {
+      // Set the flag back to false when the login process is complete
+      setState(() {
+        _isLoggingIn = false;
+      });
     }
   }
 
@@ -68,29 +100,49 @@ class _MobileNumberPageState extends State<MobileNumberPage> {
                       height: 1.5, fontSize: 16, fontWeight: FontWeight.w400),
                 ),
               ),
-              TextFormField(
-                controller: _mobileController,
-                decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                        color: Color.fromARGB(
-                            255, 209, 207, 207)), // Inactive color
+              Center(
+                child: TextFormField(
+                  controller: _mobileController,
+                  keyboardType: TextInputType.phone,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly, // Allow only digits.
+                    LengthLimitingTextInputFormatter(
+                        10), // Limit the length to 10 digits (adjust as needed).
+                  ],
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Please enter a Mobile Number.'),
+                        ),
+                      );
+                      return 'Please enter a mobile number';
+                    }
+                    if (value.length != 10) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Mobile number must be 10 digits long'),
+                        ),
+                      );
+                      return 'Mobile number must be 10 digits long';
+                    }
+                    // You can add more specific validation if needed.
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(
+                              255, 209, 207, 207)), // Inactive color
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color:
+                              Color.fromARGB(255, 104, 104, 104)), // Active color
+                    ),
                   ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                        color:
-                            Color.fromARGB(255, 104, 104, 104)), // Active color
-                  ),
+                  cursorColor: Color.fromARGB(255, 222, 222, 222),
                 ),
-                cursorColor: Color.fromARGB(255, 222, 222, 222),
-                keyboardType: TextInputType.phone,
-               // inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your mobile number';
-                  }
-                  return null;
-                },
               ),
               GestureDetector(
                 onTap: () => _login(context),

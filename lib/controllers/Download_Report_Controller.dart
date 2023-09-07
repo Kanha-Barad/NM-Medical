@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:nmmedical/AuthProvider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 import '../models/Download_Reports_Models.dart';
+import '../models/OTP_Validation_Module.dart';
 
 class ReportController {
   static Future<List<Report>> fetchReports() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String mobileNumber = prefs.getString('MOBILENO') ?? "Not Assigned";
+    //SharedPreferences prefs = await SharedPreferences.getInstance();
+    String mobileNumber = "";
+    AuthProvider _authProvider = AuthProvider();
+
+    List<OTPValidationResponse> Useroptions =
+        await _authProvider.getStoredOTPValidationResponses();
+
+    if (Useroptions.isNotEmpty) {
+      mobileNumber = Useroptions.first.MOBILE_NO1;
+    }
+
     Map<String, dynamic> data = {
-      "bill_id": mobileNumber,
+      "bill_id": mobileNumber.toString(),
       "connection":
           "Server=115.112.188.189,11433;User id=app2;Password=Seven@123;Database=UAT_NM_MEDICAL_LIMS"
     };

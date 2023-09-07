@@ -17,12 +17,12 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
       {required this.onUserProfileIconTap, required this.onMenuIconTap});
 
   @override
-  Size get preferredSize => Size.fromHeight(90);
+  Size get preferredSize => Size.fromHeight(80);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: 90,
+      toolbarHeight: 80,
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
       // leading: Row(
@@ -61,10 +61,10 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
           ),
           if (appBarImg == "HM")
             Padding(
-              padding: const EdgeInsets.only(left: 1, bottom: 2),
+              padding: const EdgeInsets.only(left: 3, top: 8),
               child: SizedBox(
                   width: 54,
-                  height: 40,
+                  height: 43,
                   child: SvgPicture.asset("assets/images/health-360-logo.svg")),
             ),
           Spacer(),

@@ -52,7 +52,9 @@ Widget FormoreInformation(BuildContext context, NinemOnEmial) {
           text: 'For more information WhatsApp on ',
           style: TextStyle(
               letterSpacing: 0.5,
-              fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w400)),
+              fontSize: 14,
+              color: Color.fromARGB(255, 85, 85, 85),
+              fontWeight: FontWeight.w400)),
       WidgetSpan(
         child: Padding(
           padding: const EdgeInsets.only(left: 3.0, right: 2),
@@ -65,7 +67,7 @@ Widget FormoreInformation(BuildContext context, NinemOnEmial) {
       TextSpan(
           text: '9256855758',
           style: TextStyle(
-            letterSpacing: 0.03,
+              letterSpacing: 0.03,
               fontSize: 14,
               height: 1.5,
               color: Color.fromARGB(255, 187, 42, 34),
@@ -80,7 +82,7 @@ Widget FormoreInformation(BuildContext context, NinemOnEmial) {
               letterSpacing: 0.5,
               fontSize: 14,
               height: 1.5,
-              color: Colors.grey,
+              color: Color.fromARGB(255, 85, 85, 85),
               fontWeight: FontWeight.w400)),
       (NINEEmial == "NMTH")
           ? TextSpan(

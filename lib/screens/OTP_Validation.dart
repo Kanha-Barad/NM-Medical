@@ -23,29 +23,44 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
   // final TextEditingController otpController = TextEditingController();
   List<TextEditingController> otpControllers =
       List.generate(4, (index) => TextEditingController());
+  bool _isVerifying = false; // Flag to track OTP verification process
 
   void _validateOTP(BuildContext context) async {
+    if (_isVerifying) {
+      // If OTP verification is already in progress, return and prevent multiple clicks
+      return;
+    }
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
     try {
       String enteredOTP =
           otpControllers.map((controller) => controller.text).join();
 
-      bool otpValidationResponse = await authProvider.validateOTP(
+      if (enteredOTP.isEmpty) {
+        // Show an alert or error message if OTP fields are empty
+        // You can use a showDialog or other methods to display the alert
+        // Example:
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Please enter the OTP before verifying.'),
+          ),
+        );
+        return;
+      }
+
+      // Set the flag to true to indicate that OTP verification is in progress
+      setState(() {
+        _isVerifying = true;
+      });
+
+      await authProvider.validateOTP(
           widget.response.MSG_ID.toString(), enteredOTP);
 
-      if (otpValidationResponse) {
+      if (widget.response.OTP.toString() == enteredOTP) {
         // OTP validation successful
         final authProvider = Provider.of<AuthProvider>(context, listen: false);
         authProvider.setLoggedIn(true); // Update the login status
         authProvider
             .saveLoginStatus(true); // Save login status to shared preferences
-
-        // Save OTP validation response (boolean) to shared preferences
-        // SharedPreferences prefs = await SharedPreferences.getInstance();
-
-        // prefs.setBool('otpValidationResponse', true);
-        //authProvider.saveOTPValidationResponse(otpValidationResponse)
-
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => NMHome()),
@@ -54,10 +69,20 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
         // Handle OTP validation failure
         print("OTP validation failed");
         // You can also show an error message to the user if needed
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('OTP validation failed'),
+          ),
+        );
       }
     } catch (error) {
       // Handle error while validating OTP
       print("Error during OTP validation: $error");
+    } finally {
+      // Set the flag back to false when OTP verification is complete
+      setState(() {
+        _isVerifying = false;
+      });
     }
   }
 
@@ -130,10 +155,11 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
                     onChanged: (value) {
                       if (value.isNotEmpty && index < 3) {
                         FocusScope.of(context).nextFocus();
-                      }else if (value.isEmpty && index > 0) {
+                      } else if (value.isEmpty && index > 0) {
                         FocusScope.of(context).previousFocus();
                       }
                     },
+                    autofocus: index == 0,
                   ),
                 );
               }),

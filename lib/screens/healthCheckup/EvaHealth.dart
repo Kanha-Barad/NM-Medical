@@ -12,9 +12,9 @@ import 'evapackages/evabrestscreening.dart';
 import 'evapackages/evacancerscreening.dart';
 import 'evapackages/evaPCOSpackage.dart';
 import 'evapackages/evamaritalBeginnings.dart';
-import 'evapackages/evanewbormscreening.dart';
+import 'evapackages/evadiagnosticpackage.dart';
 import 'evapackages/evapregnancy.dart';
-import 'evapackages/evatotalwellness.dart';
+import 'evapackages/evawellnesspackages.dart';
 
 class EVAHealTHCheckUP extends StatefulWidget {
   @override
@@ -149,11 +149,11 @@ class _EVAHealTHCheckUPState extends State<EVAHealTHCheckUP> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => EVaTotalWELlnEss()));
+                              builder: (context) => EVaWELlnEssPackages()));
                     },
                     child: buildIconItem(
                       imageAsset: 'assets/eva-packages/eva-total-wellness.svg',
-                      labelText: 'Eva\nWellness Packages',
+                      labelText: 'Eva Wellness\nPackages',
                     ),
                   ),
                   InkWell(
@@ -161,7 +161,7 @@ class _EVAHealTHCheckUPState extends State<EVAHealTHCheckUP> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => NewBornScreening()));
+                              builder: (context) => EvaDiagnosticPackage()));
                     },
                     child: buildIconItem(
                       imageAsset:

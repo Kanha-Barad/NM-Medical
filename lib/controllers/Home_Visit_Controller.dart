@@ -27,31 +27,66 @@ class DropdownController {
         encoding: Encoding.getByName("utf-8"),
       );
 
-    if (response.statusCode == 200) {
-      final jsonData = json.decode(response.body);
+      if (response.statusCode == 200) {
+        final jsonData = json.decode(response.body);
 
-      if (jsonData.containsKey('Data')) {
-        List<dynamic> optionsFromAPI = jsonData["Data"];
-        List<DropdownOption> dropdownOptions = optionsFromAPI.map((option) {
-          Map<String, dynamic> optionMap = option as Map<String, dynamic>;
-          return DropdownOption(
-            value: optionMap['SERVICE_ID'],
-            label: optionMap['SERVICE_NAME'],
-          );
-        }).toList();
+        if (jsonData.containsKey('Data')) {
+          List<dynamic> optionsFromAPI = jsonData["Data"];
+          List<DropdownOption> dropdownOptions = optionsFromAPI.map((option) {
+            Map<String, dynamic> optionMap = option as Map<String, dynamic>;
+            return DropdownOption(
+              value: optionMap['SERVICE_ID'],
+              label: optionMap['SERVICE_NAME'],
+            );
+          }).toList();
 
-        return dropdownOptions;
+          return dropdownOptions;
+        } else {
+          print("Error: Data key not found in API response");
+        }
       } else {
-        print("Error: Data key not found in API response");
+        print("Error: API response status code ${response.statusCode}");
       }
-    } else {
-      print("Error: API response status code ${response.statusCode}");
-    }
-    
-    return []; // Return an empty list if something went wrong
 
-  } catch (error) {
-    print("Error fetching dropdown options: $error");
-    return []; // Return an empty list in case of error
+      return []; // Return an empty list if something went wrong
+
+    } catch (error) {
+      print("Error fetching dropdown options: $error");
+      return []; // Return an empty list in case of error
+    }
   }
-}}
+}
+
+class TestSubmitController {
+  static Future<TestWiseBillResponse?> submitApiRequest(
+      Map<String, dynamic> data) async {
+    final jobsListAPIUrl = Uri.parse(
+        'https://mobileappjw.softmed.in/PatinetMobileApp/NewRegistration');
+
+    try {
+      final response = await http.post(
+        jobsListAPIUrl,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: data,
+        encoding: Encoding.getByName('utf-8'),
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = jsonDecode(response.body);
+        print('Response Body: ${response.body}');
+
+        return TestWiseBillResponse.fromJson(responseData["Data"][0]);
+      } else {
+        // Handle error cases here
+        return null;
+      }
+    } catch (e) {
+      // Handle network or other exceptions
+      print('JSON Parsing Error: $e');
+      return null;
+    }
+  }
+}

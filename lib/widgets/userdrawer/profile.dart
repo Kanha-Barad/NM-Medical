@@ -51,6 +51,7 @@ class _pRofilEState extends State<pRofilE> {
         CustomContainerBar(
           title: "PROFILE",
           svgAssetPath: "assets/profile-icons/user-profile-title.svg",
+          onBackButtonPressed: () => Navigator.pop(context, true),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 12, 0, 10),
