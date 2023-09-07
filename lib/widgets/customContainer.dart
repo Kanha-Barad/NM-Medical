@@ -22,14 +22,17 @@ class CustomContainerBar extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 15),
-            child: SvgPicture.asset(svgAssetPath),
+            child: SizedBox(
+                width: 26,
+                height: 26,
+                child: SvgPicture.asset(svgAssetPath)),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 15),
+            padding: EdgeInsets.only(left: 15, top: 0),
             child: Text(
               title,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 16,height: 1.5,
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
               ),
@@ -39,12 +42,12 @@ class CustomContainerBar extends StatelessWidget {
           if (onBackButtonPressed != null) // Conditionally show the back button
             TextButton.icon(
               onPressed: onBackButtonPressed!,
-              icon: const Icon(Icons.arrow_back_ios,
-                  color: Colors.white, size: 18),
+              icon: SvgPicture.asset("assets/images/back-arrow.svg"),
               label: const Text(
                 "BACK",
                 style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 15,
+                    height: 1.3,
                     color: Colors.white,
                     fontWeight: FontWeight.w500),
               ),

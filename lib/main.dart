@@ -2,38 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'AuthProvider.dart';
-import 'screens/OTP_Validation.dart';
 import 'screens/NM_Login.dart';
 import 'screens/nm_home.dart';
-// Your login screen
 
 void main() {
   runApp(MyApp());
 }
 
-class SplashApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: FutureBuilder(
-        future: _navigateToMain(context),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            // Show the splash screen while waiting
-            return SplashScreen();
-          } else {
-            // Navigate to the main app
-            return MyApp();
-          }
-        },
+    return ChangeNotifierProvider(
+      create: (context) => AuthProvider()..loadLoginStatus(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
+        theme: ThemeData(
+          primaryColor: Color.fromARGB(255, 186, 43, 35),
+          accentColor: Color.fromARGB(255, 186, 43, 35),
+          textSelectionTheme: TextSelectionThemeData(
+            cursorColor: Color.fromARGB(255, 222, 222, 222),
+          ),
+          inputDecorationTheme: InputDecorationTheme(
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Color.fromARGB(255, 191, 189, 189)),
+            ),
+          ),
+        ),
       ),
     );
   }
-}
-
-Future<void> _navigateToMain(BuildContext context) async {
-  await Future.delayed(Duration(seconds: 2)); // Adjust the delay as needed
 }
 
 class SplashScreen extends StatefulWidget {
@@ -51,11 +49,11 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2), // Adjust the animation duration
+      duration: Duration(seconds: 2),
     );
 
     _colorAnimation = ColorTween(
-      begin: Color.fromARGB(255, 186, 43, 35), // Red color
+      begin: Color.fromARGB(255, 186, 43, 35),
       end: Colors.white,
     ).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
@@ -63,13 +61,33 @@ class _SplashScreenState extends State<SplashScreen>
 
     _animationController.forward();
 
-    _navigateToMain(context); // Start navigation after animation
+    // Navigate to NMHome directly
+    _navigateToMain(context);
   }
 
   @override
   void dispose() {
     _animationController.dispose();
     super.dispose();
+  }
+
+  Future<void> _navigateToMain(BuildContext context) async {
+    // Check the user's login state
+    AuthProvider authProvider = Provider.of<AuthProvider>(context, listen: false);
+
+    await Future.delayed(Duration(seconds: 2)); // Adjust the delay as needed
+
+    if (authProvider.isLoggedIn) {
+      // If the user is logged in, navigate to NMHome directly
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => NMHome(),
+      ));
+    } else {
+      // If the user is not logged in, navigate to the login screen
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => MobileNumberPage(),
+      ));
+    }
   }
 
   @override
@@ -88,47 +106,6 @@ class _SplashScreenState extends State<SplashScreen>
           ),
         );
       },
-    );
-  }
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => AuthProvider()..loadLoginStatus(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        //title: 'My App',
-        home: NMHome(),
-        // Consumer<AuthProvider>(
-        //   builder: (context, authProvider, _) {
-        //     // Based on the login status, navigate to the appropriate screen
-        //     if (authProvider.isLoggedIn) {
-        //       return NMHome();
-        //     } else {
-        //       return MobileNumberPage();
-        //     }
-        //   },
-        // ),
-        theme: ThemeData(
-          primaryColor: Color.fromARGB(255, 186, 43, 35), // Your custom color
-          accentColor:
-              Color.fromARGB(255, 186, 43, 35), // Optional accent color
-          textSelectionTheme: TextSelectionThemeData(
-            cursorColor:
-                Color.fromARGB(255, 222, 222, 222), // Your custom cursor color
-            // Customize other text selection properties as needed
-          ),
-          inputDecorationTheme: InputDecorationTheme(
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Color.fromARGB(255, 191, 189, 189)),
-            ),
-            // Customize other input decoration properties as needed
-          ),
-          // Add more theme properties as needed
-        ),
-      ),
     );
   }
 }

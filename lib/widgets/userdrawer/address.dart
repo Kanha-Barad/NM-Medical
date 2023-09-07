@@ -52,6 +52,7 @@ class _AddressState extends State<Address> {
         CustomContainerBar(
           title: "ADDRESS",
           svgAssetPath: "assets/locations/location-title.svg",
+          onBackButtonPressed: () => Navigator.pop(context),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(8, 10, 8, 10),
@@ -72,12 +73,12 @@ class _AddressState extends State<Address> {
                     leading:
                         SvgPicture.asset("assets/locations/location-icon.svg"),
                     title: Padding(
-                      padding: const EdgeInsets.only(top: 0.0),
+                      padding: const EdgeInsets.only(top: 10.0),
                       child: Text(
                         'Home',
                         style: TextStyle(
                             color: Color.fromARGB(255, 187, 42, 34),
-                            fontSize: 18,
+                            fontSize: 14,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -147,12 +148,12 @@ class _AddressState extends State<Address> {
                     leading:
                         SvgPicture.asset("assets/locations/location-icon.svg"),
                     title: Padding(
-                      padding: const EdgeInsets.only(top: 0.0),
+                      padding: const EdgeInsets.only(top: 10.0),
                       child: Text(
                         'Office',
                         style: TextStyle(
                             color: Color.fromARGB(255, 187, 42, 34),
-                            fontSize: 18,
+                            fontSize: 14,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -222,12 +223,12 @@ class _AddressState extends State<Address> {
                     leading:
                         SvgPicture.asset("assets/locations/location-icon.svg"),
                     title: Padding(
-                      padding: const EdgeInsets.only(top: 0.0),
+                      padding: const EdgeInsets.only(top: 10.0),
                       child: Text(
                         'Bandra',
                         style: TextStyle(
                             color: Color.fromARGB(255, 187, 42, 34),
-                            fontSize: 18,
+                            fontSize: 14,
                             fontWeight: FontWeight.w600),
                       ),
                     ),

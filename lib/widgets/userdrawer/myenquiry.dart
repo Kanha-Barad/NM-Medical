@@ -52,6 +52,7 @@ class _MyOrderState extends State<MyOrder> {
         CustomContainerBar(
           title: "MY ENQUIRY",
           svgAssetPath: "assets/images/my-orders-title.svg",
+          onBackButtonPressed: () => Navigator.pop(context,true),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(8, 8, 8, 2),
@@ -135,7 +136,7 @@ class _MyOrderState extends State<MyOrder> {
                         child: Card(
                             color: const Color.fromARGB(255, 254, 148, 129),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
+                                borderRadius: BorderRadius.circular(5)),
                             child: const Padding(
                               padding: EdgeInsets.fromLTRB(8, 2, 8, 2),
                               child: Center(
@@ -230,9 +231,9 @@ class _MyOrderState extends State<MyOrder> {
                         child: Card(
                             color: const Color.fromARGB(255, 119, 216, 144),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
+                                borderRadius: BorderRadius.circular(5)),
                             child: const Padding(
-                              padding: EdgeInsets.fromLTRB(8, 2, 8, 2),
+                              padding: EdgeInsets.fromLTRB(8, 3, 8, 3),
                               child: Center(
                                   child: Text(
                                 'Completed',
@@ -242,6 +243,29 @@ class _MyOrderState extends State<MyOrder> {
                                     fontWeight: FontWeight.w500),
                               )),
                             )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2, bottom: 14),
+                        child: Card(
+                            color: const Color.fromARGB(255, 192, 47, 36),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Padding(
+                                padding: EdgeInsets.fromLTRB(8, 2, 8, 2),
+                                child: Row(
+                                  children: [
+                                    Center(
+                                        child: Text(
+                                      'Download',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500),
+                                    )),
+                                    SvgPicture.asset(
+                                        "assets/images/download-icon2.svg"),
+                                  ],
+                                ))),
                       )
                     ],
                   ),
@@ -325,9 +349,9 @@ class _MyOrderState extends State<MyOrder> {
                         child: Card(
                             color: const Color.fromARGB(255, 119, 216, 144),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
+                                borderRadius: BorderRadius.circular(5)),
                             child: const Padding(
-                              padding: EdgeInsets.fromLTRB(8, 2, 8, 2),
+                              padding: EdgeInsets.fromLTRB(8, 3, 8, 3),
                               child: Center(
                                   child: Text(
                                 'Completed',
@@ -337,6 +361,29 @@ class _MyOrderState extends State<MyOrder> {
                                     fontWeight: FontWeight.w500),
                               )),
                             )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2, bottom: 14),
+                        child: Card(
+                            color: const Color.fromARGB(255, 192, 47, 36),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Padding(
+                                padding: EdgeInsets.fromLTRB(8, 2, 8, 2),
+                                child: Row(
+                                  children: [
+                                    Center(
+                                        child: Text(
+                                      'Download',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500),
+                                    )),
+                                    SvgPicture.asset(
+                                        "assets/images/download-icon2.svg"),
+                                  ],
+                                ))),
                       )
                     ],
                   ),

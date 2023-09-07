@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:nmmedical/widgets/thankyouscreen.dart';
 
@@ -22,9 +23,14 @@ class homeVisit extends StatefulWidget {
 final value = NumberFormat("#,##0", "en_US");
 
 class _homeVisitState extends State<homeVisit> {
+  final TestSubmitController TEstsubmitAPIController =
+      TestSubmitController(); // Create an instance of the controller
+
   AuthProvider _authProvider = AuthProvider();
   TextEditingController dateController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
+  TextEditingController firstnameController = TextEditingController();
+  TextEditingController lastnameController = TextEditingController();
+
   TextEditingController emailController = TextEditingController();
   TextEditingController mobnoController = TextEditingController();
   TextEditingController addressController = TextEditingController();
@@ -70,6 +76,33 @@ class _homeVisitState extends State<homeVisit> {
       }
       areUserOptionsFetched = true;
     });
+  }
+
+  void handleApiSubmit(Map<String, dynamic> data) async {
+    try {
+      // Call the controller function and await the response
+      TestWiseBillResponse? response =
+          await TestSubmitController.submitApiRequest(data);
+
+      if (response != null) {
+        // Handle the successful response here
+        // Navigate to result pages or update UI accordingly
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: ((context) =>
+                    ThankYou(response.billNo, response.createDt))));
+      } else {
+        // Handle error cases here
+        // Display an error message or take appropriate action
+        print("Test Submit is failed");
+      }
+    } catch (e) {
+      // Handle any exceptions that may occur during the API call
+      // Display an error message or take appropriate action
+      print("Error during Test Submit: $e");
+
+    }
   }
 
   bool isUserProfileIconClicked = false;
@@ -145,7 +178,7 @@ class _homeVisitState extends State<homeVisit> {
               DateTime? pickedDate = await showDatePicker(
                 context: context,
                 initialDate: DateTime.now(), // get today's date
-                firstDate: DateTime(2000),
+                firstDate: DateTime.now(), // set the minimum date to today
                 lastDate: DateTime(2101),
                 builder: (BuildContext context, Widget? child) {
                   return Theme(
@@ -207,7 +240,7 @@ class _homeVisitState extends State<homeVisit> {
                           onChanged: (newValue) {
                             setState(() {
                               selectedUserOption = newValue!;
-                              nameController.text =
+                              firstnameController.text =
                                   selectedUserOption.DISPLAY_NAME;
                               emailController.text =
                                   selectedUserOption.EMAIL_ID;
@@ -239,11 +272,26 @@ class _homeVisitState extends State<homeVisit> {
                       : Container()),
         ),
         TextFormField(
-          controller: nameController,
+          controller: firstnameController,
           keyboardType: TextInputType.name,
+          inputFormatters: [
+            FilteringTextInputFormatter.allow(
+                RegExp(r'[a-zA-Z\s]+')), // Allow only letters and whitespace.
+          ],
+          validator: (value) {
+            if (value!.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Please enter your first name'),
+                ),
+              );
+              return 'Please enter your first name';
+            }
+            // You can add more specific validation rules if needed.
+            return null; // Return null if the first name is valid.
+          },
           decoration: InputDecoration(
-            contentPadding:
-                EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 16),
             border: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
@@ -270,9 +318,25 @@ class _homeVisitState extends State<homeVisit> {
         ),
         TextFormField(
           keyboardType: TextInputType.name,
+          controller: lastnameController,
+          inputFormatters: [
+            FilteringTextInputFormatter.allow(
+                RegExp(r'[a-zA-Z\s]+')), // Allow only letters and whitespace.
+          ],
+          validator: (value) {
+            if (value!.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Please enter your last name'),
+                ),
+              );
+              return 'Please enter your last name';
+            }
+            // You can add more specific validation rules if needed.
+            return null; // Return null if the last name is valid.
+          },
           decoration: InputDecoration(
-            contentPadding:
-                EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 16),
             border: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
@@ -293,9 +357,23 @@ class _homeVisitState extends State<homeVisit> {
         TextFormField(
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
+          validator: (value) {
+            if (value!.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Please enter an email address'),
+                ),
+              );
+              return 'Please enter an email address';
+            }
+            if (!RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
+                .hasMatch(value)) {
+              return 'Please enter a valid email address';
+            }
+            return null;
+          },
           decoration: InputDecoration(
-            contentPadding:
-                EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 16),
             border: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
@@ -316,9 +394,28 @@ class _homeVisitState extends State<homeVisit> {
         TextFormField(
           controller: mobnoController,
           keyboardType: TextInputType.phone,
+          inputFormatters: [
+            FilteringTextInputFormatter.digitsOnly, // Allow only digits.
+            LengthLimitingTextInputFormatter(
+                10), // Limit the length to 10 digits (adjust as needed).
+          ],
+          validator: (value) {
+            if (value!.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Please enter a mobile number'),
+                ),
+              );
+              return 'Please enter a mobile number';
+            }
+            if (value.length != 10) {
+              return 'Mobile number must be 10 digits long';
+            }
+            // You can add more specific validation if needed.
+            return null;
+          },
           decoration: InputDecoration(
-            contentPadding:
-                EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 16),
             border: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
@@ -341,9 +438,19 @@ class _homeVisitState extends State<homeVisit> {
           maxLines: 5,
           controller: addressController,
           keyboardType: TextInputType.multiline,
+          validator: (value) {
+            if (value!.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Please enter an address'),
+                ),
+              );
+              return 'Please enter an address';
+            }
+            return null; // Return null if the address is not empty.
+          },
           decoration: InputDecoration(
-            contentPadding:
-                EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 16),
             border: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
@@ -410,9 +517,39 @@ class _homeVisitState extends State<homeVisit> {
           padding: const EdgeInsets.only(left: 6, top: 2, bottom: 40),
           child: InkWell(
             onTap: () {
-              // loadData();
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ThankYou("", "")));
+              // Prepare your request data here
+              Map<String, dynamic> requestData = {
+                "PATIENT_ID": "1",
+                "UMR_NO": selectedUserOption.UMR_NO,
+                "TEST_IDS": selectedOption.value.toString(),
+                "TEST_AMOUNTS": "",
+                "CONSESSION_AMOUNT": "0",
+                "BILL_AMOUNT": "0",
+                "DUE_AMOUNT": "0",
+                "MOBILE_NO": mobnoController.text,
+                "MOBILE_REG_FLAG": "y",
+                "SESSION_ID": selectedUserOption.SESSION_ID,
+                "PAYMENT_MODE_ID": "1",
+                "IP_NET_AMOUNT": "0",
+                "IP_TEST_CONCESSION": "0",
+                "IP_TEST_NET_AMOUNTS": "0",
+                "IP_POLICY_ID": "0",
+                "IP_PAID_AMOUNT": "0",
+                "IP_OUTSTANDING_DUE": "0",
+                "connection":
+                    "Server=115.112.188.189,11433;User id=app2;Password=Seven@123;Database=UAT_NM_MEDICAL_LIMS",
+                "loc_id": "0",
+                "IP_SLOT": "NM",
+                "IP_DATE": dateController.text,
+                "IP_UPLOAD_IMG": "",
+                "IP_PRESCRIPTION": "",
+                "IP_REMARKS":
+                    "${firstnameController.text}*${lastnameController.text}*${emailController.text}*${mobnoController.text}*${addressController.text}*",
+                "Mobile_Device_Id": "",
+              };
+
+              // Call the function and pass the requestData
+              handleApiSubmit(requestData);
             },
             child: Card(
               color: const Color.fromARGB(255, 237, 28, 36),

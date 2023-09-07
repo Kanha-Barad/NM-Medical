@@ -60,10 +60,7 @@ class _EVaAdelosceNCEState extends State<EVaAdelosceNCE> {
         ),
         CustomWidgetInvestmentContainer(
             InvesmentTitle: "Special Price",
-            onEnquirenowButtonPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: ((context) => EnQUiry())));
-            },
+            onEnquirenowButtonPressed: () {},
             InvestmentValue: 7500),
         Padding(
           padding: EdgeInsets.fromLTRB(15, 0, 0, 10),
@@ -368,9 +365,12 @@ class _EVaAdelosceNCEState extends State<EVaAdelosceNCE> {
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset("assets/images/bullet-icons.svg"),
               ),
-              const Text(
-                  "Gynaecologist consultation from an expert panel of doctors (Optional)",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
+              Expanded(
+                child: Text(
+                    "Gynaecologist consultation from an expert panel of doctors (Optional)",
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+              )
             ],
           ),
         ),

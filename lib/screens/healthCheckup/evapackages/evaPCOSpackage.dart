@@ -59,10 +59,7 @@ class _EVaPCOSpackageState extends State<EVaPCOSpackage> {
         ),
         CustomWidgetInvestmentContainer(
             InvesmentTitle: "Special Price",
-            onEnquirenowButtonPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: ((context) => EnQUiry())));
-            },
+            onEnquirenowButtonPressed: () {},
             InvestmentValue: 15000),
         Padding(
           padding: EdgeInsets.fromLTRB(15, 0, 0, 10),
