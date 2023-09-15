@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import '../controllers/Download_Report_Controller.dart';
 import '../models/Download_Reports_Models.dart';
 import '../widgets/app_drawer.dart';
@@ -71,7 +71,10 @@ class _DonwloadReportState extends State<DonwloadReport> {
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return Text('No reports available.');
+                    return Center(
+                      child: const Text('No Reports Avilable',
+                          style: TextStyle(fontSize: 12)),
+                    );
                   } else {
                     return ListView.builder(
                         itemCount: snapshot.data!.length,
@@ -108,8 +111,25 @@ class _DonwloadReportState extends State<DonwloadReport> {
                                             "Completed" ||
                                         snapshot.data![index].SERVICE_STATUS1 ==
                                             "Dispatch"
-                                    ? SvgPicture.asset(
-                                        "assets/images/download-icon.svg")
+                                    ? InkWell(
+                                        onTap: () {
+                                          // https://115.112.254.129/NM_TESTING/public/HIMSReportViewer.aspx?uniuq_id
+                                          final downloadUrl =
+                                              'https://115.112.254.129/NM_TESTING/public/HIMSReportViewer.aspx?uniuq_id=${snapshot.data![index].REPORT_CD}';
+
+                                          // Open the URL in a webview or web browser
+                                          // You can use packages like webview_flutter or url_launcher for this
+                                          // Example using url_launcher:
+                                          launch(downloadUrl);
+                                          // WebView(
+                                          //   initialUrl: downloadUrl,
+                                          //   javascriptMode:
+                                          //       JavascriptMode.unrestricted,
+                                          // );
+                                        },
+                                        child: SvgPicture.asset(
+                                            "assets/images/download-icon.svg"),
+                                      )
                                     : null,
                               ),
                               if (index < snapshot.data!.length - 1)

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nmmedical/screens/nm_home.dart';
+import 'package:nmmedical/widgets/userdrawer/profile.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../AuthProvider.dart';
@@ -34,11 +35,9 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
     try {
       String enteredOTP =
           otpControllers.map((controller) => controller.text).join();
+      String enteredMobileNO = widget.response.MOBILE_NO.toString();
 
       if (enteredOTP.isEmpty) {
-        // Show an alert or error message if OTP fields are empty
-        // You can use a showDialog or other methods to display the alert
-        // Example:
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Please enter the OTP before verifying.'),
@@ -54,8 +53,10 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
 
       await authProvider.validateOTP(
           widget.response.MSG_ID.toString(), enteredOTP);
-
-      if (widget.response.OTP.toString() == enteredOTP) {
+      List<OTPValidationResponse> ValidresponseFORReGisterMOBILEnUMber =
+          await authProvider.getStoredOTPValidationResponses();
+      if (widget.response.OTP.toString() == enteredOTP &&
+          ValidresponseFORReGisterMOBILEnUMber.length > 0) {
         // OTP validation successful
         final authProvider = Provider.of<AuthProvider>(context, listen: false);
         authProvider.setLoggedIn(true); // Update the login status
@@ -64,6 +65,20 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => NMHome()),
+        );
+      } else if (widget.response.OTP.toString() == enteredOTP &&
+          ValidresponseFORReGisterMOBILEnUMber.length == 0) {
+        final authProvider = Provider.of<AuthProvider>(context, listen: false);
+        authProvider.setLoggedIn(true); // Update the login status
+        authProvider
+            .saveLoginStatus(true); // Save login status to shared preferences
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => pRofilE(
+                    widget.response,
+                    enteredMobileNO,
+                  )),
         );
       } else {
         // Handle OTP validation failure
@@ -134,9 +149,16 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
                   margin: EdgeInsets.symmetric(horizontal: 4.0),
                   padding: EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-                    color: Colors.grey
-                        .withOpacity(0.2), // Set your desired background color
-                    borderRadius: BorderRadius.circular(8.0),
+                    border: Border(
+                      bottom: BorderSide(
+                        color: otpControllers[index].text.isNotEmpty
+                            ? Colors.grey
+                                .withOpacity(0.4) // Color when text is present
+                            : Colors.grey
+                                .withOpacity(0.4), // Color when no text
+                        width: 2.0, // Underline width
+                      ),
+                    ),
                   ),
                   alignment: Alignment.center,
                   child: TextFormField(
@@ -146,12 +168,14 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
                     decoration: InputDecoration(
                       counterText: '',
                       border: InputBorder.none, // Remove the border
+                      focusedBorder: InputBorder.none,
                     ),
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
                     ],
                     maxLength: 1,
+                    //cursorColor: Colors.white,
                     onChanged: (value) {
                       if (value.isNotEmpty && index < 3) {
                         FocusScope.of(context).nextFocus();

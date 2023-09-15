@@ -8,13 +8,16 @@ import 'bottom_navigation.dart';
 
 String bill_NUMBER = "";
 String BIll_DATE = "";
+String Address = "";
 
 class ThankYou extends StatefulWidget {
-  ThankYou(bill_no, bill_DT) {
+  ThankYou(bill_no, bill_DT, ADDREss) {
     bill_NUMBER = "";
     BIll_DATE = "";
+    Address = "";
     bill_NUMBER = bill_no;
     BIll_DATE = bill_DT;
+    Address = ADDREss;
   }
 
   @override
@@ -108,28 +111,32 @@ class _ThankYouState extends State<ThankYou> {
           indent: 10,
           endIndent: 10,
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(12, 10, 10, 4),
-          child: Row(
-            children: const [
-              Text('Enquiry Address',
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
-              Padding(
-                  padding: EdgeInsets.only(left: 86.0),
-                  child: SizedBox(
-                      width: 150,
-                      child: Text(
-                          '17, Vadsarvala Nivas Mulund West, Mumbai 400054',
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.w500))))
-            ],
-          ),
-        ),
-        const Divider(
-          thickness: 1.8,
-          indent: 10,
-          endIndent: 10,
-        ),
+        (Address != "null" && Address != "")
+            ? Padding(
+                padding: const EdgeInsets.fromLTRB(12, 10, 10, 4),
+                child: Row(
+                  children: [
+                    Text('Enquiry Address',
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.w500)),
+                    Padding(
+                        padding: EdgeInsets.only(left: 88.0),
+                        child: SizedBox(
+                            width: 148,
+                            child: Text(Address,
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500))))
+                  ],
+                ))
+            : Container(),
+        (Address != "null" && Address != "")
+            ? Divider(
+                thickness: 1.8,
+                indent: 10,
+                endIndent: 10,
+              )
+            : Container()
         // Padding(
         //   padding: const EdgeInsets.fromLTRB(12, 10, 10, 4),
         //   child: Row(

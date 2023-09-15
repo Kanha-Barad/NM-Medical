@@ -8,6 +8,7 @@ class OTPValidationResponse {
   String DISPLAY_NAME;
   String DOB;
   String UMR_NO;
+  String AGE;
 
   OTPValidationResponse({
     required this.CNT,
@@ -19,6 +20,7 @@ class OTPValidationResponse {
     required this.DISPLAY_NAME,
     required this.DOB,
     required this.UMR_NO,
+    required this.AGE,
   });
 
   factory OTPValidationResponse.fromJson(Map<String, dynamic> json) {
@@ -32,6 +34,7 @@ class OTPValidationResponse {
       DISPLAY_NAME: json['DISPLAY_NAME'].toString(),
       DOB: json['DOB'].toString(),
       UMR_NO: json['UMR_NO'].toString(),
+      AGE: json['AGE'].toString(),
     );
   }
   Map<String, dynamic> toJson() {
@@ -45,6 +48,7 @@ class OTPValidationResponse {
       "DISPLAY_NAME": DISPLAY_NAME,
       "DOB": DOB,
       "UMR_NO": UMR_NO,
+      "AGE":AGE,
     };
   }
 }

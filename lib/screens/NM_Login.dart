@@ -105,10 +105,12 @@ class _MobileNumberPageState extends State<MobileNumberPage> {
                   controller: _mobileController,
                   keyboardType: TextInputType.phone,
                   inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly, // Allow only digits.
+                    FilteringTextInputFormatter
+                        .digitsOnly, // Allow only digits.
                     LengthLimitingTextInputFormatter(
                         10), // Limit the length to 10 digits (adjust as needed).
                   ],
+                  textAlign: TextAlign.center,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -137,8 +139,8 @@ class _MobileNumberPageState extends State<MobileNumberPage> {
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                          color:
-                              Color.fromARGB(255, 104, 104, 104)), // Active color
+                          color: Color.fromARGB(
+                              255, 104, 104, 104)), // Active color
                     ),
                   ),
                   cursorColor: Color.fromARGB(255, 222, 222, 222),
@@ -166,10 +168,6 @@ class _MobileNumberPageState extends State<MobileNumberPage> {
                   ),
                 ),
               )
-              // ElevatedButton(
-              //   onPressed: () => _login(context),
-              //   child: Text('Login'),
-              // ),
             ],
           ),
         ),
