@@ -31,6 +31,7 @@ class OTPValidationController {
           DISPLAY_NAME: otpMap["DISPLAY_NAME"].toString(),
           DOB: otpMap["DOB"].toString(),
           UMR_NO: otpMap["UMR_NO"].toString(),
+          AGE: otpMap["AGE"].toString(),
         );
       }).toList();
       return otpValidationResponses;
@@ -78,7 +79,9 @@ class OTPValidationController {
                 EMAIL_ID: OTPMap["EMAIL_ID"].toString(),
                 DISPLAY_NAME: OTPMap["DISPLAY_NAME"].toString(),
                 DOB: OTPMap["DOB"].toString(),
-                UMR_NO: OTPMap["UMR_NO"].toString());
+                UMR_NO: OTPMap["UMR_NO"].toString(),
+                AGE: OTPMap["AGE"].toString()
+                );
           }).toList();
 
           // Store the OTP validation responses

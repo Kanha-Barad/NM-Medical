@@ -32,21 +32,35 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-  void logout(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context, listen: false);
-    authProvider.setLoggedIn(false); // Update the login status
-    authProvider
-        .saveLoginStatus(false); // Save login status to shared preferences
+  // void logout(BuildContext context) {
+  //   final authProvider = Provider.of<AuthProvider>(context, listen: false);
+  //   authProvider.setLoggedIn(false); // Update the login status
+  //   authProvider
+  //       .saveLoginStatus(false); // Save login status to shared preferences
 
-    // Navigate to the login screen
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => MobileNumberPage()),
-    );
-  }
+  //   // Navigate to the login screen
+  //   Navigator.pushReplacement(
+  //     context,
+  //     MaterialPageRoute(builder: (context) => MobileNumberPage()),
+  //   );
+  // }
+
+  // void logout(BuildContext context) {
+  //   final authProvider = Provider.of<AuthProvider>(context, listen: false);
+  //   authProvider.setLoggedIn(false); // Update the login status
+  //   authProvider.saveLoginStatus(false); // Save login status to shared preferences
+  //   authProvider._loginResponse = null; // Clear login response
+
+  //   // Navigate to the login screen
+  //   Navigator.pushReplacement(
+  //     context,
+  //     MaterialPageRoute(builder: (context) => MobileNumberPage()),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -309,8 +323,15 @@ class _AppDrawerState extends State<AppDrawer> {
             ListTile(
               minLeadingWidth: 0,
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => pRofilE()));
+                final authProvider =
+                    Provider.of<AuthProvider>(context, listen: false);
+
+                // Access the login response
+                final loginResponse = authProvider.loginResponse;
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => pRofilE(loginResponse, "")));
               },
               leading:
                   SvgPicture.asset("assets/profile-icons/profile-icon.svg"),
@@ -338,30 +359,30 @@ class _AppDrawerState extends State<AppDrawer> {
                   )),
               textColor: Color.fromARGB(255, 187, 29, 17),
             ),
+          // if (widget.isUserIconClicked &&
+          //     !widget
+          //         .isMenuIconClicked) // Show additional items if user icon is clicked
+          //   ListTile(
+          //     minLeadingWidth: 0,
+          //     onTap: () {
+          //       Navigator.push(context,
+          //           MaterialPageRoute(builder: (context) => Address()));
+          //     },
+          //     leading:
+          //         SvgPicture.asset("assets/profile-icons/address-icon.svg"),
+          //     title: const Text("Address",
+          //         style: TextStyle(
+          //           fontSize: 14,
+          //           fontWeight: FontWeight.w600,
+          //         )),
+          //     textColor: Color.fromARGB(255, 187, 29, 17),
+          //   ),
           if (widget.isUserIconClicked &&
               !widget
                   .isMenuIconClicked) // Show additional items if user icon is clicked
             ListTile(
               minLeadingWidth: 0,
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Address()));
-              },
-              leading:
-                  SvgPicture.asset("assets/profile-icons/address-icon.svg"),
-              title: const Text("Address",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  )),
-              textColor: Color.fromARGB(255, 187, 29, 17),
-            ),
-          if (widget.isUserIconClicked &&
-              !widget
-                  .isMenuIconClicked) // Show additional items if user icon is clicked
-            ListTile(
-              minLeadingWidth: 0,
-              onTap: () => logout(context),
+              onTap: () => authProvider.logout(context),
               leading: SvgPicture.asset("assets/profile-icons/logout-icon.svg"),
               title: const Text("Logout",
                   style: TextStyle(

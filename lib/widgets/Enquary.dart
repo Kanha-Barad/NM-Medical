@@ -215,7 +215,7 @@ class _EnQUiryState extends State<EnQUiry> {
           child: InkWell(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ThankYou("", "")));
+                  MaterialPageRoute(builder: (context) => ThankYou("", "", "")));
             },
             child: Card(
               color: const Color.fromARGB(255, 237, 28, 36),

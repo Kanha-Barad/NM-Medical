@@ -1,14 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:nmmedical/AuthProvider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
-import '../models/Download_Reports_Models.dart';
 import '../models/OTP_Validation_Module.dart';
+import '../models/Test_Enquiry_Model.dart';
 
-class ReportController {
-  static Future<List<Report>> fetchReports() async {
+class TestEnquiryController {
+  static Future<List<TestEnquiry>> fetchTestEnquiry() async {
     //SharedPreferences prefs = await SharedPreferences.getInstance();
     String mobileNumber = "";
     AuthProvider _authProvider = AuthProvider();
@@ -21,9 +19,7 @@ class ReportController {
     }
 
     Map<String, dynamic> data = {
-      "bill_id": mobileNumber.toString(),
-      "IP_LOCATION_ID": "",
-      "IP_SESSION_ID": "",
+      "bill_id": mobileNumber.toString() + "_A",
       "connection":
           "Server=115.112.188.189,11433;User id=app2;Password=Seven@123;Database=UAT_NM_MEDICAL_LIMS"
     };
@@ -44,13 +40,13 @@ class ReportController {
         Map<String, dynamic> responseData = jsonDecode(response.body);
         List<dynamic> data = responseData["Data"]; // Extract the data list
 
-        List<Report> fetchedReports = [];
+        List<TestEnquiry> fetchedTestEnqiry = [];
 
-        for (var reportData in data) {
-          fetchedReports.add(Report.fromJson(reportData));
+        for (var testEnquiryData in data) {
+          fetchedTestEnqiry.add(TestEnquiry.fromJson(testEnquiryData));
         }
 
-        return fetchedReports;
+        return fetchedTestEnqiry;
       } else {
         throw Exception(
             'API request failed with status ${response.statusCode}');

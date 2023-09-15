@@ -5,8 +5,19 @@ import 'AuthProvider.dart';
 import 'screens/NM_Login.dart';
 import 'screens/nm_home.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final authProvider = AuthProvider();
+  await authProvider.loadLoginStatus();
+  await authProvider.loadLoginResponse();
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => authProvider,
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -73,7 +84,8 @@ class _SplashScreenState extends State<SplashScreen>
 
   Future<void> _navigateToMain(BuildContext context) async {
     // Check the user's login state
-    AuthProvider authProvider = Provider.of<AuthProvider>(context, listen: false);
+    AuthProvider authProvider =
+        Provider.of<AuthProvider>(context, listen: false);
 
     await Future.delayed(Duration(seconds: 2)); // Adjust the delay as needed
 

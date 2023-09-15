@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:nmmedical/screens/NM_Login.dart';
 
 import 'controllers/Mobile_Login_Controller.dart';
 import 'controllers/OTP_Validation_Controller.dart';
@@ -11,70 +13,101 @@ import 'models/OTP_Validation_Module.dart';
 
 class AuthProvider extends ChangeNotifier {
   final LoginController _loginController = LoginController();
-  final OTPValidationController _otpValidationController =
-      OTPValidationController();
-  //OTPValidationResponse otpData = OTPValidationResponse();
 
   bool _isLoggedIn = false;
   bool get isLoggedIn => _isLoggedIn;
+
+  LoginResponse? _loginResponse;
+  LoginResponse? get loginResponse => _loginResponse;
 
   void setLoggedIn(bool value) {
     _isLoggedIn = value;
     notifyListeners();
   }
 
-  // Load login status from shared preferences
   Future<void> loadLoginStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
     notifyListeners();
   }
 
-  // Save login status to shared preferences
   Future<void> saveLoginStatus(bool value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('isLoggedIn', value);
     notifyListeners();
   }
 
+  void saveLoginResponse(LoginResponse response) {
+    _loginResponse = response;
+    notifyListeners();
+  }
+
+  Future<void> loadLoginResponse() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? responseJson = prefs.getString('loginResponse');
+    if (responseJson != null) {
+      final Map<String, dynamic> responseMap = json.decode(responseJson);
+      _loginResponse = LoginResponse.fromJson(responseMap);
+      notifyListeners();
+    }
+  }
 
   Future<LoginResponse?> login(String mobile) async {
     try {
-      // Call the login API
       final loginResponse =
           await _loginController.fetchLoginMobileNumber(mobile);
 
-      // Return the LoginResponse object
+      if (loginResponse != null) {
+        saveLoginResponse(loginResponse);
+        saveLoginStatus(true); // Set login status to true
+      }
+
       return loginResponse;
     } catch (error) {
       print("Login error: $error");
       return null;
     }
   }
-  Future<List<OTPValidationResponse>> getStoredOTPValidationResponses() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  String? otpValidationResponsesJson = prefs.getString('otpValidationResponses');
-  
-  if (otpValidationResponsesJson != null) {
-    List<dynamic> responseData = jsonDecode(otpValidationResponsesJson);
-    List<OTPValidationResponse> otpValidationResponses = responseData.map((otpMap) {
-      return OTPValidationResponse(
-        CNT: otpMap["CNT"].toString(),
-        SESSION_ID: otpMap["SESSION_ID"].toString(),
-        MOBILE_NO1: otpMap["MOBILE_NO1"].toString(),
-        GENDER: otpMap["GENDER"].toString(),
-        ADDRESS1: otpMap["ADDRESS1"].toString(),
-        EMAIL_ID: otpMap["EMAIL_ID"].toString(),
-        DISPLAY_NAME: otpMap["DISPLAY_NAME"].toString(),
-        DOB: otpMap["DOB"].toString(),
-        UMR_NO: otpMap["UMR_NO"].toString(),
-      );
-    }).toList();
-    return otpValidationResponses;
-  } else {
-    return [];
-  }
+
+  void logout(BuildContext context) {
+  this.setLoggedIn(false); // Update the login status
+  this.saveLoginStatus(false); // Save login status to shared preferences
+  this._loginResponse = null; // Clear login response
+
+  // Navigate to the login screen
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => MobileNumberPage()),
+  );
 }
+
+  Future<List<OTPValidationResponse>> getStoredOTPValidationResponses() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? otpValidationResponsesJson =
+        prefs.getString('otpValidationResponses');
+
+    if (otpValidationResponsesJson != null) {
+      List<dynamic> responseData = jsonDecode(otpValidationResponsesJson);
+      List<OTPValidationResponse> otpValidationResponses =
+          responseData.map((otpMap) {
+        return OTPValidationResponse(
+          CNT: otpMap["CNT"].toString(),
+          SESSION_ID: otpMap["SESSION_ID"].toString(),
+          MOBILE_NO1: otpMap["MOBILE_NO1"].toString(),
+          GENDER: otpMap["GENDER"].toString(),
+          ADDRESS1: otpMap["ADDRESS1"].toString(),
+          EMAIL_ID: otpMap["EMAIL_ID"].toString(),
+          DISPLAY_NAME: otpMap["DISPLAY_NAME"].toString(),
+          DOB: otpMap["DOB"].toString(),
+          UMR_NO: otpMap["UMR_NO"].toString(),
+          AGE: otpMap["AGE"].toString(),
+        );
+      }).toList();
+      return otpValidationResponses;
+    } else {
+      return [];
+    }
+  }
 
   Future<bool> validateOTP(String msgId, String otp) async {
     try {
@@ -103,9 +136,9 @@ class AuthProvider extends ChangeNotifier {
       //   prefs.setString('DOB', otpValidationResponse.DOB.toString());
       //   prefs.setString('UMR_NO', otpValidationResponse.UMR_NO.toString());
 
-        // String? mm = await pref.getString("loginData");
-        // otpData = OTPValidationResponse.fromJson(jsonDecode(mm ?? "{}"));
-        return true;
+      // String? mm = await pref.getString("loginData");
+      // otpData = OTPValidationResponse.fromJson(jsonDecode(mm ?? "{}"));
+      return true;
       // } else {
       //   return false;
       // }
