@@ -44,38 +44,46 @@ class _DigitalHistopathologyState extends State<DigitalHistopathology> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "DIGITAL HISTIPATHOLOGY",
-          svgAssetPath:
-              "assets/diagnostic-test/digital-histopathology-title.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "DIGITAL HISTIPATHOLOGY",
+            svgAssetPath:
+                "assets/diagnostic-test/digital-histopathology-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Image.asset("assets/diagnostic-test/histopathology-1.png"),
-        ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
-          child: Text(
-              "Digital pathology will benefit the patients the most as it facilitates getting a second opinion with ease from the world's experts thus providing the best outcome of cancer therapy.",
-              style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black,
-                  height: 1.7,
-                  fontWeight: FontWeight.w400)),
-        ),
-        Divider(
-          indent: 15,
-          endIndent: 15,
-          thickness: 1.5,
-        ),
-        FormoreInformation(context,"")
-      ])),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
+                child:
+                    Image.asset("assets/diagnostic-test/histopathology-1.png"),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
+                child: Text(
+                    "Digital pathology will benefit the patients the most as it facilitates getting a second opinion with ease from the world's experts thus providing the best outcome of cancer therapy.",
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                        height: 1.7,
+                        fontWeight: FontWeight.w400)),
+              ),
+              Divider(
+                indent: 15,
+                endIndent: 15,
+                thickness: 1.5,
+              ),
+              FormoreInformation(context, "")
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

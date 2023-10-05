@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:nmmedical/controllers/Test_Enquiry_Controller.dart';
 import 'package:nmmedical/models/Test_Enquiry_Model.dart';
 import 'package:nmmedical/widgets/customContainer.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../bottom_navigation.dart';
 
 import '../app_drawer.dart';
@@ -61,7 +62,340 @@ class _MyOrderState extends State<MyOrder> {
           svgAssetPath: "assets/images/my-orders-title.svg",
           onBackButtonPressed: () => Navigator.pop(context, true),
         ),
-        // Padding(
+        Expanded(
+            child: FutureBuilder<List<TestEnquiry>>(
+                future: testEnquiryFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                        child: CircularProgressIndicator(
+                      color: Color.fromARGB(255, 186, 43, 35),
+                    ));
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return Center(
+                      child: const Text('No Reports Avilable',
+                          style: TextStyle(fontSize: 12)),
+                    );
+                  } else {
+                    return ListView.builder(
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
+                            child: Card(
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                  side: const BorderSide(
+                                      color:
+                                          Color.fromARGB(255, 227, 225, 225))),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        10, 10, 10, 2),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Flexible(
+                                          child: Text(
+                                            snapshot.data![index].SERVICE_NAME,
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w700,
+                                                color: Color.fromARGB(
+                                                    255, 187, 42, 34)),
+                                          ),
+                                        ),
+                                        snapshot.data![index].SERVICE_STATUS1 ==
+                                                    "Dispatch" ||
+                                                snapshot.data![index]
+                                                        .SERVICE_STATUS1 ==
+                                                    "Completed"
+                                            ? Card(
+                                                color: const Color.fromARGB(
+                                                    255, 119, 216, 144),
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5)),
+                                                child: const Padding(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      12, 3, 12, 3),
+                                                  child: Center(
+                                                      child: Text(
+                                                    'Completed',
+                                                    style: TextStyle(
+                                                        fontSize: 12,
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  )),
+                                                ))
+                                            : Container()
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  bottom: 6.0),
+                                              child: Text(
+                                                'Order Id',
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                            Text(
+                                              snapshot.data![index].BILL_NO,
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  bottom: 6.0),
+                                              child: Text(
+                                                'Date',
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                            Text(
+                                              snapshot.data![index].BILL_DT,
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 10.0),
+                                              child: Row(
+                                                children: [
+                                                  snapshot.data![index]
+                                                                  .SERVICE_STATUS1 ==
+                                                              "Dispatch" ||
+                                                          snapshot.data![index]
+                                                                  .SERVICE_STATUS1 ==
+                                                              "Completed"
+                                                      ? GestureDetector(
+                                                          onTap: () async {
+                                                            final downloadUrl =
+                                                                'http://115.112.254.129/NM_TESTING/Qrcodereport.aspx?Bill_id=${snapshot.data![index].Bill_ID}';
+
+                                                            try {
+                                                              await launch(
+                                                                  downloadUrl);
+                                                            } catch (e) {
+                                                              print(
+                                                                  'Error launching URL: $e');
+                                                              ScaffoldMessenger
+                                                                      .of(
+                                                                          context)
+                                                                  .showSnackBar(
+                                                                      SnackBar(
+                                                                          content:
+                                                                              Text("Could not lunch URL")));
+                                                            }
+                                                          },
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left: 2,
+                                                                    bottom: 0),
+                                                            child: Card(
+                                                                color: Color.fromARGB(255, 221, 105, 63),
+                                                                shape: RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            5)),
+                                                                child: Padding(
+                                                                    padding: EdgeInsets
+                                                                        .fromLTRB(
+                                                                            16,
+                                                                            2,
+                                                                            14,
+                                                                            2),
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Center(
+                                                                            child:
+                                                                                Text(
+                                                                          'Invoice',
+                                                                          style: TextStyle(
+                                                                              fontSize: 12,
+                                                                              color: Colors.white,
+                                                                              fontWeight: FontWeight.w500),
+                                                                        )),
+                                                                        SvgPicture.asset(
+                                                                            "assets/images/download-icon2.svg"),
+                                                                      ],
+                                                                    ))),
+                                                          ),
+                                                        )
+                                                      : Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8,
+                                                                  bottom: 30),
+                                                          child: Card(
+                                                              color: const Color
+                                                                      .fromARGB(
+                                                                  255,
+                                                                  254,
+                                                                  148,
+                                                                  129),
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5)),
+                                                              child:
+                                                                  const Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .fromLTRB(
+                                                                            8,
+                                                                            2,
+                                                                            8,
+                                                                            2),
+                                                                child: Center(
+                                                                    child: Text(
+                                                                  'Processing',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          12,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500),
+                                                                )),
+                                                              )),
+                                                        ),
+                                                ],
+                                              ),
+                                            ),
+                                            snapshot.data![index]
+                                                            .SERVICE_STATUS1 ==
+                                                        "Dispatch" ||
+                                                    snapshot.data![index]
+                                                            .SERVICE_STATUS1 ==
+                                                        "Completed"
+                                                ? GestureDetector(
+                                                    onTap: () async {
+                                                      final downloadUrl =
+                                                          'http://115.112.254.129/NM_TESTING/public/HIMSReportViewer.aspx?uniuq_id=${snapshot.data![index].REPORT_CD}';
+
+                                                      try {
+                                                        await launch(
+                                                            downloadUrl);
+                                                      } catch (e) {
+                                                        print(
+                                                            'Error launching URL: $e');
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(SnackBar(
+                                                                content: Text(
+                                                                    "Could not lunch URL")));
+                                                      }
+                                                    },
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 2,
+                                                              bottom: 14),
+                                                      child: Card(
+                                                          color: const Color
+                                                                  .fromARGB(
+                                                              255, 192, 47, 36),
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5)),
+                                                          child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .fromLTRB(
+                                                                          8,
+                                                                          2,
+                                                                          8,
+                                                                          2),
+                                                              child: Row(
+                                                                children: [
+                                                                  Center(
+                                                                      child:
+                                                                          Text(
+                                                                    'Download',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            12,
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontWeight:
+                                                                            FontWeight.w500),
+                                                                  )),
+                                                                  SvgPicture.asset(
+                                                                      "assets/images/download-icon2.svg"),
+                                                                ],
+                                                              ))),
+                                                    ),
+                                                  )
+                                                : Container(),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        });
+                  }
+                }))
+      ]),
+      bottomNavigationBar: AllBottomNavigationBar(
+        payMNETNAv: '',
+      ),
+    );
+  }
+}
+
+ // Padding(
         //   padding: const EdgeInsets.fromLTRB(8, 8, 8, 2),
         //   child: Card(
         //     elevation: 0,
@@ -281,263 +615,3 @@ class _MyOrderState extends State<MyOrder> {
         //     ),
         //   ),
         // ),
-        Expanded(
-            child: FutureBuilder<List<TestEnquiry>>(
-                future: testEnquiryFuture,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
-                        child: CircularProgressIndicator(
-                      color: Color.fromARGB(255, 186, 43, 35),
-                    ));
-                  } else if (snapshot.hasError) {
-                    return Text('Error: ${snapshot.error}');
-                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return Center(
-                      child: const Text('No Reports Avilable',
-                          style: TextStyle(fontSize: 12)),
-                    );
-                  } else {
-                    return ListView.builder(
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
-                            child: Card(
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(14),
-                                  side: const BorderSide(
-                                      color:
-                                          Color.fromARGB(255, 227, 225, 225))),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(top: 10.0, left: 8),
-                                    child: Text(
-                                      snapshot.data![index].SERVICE_NAME,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w700,
-                                          color:
-                                              Color.fromARGB(255, 187, 42, 34)),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  bottom: 6.0),
-                                              child: Text(
-                                                'Order Id',
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.black),
-                                              ),
-                                            ),
-                                            Text(
-                                              snapshot.data![index].BILL_NO,
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  bottom: 6.0),
-                                              child: Text(
-                                                'Date',
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.black),
-                                              ),
-                                            ),
-                                            Text(
-                                              snapshot.data![index].BILL_DT,
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 10.0),
-                                              child: Row(
-                                                children: [
-                                                  snapshot.data![index]
-                                                                  .SERVICE_STATUS1 ==
-                                                              "Dispatch" ||
-                                                          snapshot.data![index]
-                                                                  .SERVICE_STATUS1 ==
-                                                              "Completed"
-                                                      ? Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  left: 8,right: 6,
-                                                                  bottom: 0),
-                                                          child: Card(
-                                                              color: const Color
-                                                                      .fromARGB(
-                                                                  255,
-                                                                  119,
-                                                                  216,
-                                                                  144),
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5)),
-                                                              child:
-                                                                  const Padding(
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .fromLTRB(
-                                                                            12,
-                                                                            3,
-                                                                            12,
-                                                                            3),
-                                                                child: Center(
-                                                                    child: Text(
-                                                                  'Completed',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          12,
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500),
-                                                                )),
-                                                              )),
-                                                        )
-                                                      : Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  left: 8,
-                                                                  bottom: 30),
-                                                          child: Card(
-                                                              color: const Color
-                                                                      .fromARGB(
-                                                                  255,
-                                                                  254,
-                                                                  148,
-                                                                  129),
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5)),
-                                                              child:
-                                                                  const Padding(
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .fromLTRB(
-                                                                            8,
-                                                                            2,
-                                                                            8,
-                                                                            2),
-                                                                child: Center(
-                                                                    child: Text(
-                                                                  'Processing',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          12,
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500),
-                                                                )),
-                                                              )),
-                                                        ),
-                                                ],
-                                              ),
-                                            ),
-                                            snapshot.data![index]
-                                                            .SERVICE_STATUS1 ==
-                                                        "Dispatch" ||
-                                                    snapshot.data![index]
-                                                            .SERVICE_STATUS1 ==
-                                                        "Completed"
-                                                ? Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 2,
-                                                            bottom: 14),
-                                                    child: Card(
-                                                        color: const Color
-                                                                .fromARGB(
-                                                            255, 192, 47, 36),
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5)),
-                                                        child: Padding(
-                                                            padding: EdgeInsets
-                                                                .fromLTRB(
-                                                                    8, 2, 8, 2),
-                                                            child: Row(
-                                                              children: [
-                                                                Center(
-                                                                    child: Text(
-                                                                  'Download',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          12,
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500),
-                                                                )),
-                                                                SvgPicture.asset(
-                                                                    "assets/images/download-icon2.svg"),
-                                                              ],
-                                                            ))),
-                                                  )
-                                                : Container(),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        });
-                  }
-                }))
-      ]),
-      bottomNavigationBar: AllBottomNavigationBar(
-        payMNETNAv: '',
-      ),
-    );
-  }
-}

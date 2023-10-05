@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="path2820" d="M0-682.665H36v36H0Z" transform="translate(0 682.665)"/>
+    </clipPath>
+  </defs>
+  <g id="eva_silver_checkup" data-name="eva silver checkup" transform="translate(0 682.665)">
+    <g id="g2816" transform="translate(0 -682.665)">
+      <g id="g2818" clip-path="url(#clip-path)">
+        <path id="path2824" d="M122.427-662.665H101.333v29.672h21.094Z" transform="translate(-95.989 663.72)" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.7"/>
+        <g id="g2826" transform="translate(9.563 5.344)">
+          <path id="path2828" d="M0-455.949v4.219H21.094v-29.6H16.875" transform="translate(0 481.332)" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.7"/>
+        </g>
+      </g>
+    </g>
+    <g id="g2830" transform="translate(9.563 -675.212)">
+      <path id="path2832" d="M0,0H6.328" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.7"/>
+    </g>
+    <g id="g2834" transform="translate(9.563 -670.993)">
+      <path id="path2836" d="M0,0H12.656" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.7"/>
+    </g>
+    <g id="g2838" transform="translate(9.563 -666.774)">
+      <path id="path2840" d="M0,0H12.656" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.7"/>
+    </g>
+    <g id="g2842" transform="translate(9.563 -662.556)">
+      <path id="path2844" d="M0,0H12.656" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.7"/>
+    </g>
+    <g id="g2846" transform="translate(18 -658.337)">
+      <path id="path2848" d="M0,0H4.219" fill="none" stroke="#bb2a22" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.7"/>
+    </g>
+  </g>
+</svg>

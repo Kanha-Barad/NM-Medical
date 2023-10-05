@@ -80,14 +80,14 @@ class _PRomoTioNState extends State<PRomoTioN> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         return Padding(
-                            padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
+                            padding: const EdgeInsets.fromLTRB(10, 6, 10, 4),
                             child: GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            PRomoTioNCouPON()));
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) =>
+                                //             PRomoTioNCouPON()));
                               },
                               child: Card(
                                 elevation: 1,
@@ -212,215 +212,125 @@ class _PRomoTioNState extends State<PRomoTioN> {
     );
   }
 }
-//GestureDetector(
-        //   onTap: () {
-        //     Navigator.push(context,
-        //         MaterialPageRoute(builder: (context) => PRomoTioNCouPON()));
-        //   },
-        //   child: Padding(
-        //     padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
-        //     child: Card(
-        //       elevation: 1,
-        //       shape: RoundedRectangleBorder(
-        //         borderRadius: BorderRadius.circular(10),
-        //       ),
-        //       child: Column(
-        //         children: [
-        //           Stack(children: [
-        //             Image.asset(
-        //               "assets/promotion/02.png",
-        //               fit: BoxFit.fill,
-        //               width: MediaQuery.of(context).size.width - (16 * 2),
-        //             ),
-        //             Positioned(
-        //               top: 20,
-        //               right: 0,
-        //               child: Container(
-        //                 color: Color.fromARGB(255, 235, 28, 17),
-        //                 padding:
-        //                     EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-        //                 child: Column(
-        //                   crossAxisAlignment: CrossAxisAlignment.start,
-        //                   children: [
-        //                     Text(
-        //                       'PROMO CODE',
-        //                       style: TextStyle(
-        //                         color: Colors.white,
-        //                         fontSize: 12,
-        //                       ),
-        //                     ),
-        //                     Text(
-        //                       'NM100',
-        //                       style: TextStyle(
-        //                         color: Colors.white,
-        //                         fontSize: 14,
-        //                         fontWeight: FontWeight.w500,
-        //                       ),
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //             ),
-        //           ]),
-        //           Padding(
-        //             padding: const EdgeInsets.fromLTRB(14, 8, 14, 0),
-        //             child: Row(
-        //               children: [
-        //                 Text(
-        //                   "Triglycerides Test",
-        //                   style: TextStyle(
-        //                       color: Color.fromARGB(255, 187, 42, 34),
-        //                       fontSize: 16,
-        //                       fontWeight: FontWeight.w600),
-        //                 ),
-        //                 Spacer(),
-        //                 Text(
-        //                   "\u{20B9} 2000",
-        //                   style: TextStyle(
-        //                       color: Colors.black87,
-        //                       decoration: TextDecoration.lineThrough,
-        //                       fontSize: 14,
-        //                       fontWeight: FontWeight.w500),
-        //                 )
-        //               ],
-        //             ),
-        //           ),
-        //           Padding(
-        //             padding: const EdgeInsets.fromLTRB(14, 6, 14, 10),
-        //             child: Row(
-        //               children: [
-        //                 SvgPicture.asset(
-        //                     "assets/promotion/promotion-location-icon.svg"),
-        //                 Padding(
-        //                   padding: const EdgeInsets.only(left: 8.0),
-        //                   child: Text(
-        //                     "Bandra",
-        //                     style: TextStyle(
-        //                         color: Colors.black87,
-        //                         fontSize: 12,
-        //                         fontWeight: FontWeight.w500),
-        //                   ),
-        //                 ),
-        //                 Spacer(),
-        //                 Text(
-        //                   "\u{20B9} 1000",
-        //                   style: TextStyle(
-        //                       color: Color.fromARGB(255, 187, 42, 34),
-        //                       decoration: TextDecoration.lineThrough,
-        //                       fontSize: 18,
-        //                       fontWeight: FontWeight.w600),
-        //                 )
-        //               ],
-        //             ),
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //   ),
-        // ),
-        // GestureDetector(
-        //   onTap: () {
-        //     Navigator.push(context,
-        //         MaterialPageRoute(builder: (context) => PRomoTioNCouPON()));
-        //   },
-        //   child: Padding(
-        //     padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
-        //     child: Card(
-        //       elevation: 1,
-        //       shape: RoundedRectangleBorder(
-        //         borderRadius: BorderRadius.circular(10),
-        //       ),
-        //       child: Column(
-        //         children: [
-        //           Stack(children: [
-        //             Image.asset(
-        //               "assets/promotion/03.png",
-        //               fit: BoxFit.fill,
-        //               width: MediaQuery.of(context).size.width - (16 * 2),
-        //             ),
-        //             Positioned(
-        //               top: 20,
-        //               right: 0,
-        //               child: Container(
-        //                 color: Color.fromARGB(255, 235, 28, 17),
-        //                 padding:
-        //                     EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-        //                 child: Column(
-        //                   crossAxisAlignment: CrossAxisAlignment.start,
-        //                   children: [
-        //                     Text(
-        //                       'PROMO CODE',
-        //                       style: TextStyle(
-        //                         color: Colors.white,
-        //                         fontSize: 12,
-        //                       ),
-        //                     ),
-        //                     Text(
-        //                       'NM100',
-        //                       style: TextStyle(
-        //                         color: Colors.white,
-        //                         fontSize: 14,
-        //                         fontWeight: FontWeight.w500,
-        //                       ),
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //             ),
-        //           ]),
-        //           Padding(
-        //             padding: const EdgeInsets.fromLTRB(14, 8, 14, 0),
-        //             child: Row(
-        //               children: [
-        //                 Text(
-        //                   "Liver Test",
-        //                   style: TextStyle(
-        //                       color: Color.fromARGB(255, 187, 42, 34),
-        //                       fontSize: 16,
-        //                       fontWeight: FontWeight.w600),
-        //                 ),
-        //                 Spacer(),
-        //                 Text(
-        //                   "\u{20B9} 2000",
-        //                   style: TextStyle(
-        //                       color: Colors.black87,
-        //                       decoration: TextDecoration.lineThrough,
-        //                       fontSize: 14,
-        //                       fontWeight: FontWeight.w500),
-        //                 )
-        //               ],
-        //             ),
-        //           ),
-        //           Padding(
-        //             padding: const EdgeInsets.fromLTRB(14, 6, 14, 10),
-        //             child: Row(
-        //               children: [
-        //                 SvgPicture.asset(
-        //                     "assets/promotion/promotion-location-icon.svg"),
-        //                 Padding(
-        //                   padding: const EdgeInsets.only(left: 8.0),
-        //                   child: Text(
-        //                     "Mahim",
-        //                     style: TextStyle(
-        //                         color: Colors.black87,
-        //                         fontSize: 12,
-        //                         fontWeight: FontWeight.w500),
-        //                   ),
-        //                 ),
-        //                 Spacer(),
-        //                 Text(
-        //                   "\u{20B9} 1000",
-        //                   style: TextStyle(
-        //                       color: Color.fromARGB(255, 187, 42, 34),
-        //                       decoration: TextDecoration.lineThrough,
-        //                       fontSize: 18,
-        //                       fontWeight: FontWeight.w600),
-        //                 )
-        //               ],
-        //             ),
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //   ),
-        // ),
+// return Padding(
+//                             padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
+//                             child: GestureDetector(
+//                               onTap: () {
+//                                 Navigator.push(
+//                                     context,
+//                                     MaterialPageRoute(
+//                                         builder: (context) =>
+//                                             PRomoTioNCouPON()));
+//                               },
+//                               child: Card(
+//                                 elevation: 1,
+//                                 shape: RoundedRectangleBorder(
+//                                   borderRadius: BorderRadius.circular(10),
+//                                 ),
+//                                 child: Column(
+//                                   children: [
+//                                     Stack(children: [
+//                                       Image.network(
+//                                         snapshot.data![index].img,
+//                                         fit: BoxFit.fill,
+//                                         width:
+//                                             MediaQuery.of(context).size.width -
+//                                                 (16 * 2),
+//                                       ),
+//                                       Positioned(
+//                                         top: 20,
+//                                         right: 0,
+//                                         child: Container(
+//                                           color:
+//                                               Color.fromARGB(255, 235, 28, 17),
+//                                           padding: EdgeInsets.symmetric(
+//                                               horizontal: 10, vertical: 8),
+//                                           child: Column(
+//                                             crossAxisAlignment:
+//                                                 CrossAxisAlignment.start,
+//                                             children: [
+//                                               Text(
+//                                                 'PROMO CODE',
+//                                                 style: TextStyle(
+//                                                   color: Colors.white,
+//                                                   fontSize: 12,
+//                                                 ),
+//                                               ),
+//                                               Text(
+//                                                 snapshot.data![index].promoCode,
+//                                                 style: TextStyle(
+//                                                   color: Colors.white,
+//                                                   fontSize: 14,
+//                                                   fontWeight: FontWeight.w500,
+//                                                 ),
+//                                               ),
+//                                             ],
+//                                           ),
+//                                         ),
+//                                       ),
+//                                     ]),
+//                                     Padding(
+//                                       padding: const EdgeInsets.fromLTRB(
+//                                           14, 8, 14, 0),
+//                                       child: Row(
+//                                         children: [
+//                                           Text(
+//                                             snapshot.data![index].serviceName,
+//                                             style: TextStyle(
+//                                                 color: Color.fromARGB(
+//                                                     255, 187, 42, 34),
+//                                                 fontSize: 16,
+//                                                 fontWeight: FontWeight.w600),
+//                                           ),
+//                                           Spacer(),
+//                                           Text(
+//                                             "\u{20B9} " +
+//                                                 snapshot.data![index].oldPrice,
+//                                             style: TextStyle(
+//                                                 color: Colors.black87,
+//                                                 decoration:
+//                                                     TextDecoration.lineThrough,
+//                                                 fontSize: 14,
+//                                                 fontWeight: FontWeight.w500),
+//                                           )
+//                                         ],
+//                                       ),
+//                                     ),
+//                                     Padding(
+//                                       padding: const EdgeInsets.fromLTRB(
+//                                           14, 6, 14, 10),
+//                                       child: Row(
+//                                         children: [
+//                                           SvgPicture.asset(
+//                                               "assets/promotion/promotion-location-icon.svg"),
+//                                           Padding(
+//                                             padding: const EdgeInsets.only(
+//                                                 left: 8.0),
+//                                             child: Text(
+//                                               snapshot
+//                                                   .data![index].locationName,
+//                                               style: TextStyle(
+//                                                   color: Colors.black87,
+//                                                   fontSize: 12,
+//                                                   fontWeight: FontWeight.w500),
+//                                             ),
+//                                           ),
+//                                           Spacer(),
+//                                           Text(
+//                                             "\u{20B9} " +
+//                                                 snapshot.data![index].newPrice,
+//                                             style: TextStyle(
+//                                                 color: Color.fromARGB(
+//                                                     255, 187, 42, 34),
+//                                                 //decoration:
+//                                                 // TextDecoration.lineThrough,
+//                                                 fontSize: 18,
+//                                                 fontWeight: FontWeight.w600),
+//                                           )
+//                                         ],
+//                                       ),
+//                                     ),
+//                                   ],
+//                                 ),
+//                               ),
+//                             ));

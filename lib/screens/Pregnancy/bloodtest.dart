@@ -44,27 +44,34 @@ class _BlooDTESTState extends State<BlooDTEST> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "BLOOD TEST",
-          svgAssetPath: "assets/pregnancy/blood-test-title.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context, true);
-          },
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "BLOOD TEST",
+            svgAssetPath: "assets/pregnancy/blood-test-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15, 25, 0, 10),
-          child: Text("Cooming Soon", style: TextStyle(fontSize: 14)),
-        ),
-        Divider(
-          indent: 15,
-          endIndent: 15,
-          thickness: 1.5,
-        ),
-        FormoreInformation(context,""),
-      ])),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 25, 0, 10),
+                child: Text("Cooming Soon", style: TextStyle(fontSize: 14)),
+              ),
+              Divider(
+                indent: 15,
+                endIndent: 15,
+                thickness: 1.5,
+              ),
+              FormoreInformation(context, ""),
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

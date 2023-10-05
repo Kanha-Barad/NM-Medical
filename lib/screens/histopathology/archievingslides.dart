@@ -44,33 +44,40 @@ class _ARchievingTheSLidesState extends State<ARchievingTheSLides> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "ARCHIVING THE SLIDES",
-          svgAssetPath: "assets/histopathology/arching-the-slides-title.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15, 20, 0, 10),
-          child: Text(
-            "Digitaly stored slide can be archived remotely by using username and password.",
-            style: TextStyle(
-              fontSize: 14,
-              height: 1.7,
-            ),
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "ARCHIVING THE SLIDES",
+            svgAssetPath: "assets/histopathology/arching-the-slides-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ),
-        Divider(
-          indent: 15,
-          endIndent: 15,
-          thickness: 1.5,
-        ),
-        FormoreInformation(context, "")
-      ])),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 20, 0, 10),
+                child: Text(
+                  "Digitaly stored slide can be archived remotely by using username and password.",
+                  style: TextStyle(
+                    fontSize: 14,
+                    height: 1.7,
+                  ),
+                ),
+              ),
+              Divider(
+                indent: 15,
+                endIndent: 15,
+                thickness: 1.5,
+              ),
+              FormoreInformation(context, "")
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

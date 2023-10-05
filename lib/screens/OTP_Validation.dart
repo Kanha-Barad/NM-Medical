@@ -31,7 +31,9 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
       // If OTP verification is already in progress, return and prevent multiple clicks
       return;
     }
+
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
+
     try {
       String enteredOTP =
           otpControllers.map((controller) => controller.text).join();
@@ -45,6 +47,14 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
         );
         return;
       }
+
+      // Show Snackbar for verifying
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Verifying...'),
+          duration: Duration(seconds: 1),
+        ),
+      );
 
       // Set the flag to true to indicate that OTP verification is in progress
       setState(() {
@@ -62,6 +72,7 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
         authProvider.setLoggedIn(true); // Update the login status
         authProvider
             .saveLoginStatus(true); // Save login status to shared preferences
+        ScaffoldMessenger.of(context).removeCurrentSnackBar();
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => NMHome()),
@@ -72,6 +83,7 @@ class _OTPValidationPageState extends State<OTPValidationPage> {
         authProvider.setLoggedIn(true); // Update the login status
         authProvider
             .saveLoginStatus(true); // Save login status to shared preferences
+        ScaffoldMessenger.of(context).removeCurrentSnackBar();
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(

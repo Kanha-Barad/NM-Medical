@@ -45,57 +45,67 @@ class _PregnancyState extends State<Pregnancy> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child: Column(children: [
-        CustomContainerBar(
-          title: "PREGNANCY",
-          svgAssetPath: "assets/pregnancy/pregnancy-white.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "PREGNANCY",
+            svgAssetPath: "assets/pregnancy/pregnancy-white.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        Padding(
-            padding: const EdgeInsets.only(bottom: 4.0),
-            child: GridView.count(
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => BlooDTEST()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/pregnancy/blood-test.svg',
-                      labelText: 'Blood Test',
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(children: [
+          Padding(
+              padding: const EdgeInsets.only(bottom: 4.0),
+              child: GridView.count(
+                  crossAxisCount: 3,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BlooDTEST()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/pregnancy/blood-test.svg',
+                        labelText: 'Blood Test',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SONOgraphY()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/pregnancy/sonography.svg',
-                      labelText: 'Sonography',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SONOgraphY()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/pregnancy/sonography.svg',
+                        labelText: 'Sonography',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => NIneMonTH("NMTH")));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/pregnancy/nine-month.svg',
-                      labelText: 'Nine Month',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NIneMonTH("NMTH")));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/pregnancy/nine-month.svg',
+                        labelText: 'Nine Month',
+                      ),
                     ),
-                  ),
-                ]))
-      ])),
+                  ]))
+        ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

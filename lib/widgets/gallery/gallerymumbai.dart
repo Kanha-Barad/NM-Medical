@@ -71,1253 +71,1295 @@ class _SelectMumbaigalleryState extends State<SelectMumbaigallery> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "GALLERY",
-          svgAssetPath: "assets/gallery/gallery-title.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "GALLERY",
+            svgAssetPath: "assets/gallery/gallery-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 15.0, left: 0, right: 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                fit: FlexFit.tight,
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Select City',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 187, 42, 34),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      DropdownButton<String>(
-                        isExpanded: true,
-                        value: selectedValue1,
-                        onChanged: (newValue) {
-                          setState(() {
-                            selectedValue1 = newValue!;
-                          });
-                        },
-                        items: dropdownOptions1.map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(
-                              value,
+              Padding(
+                padding: const EdgeInsets.only(top: 15.0, left: 0, right: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      fit: FlexFit.tight,
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Text(
+                              'Select City',
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w500),
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700),
                             ),
-                          );
-                        }).toList(),
-                        iconEnabledColor: Color.fromARGB(255, 187, 42, 34),
+                            DropdownButton<String>(
+                              isExpanded: true,
+                              value: selectedValue1,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  selectedValue1 = newValue!;
+                                });
+                              },
+                              items: dropdownOptions1.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                );
+                              }).toList(),
+                              iconEnabledColor:
+                                  Color.fromARGB(255, 187, 42, 34),
+                            ),
+                          ],
+                        ),
                       ),
+                    ),
+                    Flexible(
+                      fit: FlexFit.tight,
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Text(
+                              'Select Suburb',
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            DropdownButton<String>(
+                              value: selectedValue2,
+                              isExpanded: true,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  selectedValue2 = newValue!;
+                                });
+                              },
+                              items: dropdownOptions2.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                );
+                              }).toList(),
+                              iconEnabledColor:
+                                  Color.fromARGB(255, 187, 42, 34),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
+                    children: [
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/01.png",
+                            fit: BoxFit.fill,
+                          ),
+                          Image.asset("assets/locations/02.png",
+                              fit: BoxFit.fill),
+                          Image.asset("assets/locations/03.png",
+                              fit: BoxFit.fill),
+                        ],
+                        options: CarouselOptions(
+                          // aspectRatio: 16/9,
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Colaba",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/gallery/phone-call-icon.svg")),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 992 029 9205',
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
               ),
-              Flexible(
-                fit: FlexFit.tight,
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text(
-                        'Select Suburb',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 187, 42, 34),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700),
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
+                          ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
+                        ),
                       ),
-                      DropdownButton<String>(
-                        value: selectedValue2,
-                        isExpanded: true,
-                        onChanged: (newValue) {
-                          setState(() {
-                            selectedValue2 = newValue!;
-                          });
-                        },
-                        items: dropdownOptions2.map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(
-                              value,
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Marine Lines (Eva Health)",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w500),
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
                             ),
-                          );
-                        }).toList(),
-                        iconEnabledColor: Color.fromARGB(255, 187, 42, 34),
-                      ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/gallery/phone-call-icon.svg")),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 22 4907 9999',
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
               ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/01.png",
-                      fit: BoxFit.fill,
-                    ),
-                    Image.asset("assets/locations/02.png", fit: BoxFit.fill),
-                    Image.asset("assets/locations/03.png", fit: BoxFit.fill),
-                  ],
-                  options: CarouselOptions(
-                    // aspectRatio: 16/9,
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
-                ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Colaba",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
                           ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                         ),
                       ),
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Marine Lines (Health 360)",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
                       Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/gallery/phone-call-icon.svg")),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 992 029 9205',
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/gallery/phone-call-icon.svg")),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 22 4907 9999',
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Marine Lines (Eva Health)",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
+                          ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Chowpatty",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                          ),
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 22 4342 5555',
+                            )
+                          ],
                         ),
-                      ),Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/gallery/phone-call-icon.svg")),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 22 4907 9999',
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Marine Lines (Health 360)",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
                           ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                         ),
                       ),
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Parel",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
                       Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/gallery/phone-call-icon.svg")),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 22 4907 9999',
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 22 4966 2222',
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Chowpatty",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
                           ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                         ),
                       ),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 22 4342 5555',
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Matunga",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 84337 36456',
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Parel",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
                           ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                         ),
                       ),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 22 4966 2222',
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Bandra",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 22 4342 6666',
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Matunga",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
                           ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                         ),
                       ),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 84337 36456',
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Khar",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 22 4342 8888',
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Bandra",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
                           ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                         ),
                       ),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 22 4342 6666',
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Andheri",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 22 4613 2222',
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Khar",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
                           ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                         ),
                       ),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 22 4342 8888',
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Malad",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 22 4613 3333',
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Andheri",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
                           ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                         ),
                       ),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 22 4613 2222',
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Borivali",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 22 4342 4444',
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Malad",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
                           ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                         ),
                       ),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 22 4613 3333',
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Mulund",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 22 4342 7777',
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Borivali",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
                           ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          // aspectRatio: 16 / 40,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                         ),
                       ),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 22 4342 4444',
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Vikhroli",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 000 000 0000',
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Mulund",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 231, 230, 230))),
+                  child: Column(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
+                      CarouselSlider(
+                        items: [
+                          Image.asset(
+                            "assets/locations/placeholder-image.png",
+                            fit: BoxFit.fill,
                           ),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          enlargeCenterPage: false,
+                          autoPlay: true,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                         ),
                       ),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 22 4342 7777',
+                      Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 15, top: 15),
+                              child: SvgPicture.asset(
+                                  "assets/locations/location-icon.svg")),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, top: 14),
+                            child: Text("Vashi",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 5.0, left: 12, right: 16),
+                                child: SvgPicture.asset(
+                                    "assets/locations/directions-icon.svg")),
+                            Text(
+                              "Directions",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Text(
+                                "|",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            PhoneCallWidget(
+                              phoneNumber: '+91 86574 14376',
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    // aspectRatio: 16 / 40,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Vikhroli",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
-                    children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 000 000 0000',
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Color.fromARGB(255, 231, 230, 230))),
-            child: Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.asset(
-                      "assets/locations/placeholder-image.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  ),
-                ),
-                Row(
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 15, top: 15),
-                        child: SvgPicture.asset(
-                            "assets/locations/location-icon.svg")),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 14),
-                      child: Text("Vashi",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 187, 42, 34),
-                          )),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 8),
-                  child: Row(
-                    children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 5.0, left: 12, right: 16),
-                          child: SvgPicture.asset(
-                              "assets/locations/directions-icon.svg")),
-                      Text(
-                        "Directions",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Text(
-                          "|",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                      PhoneCallWidget(
-                        phoneNumber: '+91 86574 14376',
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ])),
+              ),
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

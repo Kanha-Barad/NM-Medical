@@ -44,34 +44,41 @@ class _ORderingDiGitalSLidesState extends State<ORderingDiGitalSLides> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "ORDERING DIGITAL SLIDES",
-          svgAssetPath:
-              "assets/histopathology/ordering-digital-slides-title.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15, 20, 0, 10),
-          child: Text(
-            "Technology allows to store the slide digitaly to protrect braking of glass slide and also to prebvent image quality detoarity with time.",
-            style: TextStyle(
-              fontSize: 14,
-              height: 1.7,
-            ),
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "ORDERING DIGITAL SLIDES",
+            svgAssetPath:
+                "assets/histopathology/ordering-digital-slides-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ),
-        Divider(
-          indent: 15,
-          endIndent: 15,
-          thickness: 1.5,
-        ),
-        FormoreInformation(context, "")
-      ])),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 20, 0, 10),
+                child: Text(
+                  "Technology allows to store the slide digitaly to protrect braking of glass slide and also to prebvent image quality detoarity with time.",
+                  style: TextStyle(
+                    fontSize: 14,
+                    height: 1.7,
+                  ),
+                ),
+              ),
+              Divider(
+                indent: 15,
+                endIndent: 15,
+                thickness: 1.5,
+              ),
+              FormoreInformation(context, "")
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),
