@@ -52,1322 +52,1342 @@ class _EVAComparePackageState extends State<EVAComparePackage> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "COMPARE PACKAGES",
-          svgAssetPath: "assets/nm-packages/compaire-title.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "COMPARE PACKAGES",
+            svgAssetPath: "assets/nm-packages/compaire-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(6, 10, 6, 10),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.circular(10), // Adjust the radius as needed
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                RawScrollbar(
-                  thickness: 10,
-                  thumbColor: Color.fromARGB(255, 187, 42, 34),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Table(
-                          defaultColumnWidth: FixedColumnWidth(200),
-                          children: [
-                            TableRow(
-                              decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 187, 42, 34),
-                                  borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(15))),
-                              children: [
-                                Center(
-                                  child: ListTile(
-                                    title: Text('Packages',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                        )),
-                                  ),
-                                ),
-                                investmentTableCell(
-                                    '\u{20B9}${value.format(15000)}'),
-                                investmentTableCell(
-                                    '\u{20B9}${value.format(30000)}'),
-                                investmentTableCell(
-                                    '\u{20B9}${value.format(60000)}'),
-                              ],
-                            ),
-                            TableRow(
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: 1.0,
-                                          color: Color(0xFFE8E8E8))),
-                                  color: Color.fromARGB(255, 245, 245, 245)),
-                              children: [
-                                PlanTableCell('', ''),
-                                PlanTableCell(
-                                    'assets/images/menu-silver-card.png',
-                                    'Silver'),
-                                PlanTableCell(
-                                    'assets/images/menu-gold-card.png', 'Gold'),
-                                PlanTableCell(
-                                    'assets/images/meun-platinum-card.png',
-                                    'Platinum'),
-                              ],
-                            ),
-                            TableRow(
-                                decoration: BoxDecoration(
-                                    border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFE8E8E8))),
-                                    color: Color.fromARGB(255, 245, 245, 245)),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(6, 10, 6, 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                        10), // Adjust the radius as needed
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      RawScrollbar(
+                        thickness: 10,
+                        thumbColor: Color.fromARGB(255, 187, 42, 34),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Table(
+                                defaultColumnWidth: FixedColumnWidth(200),
                                 children: [
-                                  textHeader(
-                                    headerText: 'Routine Blood Tests',
+                                  TableRow(
+                                    decoration: BoxDecoration(
+                                        color: Color.fromARGB(255, 187, 42, 34),
+                                        borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(15))),
+                                    children: [
+                                      Center(
+                                        child: ListTile(
+                                          title: Text('Packages',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                              )),
+                                        ),
+                                      ),
+                                      investmentTableCell(
+                                          '\u{20B9}${value.format(15000)}'),
+                                      investmentTableCell(
+                                          '\u{20B9}${value.format(30000)}'),
+                                      investmentTableCell(
+                                          '\u{20B9}${value.format(60000)}'),
+                                    ],
                                   ),
-                                  SizedBox(),
-                                  SizedBox(),
-                                  SizedBox(),
-                                ]),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 12),
-                                  child: Text(
-                                    'CBC + ESR',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    decoration: BoxDecoration(
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                width: 1.0,
+                                                color: Color(0xFFE8E8E8))),
+                                        color:
+                                            Color.fromARGB(255, 245, 245, 245)),
+                                    children: [
+                                      PlanTableCell('', ''),
+                                      PlanTableCell(
+                                          'assets/images/menu-silver-card.png',
+                                          'Silver'),
+                                      PlanTableCell(
+                                          'assets/images/menu-gold-card.png',
+                                          'Gold'),
+                                      PlanTableCell(
+                                          'assets/images/meun-platinum-card.png',
+                                          'Platinum'),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'Blood Sugar (Fasting)',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                      decoration: BoxDecoration(
+                                          border: Border.symmetric(
+                                              horizontal: BorderSide(
+                                                  width: 1.0,
+                                                  color: Color(0xFFE8E8E8))),
+                                          color: Color.fromARGB(
+                                              255, 245, 245, 245)),
+                                      children: [
+                                        textHeader(
+                                          headerText: 'Routine Blood Tests',
+                                        ),
+                                        SizedBox(),
+                                        SizedBox(),
+                                        SizedBox(),
+                                      ]),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 12),
+                                        child: Text(
+                                          'CBC + ESR',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                                decoration: BoxDecoration(
-                                    border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFE8E8E8))),
-                                    color: Color.fromARGB(255, 245, 245, 245)),
-                                children: [
-                                  textHeader(
-                                    headerText: 'Diabetic Profile',
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                  SizedBox(),
-                                  SizedBox(),
-                                  SizedBox(),
-                                ]),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 12),
-                                  child: Text(
-                                    'Fasting Blood Sugar',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'Blood Sugar (Fasting)',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'PP / PG Sugar',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                      decoration: BoxDecoration(
+                                          border: Border.symmetric(
+                                              horizontal: BorderSide(
+                                                  width: 1.0,
+                                                  color: Color(0xFFE8E8E8))),
+                                          color: Color.fromARGB(
+                                              255, 245, 245, 245)),
+                                      children: [
+                                        textHeader(
+                                          headerText: 'Diabetic Profile',
+                                        ),
+                                        SizedBox(),
+                                        SizedBox(),
+                                        SizedBox(),
+                                      ]),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 12),
+                                        child: Text(
+                                          'Fasting Blood Sugar',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'HBA1C',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                                decoration: BoxDecoration(
-                                    border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFE8E8E8))),
-                                    color: Color.fromARGB(255, 245, 245, 245)),
-                                children: [
-                                  textHeader(
-                                    headerText: 'Liver Profile',
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'PP / PG Sugar',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                  SizedBox(),
-                                  SizedBox(),
-                                  SizedBox(),
-                                ]),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 12),
-                                  child: Text(
-                                    'SGOT / SGPT / GGTP',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'Alkaline Phosphatase Bilirubin',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'HBA1C',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Albumin / Globulin / A/G Ratio',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                      decoration: BoxDecoration(
+                                          border: Border.symmetric(
+                                              horizontal: BorderSide(
+                                                  width: 1.0,
+                                                  color: Color(0xFFE8E8E8))),
+                                          color: Color.fromARGB(
+                                              255, 245, 245, 245)),
+                                      children: [
+                                        textHeader(
+                                          headerText: 'Liver Profile',
+                                        ),
+                                        SizedBox(),
+                                        SizedBox(),
+                                        SizedBox(),
+                                      ]),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 12),
+                                        child: Text(
+                                          'SGOT / SGPT / GGTP',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                                decoration: BoxDecoration(
-                                    border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFE8E8E8))),
-                                    color: Color.fromARGB(255, 245, 245, 245)),
-                                children: [
-                                  textHeader(
-                                    headerText: 'Cardiac Profile',
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                  SizedBox(),
-                                  SizedBox(),
-                                  SizedBox(),
-                                ]),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 12),
-                                  child: Text(
-                                    'Triglycerides',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'Alkaline Phosphatase Bilirubin',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'Cholesterol',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'HDL / LDL / VLDL',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Albumin / Globulin / A/G Ratio',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                                decoration: BoxDecoration(
-                                    border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFE8E8E8))),
-                                    color: Color.fromARGB(255, 245, 245, 245)),
-                                children: [
-                                  textHeader(
-                                    headerText: 'Renal Profile',
+                                  TableRow(
+                                      decoration: BoxDecoration(
+                                          border: Border.symmetric(
+                                              horizontal: BorderSide(
+                                                  width: 1.0,
+                                                  color: Color(0xFFE8E8E8))),
+                                          color: Color.fromARGB(
+                                              255, 245, 245, 245)),
+                                      children: [
+                                        textHeader(
+                                          headerText: 'Cardiac Profile',
+                                        ),
+                                        SizedBox(),
+                                        SizedBox(),
+                                        SizedBox(),
+                                      ]),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 12),
+                                        child: Text(
+                                          'Triglycerides',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                  SizedBox(),
-                                  SizedBox(),
-                                  SizedBox(),
-                                ]),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 12),
-                                  child: Text(
-                                    'Urea, Creatinine',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'Uric Acid',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'Cholesterol',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Urine Routine',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Electrolytes',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'HDL / LDL / VLDL',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                                decoration: BoxDecoration(
-                                    border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFE8E8E8))),
-                                    color: Color.fromARGB(255, 245, 245, 245)),
-                                children: [
-                                  textHeader(
-                                    headerText: 'Specialised Blood Tests',
+                                  TableRow(
+                                      decoration: BoxDecoration(
+                                          border: Border.symmetric(
+                                              horizontal: BorderSide(
+                                                  width: 1.0,
+                                                  color: Color(0xFFE8E8E8))),
+                                          color: Color.fromARGB(
+                                              255, 245, 245, 245)),
+                                      children: [
+                                        textHeader(
+                                          headerText: 'Renal Profile',
+                                        ),
+                                        SizedBox(),
+                                        SizedBox(),
+                                        SizedBox(),
+                                      ]),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 12),
+                                        child: Text(
+                                          'Urea, Creatinine',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                  SizedBox(),
-                                  SizedBox(),
-                                  SizedBox(),
-                                ]),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Cancer Markers',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                SizedBox(),
-                                SizedBox(),
-                                SizedBox(),
-                              ],
-                            ),
-                            TableRow(
-                                decoration: BoxDecoration(
-                                    border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFE8E8E8))),
-                                    color: Color.fromARGB(255, 245, 245, 245)),
-                                children: [
-                                  textHeader(
-                                    headerText: 'Renal Profile',
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'Uric Acid',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                  SizedBox(),
-                                  SizedBox(),
-                                  SizedBox(),
-                                ]),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 12),
-                                  child: Text(
-                                    'CA 15.3 for Breast Cancer',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'CA 125 for Ovarian Cancer',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Urine Routine',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Pap Smear and HPV Cervical Cancer',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Beta HCG for Stomach Cancer',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Electrolytes',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'AFP for Liver Cancer',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                      decoration: BoxDecoration(
+                                          border: Border.symmetric(
+                                              horizontal: BorderSide(
+                                                  width: 1.0,
+                                                  color: Color(0xFFE8E8E8))),
+                                          color: Color.fromARGB(
+                                              255, 245, 245, 245)),
+                                      children: [
+                                        textHeader(
+                                          headerText: 'Specialised Blood Tests',
+                                        ),
+                                        SizedBox(),
+                                        SizedBox(),
+                                        SizedBox(),
+                                      ]),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Cancer Markers',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      SizedBox(),
+                                      SizedBox(),
+                                      SizedBox(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'CA 19.9 for Pancreatic Cancer',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                      decoration: BoxDecoration(
+                                          border: Border.symmetric(
+                                              horizontal: BorderSide(
+                                                  width: 1.0,
+                                                  color: Color(0xFFE8E8E8))),
+                                          color: Color.fromARGB(
+                                              255, 245, 245, 245)),
+                                      children: [
+                                        textHeader(
+                                          headerText: 'Renal Profile',
+                                        ),
+                                        SizedBox(),
+                                        SizedBox(),
+                                        SizedBox(),
+                                      ]),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 12),
+                                        child: Text(
+                                          'CA 15.3 for Breast Cancer',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'CEA for Colon Cancer',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                                decoration: BoxDecoration(
-                                    border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFE8E8E8))),
-                                    color: Color.fromARGB(255, 245, 245, 245)),
-                                children: [
-                                  textHeader(
-                                    headerText: 'Thyroid Profile',
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'CA 125 for Ovarian Cancer',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                  SizedBox(),
-                                  SizedBox(),
-                                  SizedBox(),
-                                ]),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 12),
-                                  child: Text(
-                                    'Cancer Markers',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                SizedBox(),
-                                SizedBox(),
-                                SizedBox(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'T3, T4, TSH',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Pap Smear and HPV Cervical Cancer',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Vitamin D',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Vitamin B12',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Beta HCG for Stomach Cancer',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'Iron Studies',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Hormonal Studies',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'AFP for Liver Cancer',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                SizedBox(),
-                                SizedBox(),
-                                SizedBox(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'FSH, LH, Prolactin, Progesterone',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'LDH',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'CA 19.9 for Pancreatic Cancer',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                                decoration: BoxDecoration(
-                                    border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFE8E8E8))),
-                                    color: Color.fromARGB(255, 245, 245, 245)),
-                                children: [
-                                  textHeader(
-                                    headerText: 'Diagnostic Tests',
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                  SizedBox(),
-                                  SizedBox(),
-                                  SizedBox(),
-                                ]),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 12),
-                                  child: Text(
-                                    'ECG',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'CEA for Colon Cancer',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'Abdomen & Pelvic Sonography',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                      decoration: BoxDecoration(
+                                          border: Border.symmetric(
+                                              horizontal: BorderSide(
+                                                  width: 1.0,
+                                                  color: Color(0xFFE8E8E8))),
+                                          color: Color.fromARGB(
+                                              255, 245, 245, 245)),
+                                      children: [
+                                        textHeader(
+                                          headerText: 'Thyroid Profile',
+                                        ),
+                                        SizedBox(),
+                                        SizedBox(),
+                                        SizedBox(),
+                                      ]),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 12),
+                                        child: Text(
+                                          'Cancer Markers',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      SizedBox(),
+                                      SizedBox(),
+                                      SizedBox(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Pelvic Colour Doppler',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Carotid Colour Doppler',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'T3, T4, TSH',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    '3D Digital Mammogram with Tomosynthesis',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Sonomammography',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Vitamin D',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'DEXA Hip, Spine, Forearm',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Whole body fat Analysis',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Vitamin B12',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                                decoration: BoxDecoration(
-                                    border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFE8E8E8))),
-                                    color: Color.fromARGB(255, 245, 245, 245)),
-                                children: [
-                                  textHeader(
-                                    headerText: '3T MRI',
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                  SizedBox(),
-                                  SizedBox(),
-                                  SizedBox(),
-                                ]),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 12),
-                                  child: Text(
-                                    'Brain',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'Iron Studies',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                CrossIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'Neck',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                CrossIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Abdomen & Pelvis',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Hormonal Studies',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      SizedBox(),
+                                      SizedBox(),
+                                      SizedBox(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                CrossIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Whole Spine Screening',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                CrossIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                                decoration: BoxDecoration(
-                                    border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFE8E8E8))),
-                                    color: Color.fromARGB(255, 245, 245, 245)),
-                                children: [
-                                  textHeader(
-                                    headerText: 'Consultations',
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'FSH, LH, Prolactin, Progesterone',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                  SizedBox(),
-                                  SizedBox(),
-                                  SizedBox(),
-                                ]),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 12),
-                                  child: Text(
-                                    'Gynaecologist Consultation from our expert panel (Optional)',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
                                   ),
-                                ),
-                                TickIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 8),
-                                  child: Text(
-                                    'Skin / Cosmetics Consultation',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'LDH',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                CrossIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                                CustomTableCellWithDivider(),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 6),
-                                  child: Text(
-                                    'Lifestyle Counseling',
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                                  TableRow(
+                                      decoration: BoxDecoration(
+                                          border: Border.symmetric(
+                                              horizontal: BorderSide(
+                                                  width: 1.0,
+                                                  color: Color(0xFFE8E8E8))),
+                                          color: Color.fromARGB(
+                                              255, 245, 245, 245)),
+                                      children: [
+                                        textHeader(
+                                          headerText: 'Diagnostic Tests',
+                                        ),
+                                        SizedBox(),
+                                        SizedBox(),
+                                        SizedBox(),
+                                      ]),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 12),
+                                        child: Text(
+                                          'ECG',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
                                   ),
-                                ),
-                                CrossIcon(),
-                                TickIcon(),
-                                TickIcon(),
-                              ],
-                            ),
-                            // Add more TableRows as needed
-                          ],
-                        ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'Abdomen & Pelvic Sonography',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Pelvic Colour Doppler',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Carotid Colour Doppler',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          '3D Digital Mammogram with Tomosynthesis',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Sonomammography',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'DEXA Hip, Spine, Forearm',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Whole body fat Analysis',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                      decoration: BoxDecoration(
+                                          border: Border.symmetric(
+                                              horizontal: BorderSide(
+                                                  width: 1.0,
+                                                  color: Color(0xFFE8E8E8))),
+                                          color: Color.fromARGB(
+                                              255, 245, 245, 245)),
+                                      children: [
+                                        textHeader(
+                                          headerText: '3T MRI',
+                                        ),
+                                        SizedBox(),
+                                        SizedBox(),
+                                        SizedBox(),
+                                      ]),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 12),
+                                        child: Text(
+                                          'Brain',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'Neck',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Abdomen & Pelvis',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Whole Spine Screening',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                      decoration: BoxDecoration(
+                                          border: Border.symmetric(
+                                              horizontal: BorderSide(
+                                                  width: 1.0,
+                                                  color: Color(0xFFE8E8E8))),
+                                          color: Color.fromARGB(
+                                              255, 245, 245, 245)),
+                                      children: [
+                                        textHeader(
+                                          headerText: 'Consultations',
+                                        ),
+                                        SizedBox(),
+                                        SizedBox(),
+                                        SizedBox(),
+                                      ]),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 12),
+                                        child: Text(
+                                          'Gynaecologist Consultation from our expert panel (Optional)',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      TickIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8),
+                                        child: Text(
+                                          'Skin / Cosmetics Consultation',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                      CustomTableCellWithDivider(),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 8, bottom: 6),
+                                        child: Text(
+                                          'Lifestyle Counseling',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                      CrossIcon(),
+                                      TickIcon(),
+                                      TickIcon(),
+                                    ],
+                                  ),
+                                  // Add more TableRows as needed
+                                ],
+                              ),
 
-                        // ... Your other widgets ...
-                      ],
-                    ),
+                              // ... Your other widgets ...
+                            ],
+                          ),
+                        ),
+                      ),
+                      Divider(indent: 10, endIndent: 10, thickness: 1),
+                      FormoreInformation(context, "")
+                    ],
                   ),
                 ),
-                Divider(indent: 10, endIndent: 10, thickness: 1),
-                FormoreInformation(context, "")
-              ],
-            ),
-          ),
-        )
-      ])),
+              )
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

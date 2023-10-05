@@ -45,155 +45,164 @@ class _CancerAnDGEnomiCSState extends State<CancerAnDGEnomiCS> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "CANCER AND GENOMICS",
-          svgAssetPath: "assets/cancer-and-genomics/cancer-genomics-title.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Image.asset("assets/cancer-and-genomics/cancer-genomics.jpg"),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(13, 20, 0, 8),
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
-              ),
-              const Text(
-                "Wellness",
-                style: TextStyle(
-                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
-              )
-            ],
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "CANCER AND GENOMICS",
+            svgAssetPath:
+                "assets/cancer-and-genomics/cancer-genomics-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
-          child: Row(
-            children: [
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
+                child: Image.asset(
+                    "assets/cancer-and-genomics/cancer-genomics.jpg"),
               ),
-              const Text(
-                "Infectious Diseases",
-                style: TextStyle(
-                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
-          child: Row(
-            children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(13, 20, 0, 8),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text(
+                      "Wellness",
+                      style: TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+                    )
+                  ],
+                ),
               ),
-              const Text(
-                "Reproductive Health & Pregnancy",
-                style: TextStyle(
-                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
-          child: Row(
-            children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text(
+                      "Infectious Diseases",
+                      style: TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+                    )
+                  ],
+                ),
               ),
-              const Text(
-                "Cyto Genetics & FISH",
-                style: TextStyle(
-                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
-          child: Row(
-            children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text(
+                      "Reproductive Health & Pregnancy",
+                      style: TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+                    )
+                  ],
+                ),
               ),
-              const Text(
-                "Cancer NGS Panels",
-                style: TextStyle(
-                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
-          child: Row(
-            children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text(
+                      "Cyto Genetics & FISH",
+                      style: TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+                    )
+                  ],
+                ),
               ),
-              const Text(
-                "Rare Genetic Disorders",
-                style: TextStyle(
-                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
-          child: Row(
-            children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text(
+                      "Cancer NGS Panels",
+                      style: TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+                    )
+                  ],
+                ),
               ),
-              const Text(
-                "Whole Genome & Exome",
-                style: TextStyle(
-                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
-          child: Row(
-            children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text(
+                      "Rare Genetic Disorders",
+                      style: TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+                    )
+                  ],
+                ),
               ),
-              const Text(
-                "PharmaCogenomics",
-                style: TextStyle(
-                    fontSize: 14, fontWeight: FontWeight.w400, height: 1),
-              )
-            ],
-          ),
-        ),
-        Divider(
-          indent: 15,
-          endIndent: 15,
-          thickness: 1.5,
-        ),
-        FormoreInformation(context, ""),
-      ])),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text(
+                      "Whole Genome & Exome",
+                      style: TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(13, 2, 0, 8),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text(
+                      "PharmaCogenomics",
+                      style: TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w400, height: 1),
+                    )
+                  ],
+                ),
+              ),
+              Divider(
+                indent: 15,
+                endIndent: 15,
+                thickness: 1.5,
+              ),
+              FormoreInformation(context, ""),
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

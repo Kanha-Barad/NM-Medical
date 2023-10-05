@@ -1,6 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+class CustomContainerBarDelegate extends SliverPersistentHeaderDelegate {
+  final String title;
+  final String svgAssetPath;
+  final VoidCallback? onBackButtonPressed;
+  final double maxExtentValue; // Rename this property
+  final double minExtentValue; // Rename this property
+
+  CustomContainerBarDelegate({
+    required this.title,
+    required this.svgAssetPath,
+    this.onBackButtonPressed,
+    this.maxExtentValue = 55.0, // Rename this property
+    this.minExtentValue = 55.0, // Rename this property
+  });
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return CustomContainerBar(
+      title: title,
+      svgAssetPath: svgAssetPath,
+      onBackButtonPressed: onBackButtonPressed,
+    );
+  }
+
+  @override
+  double get maxExtent => maxExtentValue;
+
+  @override
+  double get minExtent => minExtentValue;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
+  }
+}
+
 class CustomContainerBar extends StatelessWidget {
   final String title;
   final VoidCallback? onBackButtonPressed; // Make the parameter optional
@@ -23,16 +63,15 @@ class CustomContainerBar extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 15),
             child: SizedBox(
-                width: 26,
-                height: 26,
-                child: SvgPicture.asset(svgAssetPath)),
+                width: 26, height: 26, child: SvgPicture.asset(svgAssetPath)),
           ),
           Padding(
             padding: EdgeInsets.only(left: 15, top: 0),
             child: Text(
               title,
               style: TextStyle(
-                fontSize: 16,height: 1.5,
+                fontSize: 16,
+                height: 1.5,
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
               ),

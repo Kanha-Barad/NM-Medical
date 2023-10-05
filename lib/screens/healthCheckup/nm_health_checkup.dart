@@ -53,160 +53,184 @@ class _NMHealthCheckUPState extends State<NMHealthCheckUP> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child: Column(children: [
-        CustomContainerBar(
-          title: "NM PACKAGES",
-          svgAssetPath: "assets/health-checkup/health-check-up.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "NM PACKAGES",
+            svgAssetPath: "assets/health-checkup/health-check-up.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        Padding(
-            padding: const EdgeInsets.only(bottom: 4.0),
-            child: GridView.count(
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                childAspectRatio: 1.2,
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PrimaryPackageDetails()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-checkup/primary.svg',
-                      labelText: 'Primary',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => GoldPackageDetails()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-checkup/gold.svg',
-                      labelText: 'Gold',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => GoldPlusPackageDetails()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-checkup/gold-plus.svg',
-                      labelText: 'Gold Plus',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PlatiNUmPackageDetails()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-checkup/platinum.svg',
-                      labelText: 'Platinum',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DiaMoNDPackageDetails()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-checkup/diamond.svg',
-                      labelText: 'Diamond',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HealTH360DeLUxE()));
-                    },
-                    child: buildIconItem(
-                      imageAsset:
-                          'assets/health-checkup/nm-packages-health-360-deluxe.svg',
-                      labelText: 'Health 360 \nDeluxe',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SeniorCITIzeN()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-checkup/senior-citizens.svg',
-                      labelText: 'Senior \nCitizens',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  PredictiveGemonicMapping()));
-                    },
-                    child: buildIconItem(
-                      imageAsset:
-                          'assets/health-checkup/predictive-genomic-mapping.svg',
-                      labelText: 'Predictive \nGenomic Mapping',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => WholeBoDyMRI()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-checkup/whole-body-MRI.svg',
-                      labelText: 'Whole Body\nMRI',
-                    ),
-                  ),
-                  InkWell(
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(children: [
+          Padding(
+              padding: const EdgeInsets.only(bottom: 4.0),
+              child: GridView.count(
+                  crossAxisCount: 3,
+                  shrinkWrap: true,
+                  childAspectRatio: 1.2,
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  children: [
+                    InkWell(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CArdiaCCTPackage()));
+                                builder: (context) => PrimaryPackageDetails()));
                       },
                       child: buildIconItem(
-                        imageAsset: 'assets/health-checkup/cardiac-CT.svg',
-                        labelText: 'Cardiac\nCT',
-                      )),
-                  InkWell(
+                        imageAsset: 'assets/health-checkup/primary.svg',
+                        labelText: 'Primary',
+                      ),
+                    ),
+                     InkWell(
+                      onTap: () {
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => GoldPackageDetails()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-checkup/adolescence.svg',
+                        labelText: 'Adeloscence',
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             GoldPlusPackageDetails()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-checkup/pcos.svg',
+                        labelText: 'PCOS',
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             PlatiNUmPackageDetails()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-checkup/pre-marital.svg',
+                        labelText: 'Pre Marital',
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => DiaMoNDPackageDetails()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-checkup/post-menopause.svg',
+                        labelText: 'Post Menopausal',
+                      ),
+                    ),
+                    InkWell(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ComparePackage()));
+                                builder: (context) => GoldPackageDetails()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-checkup/gold.svg',
+                        labelText: 'Gold',
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    GoldPlusPackageDetails()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-checkup/gold-plus.svg',
+                        labelText: 'Gold Plus',
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    PlatiNUmPackageDetails()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-checkup/platinum.svg',
+                        labelText: 'Platinum',
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DiaMoNDPackageDetails()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-checkup/diamond.svg',
+                        labelText: 'Diamond',
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HealTH360DeLUxE()));
                       },
                       child: buildIconItem(
                         imageAsset:
-                            'assets/health-checkup/comparison-of-package.svg',
-                        labelText: 'Comparison \nOf Package',
-                      )),
-                ]))
-      ])),
+                            'assets/health-checkup/nm-packages-health-360-deluxe.svg',
+                        labelText: 'Health 360 \nDeluxe',
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SeniorCITIzeN()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-checkup/pregnancy.svg',
+                        labelText: 'Pregnancy',
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    PredictiveGemonicMapping()));
+                      },
+                      child: buildIconItem(
+                        imageAsset:
+                            'assets/health-checkup/cancer-screening.svg',
+                        labelText: 'Cancer Screening',
+                      ),
+                    ),
+                   
+                  ]))
+        ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

@@ -48,62 +48,71 @@ class _loCaTiOnState extends State<loCaTiOn> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "LOCATIONS",
-          svgAssetPath: "assets/locations/location-title.svg",
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "LOCATIONS",
+            svgAssetPath: "assets/locations/location-title.svg",
+          ),
         ),
-        Padding(
-            padding: const EdgeInsets.only(bottom: 4.0),
-            child: GridView.count(
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                // mainAxisSpacing: 0.0, // Adjust the vertical spacing between icons
-                // crossAxisSpacing:
-                //     0.0, // Adjust the horizontal spacing between icons
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SelectMumbaiLocation()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/locations/mumbai.svg',
-                      labelText: 'Mumbai',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SelectPuneLocation()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/locations/pune.svg',
-                      labelText: 'Pune',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SelectBangalore()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/locations/bangalore.svg',
-                      labelText: 'Bangalore',
-                    ),
-                  ),
-                ])),
-      ])),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 4.0),
+                  child: GridView.count(
+                      crossAxisCount: 3,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.zero,
+                      // mainAxisSpacing: 0.0, // Adjust the vertical spacing between icons
+                      // crossAxisSpacing:
+                      //     0.0, // Adjust the horizontal spacing between icons
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        SelectMumbaiLocation()));
+                          },
+                          child: buildIconItem(
+                            imageAsset: 'assets/locations/mumbai.svg',
+                            labelText: 'Mumbai',
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        SelectPuneLocation()));
+                          },
+                          child: buildIconItem(
+                            imageAsset: 'assets/locations/pune.svg',
+                            labelText: 'Pune',
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SelectBangalore()));
+                          },
+                          child: buildIconItem(
+                            imageAsset: 'assets/locations/bangalore.svg',
+                            labelText: 'Bangalore',
+                          ),
+                        ),
+                      ])),
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

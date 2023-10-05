@@ -198,78 +198,53 @@ class _UploadPrescriptionState extends State<UploadPrescription> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-              child: Column(children: [
-            CustomContainerBar(
-              title: "UPLOAD PRESCRIPTION",
-              svgAssetPath: "assets/images/upload-prescription-white.svg",
-              onBackButtonPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 25),
-              child:
-                  SvgPicture.asset("assets/images/upload-prescription-big.svg"),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 5),
-              child: Text("Upload Prescription",
-                  style: TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w600, height: 1.7)),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 5, bottom: 20),
-              child: Text(
-                  "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod tempor",
-                  style: TextStyle(
-                      fontSize: 14, fontWeight: FontWeight.w500, height: 1.7)),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(
-                    height: 50,
-                    width: 170,
-                    child: Card(
-                      elevation: 0,
-                      // elevation: 2.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        side: const BorderSide(
-                          color: Color.fromARGB(255, 187, 42, 34),
-                          width: 1,
-                        ),
-                      ),
-                      child: TextButton.icon(
-                          style: TextButton.styleFrom(elevation: 0),
-                          onPressed: () {
-                            _pickImage(ImageSource.camera,
-                                maxHeight: 1920,
-                                maxWidth: 1080,
-                                // imageQuality: 100,
-                                preferredCameraDevice: CameraDevice.rear);
-                          },
-                          icon: SvgPicture.asset(
-                              "assets/images/take-picture.svg"),
-                          label: const Text("Take Picture",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                                color: Color.fromARGB(255, 187, 42, 34),
-                              ))),
-                    ),
-                  ),
-                  SizedBox(
-                      height: 50,
-                      width: 170,
-                      child: Card(
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "UPLOAD PRESCRIPTION",
+            svgAssetPath: "assets/images/upload-prescription-white.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                  child: Column(children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 25),
+                  child: SvgPicture.asset(
+                      "assets/images/upload-prescription-big.svg"),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 20),
+                  child: Text("Upload Prescription",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          height: 1.7)),
+                ),
+                // const Padding(
+                //   padding: EdgeInsets.only(top: 5, bottom: 20),
+                //   child: Text(
+                //       "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod tempor",
+                //       style: TextStyle(
+                //           fontSize: 14, fontWeight: FontWeight.w500, height: 1.7)),
+                // ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SizedBox(
+                        height: 50,
+                        width: 170,
+                        child: Card(
                           elevation: 0,
-                          //   elevation: 2.0,
+                          // elevation: 2.0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                             side: const BorderSide(
@@ -280,108 +255,142 @@ class _UploadPrescriptionState extends State<UploadPrescription> {
                           child: TextButton.icon(
                               style: TextButton.styleFrom(elevation: 0),
                               onPressed: () {
-                                _pickImage(ImageSource.gallery);
+                                _pickImage(ImageSource.camera,
+                                    maxHeight: 1920,
+                                    maxWidth: 1080,
+                                    // imageQuality: 100,
+                                    preferredCameraDevice: CameraDevice.rear);
                               },
-                              icon:
-                                  SvgPicture.asset("assets/images/gallery.svg"),
-                              label: const Text("Gallery",
+                              icon: SvgPicture.asset(
+                                  "assets/images/take-picture.svg"),
+                              label: const Text("Take Picture",
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
                                     color: Color.fromARGB(255, 187, 42, 34),
-                                  )))))
-                ],
-              ),
-            ),
-            Column(
-              children: List.generate(_selectedImages.length, (index) {
-                final selectedImage = _selectedImages[index];
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(15, 15, 15, 5),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child:
-                            SvgPicture.asset("assets/images/upload-bullet.svg"),
-                      ),
-                      Expanded(
-                        child: Text(
-                          selectedImage.path.split('/').last,
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
+                                  ))),
                         ),
                       ),
-                      const Spacer(),
-                      GestureDetector(
-                        onTap: () => _deleteImage(index),
-                        child: SvgPicture.asset("assets/images/delete.svg"),
-                      ),
+                      SizedBox(
+                          height: 50,
+                          width: 170,
+                          child: Card(
+                              elevation: 0,
+                              //   elevation: 2.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                side: const BorderSide(
+                                  color: Color.fromARGB(255, 187, 42, 34),
+                                  width: 1,
+                                ),
+                              ),
+                              child: TextButton.icon(
+                                  style: TextButton.styleFrom(elevation: 0),
+                                  onPressed: () {
+                                    _pickImage(ImageSource.gallery);
+                                  },
+                                  icon: SvgPicture.asset(
+                                      "assets/images/gallery.svg"),
+                                  label: const Text("Gallery",
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color.fromARGB(255, 187, 42, 34),
+                                      )))))
                     ],
                   ),
-                );
-              }),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 23),
-              child: InkWell(
-                onTap: () async {
-                  if (!isUploading) {
-                    setState(() {
-                      isUploading = true;
-                    });
-
-                    AuthProvider _authProvider = AuthProvider();
-
-                    var Useroptions =
-                        await _authProvider.getStoredOTPValidationResponses();
-
-                    //  SharedPreferences prefs = await SharedPreferences.getInstance();
-                    String sessionId = Useroptions[0].SESSION_ID;
-                    String umrNo = Useroptions[0].UMR_NO;
-                    String mobileNumber = Useroptions[0].MOBILE_NO1;
-
-                    if (_selectedImages.isNotEmpty) {
-                      await uploadImages(
-                          base64Images, sessionId, umrNo, mobileNumber);
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('No Image is Selected'),
-                        ),
-                      );
-                      setState(() {
-                        isUploading = false;
-                      });
-                    }
-                  }
-                },
-                child: Card(
-                    // elevation: 2.0,
-                    color: const Color.fromARGB(255, 237, 28, 36),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Padding(
-                        padding: EdgeInsets.fromLTRB(50, 13, 50, 13),
-                        child: (Text("Upload",
-                            style: TextStyle(
-                                color: Colors.white,
+                ),
+                Column(
+                  children: List.generate(_selectedImages.length, (index) {
+                    final selectedImage = _selectedImages[index];
+                    return Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 15, 15, 5),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: SvgPicture.asset(
+                                "assets/images/upload-bullet.svg"),
+                          ),
+                          Expanded(
+                            child: Text(
+                              selectedImage.path.split('/').last,
+                              style: TextStyle(
                                 fontSize: 15,
-                                fontWeight: FontWeight.w600))))),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          const Spacer(),
+                          GestureDetector(
+                            onTap: () => _deleteImage(index),
+                            child: SvgPicture.asset("assets/images/delete.svg"),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 23),
+                  child: InkWell(
+                    onTap: () async {
+                      if (!isUploading) {
+                        setState(() {
+                          isUploading = true;
+                        });
+
+                        AuthProvider _authProvider = AuthProvider();
+
+                        var Useroptions = await _authProvider
+                            .getStoredOTPValidationResponses();
+
+                        //  SharedPreferences prefs = await SharedPreferences.getInstance();
+                        String sessionId = Useroptions[0].SESSION_ID;
+                        String umrNo = Useroptions[0].UMR_NO;
+                        String mobileNumber = Useroptions[0].MOBILE_NO1;
+
+                        if (_selectedImages.isNotEmpty) {
+                          await uploadImages(
+                              base64Images, sessionId, umrNo, mobileNumber);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('No Image is Selected'),
+                            ),
+                          );
+                          setState(() {
+                            isUploading = false;
+                          });
+                        }
+                      }
+                    },
+                    child: Card(
+                        // elevation: 2.0,
+                        color: const Color.fromARGB(255, 237, 28, 36),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        child: Padding(
+                            padding: EdgeInsets.fromLTRB(50, 13, 50, 13),
+                            child: (Text("Upload",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600))))),
+                  ),
+                )
+              ])),
+              Visibility(
+                visible: isUploading,
+                child: Center(
+                    child: CircularProgressIndicator(
+                  color: Color.fromARGB(255, 186, 43, 35),
+                )),
               ),
-            )
-          ])),
-          Visibility(
-            visible: isUploading,
-            child: Center(
-                child: CircularProgressIndicator(
-              color: Color.fromARGB(255, 186, 43, 35),
-            )),
+            ],
           ),
-        ],
-      ),
+        )
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

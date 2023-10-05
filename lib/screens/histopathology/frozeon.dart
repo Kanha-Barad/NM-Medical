@@ -44,35 +44,41 @@ class _FroZEoNState extends State<FroZEoN> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child: Column(children: [
-        CustomContainerBar(
-          title: "FROZEON",
-          svgAssetPath: "assets/histopathology/frozeon-title.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "FROZEON",
+            svgAssetPath: "assets/histopathology/frozeon-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Image.asset("assets/histopathology/frozeon.jpg"),
-        ),
-        Padding(
-            padding: const EdgeInsets.fromLTRB(15, 8, 0, 10),
-            child: Text(
-              "Frozen facilities are required to give provisional histopathology diagnosis during a surgical procedure for the surgeon to decide the extent of surgery to be done.",
-              style: TextStyle(
-                fontSize: 14,
-                height: 1.7,
-              ),
-            )),
-        Divider(
-          indent: 15,
-          endIndent: 15,
-          thickness: 1.5,
-        ),
-        FormoreInformation(context, "")
-      ])),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
+            child: Image.asset("assets/histopathology/frozeon.jpg"),
+          ),
+          Padding(
+              padding: const EdgeInsets.fromLTRB(15, 8, 0, 10),
+              child: Text(
+                "Frozen facilities are required to give provisional histopathology diagnosis during a surgical procedure for the surgeon to decide the extent of surgery to be done.",
+                style: TextStyle(
+                  fontSize: 14,
+                  height: 1.7,
+                ),
+              )),
+          Divider(
+            indent: 15,
+            endIndent: 15,
+            thickness: 1.5,
+          ),
+          FormoreInformation(context, "")
+        ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

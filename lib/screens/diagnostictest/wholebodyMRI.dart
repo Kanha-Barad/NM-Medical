@@ -44,50 +44,57 @@ class _WholebodyMRIState extends State<WholebodyMRI> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "WHOLE BODY MRI",
-          svgAssetPath: "assets/diagnostic-test/whole-body-mri-title.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(8, 14, 8, 4),
-          child: Container(
-            // Set the height or width constraints as needed to control the size of the image
-            // height: 200, // Example: Set the height to 200 units
-            width: MediaQuery.of(context)
-                .size
-                .width, // Example: Set the width to 200 units
-            child: Image.asset(
-              "assets/diagnostic-test/whole-body-mri-img2.jpg",
-              fit: BoxFit.cover,
-            ),
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "WHOLE BODY MRI",
+            svgAssetPath: "assets/diagnostic-test/whole-body-mri-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
-          child: Text(
-            "It ensures to evaluate all the organs in the body, including head, neck, chest, abdomen, pelvis, musculoskeletal and whole spine. Moreover, it complements other investigations like Sonography and Colour Doppler for a thorough evaluation of any disease.",
-            style: TextStyle(
-                fontSize: 14,
-                //color: Colors.black,
-                fontWeight: FontWeight.w400,
-                letterSpacing: 0.5,
-                height: 1.8),
-            softWrap: true,
-          ),
-        ),
-        Divider(
-          indent: 15,
-          endIndent: 15,
-          thickness: 1.5,
-        ),
-        FormoreInformation(context,"")
-      ])),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 14, 8, 4),
+                child: Container(
+                  // Set the height or width constraints as needed to control the size of the image
+                  // height: 200, // Example: Set the height to 200 units
+                  width: MediaQuery.of(context)
+                      .size
+                      .width, // Example: Set the width to 200 units
+                  child: Image.asset(
+                    "assets/diagnostic-test/whole-body-mri-img2.jpg",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
+                child: Text(
+                  "It ensures to evaluate all the organs in the body, including head, neck, chest, abdomen, pelvis, musculoskeletal and whole spine. Moreover, it complements other investigations like Sonography and Colour Doppler for a thorough evaluation of any disease.",
+                  style: TextStyle(
+                      fontSize: 14,
+                      //color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: 0.5,
+                      height: 1.8),
+                  softWrap: true,
+                ),
+              ),
+              Divider(
+                indent: 15,
+                endIndent: 15,
+                thickness: 1.5,
+              ),
+              FormoreInformation(context, "")
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

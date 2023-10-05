@@ -46,103 +46,115 @@ class _EvaDiagnosticPackageState extends State<EvaDiagnosticPackage> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "EVA DIAGNOSTIC PACKAGE",
-          svgAssetPath: "assets/images/diagnostic-tests2.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context, true);
-          },
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "EVA DIAGNOSTIC PACKAGE",
+            svgAssetPath: "assets/images/diagnostic-tests2.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        CustomWidgetInvestmentContainer(
-            InvesmentTitle: "Special Price",
-            onEnquirenowButtonPressed: () {},
-            InvestmentValue: 9500),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+              CustomWidgetInvestmentContainer(
+                  InvesmentTitle: "Special Price",
+                  onEnquirenowButtonPressed: () {},
+                  InvestmentValue: 9500),
 
-        Padding(
-          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
-          child: Row(
-            children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text("Abdomen & Pelvic Sonography",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w500))
+                  ],
+                ),
               ),
-              const Text("Abdomen & Pelvic Sonography",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
-          child: Row(
-            children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text("3D Digital Mammogram with Tomosynthesis",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w500))
+                  ],
+                ),
               ),
-              const Text("3D Digital Mammogram with Tomosynthesis",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
-          child: Row(
-            children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text("Sonomammography",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w500))
+                  ],
+                ),
               ),
-              const Text("Sonomammography",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
-          child: Row(
-            children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text("DEXA Hip, Spine, Forearm",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w500))
+                  ],
+                ),
               ),
-              const Text("DEXA Hip, Spine, Forearm",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
-          child: Row(
-            children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                padding: const EdgeInsets.fromLTRB(14, 0, 0, 5),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset("assets/images/bullet-icons.svg"),
+                    ),
+                    const Text("Whole body fat Analysis",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w500))
+                  ],
+                ),
               ),
-              const Text("Whole body fat Analysis",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
-            ],
-          ),
-        ),
 
-        // Padding(
-        //   padding: const EdgeInsets.fromLTRB(15, 25, 0, 10),
-        //   child: Text("Cooming Soon", style: TextStyle(fontSize: 14)),
-        // ),
-        Divider(
-          indent: 10,
-          endIndent: 10,
-          thickness: 1,
-        ),
-        FormoreInformation(context, ""),
-        Divider(
-          indent: 10,
-          endIndent: 10,
-          thickness: 1,
-        ),
-      ])),
+              // Padding(
+              //   padding: const EdgeInsets.fromLTRB(15, 25, 0, 10),
+              //   child: Text("Cooming Soon", style: TextStyle(fontSize: 14)),
+              // ),
+              Divider(
+                indent: 10,
+                endIndent: 10,
+                thickness: 1,
+              ),
+              FormoreInformation(context, ""),
+              Divider(
+                indent: 10,
+                endIndent: 10,
+                thickness: 1,
+              ),
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

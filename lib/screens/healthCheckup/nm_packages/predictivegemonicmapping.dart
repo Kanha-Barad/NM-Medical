@@ -47,90 +47,101 @@ class _PredictiveGemonicMappingState extends State<PredictiveGemonicMapping> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "PREDICTIVE GENOMIC MAPPING",
-          svgAssetPath: "assets/nm-packages/predictive-title.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 15, left: 8),
-          child: ListTile(
-            leading: SvgPicture.asset("assets/health-checkup/cardiac-icon.svg"),
-            title: Text("Cardiac",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600)),
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "PREDICTIVE GENOMIC MAPPING",
+            svgAssetPath: "assets/nm-packages/predictive-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: ListTile(
-            leading:
-                SvgPicture.asset("assets/health-checkup/diabetes-icon.svg"),
-            title: Text("Diabetes",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600)),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: ListTile(
-            leading: SvgPicture.asset("assets/health-checkup/obesity-icon.svg"),
-            title: Text("Obesity",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600)),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: ListTile(
-            leading:
-                SvgPicture.asset("assets/health-checkup/nutrition-icon.svg"),
-            title: Text("Nutrition",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600)),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 4.0),
-          child: ListTile(
-            leading: SvgPicture.asset("assets/health-checkup/fitness-icon.svg"),
-            title: Padding(
-              padding: const EdgeInsets.only(left: 3.0),
-              child: Text("Fitness",
-                  style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600)),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: ListTile(
-            leading: SvgPicture.asset("assets/health-checkup/cancer-icon.svg"),
-            title: Text("Cancer",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600)),
-          ),
-        ),
-        Divider(indent: 10, endIndent: 10, thickness: 1),
-        FormoreInformation(context,"")
-      ])),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 15, left: 8),
+                child: ListTile(
+                  leading: SvgPicture.asset(
+                      "assets/health-checkup/cardiac-icon.svg"),
+                  title: Text("Cardiac",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600)),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListTile(
+                  leading: SvgPicture.asset(
+                      "assets/health-checkup/diabetes-icon.svg"),
+                  title: Text("Diabetes",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600)),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListTile(
+                  leading: SvgPicture.asset(
+                      "assets/health-checkup/obesity-icon.svg"),
+                  title: Text("Obesity",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600)),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListTile(
+                  leading: SvgPicture.asset(
+                      "assets/health-checkup/nutrition-icon.svg"),
+                  title: Text("Nutrition",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600)),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 4.0),
+                child: ListTile(
+                  leading: SvgPicture.asset(
+                      "assets/health-checkup/fitness-icon.svg"),
+                  title: Padding(
+                    padding: const EdgeInsets.only(left: 3.0),
+                    child: Text("Fitness",
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600)),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListTile(
+                  leading:
+                      SvgPicture.asset("assets/health-checkup/cancer-icon.svg"),
+                  title: Text("Cancer",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600)),
+                ),
+              ),
+              Divider(indent: 10, endIndent: 10, thickness: 1),
+              FormoreInformation(context, "")
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

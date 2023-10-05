@@ -36,40 +36,39 @@ class _pRofilEState extends State<pRofilE> {
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _mobileNumberController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  String selectedGender = 'MALE';
+  String selectedGender = 'Male';
 
   //List<OTPValidationResponse> _validResponseData = [];
-
   @override
   void initState() {
     super.initState();
-    // Call a separate method to handle asynchronous operations
-    loadUserData();
+    _initializeData();
   }
 
-  Future<void> loadUserData() async {
+  void _initializeData() async {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
-
-    _mobileNumberController.text =
-        widget.EnterEDMOBileNO; // Set the text in the controller
-
-    try {
-      List<OTPValidationResponse> _validResponseData =
-          await authProvider.getStoredOTPValidationResponses();
-      if (_validResponseData.isNotEmpty) {
-        setState(() {
-          _firstNameController.text = _validResponseData[0].DISPLAY_NAME;
-          _mobileNumberController.text = _validResponseData[0].MOBILE_NO1;
-          _emailController.text = _validResponseData[0].EMAIL_ID;
-          _addressController.text = _validResponseData[0].ADDRESS1;
-          _ageController.text = _validResponseData[0].AGE;
-          selectedGender = _validResponseData[0].GENDER.split('/')[1];
-        });
-      }
-    } catch (error) {
-      // Handle any errors that may occur during the asynchronous operation
-      print('Error loading user data: $error');
-    }
+    List<OTPValidationResponse> _validResponseData =
+        await authProvider.getStoredOTPValidationResponses();
+    // Initialize the controllers with existing data
+    final loginResponse = authProvider.loginResponse;
+    _firstNameController.text = _validResponseData.isNotEmpty
+        ? _validResponseData[0].DISPLAY_NAME.split(' ')[0]
+        : '';
+    _lastNameController.text = _validResponseData.isNotEmpty
+        ? _validResponseData[0].DISPLAY_NAME.split(' ')[1]
+        : '';
+    _emailController.text =
+        _validResponseData.isNotEmpty ? _validResponseData[0].EMAIL_ID : '';
+    _ageController.text =
+        _validResponseData.isNotEmpty ? _validResponseData[0].AGE : '';
+    _mobileNumberController.text = _validResponseData.isNotEmpty
+        ? _validResponseData[0].MOBILE_NO1
+        : loginResponse?.MOBILE_NO ?? '';
+    selectedGender = _validResponseData.isNotEmpty
+        ? _validResponseData[0].GENDER.split('/')[1]
+        : '';
+    _addressController.text =
+        _validResponseData.isNotEmpty ? _validResponseData[0].ADDRESS1 : '';
   }
 
   final RegiSTerController _registerController = RegiSTerController();
@@ -101,7 +100,9 @@ class _pRofilEState extends State<pRofilE> {
       );
       return; // Exit the function without proceeding further
     }
-
+    // if (_mobileNumberController.text.isNotEmpty) {
+    //   _mobileNumberController.text = _validResponseData[0].MOBILE_NO1;
+    // }
     try {
       // Proceed with registration
       final List<RegistrationResponse> registrationResponses =
@@ -192,295 +193,346 @@ class _pRofilEState extends State<pRofilE> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "PROFILE",
-          svgAssetPath: "assets/profile-icons/user-profile-title.svg",
-          onBackButtonPressed: () => Navigator.pop(context, true),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 12, 0, 10),
-          child: TextFormField(
-            controller: _firstNameController,
-            keyboardType: TextInputType.name,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(10),
-              border: UnderlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              fillColor: Colors.grey,
-              // hintText: "  Rohan",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-                // fontFamily: "Verdana",
-                fontWeight: FontWeight.w400,
-              ),
-              labelText: 'First Name',
-              labelStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "PROFILE",
+            svgAssetPath: "assets/profile-icons/user-profile-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-          child: TextFormField(
-            controller: _lastNameController,
-            keyboardType: TextInputType.name,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(10),
-              border: UnderlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              fillColor: Colors.grey,
-              // hintText: "  Singh",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-                // fontFamily: "Verdana",
-                fontWeight: FontWeight.w400,
-              ),
-              labelText: 'Last Name',
-              labelStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-          child: TextFormField(
-            controller: _emailController,
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(10),
-              border: UnderlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              fillColor: Colors.grey,
-              //  hintText: "  rohansingh@gmail.com",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-                //  fontFamily: "Verdana",
-                fontWeight: FontWeight.w400,
-              ),
-              labelText: 'Email',
-              labelStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
               Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Text(
-                  'Gender',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                padding: const EdgeInsets.fromLTRB(0, 12, 0, 10),
+                child: TextFormField(
+                  controller: _firstNameController,
+                  keyboardType: TextInputType.name,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(10),
+                    border: UnderlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    fillColor: Colors.grey,
+                    // hintText: "  Rohan",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    hintStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                      // fontFamily: "Verdana",
+                      fontWeight: FontWeight.w400,
+                    ),
+                    labelText: 'First Name',
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),
-              DropdownButtonFormField<String>(
-                value: selectedGender.isNotEmpty ? selectedGender : "",
-                onChanged: (newValue) {
-                  setState(() {
-                    selectedGender = newValue!;
-                  });
-                },
-                items: ['MALE', 'FEMALE', 'UNSPECIFIED']
-                    .map<DropdownMenuItem<String>>((value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(
-                      value,
-                      style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                child: TextFormField(
+                  controller: _lastNameController,
+                  keyboardType: TextInputType.name,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(10),
+                    border: UnderlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
-                  );
-                }).toList(),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    fillColor: Colors.grey,
+                    // hintText: "  Singh",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    hintStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                      // fontFamily: "Verdana",
+                      fontWeight: FontWeight.w400,
+                    ),
+                    labelText: 'Last Name',
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                child: TextFormField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(10),
+                    border: UnderlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    fillColor: Colors.grey,
+                    //  hintText: "  rohansingh@gmail.com",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    hintStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                      //  fontFamily: "Verdana",
+                      fontWeight: FontWeight.w400,
+                    ),
+                    labelText: 'Email',
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        'Gender',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    DropdownButtonFormField<String>(
+                      value: selectedGender.isNotEmpty ? selectedGender : "",
+                      onChanged: (newValue) {
+                        setState(() {
+                          selectedGender = newValue!;
+                        });
+                      },
+                      items: ['Male', 'Female', 'Other']
+                          .map<DropdownMenuItem<String>>((value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(
+                            value,
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w400),
+                          ),
+                        );
+                      }).toList(),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10),
+                        border: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: Colors.black, width: 1),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: 'Select gender',
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                child: TextFormField(
+                  controller: _ageController,
+                  keyboardType: TextInputType.number,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(10),
+                    border: UnderlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    fillColor: Colors.grey,
+                    // hintText: "  9372694233",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    hintStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                      // fontFamily: "Verdana",
+                      fontWeight: FontWeight.w400,
+                    ),
+                    labelText: 'Age',
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                child: TextFormField(
+                  controller: _mobileNumberController,
+                  keyboardType: TextInputType.number,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(10),
+                    border: UnderlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    fillColor: Colors.grey,
+                    // hintText: "  9372694233",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    hintStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                      // fontFamily: "Verdana",
+                      fontWeight: FontWeight.w400,
+                    ),
+                    labelText: 'Mobile Number',
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+              TextFormField(
+                minLines: 2,
+                maxLines: 5,
+                controller: _addressController,
+                keyboardType: TextInputType.streetAddress,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Please enter an address'),
+                      ),
+                    );
+                    return 'Please enter an address';
+                  }
+                  return null; // Return null if the address is not empty.
+                },
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(10),
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 10, vertical: 16),
                   border: UnderlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   focusedBorder: UnderlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black, width: 1),
+                    borderSide:
+                        const BorderSide(color: Colors.black, width: 1.5),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  hintText: 'Select gender',
-                  hintStyle: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
+                  fillColor: Colors.grey,
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  labelText: 'Address',
+                  labelStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-          child: TextFormField(
-            controller: _ageController,
-            keyboardType: TextInputType.number,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(10),
-              border: UnderlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              fillColor: Colors.grey,
-              // hintText: "  9372694233",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-                // fontFamily: "Verdana",
-                fontWeight: FontWeight.w400,
-              ),
-              labelText: 'Age',
-              labelStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-          child: TextFormField(
-            controller: _mobileNumberController,
-            keyboardType: TextInputType.number,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(10),
-              border: UnderlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 1),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              fillColor: Colors.grey,
-              // hintText: "  9372694233",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-                // fontFamily: "Verdana",
-                fontWeight: FontWeight.w400,
-              ),
-              labelText: 'Mobile Number',
-              labelStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ),
-        TextFormField(
-          minLines: 2,
-          maxLines: 5,
-          controller: _addressController,
-          keyboardType: TextInputType.streetAddress,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-          validator: (value) {
-            if (value!.isEmpty) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Please enter an address'),
+              Padding(
+                padding: const EdgeInsets.only(top: 20, left: 10),
+                child: InkWell(
+                  onTap: handleRegistration,
+                  child: Card(
+                    color: Color.fromARGB(255, 237, 28, 36),
+                    elevation: 2.0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+                      child: Text(
+                        'SAVE CHANGES',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ),
                 ),
-              );
-              return 'Please enter an address';
-            }
-            return null; // Return null if the address is not empty.
-          },
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 16),
-            border: UnderlineInputBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: const BorderSide(color: Colors.black, width: 1.5),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            fillColor: Colors.grey,
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            labelText: 'Address',
-            labelStyle: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 20, left: 10),
-          child: InkWell(
-            onTap: handleRegistration,
-            child: Card(
-              color: Color.fromARGB(255, 237, 28, 36),
-              elevation: 2.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50)),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
-                child: Text(
-                  'SAVE CHANGES',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-            ),
-          ),
-        )
-      ])),
+              )
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),
     );
   }
 }
+
+
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // Call a separate method to handle asynchronous operations
+  //   loadUserData();
+  // }
+
+  // Future<void> loadUserData() async {
+  //   final authProvider = Provider.of<AuthProvider>(context, listen: false);
+  //   // Access the login response
+  //   final loginResponse = authProvider.loginResponse;
+  //   _mobileNumberController.text = loginResponse!.MOBILE_NO;
+
+  //   try {
+  //     List<OTPValidationResponse> _validResponseData =
+  //         await authProvider.getStoredOTPValidationResponses();
+  //     if (_validResponseData.isNotEmpty) {
+  //       setState(() {
+  //         _firstNameController.text = _validResponseData[0].DISPLAY_NAME;
+  //         _mobileNumberController.text = _validResponseData[0].MOBILE_NO1;
+  //         _emailController.text = _validResponseData[0].EMAIL_ID;
+  //         _addressController.text = _validResponseData[0].ADDRESS1;
+  //         _ageController.text = _validResponseData[0].AGE;
+  //         selectedGender = _validResponseData[0].GENDER.split('/')[1];
+  //       });
+  //     }
+  //   } catch (error) {
+  //     // Handle any errors that may occur during the asynchronous operation
+  //     print('Error loading user data: $error');
+  //   }
+  // }

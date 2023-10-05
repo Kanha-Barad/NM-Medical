@@ -44,88 +44,96 @@ class _SEconDarYState extends State<SEconDarY> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "SECONDARY",
-          svgAssetPath: "assets/histopathology-secondary/secondary-white.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Image.asset("assets/histopathology-secondary/local-menu.jpg"),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0, top: 10),
-          child: Text(
-            "LOCAL",
-            style: TextStyle(fontWeight: FontWeight.bold),
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "SECONDARY",
+            svgAssetPath: "assets/histopathology-secondary/secondary-white.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15, 8, 0, 10),
-          child: Text(
-            "Histopatholgy opinion from the grossing speciman by our supper speciality panel of Doctors",
-            style: TextStyle(
-              fontSize: 14,
-              height: 1.7,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child:
-              Image.asset("assets/histopathology-secondary/national-menu.jpg"),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0, top: 10),
-          child: Text(
-            "National",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15, 8, 0, 10),
-          child: Text(
-            "From renowned Hospitals & Cancer centres In India",
-            style: TextStyle(
-              fontSize: 14,
-              height: 1.7,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Image.asset(
-              "assets/histopathology-secondary/international-menu.jpg"),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0, top: 10),
-          child: Text(
-            "International",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15, 8, 0, 10),
-          child: Text(
-            "From renowned University Hospitals & Cancer centres around the globe especially from USA",
-            style: TextStyle(
-              fontSize: 14,
-              height: 1.7,
-            ),
-          ),
-        ),
-        Divider(
-          indent: 15,
-          endIndent: 15,
-          thickness: 1.5,
-        ),
-        FormoreInformation(context, "")
-      ])),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
+                child: Image.asset(
+                    "assets/histopathology-secondary/local-menu.jpg"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 10),
+                child: Text(
+                  "LOCAL",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 8, 0, 10),
+                child: Text(
+                  "Histopatholgy opinion from the grossing speciman by our supper speciality panel of Doctors",
+                  style: TextStyle(
+                    fontSize: 14,
+                    height: 1.7,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
+                child: Image.asset(
+                    "assets/histopathology-secondary/national-menu.jpg"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 10),
+                child: Text(
+                  "National",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 8, 0, 10),
+                child: Text(
+                  "From renowned Hospitals & Cancer centres In India",
+                  style: TextStyle(
+                    fontSize: 14,
+                    height: 1.7,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
+                child: Image.asset(
+                    "assets/histopathology-secondary/international-menu.jpg"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 10),
+                child: Text(
+                  "International",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 8, 0, 10),
+                child: Text(
+                  "From renowned University Hospitals & Cancer centres around the globe especially from USA",
+                  style: TextStyle(
+                    fontSize: 14,
+                    height: 1.7,
+                  ),
+                ),
+              ),
+              Divider(
+                indent: 15,
+                endIndent: 15,
+                thickness: 1.5,
+              ),
+              FormoreInformation(context, "")
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

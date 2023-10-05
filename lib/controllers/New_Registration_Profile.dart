@@ -11,9 +11,9 @@ class RegiSTerController {
       String emailId,
       String UmrNO,
       String AGE) async {
-    if (genderId == "MALE") {
+    if (genderId == "Male") {
       genderId = "1";
-    } else if (genderId == "FEMALE") {
+    } else if (genderId == "Female") {
       genderId = "2";
     } else {
       genderId = "3";

@@ -47,86 +47,94 @@ class _HistopathologyState extends State<Histopathology> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child: Column(children: [
-        CustomContainerBar(
-          title: "HISTOPATHOLOGY",
-          svgAssetPath: "assets/histopathology/histopathology-white.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "HISTOPATHOLOGY",
+            svgAssetPath: "assets/histopathology/histopathology-white.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        Padding(
-            padding: const EdgeInsets.only(bottom: 4.0),
-            child: GridView.count(
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                                      childAspectRatio: 1.3,
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(children: [
+          Padding(
+              padding: const EdgeInsets.only(bottom: 4.0),
+              child: GridView.count(
+                  crossAxisCount: 3,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  childAspectRatio: 1.3,
 
-                // mainAxisSpacing: 0.0, // Adjust the vertical spacing between icons
-                // crossAxisSpacing:
-                //     0.0, // Adjust the horizontal spacing between icons
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => FroZEoN()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/histopathology/frozeon.svg',
-                      labelText: 'Frozen',
+                  // mainAxisSpacing: 0.0, // Adjust the vertical spacing between icons
+                  // crossAxisSpacing:
+                  //     0.0, // Adjust the horizontal spacing between icons
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => FroZEoN()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/histopathology/frozeon.svg',
+                        labelText: 'Frozen',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => PriMARY()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/histopathology/primary.svg',
-                      labelText: 'Primary',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => PriMARY()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/histopathology/primary.svg',
+                        labelText: 'Primary',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SEconDarY()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/histopathology/secondary.svg',
-                      labelText: 'Secondary',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SEconDarY()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/histopathology/secondary.svg',
+                        labelText: 'Secondary',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ORderingDiGitalSLides()));
-                    },
-                    child: buildIconItem(
-                      imageAsset:
-                          'assets/histopathology/ordering-digital-slides.svg',
-                      labelText: 'Ordering\nDigital Slides',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ORderingDiGitalSLides()));
+                      },
+                      child: buildIconItem(
+                        imageAsset:
+                            'assets/histopathology/ordering-digital-slides.svg',
+                        labelText: 'Ordering\nDigital Slides',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ARchievingTheSLides()));
-                    },
-                    child: buildIconItem(
-                      imageAsset:
-                          'assets/histopathology/arching-the-slides.svg',
-                      labelText: 'Archiving\nThe Slides',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ARchievingTheSLides()));
+                      },
+                      child: buildIconItem(
+                        imageAsset:
+                            'assets/histopathology/arching-the-slides.svg',
+                        labelText: 'Archiving\nThe Slides',
+                      ),
                     ),
-                  ),
-                ]))
-      ])),
+                  ]))
+        ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

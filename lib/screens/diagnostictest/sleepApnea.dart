@@ -44,33 +44,41 @@ class _SleepApneaState extends State<SleepApnea> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        CustomContainerBar(
-          title: "SLEEP APNEA",
-          svgAssetPath: "assets/diagnostic-test/sleep-apena-title.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "SLEEP APNEA",
+            svgAssetPath: "assets/diagnostic-test/sleep-apena-title.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
-          child: Image.asset("assets/diagnostic-test/sleep-apnea-img1.jpg"),
-        ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(15, 15, 10, 10),
-          child: Text(
-              "Obstructive Sleep Apnea (OSA) is a condition characterized by intermittent stopping of breath during sleep resulting in snoring, reduced oxygen levels at night, restless quality of sleep and daytime drowsiness. If not diagnosed in time and left untreated, it can lead to a number of cardiovascular complications like Hypertension, Diabetes, Heart Attacks, Arrhythmias, and Stroke.",
-              style: TextStyle(fontSize: 14, height: 1.7)),
-        ),
-        Divider(
-          indent: 15,
-          endIndent: 15,
-          thickness: 1.5,
-        ),
-        FormoreInformation(context,"")
-      ])),
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 14, 12, 4),
+                child:
+                    Image.asset("assets/diagnostic-test/sleep-apnea-img1.jpg"),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 15, 10, 10),
+                child: Text(
+                    "Obstructive Sleep Apnea (OSA) is a condition characterized by intermittent stopping of breath during sleep resulting in snoring, reduced oxygen levels at night, restless quality of sleep and daytime drowsiness. If not diagnosed in time and left untreated, it can lead to a number of cardiovascular complications like Hypertension, Diabetes, Heart Attacks, Arrhythmias, and Stroke.",
+                    style: TextStyle(fontSize: 14, height: 1.7)),
+              ),
+              Divider(
+                indent: 15,
+                endIndent: 15,
+                thickness: 1.5,
+              ),
+              FormoreInformation(context, "")
+            ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: '',
       ),

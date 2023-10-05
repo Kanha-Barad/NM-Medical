@@ -1,12 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+//import 'package:path_provider/path_provider.dart';
+//import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
+//import 'package:webview_flutter/webview_flutter.dart';
 import '../controllers/Download_Report_Controller.dart';
 import '../models/Download_Reports_Models.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/basic_appbar.dart';
 import '../widgets/bottom_navigation.dart';
 import '../widgets/customContainer.dart';
+import 'package:http/http.dart' as http;
+//import 'package:open_file/open_file.dart'; // Import the open_file package for opening downloaded files
 
 class DonwloadReport extends StatefulWidget {
   @override
@@ -17,6 +24,7 @@ class _DonwloadReportState extends State<DonwloadReport> {
   bool isUserProfileIconClicked = false;
   bool isMenuClicked = false;
   late Future<List<Report>> reportsFuture;
+  // late final String downloadUrl;
 
   @override
   void initState() {
@@ -112,20 +120,29 @@ class _DonwloadReportState extends State<DonwloadReport> {
                                         snapshot.data![index].SERVICE_STATUS1 ==
                                             "Dispatch"
                                     ? InkWell(
-                                        onTap: () {
-                                          // https://115.112.254.129/NM_TESTING/public/HIMSReportViewer.aspx?uniuq_id
+                                        onTap: () async {
                                           final downloadUrl =
-                                              'https://115.112.254.129/NM_TESTING/public/HIMSReportViewer.aspx?uniuq_id=${snapshot.data![index].REPORT_CD}';
+                                              'http://115.112.254.129/NM_TESTING/public/HIMSReportViewer.aspx?uniuq_id=${snapshot.data![index].REPORT_CD}';
+                                          // Navigator.push(
+                                          //     context,
+                                          //     MaterialPageRoute(
+                                          //         builder: (context) =>
+                                          //             WebViewExample(
+                                          //               ReportURl: downloadUrl,
+                                          //             )));
+                                          //WebViewExample();
+                                          // http://115.112.254.129/NM_TESTING/public/HIMSReportViewer.aspx?uniuq_id
+                                          //'https://online1.nmmedical.com/link/slims/labreport?rptcd=824980-13231680111';
 
-                                          // Open the URL in a webview or web browser
-                                          // You can use packages like webview_flutter or url_launcher for this
-                                          // Example using url_launcher:
-                                          launch(downloadUrl);
-                                          // WebView(
-                                          //   initialUrl: downloadUrl,
-                                          //   javascriptMode:
-                                          //       JavascriptMode.unrestricted,
-                                          // );
+                                          try {
+                                            await launch(downloadUrl);
+                                          } catch (e) {
+                                            print('Error launching URL: $e');
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(SnackBar(
+                                                    content: Text(
+                                                        "Could not lunch URL")));
+                                          }
                                         },
                                         child: SvgPicture.asset(
                                             "assets/images/download-icon.svg"),
@@ -149,6 +166,106 @@ class _DonwloadReportState extends State<DonwloadReport> {
   }
 }
 
+// class WebViewExample extends StatefulWidget {
+//   String ReportURl = "";
+//   WebViewExample({required this.ReportURl});
+//   @override
+//   _WebViewExampleState createState() => _WebViewExampleState();
+// }
+
+// class _WebViewExampleState extends State<WebViewExample> {
+//   @override
+//   void initState() {
+//     super.initState();
+//     // Enable WebView debugging (for development purposes)
+//     WebView.platform = SurfaceAndroidWebView();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('WebView Example'),
+//       ),
+//       body: WebView(
+//         initialUrl: widget.ReportURl, // Replace with your desired URL
+//         javascriptMode: JavascriptMode.unrestricted,
+//       ),
+//     );
+//   }
+// }
+
+// class WebViewWidget extends StatelessWidget {
+//   final String initialUrl;
+
+//   WebViewWidget({required this.initialUrl});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('WebView Example'),
+//       ),
+//       body: WebView(
+//         initialUrl: initialUrl,
+//         javascriptMode: JavascriptMode.unrestricted,
+//         onPageStarted: (String url) {
+//           // Handle page load started
+//         },
+//         onPageFinished: (String url) {
+//           // Handle page load finished
+//         },
+//       ),
+//     );
+//   }
+// }
+
+
+// Future<void> _downloadFile(ReportCD) async {
+  //   var status = await Permission.storage.request();
+  //   if (status.isGranted) {
+  //     final headers = {
+  //       "User-Agent": "Mozilla/5.0",
+  //       "Content-Type":
+  //           "application/pdf", // Adjust the Content-Type based on the file type you are downloading
+  //     };
+  //     final response = await http.get(
+  //       Uri.parse(Uri.encodeFull(ReportCD)),
+  //       headers: headers,
+  //     );
+
+  //     if (response.statusCode == 200) {
+  //       if (response.headers['content-type'] == 'application/pdf') {
+  //         final directory = await getApplicationDocumentsDirectory();
+  //         final filePath =
+  //             '${directory.path}/downloaded_file.pdf'; // Change the file name and extension as needed
+  //         final file = File(filePath);
+
+  //         await file.writeAsBytes(response.bodyBytes);
+
+  //         print('File downloaded successfully to: $filePath');
+
+  //         // You can now work with the downloaded file, e.g., open it
+  //         OpenFile.open(filePath);
+  //       } else {
+  //         // It's not a PDF, handle this case accordingly.
+  //         print('Received content is not a PDF.');
+  //         // Display an error message or take other appropriate action.
+  //       }
+  //     } else {
+  //       print('Failed to download file. Status code: ${response.statusCode}');
+  //       print('Response body: ${response.body}');
+  //       throw Exception('Failed to download file');
+  //     }
+  //   } else {
+  //     if (await Permission.storage.isPermanentlyDenied) {
+  //       // The user has permanently denied the permission. Open app settings.
+  //       await openAppSettings();
+  //     } else {
+  //       print('Permission denied.');
+  //     }
+  //   }
+  // }
 
 // ListTile(
 //           leading: Padding(

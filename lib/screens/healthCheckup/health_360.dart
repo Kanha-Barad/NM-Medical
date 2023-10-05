@@ -60,116 +60,122 @@ class _Health360State extends State<Health360> {
         isUserIconClicked: isUserProfileIconClicked,
         isMenuIconClicked: isMenuClicked,
       ),
-      body: SingleChildScrollView(
-          child: Column(children: [
-        CustomContainerBar(
-          title: "HEALTH PACKAGES",
-          svgAssetPath: "assets/images/packages-details.svg",
-          onBackButtonPressed: () {
-            Navigator.pop(context);
-          },
+      body: CustomScrollView(slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: CustomContainerBarDelegate(
+            title: "HEALTH PACKAGES",
+            svgAssetPath: "assets/images/packages-details.svg",
+            onBackButtonPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        Padding(
-            padding: const EdgeInsets.only(bottom: 4.0),
-            child: GridView.count(
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                                      childAspectRatio: 1.2,
-
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ExeCUtIVePackages()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-360/executive.svg',
-                      labelText: 'Executive',
+        SliverToBoxAdapter(
+            child: SingleChildScrollView(
+                child: Column(children: [
+          Padding(
+              padding: const EdgeInsets.only(bottom: 4.0),
+              child: GridView.count(
+                  crossAxisCount: 3,
+                  shrinkWrap: true,
+                  childAspectRatio: 1.2,
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ExeCUtIVePackages()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-360/executive.svg',
+                        labelText: 'Executive',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ExeCUtIVePlUSPackages()));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-360/executive-plus.svg',
-                      labelText: 'Executive Plus',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ExeCUtIVePlUSPackages()));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-360/executive-plus.svg',
+                        labelText: 'Executive Plus',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HealTH360Packages(
-                                    'BNP',
-                                  )));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-360/health-360.svg',
-                      labelText: 'Health 360',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HealTH360Packages(
+                                      'BNP',
+                                    )));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-360/health-360.svg',
+                        labelText: 'Health 360',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  HealTH360PluSPackages("BNP")));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-360/health-360-plus.svg',
-                      labelText: 'Health\n360 Plus',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    HealTH360PluSPackages("BNP")));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-360/health-360-plus.svg',
+                        labelText: 'Health\n360 Plus',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  HealTH360DeluXePackages("BNP")));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-360/health-360-deluxe.svg',
-                      labelText: 'Health\n360 Deluxe',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    HealTH360DeluXePackages("BNP")));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-360/health-360-deluxe.svg',
+                        labelText: 'Health\n360 Deluxe',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CardiacCTPackages("BNP")));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-360/cardiac-CT.svg',
-                      labelText: 'Cardiac\nCT',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    CardiacCTPackages("BNP")));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-360/cardiac-CT.svg',
+                        labelText: 'Cardiac\nCT',
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  WholEBoDYMRIPackAgeS("BNP")));
-                    },
-                    child: buildIconItem(
-                      imageAsset: 'assets/health-360/whole-body-MRI.svg',
-                      labelText: 'Whole Body\nMRI',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    WholEBoDYMRIPackAgeS("BNP")));
+                      },
+                      child: buildIconItem(
+                        imageAsset: 'assets/health-360/whole-body-MRI.svg',
+                        labelText: 'Whole Body\nMRI',
+                      ),
                     ),
-                  ),
-                ]))
-      ])),
+                  ]))
+        ])))
+      ]),
       bottomNavigationBar: AllBottomNavigationBar(
         payMNETNAv: boTTOMNavPaymeNT,
       ),

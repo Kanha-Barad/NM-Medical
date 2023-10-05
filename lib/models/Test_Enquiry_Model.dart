@@ -8,6 +8,7 @@ class TestEnquiry {
   final GENDER;
   final REPORT_CD;
   final BILL_DT;
+  final Bill_ID;
 
   TestEnquiry(
       {required this.SERVICE_NAME,
@@ -18,7 +19,8 @@ class TestEnquiry {
       required this.AGE,
       required this.GENDER,
       required this.REPORT_CD,
-      required this.BILL_DT});
+      required this.BILL_DT,
+      required this.Bill_ID});
 
   factory TestEnquiry.fromJson(Map<String, dynamic> json) {
     // var pdfdownloader =
@@ -33,6 +35,7 @@ class TestEnquiry {
       GENDER: json['GENDER'].toString(),
       REPORT_CD: json['REPORT_CD'].toString(),
       BILL_DT: json['BILL_DT'].toString(),
+      Bill_ID: json['BILL_ID'].toString(),
     );
   }
 }

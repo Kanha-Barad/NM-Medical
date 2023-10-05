@@ -44,11 +44,20 @@ class _MobileNumberPageState extends State<MobileNumberPage> {
       setState(() {
         _isLoggingIn = true;
       });
+      // Show Snackbar for connecting
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Connecting...'),
+          // duration: Duration(seconds: 2),
+        ),
+      );
 
       final loginResponse = await authProvider.login(_mobileController.text);
 
       if (loginResponse != null) {
         // Successful login, navigate to OTP validation screen
+        ScaffoldMessenger.of(context)
+            .removeCurrentSnackBar(); // Remove the Snackbar
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -147,7 +156,7 @@ class _MobileNumberPageState extends State<MobileNumberPage> {
                 ),
               ),
               GestureDetector(
-                onTap: () => _login(context),
+                onTap: _isLoggingIn ? null : () => _login(context),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Card(
